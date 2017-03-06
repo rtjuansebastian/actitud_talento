@@ -333,11 +333,11 @@
                             <div class="col-sm-6 col-xs-6">
                                 <div class="thumbnail no-border no-padding" data-animation="fadeInLeft" data-animation-delay="100">
                                     <div class="media">
-                                        <img src="<?=base_url()?>assets/img/preview/about-sm-1.jpg" alt="">
+                                        <img src="<?=base_url()?>assets/img/acerca.jpeg" alt="">
                                         <div class="caption hovered">
                                             <div class="caption-wrapper div-table">
                                                 <div class="caption-inner div-cell">
-                                                    <p class="caption-buttons"><a href="<?=base_url()?>assets/img/preview/about-lg-1.jpg" class="btn caption-zoom" data-gal="prettyPhoto"><i class="fa fa-search"></i></a></p>
+                                                    <p class="caption-buttons"><a href="<?=base_url()?>assets/img/acerca.jpeg" class="btn caption-zoom" data-gal="prettyPhoto"><i class="fa fa-search"></i></a></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -348,11 +348,11 @@
                             <div class="col-sm-6 col-xs-6">
                                 <div class="thumbnail no-border no-padding" data-animation="fadeInDown" data-animation-delay="200">
                                     <div class="media">
-                                        <img src="<?=base_url()?>assets/img/preview/about-sm-2.jpg" alt="">
+                                        <img src="<?=base_url()?>assets/img/acerca.jpeg" alt="">
                                         <div class="caption hovered">
                                             <div class="caption-wrapper div-table">
                                                 <div class="caption-inner div-cell">
-                                                    <p class="caption-buttons"><a href="<?=base_url()?>assets/img/preview/about-lg-2.jpg" class="btn caption-zoom" data-gal="prettyPhoto"><i class="fa fa-search"></i></a></p>
+                                                    <p class="caption-buttons"><a href="<?=base_url()?>assets/img/acerca.jpeg" class="btn caption-zoom" data-gal="prettyPhoto"><i class="fa fa-search"></i></a></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -363,11 +363,11 @@
                             <div class="col-sm-6 col-xs-6">
                                 <div class="thumbnail no-border no-padding" data-animation="fadeInRight" data-animation-delay="300">
                                     <div class="media">
-                                        <img src="<?=base_url()?>assets/img/preview/about-sm-3.jpg" alt="">
+                                        <img src="<?=base_url()?>assets/img/acerca.jpeg" alt="">
                                         <div class="caption hovered">
                                             <div class="caption-wrapper div-table">
                                                 <div class="caption-inner div-cell">
-                                                    <p class="caption-buttons"><a href="<?=base_url()?>assets/img/preview/about-lg-3.jpg" class="btn caption-zoom" data-gal="prettyPhoto"><i class="fa fa-search"></i></a></p>
+                                                    <p class="caption-buttons"><a href="<?=base_url()?>assets/img/acerca.jpeg" class="btn caption-zoom" data-gal="prettyPhoto"><i class="fa fa-search"></i></a></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -378,11 +378,11 @@
                             <div class="col-sm-6 col-xs-6">
                                 <div class="thumbnail no-border no-padding" data-animation="fadeInUp" data-animation-delay="400">
                                     <div class="media">
-                                        <img src="<?=base_url()?>assets/img/preview/about-sm-4.jpg" alt="">
+                                        <img src="<?=base_url()?>assets/img/acerca.jpeg" alt="">
                                         <div class="caption hovered">
                                             <div class="caption-wrapper div-table">
                                                 <div class="caption-inner div-cell">
-                                                    <p class="caption-buttons"><a href="<?=base_url()?>assets/img/preview/about-lg-4.jpg" class="btn caption-zoom" data-gal="prettyPhoto"><i class="fa fa-search"></i></a></p>
+                                                    <p class="caption-buttons"><a href="<?=base_url()?>assets/img/acerca.jpeg" class="btn caption-zoom" data-gal="prettyPhoto"><i class="fa fa-search"></i></a></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -406,12 +406,12 @@
                     <div class="col-md-8 pull-left">
                         <h1 class="section-title">
                             <span data-animation="flipInY" data-animation-delay="300" class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-star fa-stack-1x"></i></span></span>
-                            <span data-animation="fadeInRight" data-animation-delay="500" class="title-inner">Conference or Event Schedule <small>/ dont forget it</small></span>
+                            <span data-animation="fadeInRight" data-animation-delay="500" class="title-inner">Programación</small></span>
                         </h1>
                     </div>
                     <div class="col-md-4 text-right-md pull-right">
                         <a href="#" class="btn btn-theme btn-theme-lg btn-theme-transparent-grey pull-right"
-                           data-animation="flipInY" data-animation-delay="300"><i class="fa fa-print"></i> Download Schedule</a>
+                           data-animation="flipInY" data-animation-delay="300"><i class="fa fa-print"></i> Descargar programación</a>
                     </div>
                 </div>
 
@@ -2770,7 +2770,7 @@
             <div class="container">
                 <h1 class="section-title">
                     <span data-animation="flipInY" data-animation-delay="300" class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-file-text-o fa-stack-1x"></i></span></span>
-                    <span data-animation="fadeInRight" data-animation-delay="500" class="title-inner">Recent Blog Posts <small> / get news!</small></span>
+                    <span data-animation="fadeInRight" data-animation-delay="500" class="title-inner">Post Recientes <small> / Noticias!</small></span>
                 </h1>
                 <div class="row post-row">
 
@@ -2781,7 +2781,7 @@
                                 <div class="post-type">
                                     <i class="fa fa-video-camera"></i>
                                 </div>
-                                <img src="assets/img/preview/recent-post-1.jpg" alt=""/>
+                                <img src="<?=  base_url()?>assets/img/recent-post-1.jpg" alt=""/>
                             </div>
                             <div class="post-header">
                                 <h2 class="post-title"><a href="#">Standart Blog Post Header Here</a></h2>
@@ -2817,7 +2817,7 @@
                                 <div class="post-type">
                                     <i class="fa fa-photo"></i>
                                 </div>
-                                <img src="assets/img/preview/recent-post-2.jpg" alt=""/>
+                                <img src="<?=  base_url()?>assets/img/recent-post-1.jpg" alt=""/>
                             </div>
                             <div class="post-header">
                                 <h2 class="post-title"><a href="#">Standart Blog Post Header Here</a></h2>
@@ -2853,7 +2853,7 @@
                                 <div class="post-type">
                                     <i class="fa fa-music"></i>
                                 </div>
-                                <img src="assets/img/preview/recent-post-3.jpg" alt=""/>
+                                <img src="<?=  base_url()?>assets/img/recent-post-1.jpg" alt=""/>
                             </div>
                             <div class="post-header">
                                 <h2 class="post-title"><a href="#">Standart Blog Post Header Here</a></h2>
@@ -2884,7 +2884,7 @@
 
                 </div>
                 <div class="text-center margin-top">
-                    <a data-animation="flipInY" data-animation-delay="100" href="#" class="btn btn-theme"><i class="fa fa-file"></i> See all news</a>
+                    <a data-animation="flipInY" data-animation-delay="100" href="#" class="btn btn-theme"><i class="fa fa-file"></i> Ver todas las noticias </a>
                 </div>
             </div>
         </section>
@@ -2897,13 +2897,13 @@
                     <div class="on-gmap color">
                         <h1 class="section-title">
                             <span data-animation="flipInY" data-animation-delay="100" class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-ticket fa-stack-1x"></i></span></span>
-                            <span data-animation="fadeInRight" data-animation-delay="100" class="title-inner">Event Location</span>
+                            <span data-animation="fadeInRight" data-animation-delay="100" class="title-inner">Localización de l evento</span>
                         </h1>
-                        <p data-animation="fadeInUp" data-animation-delay="200" class="text-uppercase">Apple Store SOHO‎ <br/>
-                            103 Prince St New York, <br/>
-                            NY 10012, United States <br/>
-                            +1 212-226-3126</p>
-                        <p><a href="mailto:youremail@domain.com">hello@imevent.com</a></p>
+                        <p data-animation="fadeInUp" data-animation-delay="200" class="text-uppercase">Nombre lugar <br/>
+                            Dirección ciudad, <br/>
+                            codigo postal, País <br/>
+                            Telefono</p>
+                        <p><a href="mailto:youremail@domain.com">Correo</a></p>
                         <a href="#" class="btn btn-theme"
                            data-animation="flipInY" data-animation-delay="300">Get Direction <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
@@ -2925,7 +2925,7 @@
 
                 <h1 class="section-title">
                     <span data-animation="flipInY" data-animation-delay="100" class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-ticket fa-stack-1x"></i></span></span>
-                    <span data-animation="fadeInRight" data-animation-delay="100" class="title-inner">Contact Us <small>/ lorem ipsum</small></span>
+                    <span data-animation="fadeInRight" data-animation-delay="100" class="title-inner">Contactenos <small>/ lorem ipsum</small></span>
                 </h1>
 
                 <!-- Contact form -->
@@ -2934,7 +2934,7 @@
                     <div class="col-sm-12 af-outer af-required">
                         <div class="form-group af-inner">
                             <input
-                                    type="text" name="name" id="name" placeholder="Type Your Name..." value="" size="30"
+                                    type="text" name="name" id="name" placeholder="Nombre" value="" size="30"
                                     data-toggle="tooltip" title="Name is required"
                                     class="form-control placeholder"/>
                         </div>
@@ -2943,7 +2943,7 @@
                     <div class="col-sm-12 af-outer af-required">
                         <div class="form-group af-inner">
                             <input
-                                    type="text" name="email" id="email" placeholder="Type Your Email..." value="" size="30"
+                                    type="text" name="email" id="email" placeholder="Email" value="" size="30"
                                     data-toggle="tooltip" title="Email is required"
                                     class="form-control placeholder"/>
                         </div>
@@ -2952,7 +2952,7 @@
                     <div class="col-sm-12 af-outer af-required">
                         <div class="form-group af-inner">
                             <textarea
-                                    name="message" id="input-message" placeholder="Type Your Message..." rows="4" cols="50"
+                                    name="message" id="input-message" placeholder="Mensaje" rows="4" cols="50"
                                     data-toggle="tooltip" title="Message is required"
                                     class="form-control placeholder"></textarea>
                         </div>
@@ -2960,7 +2960,7 @@
 
                     <div class="col-sm-12 af-outer af-required text-center">
                         <div class="form-group af-inner">
-                            <input type="submit" name="submit" class="form-button form-button-submit btn btn-theme btn-theme-lg btn-theme-transparent" id="submit_btn" value="Send message" />
+                            <input type="submit" name="submit" class="form-button form-button-submit btn btn-theme btn-theme-lg btn-theme-transparent" id="submit_btn" value="Enviar mensaje" />
                         </div>
                     </div>
 
@@ -2989,7 +2989,7 @@
                         <li data-animation="flipInY" data-animation-delay="700"><a href="#" class="skype"><i class="fa fa-skype"></i></a></li>
                     </ul>
                 </div>
-                <span class="copyright" data-animation="fadeInUp" data-animation-delay="100">&copy; 2014 im Event &#8212; An One Page Event Manager Theme made with passion by jThemes Studio</span>
+                <span class="copyright" data-animation="fadeInUp" data-animation-delay="100">&copy; 2017 Actitud y Talento</span>
             </div>
         </div>
     </footer>
@@ -3017,8 +3017,8 @@
 <script src="<?=base_url()?>assets/js/owl.carousel.min.js"></script>
 <script src="<?=base_url()?>assets/js/waypoints.min.js"></script>
 <script src="<?=base_url()?>assets/js/jquery.plugin.min.js"></script>
-<script src=""<?=base_url()?>assets/js/jquery.countdown.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
+<script src="<?=base_url()?>assets/js/jquery.countdown.min.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyAVfXMbSzxLDdBa0ReAvF8leWa7rQNZMPg"></script>
 
 <script src="<?=base_url()?>assets/js/theme-ajax-mail.js"></script>
 <script src="<?=base_url()?>assets/js/theme.js"></script>

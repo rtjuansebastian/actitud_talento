@@ -111,7 +111,7 @@ var themeConfig = {
         var $this = this;
         if (this.init) return;
 
-        $('head').append($('<link rel="stylesheet">').attr('href', 'assets/js/theme-config.css'));
+        $('head').append($('<link rel="stylesheet">').attr('href', 'assets/css/theme-config.css'));
         $this.build();
         $this.events();
 
@@ -430,12 +430,12 @@ var themeConfig = {
         if (background == 'dark') {
             $('.partners-carousel img').each(function () {
                 var arr = $(this).attr('src').split('/');
-                $(this).attr('src', 'assets/img/partner/' + background + '/' + arr[arr.length - 1]);
+                $(this).attr('src', 'assets/img/' + background + '/' + arr[arr.length - 1]);
             });
         } else {
             $('.partners-carousel img').each(function () {
                 var arr = $(this).attr('src').split('/');
-                $(this).attr('src', 'assets/img/partner/light/' + arr[arr.length - 1]);
+                $(this).attr('src', 'assets/img/' + arr[arr.length - 1]);
             });
         }
     },
