@@ -18,6 +18,10 @@ class Index extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        //$this->load->model('conferencistas_model');
+        $this->load->model("escenarios_model");
+        $this->load->model("eventos_model");
+        $this->load->model("patrocinadores_model");
     }
     
     /**
@@ -27,7 +31,11 @@ class Index extends CI_Controller
      */    
     public function index()
     {
-        $this->load->view('index');
+        $datos['evento']=$this->eventos_model->traer_evento(1);
+        $datos['patrocinadores']=$this->patrocinadores_model->traer_patrocinadores_evento(1);
+        $this->load->view('index',$datos);
     }
+    
+    
     
 }

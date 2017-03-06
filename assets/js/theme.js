@@ -1,3 +1,10 @@
+var fecha, coordenadas, coordenada;
+$(document).ready(function(){
+    fecha = $('#identificador_js').data('fecha');
+    coordenadas = $('#identificador_js').data('coordenadas');
+    coordenada=coordenadas.split(",", 2); 
+});
+
 'use strict';
 var theme = function () {
 
@@ -237,8 +244,7 @@ var theme = function () {
         },
         // CountDown
         initCountDown: function () {
-            var austDay = new Date();
-            austDay = new Date(austDay.getFullYear() + 1, 1 - 1, 26);
+            var austDay = new Date(""+fecha+"");
             $('#defaultCountdown').countdown({until: austDay});
             $('#year').text(austDay.getFullYear());
         },
@@ -335,12 +341,12 @@ var theme = function () {
                 var mapOptions = {
                     scrollwheel: false,
                     zoom: 12,
-                    center: new google.maps.LatLng(4.685858, -74.053852) // map coordinates
+                    center: new google.maps.LatLng(coordenada[0], coordenada[1]) // map coordinates
                 };
                 map = new google.maps.Map(document.getElementById('map-canvas'),
                     mapOptions);
                 marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(4.685858,-74.053852), // marker coordinates
+                    position: new google.maps.LatLng(coordenada[0], coordenada[1]), // marker coordinates
                     map: map,
                     icon: image,
                     title: 'Hello World!'

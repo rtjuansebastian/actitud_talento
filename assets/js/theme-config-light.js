@@ -430,12 +430,12 @@ var themeConfig = {
         if (background == 'dark') {
             $('.partners-carousel img').each(function () {
                 var arr = $(this).attr('src').split('/');
-                $(this).attr('src', 'assets/img/' + background + '/' + arr[arr.length - 1]);
+                $(this).attr('src', 'assets/img/patrocinadores/' + background + '/' + arr[arr.length - 1]);
             });
         } else {
             $('.partners-carousel img').each(function () {
                 var arr = $(this).attr('src').split('/');
-                $(this).attr('src', 'assets/img/' + arr[arr.length - 1]);
+                $(this).attr('src', 'assets/img/patrocinadores/' + arr[arr.length - 1]);
             });
         }
     },

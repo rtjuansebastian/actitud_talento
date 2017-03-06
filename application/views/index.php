@@ -25,7 +25,8 @@
     <link href="<?=base_url()?>assets/css/animate.min.css" rel="stylesheet">
     <link href="<?=base_url()?>assets/css/jquery.countdown.css" rel="stylesheet">
 
-    <link href="<?=base_url()?>assets/css/theme.css" rel="stylesheet">
+    <!--<link href="<?=base_url()?>assets/css/theme.css" rel="stylesheet">-->
+    <link href="<?=base_url()?>assets/css/estilos.php?imagen=<?=$evento['imagen_fondo']?>" rel="stylesheet">
     <link href="<?=base_url()?>assets/css/theme-red-1.css" rel="stylesheet" id="theme-config-link">
     <link href="<?=base_url()?>assets/css/custom.css" rel="stylesheet">
 
@@ -107,13 +108,13 @@
                         <div class="container">
                             <div class="div-table">
                                 <div class="div-cell">
-                                    <h2 class="caption-title" data-animation="fadeInDown" data-animation-delay="100"><span>Fecha del evento</span></h2>
-                                    <h3 class="caption-subtitle" data-animation="fadeInUp" data-animation-delay="300">Nombre del evento</h3>
+                                    <h2 class="caption-title" data-animation="fadeInDown" data-animation-delay="100"><span><?=  date_format(date_create($evento['fecha']),"Y-m-d")?></span></h2>
+                                    <h3 class="caption-subtitle" data-animation="fadeInUp" data-animation-delay="300"><?=$evento['nombre']?></h3>
                                     <div class="countdown-wrapper">
                                         <div id="defaultCountdown" class="defaultCountdown clearfix"></div>
                                     </div>
                                     <p class="caption-text">
-                                        <a class="btn btn-theme btn-theme-xl scroll-to" href="#register" data-animation="flipInY" data-animation-delay="600"> Register <i class="fa fa-arrow-circle-right"></i></a>
+                                        <a class="btn btn-theme btn-theme-xl scroll-to" href="#register" data-animation="flipInY" data-animation-delay="600"> Registro <i class="fa fa-arrow-circle-right"></i></a>
                                     </p>
                                 </div>
                             </div>
@@ -127,11 +128,11 @@
                     <div class="container">
                         <div class="div-table">
                         <div class="div-cell">
-                            <h2 class="caption-title" data-animation="fadeInDown" data-animation-delay="100"><span>Fecha del evento</span></h2>
-                            <h3 class="caption-subtitle" data-animation="fadeInUp" data-animation-delay="300">Nombre del evento</h3>
+                            <h2 class="caption-title" data-animation="fadeInDown" data-animation-delay="100"><span><?=  date_format(date_create($evento['fecha']),"Y-m-d")?></span></h2>
+                            <h3 class="caption-subtitle" data-animation="fadeInUp" data-animation-delay="300"><?=$evento['nombre']?></h3>
                             <p class="caption-text">
-                                <a class="btn btn-theme btn-theme-xl scroll-to" href="#register" data-animation="flipInY" data-animation-delay="600"> Register <i class="fa fa-arrow-circle-right"></i></a><!--
-                                --><a class="btn btn-theme btn-theme-xl btn-theme-transparent-white" href="http://www.youtube.com/watch?v=O-zpOMYRi0w" data-gal="prettyPhoto" data-animation="flipInY" data-animation-delay="900">Watch video</a>
+                                <a class="btn btn-theme btn-theme-xl scroll-to" href="#register" data-animation="flipInY" data-animation-delay="600"> Registro <i class="fa fa-arrow-circle-right"></i></a><!--
+                                --><a class="btn btn-theme btn-theme-xl btn-theme-transparent-white" href="http://www.youtube.com/watch?v=O-zpOMYRi0w" data-gal="prettyPhoto" data-animation="flipInY" data-animation-delay="900">Ver video</a>
                             </p>
                         </div>
                         </div>
@@ -207,8 +208,8 @@
                                 </div>
                                 <div class="col-md-6 col-lg-8">
                                     <div class="text-holder">
-                                    <h2 class="caption-title">Fecha del evento</h2>
-                                    <h3 class="caption-subtitle">Nombre del evento </h3>
+                                    <h2 class="caption-title"><?=  date_format(date_create($evento['fecha']),"Y-m-d")?></h2>
+                                    <h3 class="caption-subtitle"><?=$evento['nombre']?> </h3>
                                     </div>
                                 </div>
                             </div>
@@ -226,8 +227,8 @@
                     <div class="container">
                         <div class="div-table">
                         <div class="div-cell">
-                            <h2 class="caption-title"><span>Fecha del evento</span></h2>
-                            <h3 class="caption-subtitle">Nombre del evento</h3>
+                            <h2 class="caption-title"><span><?=  date_format(date_create($evento['fecha']),"Y-m-d")?></span></h2>
+                            <h3 class="caption-subtitle"><?=$evento['nombre']?></h3>
                             <p class="caption-text">
                                 <a class="btn btn-play" href="http://www.youtube.com/watch?v=O-zpOMYRi0w" data-gal="prettyPhoto"><i class="fa fa-play"></i></a>
                             </p>
@@ -256,7 +257,7 @@
                                             </span>
                                     <div class="media-body">
                                         <h4 class="media-heading">Fecha</h4>
-                                        <span>Fecha del evento</span>
+                                        <span><?=  date_format(date_create($evento['fecha']),"Y-m-d")?></span>
                                     </div>
                                 </div>
                             </div>
@@ -267,7 +268,7 @@
                                             </span>
                                     <div class="media-body">
                                         <h4 class="media-heading">Lugar</h4>
-                                        <span>Lugar del evento</span>
+                                        <span><?=$evento['lugar']?></span>
                                     </div>
                                 </div>
                             </div>
@@ -278,7 +279,7 @@
                                             </span>
                                     <div class="media-body">
                                         <h4 class="media-heading">Cupos</h4>
-                                        <span>245 Tickets</span>
+                                        <span><?=$evento['cupos']?> Entradas</span>
                                     </div>
                                 </div>
                             </div>
@@ -310,15 +311,11 @@
             <div class="container">
                 <h1 class="section-title">
                     <span data-animation="flipInY" data-animation-delay="300" class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-star fa-stack-1x"></i></span></span>
-                    <span data-animation="fadeInRight" data-animation-delay="500" class="title-inner">acerca de este evento <small>/ Titulo del evento</small></span>
+                    <span data-animation="fadeInRight" data-animation-delay="500" class="title-inner">acerca de este evento <small>/ <?=$evento['nombre']?></small></span>
                 </h1>
                 <div class="row">
                     <div class="col-lg-8">
-                        <p data-animation="fadeInUp" data-animation-delay="300">Descripcion del evento:Praesent ac sem in neque venenatis tristique. Morbi et ligula velit. Nullam a augue vel mi porta
-                            vestibulum non ac elit. Vivamus convallis tortor et fermentum semper. In hac habitasse platea
-                            dictumst. Curabitur eget dui id metus pulvinar suscipit. Quisque vitae ligula laoreet, scelerisque
-                            leo quis, facilisis metus. Sed pellentesque, urna sed varius consectetur, eros augue fringilla
-                            magna, id sem magna vel diam. Nulla sed hendrerit nunc.</p>
+                        <p data-animation="fadeInUp" data-animation-delay="300"><?=$evento['descripcion']?></p>
                         <p class="btn-row">
                             <a href="#register" class="btn btn-theme btn-theme-xl scroll-to" data-animation="flipInY" data-animation-delay="200">Registro <i class="fa fa-arrow-circle-right"></i></a><!--
                             --><a href="#" class="btn btn-theme btn-theme-xl btn-theme-transparent" data-animation="flipInY" data-animation-delay="400">Ver Video</a>
@@ -419,9 +416,9 @@
                 <div class="schedule-wrapper clear" data-animation="fadeIn" data-animation-delay="200">
                     <div class="schedule-tabs lv1">
                         <ul id="tabs-lv1"  class="nav nav-justified">
-                            <li class="active"><a href="#tab-first" data-toggle="tab"><strong>Dia 1</strong> <br/>Fecha del evento</a></li>
-                            <li><a href="#tab-second" data-toggle="tab"><strong>Dia 2</strong> <br/>Fecha del evento + 1</a></li>
-                            <li><a href="#tab-third" data-toggle="tab"><strong>Dia 3</strong> <br/>Fecha del evento + 2</a></li>
+                            <li class="active"><a href="#tab-first" data-toggle="tab"><strong>Dia 1</strong> <br/><?=  date_format(date_create($evento['fecha']),"Y-m-d")?></a></li>
+                            <li><a href="#tab-second" data-toggle="tab"><strong>Dia 2</strong> <br/><?=  date_format(date_create($evento['fecha']),"Y-m-d")?></a></li>
+                            <li><a href="#tab-third" data-toggle="tab"><strong>Dia 3</strong> <br/><?=  date_format(date_create($evento['fecha']),"Y-m-d")?></a></li>
                             <li><a href="#tab-last" data-toggle="tab"><strong>Conferencista</strong></a></li>
                         </ul>
                     </div>
@@ -2250,18 +2247,14 @@
                 </h1>
                 <div class="partners-carousel" data-animation="fadeInUp" data-animation-delay="300">
                     <div class="owl-carousel">
-                        <div><a href="#"><img src="<?=base_url()?>assets/img/sponsor.png" alt=""/></a></div>
-                        <div><a href="#"><img src="<?=base_url()?>assets/img/sponsor.png" alt=""/></a></div>
-                        <div><a href="#"><img src="<?=base_url()?>assets/img/sponsor.png" alt=""/></a></div>
-                        <div><a href="#"><img src="<?=base_url()?>assets/img/sponsor.png" alt=""/></a></div>
-                        <div><a href="#"><img src="<?=base_url()?>assets/img/sponsor.png" alt=""/></a></div>
-                        <div><a href="#"><img src="<?=base_url()?>assets/img/sponsor.png" alt=""/></a></div>
-                        <div><a href="#"><img src="<?=base_url()?>assets/img/sponsor.png" alt=""/></a></div>
-                        <div><a href="#"><img src="<?=base_url()?>assets/img/sponsor.png" alt=""/></a></div>
-                        <div><a href="#"><img src="<?=base_url()?>assets/img/sponsor.png" alt=""/></a></div>
-                        <div><a href="#"><img src="<?=base_url()?>assets/img/sponsor.png" alt=""/></a></div>
-                        <div><a href="#"><img src="<?=base_url()?>assets/img/sponsor.png" alt=""/></a></div>
-                        <div><a href="#"><img src="<?=base_url()?>assets/img/sponsor.png" alt=""/></a></div>
+<?php
+foreach ($patrocinadores as $patrocinador)
+{
+?>
+                        <div><a href="<?=$patrocinador['url']?>"><img src="<?=  base_url()?>/assets/img/patrocinadores/<?=$patrocinador['imagen_patrocinador']?>" alt=""/></a></div>
+<?php
+}
+?>
                     </div>
                 </div>
                 <div class="text-center margin-top">
@@ -2899,11 +2892,10 @@
                             <span data-animation="flipInY" data-animation-delay="100" class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-ticket fa-stack-1x"></i></span></span>
                             <span data-animation="fadeInRight" data-animation-delay="100" class="title-inner">Localización de l evento</span>
                         </h1>
-                        <p data-animation="fadeInUp" data-animation-delay="200" class="text-uppercase">Nombre lugar <br/>
-                            Dirección ciudad, <br/>
-                            codigo postal, País <br/>
-                            Telefono</p>
-                        <p><a href="mailto:youremail@domain.com">Correo</a></p>
+                        <p data-animation="fadeInUp" data-animation-delay="200" class="text-uppercase"><?=$evento['lugar']?><br/>                            
+                            <?=$evento['pais']?> <br/>
+                            <?=$evento['telefono']?></p>
+                        <p><a href="mailto:<?=$evento['email']?>">Correo</a></p>
                         <a href="#" class="btn btn-theme"
                            data-animation="flipInY" data-animation-delay="300">Get Direction <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
@@ -3021,7 +3013,7 @@
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyAVfXMbSzxLDdBa0ReAvF8leWa7rQNZMPg"></script>
 
 <script src="<?=base_url()?>assets/js/theme-ajax-mail.js"></script>
-<script src="<?=base_url()?>assets/js/theme.js"></script>
+<script id="identificador_js" data-fecha="<?=$evento['fecha']?>" data-coordenadas="<?=$evento['coordenadas']?>" src="<?=base_url()?>assets/js/theme.js"></script>
 <script src="<?=base_url()?>assets/js/custom.js"></script>
 
 <!--[if (gte IE 9)|!(IE)]><!-->
