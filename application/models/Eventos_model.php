@@ -41,8 +41,15 @@ class Eventos_model extends CI_Model
             $eventos[$row->id]['dias']=$row->dias;
             $eventos[$row->id]['telefono']=$row->telefono;
             $eventos[$row->id]['email']=$row->email;
+            $eventos[$row->id]['video']=$row->video;
             $eventos[$row->id]['imagen_fondo']=$row->imagen_fondo;
-            $eventos[$row->id]['imagen_bandera']=$row->imagen_bandera;
+            $eventos[$row->id]['twitter']=$row->twitter;
+            $eventos[$row->id]['dribbble']=$row->dribbble;
+            $eventos[$row->id]['facebook']=$row->facebook;
+            $eventos[$row->id]['google-plus']=$row->google_plus;
+            $eventos[$row->id]['instagram']=$row->instagram;
+            $eventos[$row->id]['pinterest']=$row->pinterest;
+            $eventos[$row->id]['skype']=$row->skype;
         }
         
         return $eventos;
@@ -65,8 +72,16 @@ class Eventos_model extends CI_Model
         $evento['dias']=$row->dias;
         $evento['telefono']=$row->telefono;
         $evento['email']=$row->email;
+        $evento['video']=$row->video;
         $evento['imagen_fondo']=$row->imagen_fondo;
         $evento['imagen_bandera']=$row->imagen_bandera;
+        $evento['twitter']=$row->twitter;
+        $evento['dribbble']=$row->dribbble;
+        $evento['facebook']=$row->facebook;
+        $evento['google-plus']=$row->google_plus;
+        $evento['instagram']=$row->instagram;
+        $evento['pinterest']=$row->pinterest;
+        $evento['skype']=$row->skype;
         
         return $evento;
     }    

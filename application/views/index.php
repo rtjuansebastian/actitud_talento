@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-    <title>Eventos</title>
+    <title>A&T Eventos</title>
 
     <!-- Favicons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
@@ -40,7 +40,7 @@
 <body id="home" class="wide body-light">
 
 <div id="awwwards" class="honorable black left">
-<a href="<?=base_url()?>" target="_blank">Eventos</a>
+<a href="<?=base_url()?>" target="_blank">A&T Eventos</a>
 </div>
 
 <!-- Preloader -->
@@ -65,7 +65,7 @@
                         <i class="fa logo-hex fa-stack-2x"></i>
                         <i class="fa logo-fa fa-map-marker fa-stack-1x"></i>
                     </span>
-                    Eventos
+                    A&T Eventos
                 </a>
             </div>
             <!-- /Logo -->
@@ -132,7 +132,7 @@
                             <h3 class="caption-subtitle" data-animation="fadeInUp" data-animation-delay="300"><?=$evento['nombre']?></h3>
                             <p class="caption-text">
                                 <a class="btn btn-theme btn-theme-xl scroll-to" href="#register" data-animation="flipInY" data-animation-delay="600"> Registro <i class="fa fa-arrow-circle-right"></i></a><!--
-                                --><a class="btn btn-theme btn-theme-xl btn-theme-transparent-white" href="http://www.youtube.com/watch?v=O-zpOMYRi0w" data-gal="prettyPhoto" data-animation="flipInY" data-animation-delay="900">Ver video</a>
+                                --><a class="btn btn-theme btn-theme-xl btn-theme-transparent-white" href="<?=$evento['video']?>" data-gal="prettyPhoto" data-animation="flipInY" data-animation-delay="900">Ver video</a>
                             </p>
                         </div>
                         </div>
@@ -230,7 +230,7 @@
                             <h2 class="caption-title"><span><?=  date_format(date_create($evento['fecha']),"Y-m-d")?></span></h2>
                             <h3 class="caption-subtitle"><?=$evento['nombre']?></h3>
                             <p class="caption-text">
-                                <a class="btn btn-play" href="http://www.youtube.com/watch?v=O-zpOMYRi0w" data-gal="prettyPhoto"><i class="fa fa-play"></i></a>
+                                <a class="btn btn-play" href="<?=$evento['video']?>" data-gal="prettyPhoto"><i class="fa fa-play"></i></a>
                             </p>
                             <!-- Event description -->
                             <!-- /Event description -->
@@ -1045,13 +1045,50 @@ foreach ($preguntas as $pregunta)
             <div class="container text-center">
                 <div class="clearfix">
                     <ul class="social-line list-inline">
-                        <li data-animation="flipInY" data-animation-delay="100"><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                        <li data-animation="flipInY" data-animation-delay="200"><a href="#" class="dribbble"><i class="fa fa-dribbble"></i></a></li>
-                        <li data-animation="flipInY" data-animation-delay="300"><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                        <li data-animation="flipInY" data-animation-delay="400"><a href="#" class="google"><i class="fa fa-google-plus"></i></a></li>
-                        <li data-animation="flipInY" data-animation-delay="500"><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
-                        <li data-animation="flipInY" data-animation-delay="600"><a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a></li>
-                        <li data-animation="flipInY" data-animation-delay="700"><a href="#" class="skype"><i class="fa fa-skype"></i></a></li>
+<?php                        
+if(isset($evento['twitter']))
+{
+?>
+                        <li data-animation="flipInY" data-animation-delay="100"><a href="<?=$evento['twitter']?>" class="twitter"><i class="fa fa-twitter"></i></a></li>
+<?php
+}
+if(isset($evento['dribbble']))
+{
+?>                                
+                        <li data-animation="flipInY" data-animation-delay="200"><a href="<?=$evento['dribbble']?>" class="dribbble"><i class="fa fa-dribbble"></i></a></li>
+<?php
+}
+if(isset($evento['facebook']))
+{
+?>                          
+                        <li data-animation="flipInY" data-animation-delay="300"><a href="<?=$evento['facebook']?>" class="facebook"><i class="fa fa-facebook"></i></a></li>
+<?php
+}
+if(isset($evento['google-plus']))
+{
+?>                          
+                        <li data-animation="flipInY" data-animation-delay="400"><a href="<?=$evento['google-plus']?>" class="google"><i class="fa fa-google-plus"></i></a></li>
+<?php
+}
+if(isset($evento['instagram']))
+{
+?>                          
+                        <li data-animation="flipInY" data-animation-delay="500"><a href="<?=$evento['instagram']?>" class="instagram"><i class="fa fa-instagram"></i></a></li>
+<?php
+}
+if(isset($evento['pinterest']))
+{
+?>                          
+                        <li data-animation="flipInY" data-animation-delay="600"><a href="<?=$evento['pinterest']?>" class="pinterest"><i class="fa fa-pinterest"></i></a></li>
+<?php
+}
+if(isset($evento['skype']))
+{
+?>                          
+                        <li data-animation="flipInY" data-animation-delay="700"><a href="<?=$evento['skype']?>" class="skype"><i class="fa fa-skype"></i></a></li>
+<?php
+}
+?>                          
                     </ul>
                 </div>
                 <span class="copyright" data-animation="fadeInUp" data-animation-delay="100">&copy; 2017 Actitud y Talento</span>
