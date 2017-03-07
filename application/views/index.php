@@ -326,67 +326,27 @@
                         <!-- Thumbnails -->
                         <!-- BUSCAR 4 IMAGENES DE CADA EVENTO Y GUARDARLAS EN 2 TAMAÑOS -->
                         <div class="row thumbnails">
-
+<?php
+foreach ($galerias as $foto)
+{
+?>
                             <div class="col-sm-6 col-xs-6">
                                 <div class="thumbnail no-border no-padding" data-animation="fadeInLeft" data-animation-delay="100">
                                     <div class="media">
-                                        <img src="<?=base_url()?>assets/img/acerca.jpeg" alt="">
+                                        <img src="<?=base_url()?>assets/img/galerias/<?=$foto['imagen']?>" alt="">
                                         <div class="caption hovered">
                                             <div class="caption-wrapper div-table">
                                                 <div class="caption-inner div-cell">
-                                                    <p class="caption-buttons"><a href="<?=base_url()?>assets/img/acerca.jpeg" class="btn caption-zoom" data-gal="prettyPhoto"><i class="fa fa-search"></i></a></p>
+                                                    <p class="caption-buttons"><a href="<?=base_url()?>assets/img/galerias/<?=$foto['imagen']?>" class="btn caption-zoom" data-gal="prettyPhoto"><i class="fa fa-search"></i></a></p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="col-sm-6 col-xs-6">
-                                <div class="thumbnail no-border no-padding" data-animation="fadeInDown" data-animation-delay="200">
-                                    <div class="media">
-                                        <img src="<?=base_url()?>assets/img/acerca.jpeg" alt="">
-                                        <div class="caption hovered">
-                                            <div class="caption-wrapper div-table">
-                                                <div class="caption-inner div-cell">
-                                                    <p class="caption-buttons"><a href="<?=base_url()?>assets/img/acerca.jpeg" class="btn caption-zoom" data-gal="prettyPhoto"><i class="fa fa-search"></i></a></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6 col-xs-6">
-                                <div class="thumbnail no-border no-padding" data-animation="fadeInRight" data-animation-delay="300">
-                                    <div class="media">
-                                        <img src="<?=base_url()?>assets/img/acerca.jpeg" alt="">
-                                        <div class="caption hovered">
-                                            <div class="caption-wrapper div-table">
-                                                <div class="caption-inner div-cell">
-                                                    <p class="caption-buttons"><a href="<?=base_url()?>assets/img/acerca.jpeg" class="btn caption-zoom" data-gal="prettyPhoto"><i class="fa fa-search"></i></a></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6 col-xs-6">
-                                <div class="thumbnail no-border no-padding" data-animation="fadeInUp" data-animation-delay="400">
-                                    <div class="media">
-                                        <img src="<?=base_url()?>assets/img/acerca.jpeg" alt="">
-                                        <div class="caption hovered">
-                                            <div class="caption-wrapper div-table">
-                                                <div class="caption-inner div-cell">
-                                                    <p class="caption-buttons"><a href="<?=base_url()?>assets/img/acerca.jpeg" class="btn caption-zoom" data-gal="prettyPhoto"><i class="fa fa-search"></i></a></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
+<?php
+}
+?>
                         </div>
                         <!-- /Thumbnails -->
 

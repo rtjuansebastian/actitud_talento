@@ -46,6 +46,31 @@ class Conferencistas_model extends CI_Model
         return $conferencistas;
     }
     
+    public function traer_conferencistas_evento($evento)
+    {
+        $conferencistas=array();
+        $this->db->select("conferencistas.id,conferencistas.nombre,conferencistas.profesion,conferencistas.perfil,conferencistas.imagen,conferencistas.facebook,conferencistas.twitter,conferencistas.google_plus,conferencistas.linkedin,conferencistas.instagram");
+        $this->db->from("programaciones");
+        $this->db->join("conferencistas","programaciones.conferencista=conferencistas.id");
+        $this->db->where('programaciones.evento',$evento);
+         $this->db->limit(5);
+        $query=$this->db->get();
+        foreach ($query->result() as $row)
+        {
+            $conferencistas[$row->id]['id']=$row->id;
+            $conferencistas[$row->id]['nombre']=$row->nombre;
+            $conferencistas[$row->id]['profesion']=$row->profesion;
+            $conferencistas[$row->id]['perfil']=$row->perfil;
+            $conferencistas[$row->id]['imagen']=$row->imagen;
+            $conferencistas[$row->id]['facebook']=$row->facebook;
+            $conferencistas[$row->id]['twitter']=$row->twitter;
+            $conferencistas[$row->id]['google_plus']=$row->google_plus;
+            $conferencistas[$row->id]['linkedin']=$row->linkedin;
+            $conferencistas[$row->id]['instagram']=$row->instagram;        
+        }
+        return $conferencistas;
+    }     
+    
     public function traer_conferencista($id)
     {
         $conferencista=array();

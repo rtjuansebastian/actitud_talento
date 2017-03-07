@@ -25,6 +25,7 @@ class Index extends CI_Controller
         $this->load->model("testimonios_model");
         $this->load->model("preguntas_model");
         $this->load->model("programaciones_model");
+        $this->load->model("galerias_model");
     }
     
     /**
@@ -38,6 +39,7 @@ class Index extends CI_Controller
         $datos['patrocinadores']=$this->patrocinadores_model->traer_patrocinadores_evento(1);
         $datos['testimonios']=$this->testimonios_model->traer_testimonios_evento(1);
         $datos['preguntas']=$this->preguntas_model->traer_preguntas_evento(1);
+        $datos['galerias']=$this->galerias_model->traer_galerias_evento(1);
         $dias=$this->programaciones_model->traer_dias_evento(1);
         foreach ($dias as $dia)
         {
@@ -52,7 +54,7 @@ class Index extends CI_Controller
         }
         $datos['dias']=$dias;
         $datos['programaciones']=$programaciones;
-        $datos['conferencistas']=$this->conferencistas_model->traer_conferencistas();
+        $datos['conferencistas']=$this->conferencistas_model->traer_conferencistas_evento(1);
         $this->load->view('index',$datos);
     }
     
