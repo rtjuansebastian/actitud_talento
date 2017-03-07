@@ -35,6 +35,12 @@ class Conferencistas_model extends CI_Model
             $conferencistas[$row->id]['profesion']=$row->profesion;
             $conferencistas[$row->id]['perfil']=$row->perfil;
             $conferencistas[$row->id]['imagen']=$row->imagen;
+            $conferencistas[$row->id]['facebook']=$row->facebook;
+            $conferencistas[$row->id]['twitter']=$row->twitter;
+            $conferencistas[$row->id]['google_plus']=$row->google_plus;
+            $conferencistas[$row->id]['linkedin']=$row->linkedin;
+            $conferencistas[$row->id]['instagram']=$row->instagram;
+            
         }
         
         return $conferencistas;
@@ -51,7 +57,11 @@ class Conferencistas_model extends CI_Model
         $conferencista['profesion']=$row->profesion;
         $conferencista['perfil']=$row->perfil;
         $conferencista['imagen']=$row->imagen;
-        
+        $conferencista['facebook']=$row->facebook;
+        $conferencista['twitter']=$row->twitter;
+        $conferencista['google_plus']=$row->google_plus;
+        $conferencista['linkedin']=$row->linkedin;
+        $conferencista['instagram']=$row->instagram;        
         return $conferencista;
     }    
 }
