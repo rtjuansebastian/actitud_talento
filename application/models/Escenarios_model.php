@@ -72,4 +72,9 @@ class Escenarios_model extends CI_Model
         
         return $escenario;
     }    
+    
+    public function agregar_escenario($data)
+    {
+        $this->db->insert('escenarios', $data);       
+    }
 }

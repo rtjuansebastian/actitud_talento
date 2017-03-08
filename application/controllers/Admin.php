@@ -105,7 +105,17 @@ class Admin extends CI_Controller
 
     public function agregar_escenario()
     {
-      
+        if($this->input->post())
+        {
+            $data=$this->input->post();
+            $this->escenarios_model->agregar_escenario($data);
+            $this->ver_escenarios();
+        }
+        else 
+        {
+            $datos['eventos']=  $this->eventos_model->traer_eventos();
+            $this->load->view('admin/agregar_escenario',$datos);   
+        }        
     }
     
 
