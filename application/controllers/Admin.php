@@ -85,7 +85,14 @@ class Admin extends CI_Controller
 
     public function agregar_conferencista()
     {
-        
+        if($this->input->post())
+        {
+            $this->ver_conferencistas();
+        }
+        else 
+        {
+            $this->load->view('admin/agregar_conferencista');   
+        }        
     }  
 
     public function ver_escenarios()

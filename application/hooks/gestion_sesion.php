@@ -12,6 +12,7 @@ class Gestion_sesion{
             
       if ($sesion== false && $controlador=='admin' )
       {
+            //redirect(base_url('index.php/login'));
             redirect(base_url('login'));
       }
    }

@@ -24,6 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['base_url'] = 'http://localhost/actitud_talento/';
+//$config['base_url'] = 'http://eventos.gincomex.com/';
 
 /*
 |--------------------------------------------------------------------------

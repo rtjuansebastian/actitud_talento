@@ -47,7 +47,8 @@ class Login extends CI_Controller
         if($validacion)
         {
             $this->login_model->crear_sesion($email);
-            redirect(base_url('admin'));
+            //redirect(base_url('index.php/admin/'));
+            redirect(base_url('admin/'));
         }
         else
         {

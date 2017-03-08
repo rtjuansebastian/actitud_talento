@@ -22,6 +22,7 @@
             <div class="row">                
                 <div class="col-md-6 col-md-offset-3">
                     <form method="post" action="<?=  base_url()?>login/valida_login">
+                    <!--<form method="post" action="<?=  base_url()?>index.php/login/valida_login">-->
                         <div class="form-group">
                             <label for="usuario">Usuario</label>
                             <input type="text" class="form-control" id="cedula" placeholder="Usuario" name="email">
