@@ -49,3 +49,7 @@ a.enlace
 
 .cancelar
 {background:url(../img/cancel.png) 0 0 no-repeat;}
+
+.size{
+  width: 80px;
+}

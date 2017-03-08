@@ -43,6 +43,7 @@ class Eventos_model extends CI_Model
             $eventos[$row->id]['email']=$row->email;
             $eventos[$row->id]['video']=$row->video;
             $eventos[$row->id]['imagen_fondo']=$row->imagen_fondo;
+            $eventos[$row->id]['imagen_bandera']=$row->imagen_bandera;
             $eventos[$row->id]['twitter']=$row->twitter;
             $eventos[$row->id]['dribbble']=$row->dribbble;
             $eventos[$row->id]['facebook']=$row->facebook;

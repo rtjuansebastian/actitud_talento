@@ -27,11 +27,15 @@ class Escenarios_model extends CI_Model
     public function traer_escenarios()
     {
         $escenarios=array();
-        $query=$this->db->get('escenarios');
+        $this->db->select("escenarios.id, evento, eventos.nombre as nombre_evento, escenarios.nombre, capacidad");
+        $this->db->from("escenarios");
+        $this->db->join("eventos","escenarios.evento=eventos.id");
+        $query=$this->db->get();
         foreach ($query->result() as $row)
         {
             $escenarios[$row->id]['id']=$row->id;
             $escenarios[$row->id]['evento']=$row->evento;
+            $escenarios[$row->id]['nombre_evento']=$row->nombre_evento;            
             $escenarios[$row->id]['nombre']=$row->nombre;
             $escenarios[$row->id]['capacidad']=$row->capacidad;
         }

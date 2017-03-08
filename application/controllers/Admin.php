@@ -26,6 +26,7 @@ class Admin extends CI_Controller
         $this->load->model("preguntas_model");
         $this->load->model("programaciones_model");
         $this->load->model("galerias_model");
+        $this->load->model("login_model");
     }
     
     /**
@@ -35,7 +36,58 @@ class Admin extends CI_Controller
      */    
     public function index()
     {  
-        $this->load->view('index_admin');
+        $this->load->view('admin/index_admin');
     }
+    
+    public function ver_usuarios()
+    {
+        $datos['usuarios']=$this->login_model->traer_usuarios();
+        $this->load->view('admin/ver_usuarios',$datos);        
+    }
+    
+    public function ver_eventos()
+    {
+        $datos['eventos']=$this->eventos_model->traer_eventos();
+        $this->load->view('admin/ver_eventos',$datos);
+    }
+
+    public function agregar_evento()
+    {
+        
+    }  
+
+    public function ver_conferencistas()
+    {
+        $datos['conferencistas']=$this->conferencistas_model->traer_conferencistas();
+        $this->load->view('admin/ver_conferencistas',$datos);
+    }  
+
+    public function agregar_conferencista()
+    {
+        
+    }  
+
+    public function ver_escenarios()
+    {
+        $datos['escenarios']=$this->escenarios_model->traer_escenarios();
+        $this->load->view('admin/ver_escenarios',$datos);
+    }  
+
+    public function agregar_escenario()
+    {
+        
+    }
+    
+
+    public function ver_patrocinadores()
+    {
+        $datos['patrocinadores']=$this->patrocinadores_model->traer_patrocinadores();
+        $this->load->view('admin/ver_patrocinadores',$datos);        
+    }  
+
+    public function agregar_patrocinador()
+    {
+        
+    }    
     
 }

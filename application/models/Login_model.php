@@ -87,5 +87,19 @@ class Login_model extends CI_Model
 
         $this->session->set_userdata('sesion',$acceso);         
     }
+    
+    public function traer_usuarios()
+    {
+        $usuarios=array();
+        $query=$this->db->get("usuarios");
+        foreach ($query->result() as $row)
+        {
+            $usuarios[$row->email]['email']=$row->email;
+            $usuarios[$row->email]['password']=$row->password;
+            $usuarios[$row->email]['nombre']=$row->nombre;
+        }
+        
+        return $usuarios;
+    }
   
 }    

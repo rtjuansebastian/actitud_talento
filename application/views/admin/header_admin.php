@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="<?=  base_url()?>assets/css/datetimepicker.css" />
         <link rel="stylesheet" href="<?=  base_url()?>assets/css/multi-select.css" />
         <link rel="stylesheet" href="<?=  base_url()?>assets/css/estilos.css" />
-        <link rel="stylesheet" href="<?=  base_url()?>assets/css/bootstrap-select.css" />
+        <link rel="stylesheet" href="<?=  base_url()?>assets/css/bootstrap-select.min.css" />
         <link rel="stylesheet" href="<?=  base_url()?>assets/css/tablesorter.css" />
         <link rel="stylesheet" href="<?=  base_url()?>assets/css/daterangepicker.css" />
         <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/img/favicon.ico" />
@@ -35,22 +35,33 @@
                             <ul class="nav navbar-nav">
                                 <li><a href="<?=  base_url()?>admin/ver_usuarios">Usuarios<span class="sr-only">(current)</span></a></li>
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Productos<span class="caret"></span></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Eventos<span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="<?php echo base_url(); ?>admin/ver_productos">Ver productos</a></li>
-                                        <li><a href="<?php echo base_url(); ?>admin/agregar_producto">Agregar producto</a></li>
+                                        <li><a href="<?php echo base_url(); ?>admin/ver_eventos">Ver eventos</a></li>
+                                        <li><a href="<?php echo base_url(); ?>admin/agregar_evento">Agregar evento</a></li>
                                     </ul>
-                                </li> 
-                                <li><a href="<?=  base_url()?>admin/ver_inventarios">Inventarios</a></li>
+                                </li>
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ordenes<span class="caret"></span></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Conferencistas<span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="<?php echo base_url(); ?>admin/ver_pedidos">Ver ordenes de compra</a></li>
-                                        <li><a href="<?php echo base_url(); ?>admin/ver_pedidos_solicitados">Ordenes solicitadas</a></li>
-                                        <li><a href="<?php echo base_url(); ?>admin/ver_pedidos_confirmados">Ordenes confirmadas</a></li>
+                                        <li><a href="<?php echo base_url(); ?>admin/ver_conferencistas">Ver conferencistas</a></li>
+                                        <li><a href="<?php echo base_url(); ?>admin/agregar_conferencista">Agregar conferencista</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Escenarios<span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="<?php echo base_url(); ?>admin/ver_escenarios">Ver escenarios</a></li>
+                                        <li><a href="<?php echo base_url(); ?>admin/agregar_escenario">Agregar escenario</a></li>
+                                    </ul>
+                                </li>                                
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Patrocinadores<span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="<?php echo base_url(); ?>admin/ver_patrocinadores">Ver patrocinadores</a></li>
+                                        <li><a href="<?php echo base_url(); ?>admin/agregar_patrocinador">Agregar patrocinador</a></li>
                                     </ul>
                                 </li>                                  
-                                <li><a href="<?=  base_url()?>admin/ver_ventas">Salidas</a></li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a href="<?php echo base_url(); ?>login/cerrar_sesion">Desconectar</a></li>            
