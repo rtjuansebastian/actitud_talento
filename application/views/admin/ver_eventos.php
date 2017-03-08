@@ -95,6 +95,10 @@ foreach ($eventos as $evento)
                                 <td>Skype</td>                            
                                 <td><?=$evento['skype']?></td>
                             </tr>
+                            <tr>
+                                <td>Patrocinadores</td>                            
+                                <td><?=$evento['patrocinadores']?></td>
+                            </tr>                            
                         </tbody>
                     </table>                    
 <?php                    

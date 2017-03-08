@@ -27,7 +27,11 @@ class Eventos_model extends CI_Model
     public function traer_eventos()
     {
         $eventos=array();
-        $query=$this->db->get('eventos');
+        $this->db->select("eventos.id, eventos.pais, eventos.nombre, eventos.descripcion, eventos.lugar, eventos.fecha, eventos.coordenadas, eventos.cupos, eventos.dias, eventos.telefono, eventos.email, eventos.video, eventos.imagen_fondo, eventos.imagen_bandera, eventos.twitter, eventos.dribbble, eventos.facebook, eventos.google_plus, eventos.instagram, eventos.pinterest, eventos.skype, GROUP_CONCAT(patrocinadores.nombre SEPARATOR ',') AS patrocinadores");
+        $this->db->from("eventos");
+        $this->db->join("eventos_patrocinadores","eventos.id=eventos_patrocinadores.evento");
+        $this->db->join("patrocinadores","eventos_patrocinadores.patrocinador=patrocinadores.id");
+        $query=$this->db->get();
         foreach ($query->result() as $row)
         {
             $eventos[$row->id]['id']=$row->id;
@@ -51,6 +55,7 @@ class Eventos_model extends CI_Model
             $eventos[$row->id]['instagram']=$row->instagram;
             $eventos[$row->id]['pinterest']=$row->pinterest;
             $eventos[$row->id]['skype']=$row->skype;
+            $eventos[$row->id]['patrocinadores']=$row->patrocinadores;
         }
         
         return $eventos;
