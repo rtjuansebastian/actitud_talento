@@ -102,7 +102,15 @@ foreach ($eventos as $evento)
                             <tr>
                                 <td>Programación</td>                            
                                 <td><button class="btn btn-primary glyphicon glyphicon-search ver_programacion" data-evento="<?=$evento['id']?>" data-toggle="modal" data-target="#modal_programacion"></button></td>
-                            </tr>                            
+                            </tr> 
+                            <tr>
+                                <td>Preguntas frecuentes</td>                            
+                                <td><button class="btn btn-primary glyphicon glyphicon-search ver_preguntas" data-evento="<?=$evento['id']?>" data-toggle="modal" data-target="#modal_preguntas"></button></td>
+                            </tr> 
+                            <tr>
+                                <td>Testimonios</td>                            
+                                <td><button class="btn btn-primary glyphicon glyphicon-search ver_testimonios" data-evento="<?=$evento['id']?>" data-toggle="modal" data-target="#modal_testimonios"></button></td>
+                            </tr>                             
                         </tbody>
                     </table>                    
 <?php                    
@@ -142,6 +150,61 @@ foreach ($eventos as $evento)
             </div>
           </div>
         </div>
+        <!-- Modal Preguntas -->
+        <div class="modal fade" id="modal_preguntas" tabindex="-1" role="dialog" aria-labelledby="ModalLabelProgramacion">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="ModalLabelProgramacion">Preguntas frecuentes</h4>
+              </div>
+              <div class="modal-body">
+                  <table class="table table-responsive">
+                      <thead>
+                          <tr>
+                              <th>Pregunta</th>
+                              <th>Respuesta</th>
+                          </tr>
+                      </thead>
+                      <tbody id="tabla_preguntas">
+
+                      </tbody>
+                  </table>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal Testimonios -->
+        <div class="modal fade" id="modal_testimonios" tabindex="-1" role="dialog" aria-labelledby="ModalLabelProgramacion">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="ModalLabelProgramacion">Testimonios</h4>
+              </div>
+              <div class="modal-body">
+                  <table class="table table-responsive">
+                      <thead>
+                          <tr>
+                              <th>Nombre</th>
+                              <th>Testimonio</th>
+                              <th>Imagen</th>
+                          </tr>
+                      </thead>
+                      <tbody id="tabla_testimonios">
+
+                      </tbody>
+                  </table>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+              </div>
+            </div>
+          </div>
+        </div>        
 <?php $this->load->view("admin/footer"); ?>
         <script>
             $(document).ready(function(){
@@ -168,5 +231,44 @@ foreach ($eventos as $evento)
                         $("#tabla_programacion").html(tabla_programacion);
                     });                    
                 });
+                $(".ver_preguntas").on("click",function(){
+                    var evento=$(this).data("evento");
+                    $.ajax({
+                      method: "POST",
+                      url: "<?=  base_url()?>admin/traer_preguntas_evento",
+                      data: { evento: evento}
+                    })
+                    .done(function( data ) {
+                        var result= $.parseJSON(data);
+                        var tabla_preguntas='';      
+                        $.each(result, function( llave, items) {
+                            tabla_preguntas=tabla_preguntas+'<tr>'+
+                                    '<td>'+items.pregunta+'</td>'+
+                                    '<td>'+items.respuesta+'</td>'+
+                                '</tr>';                            
+                        });
+                        $("#tabla_preguntas").html(tabla_preguntas);
+                    });                    
+                }); 
+                $(".ver_testimonios").on("click",function(){
+                    var evento=$(this).data("evento");
+                    $.ajax({
+                      method: "POST",
+                      url: "<?=  base_url()?>admin/traer_testimonios_evento",
+                      data: { evento: evento}
+                    })
+                    .done(function( data ) {
+                        var result= $.parseJSON(data);
+                        var tabla_testimonios='';      
+                        $.each(result, function( llave, items) {
+                            tabla_testimonios=tabla_testimonios+'<tr>'+
+                                    '<td>'+items.nombre+'</td>'+
+                                    '<td>'+items.testimonio+'</td>'+
+                                    '<td><img src="<?=base_url()?>assets/img/testimonios/'+items.imagen+'" heigth="50" width="50"></td>'+
+                                '</tr>';                            
+                        });
+                        $("#tabla_testimonios").html(tabla_testimonios);
+                    });                    
+                });                 
             });
         </script>        

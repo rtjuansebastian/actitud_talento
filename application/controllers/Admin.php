@@ -57,6 +57,20 @@ class Admin extends CI_Controller
         $programaciones=$this->programaciones_model->traer_programacion_evento($evento);
         echo json_encode($programaciones);
     }
+    
+    public function traer_preguntas_evento()
+    {
+        $evento=$this->input->post("evento");
+        $preguntas=$this->preguntas_model->traer_preguntas_evento($evento);
+        echo json_encode($preguntas);
+    }
+    
+    public function traer_testimonios_evento()
+    {
+        $evento=$this->input->post("evento");
+        $testimonios=$this->testimonios_model->traer_testimonios_evento($evento);
+        echo json_encode($testimonios);
+    }    
 
     public function agregar_evento()
     {

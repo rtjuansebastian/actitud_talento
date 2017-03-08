@@ -13,7 +13,7 @@
             <div class="container">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                      <h3 class="panel-title text-center">A&T Eventos <img alt="Brand" src="<?=  base_url()?>assets/img/logo.png"></h3>
+                      <h3 class="panel-title text-center"><img alt="Brand" src="<?=  base_url()?>assets/img/logo.png"></h3>
                     </div>
                 </div>
             </div>
