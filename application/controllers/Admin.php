@@ -87,6 +87,8 @@ class Admin extends CI_Controller
     {
         if($this->input->post())
         {
+            $data=  $this->input->post();
+            $this->conferencistas_model->agregar_conferencista($data);
             $this->ver_conferencistas();
         }
         else 

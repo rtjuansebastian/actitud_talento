@@ -88,5 +88,33 @@ class Conferencistas_model extends CI_Model
         $conferencista['linkedin']=$row->linkedin;
         $conferencista['instagram']=$row->instagram;        
         return $conferencista;
-    }    
+    }
+
+    public function agregar_conferencista($data)
+    {
+        $this->db->insert('conferencistas', $data);
+        if(isset($_FILES['imagen']) && strcmp (basename($_FILES['imagen']['name']),"")!==0)
+        {
+            $id=$this->db->insert_id();
+            $oldmask = umask(0);
+            umask($oldmask);        
+            $dir_subida = '/var/www/html/actitud_talento/assets/img/conferencistas/';
+            if(file_exists($dir_subida)){}
+            else{mkdir($dir_subida, 0700);}
+            $fichero_subido = $dir_subida . basename($_FILES['imagen']['name']);
+            move_uploaded_file($_FILES['imagen']['tmp_name'], $fichero_subido);
+            $ext=substr($fichero_subido, -4);            
+            $normal='/var/www/html/actitud_talento/assets/img/conferencistas/'.$id.$ext;            
+            $image = new Imagick($fichero_subido);
+            $image->cropThumbnailImage(90,90);
+            $image->writeImage($normal );
+            unlink($fichero_subido); 
+            $data = array(
+                           'imagen' => $id.$ext
+                        );
+
+            $this->db->where('id', $id);
+            $this->db->update('conferencistas', $data);     
+        }
+    }
 }
