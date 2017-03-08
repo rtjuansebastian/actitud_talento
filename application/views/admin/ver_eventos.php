@@ -98,6 +98,10 @@ foreach ($eventos as $evento)
                             <tr>
                                 <td>Patrocinadores</td>                            
                                 <td><?=$evento['patrocinadores']?></td>
+                            </tr>
+                            <tr>
+                                <td>Programación</td>                            
+                                <td><button class="btn btn-primary glyphicon glyphicon-search ver_programacion" data-evento="<?=$evento['id']?>" data-toggle="modal" data-target="#modal_programacion"></button></td>
                             </tr>                            
                         </tbody>
                     </table>                    
@@ -107,4 +111,62 @@ foreach ($eventos as $evento)
                 </div>
             </div>
         </div>
-<?php $this->load->view("admin/footer"); 
+        <!-- Modal Programación -->
+        <div class="modal fade" id="modal_programacion" tabindex="-1" role="dialog" aria-labelledby="ModalLabelProgramacion">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="ModalLabelProgramacion">Programación</h4>
+              </div>
+              <div class="modal-body">
+                  <table class="table table-responsive">
+                      <thead>
+                          <tr>
+                              <th>Fecha</th>
+                              <th>Duración (Horas)</th>
+                              <th>Titulo</th>
+                              <th>Descrpción</th>
+                              <th>Escenario</th>
+                              <th>Conferencista</th>                              
+                          </tr>
+                      </thead>
+                      <tbody id="tabla_programacion">
+
+                      </tbody>
+                  </table>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+<?php $this->load->view("admin/footer"); ?>
+        <script>
+            $(document).ready(function(){
+                $(".ver_programacion").on("click",function(){
+                    var evento=$(this).data("evento");
+                    $.ajax({
+                      method: "POST",
+                      url: "<?=  base_url()?>admin/traer_programacion_evento",
+                      data: { evento: evento}
+                    })
+                    .done(function( data ) {
+                        var result= $.parseJSON(data);
+                        var tabla_programacion='';      
+                        $.each(result, function( llave, items) {
+                            tabla_programacion=tabla_programacion+'<tr>'+
+                                    '<td>'+items.fecha+'</td>'+
+                                    '<td>'+items.duracion+'</td>'+
+                                    '<td>'+items.titulo+'</td>'+
+                                    '<td>'+items.descripcion+'</td>'+
+                                    '<td>'+items.nombre_escenario+'</td>'+
+                                    '<td>'+items.nombre_conferencista+'</td>'+
+                                '</tr>';                            
+                        });
+                        $("#tabla_programacion").html(tabla_programacion);
+                    });                    
+                });
+            });
+        </script>        

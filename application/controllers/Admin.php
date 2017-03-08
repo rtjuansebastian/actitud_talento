@@ -50,6 +50,13 @@ class Admin extends CI_Controller
         $datos['eventos']=$this->eventos_model->traer_eventos();
         $this->load->view('admin/ver_eventos',$datos);
     }
+    
+    public function traer_programacion_evento()
+    {
+        $evento=$this->input->post("evento");
+        $programaciones=$this->programaciones_model->traer_programacion_evento($evento);
+        echo json_encode($programaciones);
+    }
 
     public function agregar_evento()
     {
