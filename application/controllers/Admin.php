@@ -105,7 +105,7 @@ class Admin extends CI_Controller
 
     public function agregar_escenario()
     {
-        
+      
     }
     
 
@@ -117,7 +117,16 @@ class Admin extends CI_Controller
 
     public function agregar_patrocinador()
     {
-        
+        if($this->input->post())
+        {
+            $data=  $this->input->post();
+            $this->patrocinadores_model->agregar_patrocinador($data);
+            $this->ver_patrocinadores();
+        }
+        else 
+        {
+            $this->load->view('admin/agregar_patrocinador');   
+        }          
     }    
     
 }
