@@ -119,6 +119,8 @@ foreach ($conferencistas as $conferencista)
 <?php $this->load->view("admin/footer"); ?>
 <script>
     $(document).ready(function(){
+        
+        $(".accordion-toggle").click();
         $(".editar_conferencista").click(function(){
             var id= $(this).data("id");
             $.ajax(

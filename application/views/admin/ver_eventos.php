@@ -208,6 +208,7 @@ foreach ($eventos as $evento)
 <?php $this->load->view("admin/footer"); ?>
         <script>
             $(document).ready(function(){
+                $(".accordion-toggle").click();
                 $(".ver_programacion").on("click",function(){
                     var evento=$(this).data("evento");
                     $.ajax({

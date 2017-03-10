@@ -57,7 +57,7 @@ foreach ($patrocinadores as $patrocinador)
                             </div>
                             <div class="form-group">
                                 <label for="profesion">Descripción</label>
-                                <input type="text" class="form-control" id="descripcion" name="descripcion" required=""/>                            
+                                <input type="text" class="form-control" id="descripcion" name="descripcion"/>                            
                             </div>
                             <div class="form-group">
                                 <label for="perfil">Url</label>
@@ -79,6 +79,7 @@ foreach ($patrocinadores as $patrocinador)
 <?php $this->load->view("admin/footer"); ?>
 <script>
     $(document).ready(function(){
+        $(".accordion-toggle").click();
         $(".editar_patrocinador").click(function(){
             var id= $(this).data("id");
             $.ajax(
