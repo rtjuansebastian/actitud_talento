@@ -55,7 +55,7 @@ class Preguntas_model extends CI_Model
         return $testimonios;        
     }
 
-        public function traer_pregunta($id)
+    public function traer_pregunta($id)
     {
         $testimonio=array();
         $this->db->where('id',$id);
@@ -67,5 +67,20 @@ class Preguntas_model extends CI_Model
         $testimonio['respuesta']=$row->respuesta;
       
         return $testimonio;
+    }    
+    
+    public function agregar_preguntas_evento($data)
+    {
+        $total_preguntas=  count($data['pregunta']);
+        for($i=0;$i<=($total_preguntas-1);$i++)
+        {
+            $datos=array("evento"=>$data['evento'][$i],
+                    "pregunta"=>$data['pregunta'][$i],
+                    "respuesta"=>$data['respuesta'][$i],
+                );
+            $this->db->insert('preguntas_frecuentes', $datos);       
+        }
+        
+        return $data['evento'][0];
     }    
 }

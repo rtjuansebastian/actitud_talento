@@ -85,7 +85,7 @@ class Escenarios_model extends CI_Model
         {
             $datos=array("evento"=>$data['evento'][$i],
                     "nombre"=>$data['nombre'][$i],
-                    "capacidad"=>$data['evento'][$i],
+                    "capacidad"=>$data['capacidad'][$i],
                 );
             $this->db->insert('escenarios', $datos);       
         }

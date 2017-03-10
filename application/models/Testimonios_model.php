@@ -70,5 +70,46 @@ class Testimonios_model extends CI_Model
         $testimonio['imagen']=$row->imagen;
       
         return $testimonio;
-    }    
+    }  
+    
+    public function agregar_testimonios_evento($data)
+    {
+        $evento=$data['evento'][0];
+        $imagen=1;
+        $total_preguntas=  count($data['testimonio']);
+        for($i=0;$i<=($total_preguntas-1);$i++)
+        {                       
+            $datos=array("evento"=>$data['evento'][$i],
+                    "nombre"=>$data['nombre'][$i],
+                    "testimonio"=>$data['testimonio'][$i],
+                );
+            $this->db->insert('eventos_testimonios', $datos); 
+            if(isset($_FILES['imagen'.$imagen.'']) && strcmp (basename($_FILES['imagen'.$imagen.'']['name']),"")!==0)
+            {
+                $id=$this->db->insert_id();
+                $oldmask = umask(0);
+                umask($oldmask);        
+                $dir_subida = '/var/www/html/actitud_talento/assets/img/testimonios/';
+                if(file_exists($dir_subida)){}
+                else{mkdir($dir_subida, 0700);}
+                $fichero_subido = $dir_subida . basename($_FILES['imagen'.$imagen.'']['name']);
+                move_uploaded_file($_FILES['imagen'.$imagen.'']['tmp_name'], $fichero_subido);
+                $ext=substr($fichero_subido, -4);            
+                $normal='/var/www/html/actitud_talento/assets/img/testimonios/'.$id.$ext;            
+                $image = new Imagick($fichero_subido);
+                $image->cropThumbnailImage(90,90);
+                $image->writeImage($normal );
+                unlink($fichero_subido); 
+                $data_img = array(
+                               'imagen' => $id.$ext
+                            );
+
+                $this->db->where('id', $id);
+                $this->db->update('eventos_testimonios', $data_img);  
+                $imagen++;
+            }             
+        }
+        
+        return $evento;
+    }     
 }

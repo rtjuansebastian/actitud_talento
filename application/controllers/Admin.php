@@ -127,8 +127,61 @@ class Admin extends CI_Controller
     
     public function agregar_preguntas_evento($evento=NULL)
     {
-        
+        if($this->input->post("pregunta"))
+        {        
+            $data=  $this->input->post();
+            $evento=$this->preguntas_model->agregar_preguntas_evento($data);
+            $this->agregar_testimonios_evento($evento);            
+        }
+        else
+        {
+            $datos['evento']=$evento;
+            $this->load->view("admin/agregar_preguntas_evento",$datos);             
+        }
     }
+    
+    public function agregar_testimonios_evento($evento=NULL)
+    {
+        if($this->input->post("testimonio"))
+        {        
+            $data=  $this->input->post();
+            $evento=$this->testimonios_model->agregar_testimonios_evento($data);
+            $this->agregar_galerias_evento($evento);            
+        }
+        else
+        {
+            $datos['evento']=$evento;
+            $this->load->view("admin/agregar_testimonios_evento",$datos);             
+        }
+    }
+
+    public function agregar_galerias_evento($evento=NULL)
+    {                  
+        $datos['evento']=$evento;
+        $this->load->view("admin/agregar_galerias_evento",$datos);             
+    }
+    
+    public function subir_galerias_evento()
+    {
+        $data=  $this->input->post();
+        $evento=$this->galerias_model->agregar_galerias_evento($data);
+        $this->agregar_patrocinadores_evento($evento);         
+    }
+
+    public function agregar_patrocinadores_evento($evento=NULL)
+    {
+        if($this->input->post("imagen"))
+        {        
+            $data=  $this->input->post();
+            $evento=$this->patrocinadores_model->agregar_patrocinadores_evento($data);
+            $this->ver_eventos();           
+        }
+        else
+        {
+            $datos['evento']=$evento;
+            $this->load->view("admin/agregar_patrocinadores_evento",$datos);             
+        }
+    }    
 
     public function ver_conferencistas()
     {
