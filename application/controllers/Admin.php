@@ -152,7 +152,21 @@ class Admin extends CI_Controller
     {
         $datos['patrocinadores']=$this->patrocinadores_model->traer_patrocinadores();
         $this->load->view('admin/ver_patrocinadores',$datos);        
-    }  
+    }
+    
+    public function editar_patrocinador()
+    {
+        $id=  $this->input->post("id");
+        $patrocinador=$this->patrocinadores_model->traer_patrocinador($id);
+        echo json_encode($patrocinador);
+    }
+    
+    public function actualizar_patrocinador()
+    {
+        $data=  $this->input->post();
+        $this->patrocinadores_model->actualizar_patrocinador($data);
+        $this->ver_patrocinadores();
+    }     
 
     public function agregar_patrocinador()
     {

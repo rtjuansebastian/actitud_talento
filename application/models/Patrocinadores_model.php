@@ -104,4 +104,33 @@ class Patrocinadores_model extends CI_Model
             $this->db->update('patrocinadores', $data);     
         }        
     }
+    
+    public function actualizar_patrocinador($data)
+    {
+        $this->db->where('id', $data['id']);
+        $this->db->update('patrocinadores', $data);
+        if(isset($_FILES['imagen_patrocinador']) && strcmp (basename($_FILES['imagen_patrocinador']['name']),"")!==0)
+        {
+            $id=$data['id'];
+            $oldmask = umask(0);
+            umask($oldmask);        
+            $dir_subida = '/var/www/html/actitud_talento/assets/img/patrocinadores/';
+            if(file_exists($dir_subida)){}
+            else{mkdir($dir_subida, 0700);}
+            $fichero_subido = $dir_subida . basename($_FILES['imagen_patrocinador']['name']);
+            move_uploaded_file($_FILES['imagen_patrocinador']['tmp_name'], $fichero_subido);
+            $ext=substr($fichero_subido, -4);            
+            $normal='/var/www/html/actitud_talento/assets/img/patrocinadores/'.$id.$ext;            
+            $image = new Imagick($fichero_subido);
+            $image->cropThumbnailImage(120,120);
+            $image->writeImage($normal );
+            unlink($fichero_subido); 
+            $data = array(
+                           'imagen_patrocinador' => $id.$ext
+                        );
+
+            $this->db->where('id', $id);
+            $this->db->update('patrocinadores', $data);     
+        }        
+    }
 }
