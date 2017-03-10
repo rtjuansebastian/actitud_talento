@@ -26,43 +26,43 @@ class Galerias_model extends CI_Model
     
     public function traer_galerias()
     {
-        $escenarios=array();
+        $galerias=array();
         $query=$this->db->get('eventos_galerias');
         foreach ($query->result() as $row)
         {
-            $escenarios[$row->id]['id']=$row->id;
-            $escenarios[$row->id]['evento']=$row->evento;
-            $escenarios[$row->id]['imagen']=$row->imagen;
+            $galerias[$row->id]['id']=$row->id;
+            $galerias[$row->id]['evento']=$row->evento;
+            $galerias[$row->id]['imagen']=$row->imagen;
         }
         
-        return $escenarios;
+        return $galerias;
     }
     
     public function traer_galerias_evento($evento)
     {
-        $escenarios=array();
+        $galerias=array();
         $this->db->where('evento',$evento);
         $query=$this->db->get('eventos_galerias');
         foreach ($query->result() as $row)
         {
-            $escenarios[$row->id]['id']=$row->id;
-            $escenarios[$row->id]['evento']=$row->evento;
-            $escenarios[$row->id]['imagen']=$row->imagen;
+            $galerias[$row->id]['id']=$row->id;
+            $galerias[$row->id]['evento']=$row->evento;
+            $galerias[$row->id]['imagen']=$row->imagen;
         }
         
-        return $escenarios;
+        return $galerias;
     }    
     
     public function traer_galeria($id)
     {
-        $escenario=array();
+        $galeria=array();
         $this->db->where('id',$id);
         $query=$this->db->get('eventos_galerias');
         $row=$query->row();
-        $escenario['id']=$row->id;
-        $escenario['evento']=$row->evento;
-        $escenario['imagen']=$row->imagen;              
+        $galeria['id']=$row->id;
+        $galeria['evento']=$row->evento;
+        $galeria['imagen']=$row->imagen;              
         
-        return $escenario;
+        return $galeria;
     }    
 }

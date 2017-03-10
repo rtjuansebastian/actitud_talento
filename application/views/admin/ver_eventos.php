@@ -110,6 +110,10 @@ foreach ($eventos as $evento)
                             <tr>
                                 <td>Testimonios</td>                            
                                 <td><button class="btn btn-primary glyphicon glyphicon-search ver_testimonios" data-evento="<?=$evento['id']?>" data-toggle="modal" data-target="#modal_testimonios"></button></td>
+                            </tr> 
+                            <tr>
+                                <td>Galeria</td>                            
+                                <td><button class="btn btn-primary glyphicon glyphicon-search ver_galerias" data-evento="<?=$evento['id']?>" data-toggle="modal" data-target="#modal_galerias"></button></td>
                             </tr>                             
                         </tbody>
                     </table>                    
@@ -204,6 +208,23 @@ foreach ($eventos as $evento)
               </div>
             </div>
           </div>
+        </div>
+        <!-- Modal Galerias -->
+        <div class="modal fade" id="modal_galerias" tabindex="-1" role="dialog" aria-labelledby="ModalLabelGarlerias">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="ModalLabelGarlerias">Galeria</h4>
+              </div>
+              <div class="modal-body">
+                  <div id="galeria" class="row"></div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+              </div>
+            </div>
+          </div>
         </div>        
 <?php $this->load->view("admin/footer"); ?>
         <script>
@@ -270,6 +291,24 @@ foreach ($eventos as $evento)
                         });
                         $("#tabla_testimonios").html(tabla_testimonios);
                     });                    
-                });                 
+                });
+                $(".ver_galerias").on("click",function(){
+                    var evento=$(this).data("evento");
+                    $.ajax({
+                      method: "POST",
+                      url: "<?=  base_url()?>admin/traer_galerias_evento",
+                      data: { evento: evento}
+                    })
+                    .done(function( data ) {
+                        var result= $.parseJSON(data);
+                        var galeria='';      
+                        $.each(result, function( llave, items) {
+                            galeria=galeria+'<div class="col-md-6">'+
+                                                '<img src="<?=  base_url()?>assets/img/galerias/'+items.imagen+'" alt="" class="img-rounded" heigth="250" width="250">'+
+                                            '</div>';
+                        });
+                        $("#galeria").html(galeria);
+                    });                    
+                });                
             });
         </script>        

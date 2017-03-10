@@ -70,7 +70,14 @@ class Admin extends CI_Controller
         $evento=$this->input->post("evento");
         $testimonios=$this->testimonios_model->traer_testimonios_evento($evento);
         echo json_encode($testimonios);
-    }    
+    }
+
+    public function traer_galerias_evento()
+    {
+        $evento=$this->input->post("evento");
+        $galeria=$this->galerias_model->traer_galerias_evento($evento);
+        echo json_encode($galeria);        
+    }
 
     public function agregar_evento()
     {
