@@ -81,7 +81,21 @@ class Admin extends CI_Controller
     {
         $datos['conferencistas']=$this->conferencistas_model->traer_conferencistas();
         $this->load->view('admin/ver_conferencistas',$datos);
-    }  
+    }
+    
+    public function editar_conferencista()
+    {
+        $id=  $this->input->post("id");
+        $conferencista=$this->conferencistas_model->traer_conferencista($id);
+        echo json_encode($conferencista);
+    }
+    
+    public function actualizar_conferencista()
+    {
+        $data=  $this->input->post();
+        $this->conferencistas_model->actualizar_conferencista($data);
+        $this->ver_conferencistas();
+    }    
 
     public function agregar_conferencista()
     {
