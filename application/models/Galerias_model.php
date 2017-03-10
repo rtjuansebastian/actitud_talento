@@ -64,5 +64,44 @@ class Galerias_model extends CI_Model
         $galeria['imagen']=$row->imagen;              
         
         return $galeria;
-    }    
+    }
+
+    public function agregar_galerias_evento($data)
+    {
+        $evento=$data['evento'][0];
+        $imagen=1;
+        for($i=0;$i<=3;$i++)
+        {                       
+            $datos=array("evento"=>$evento,
+                    "imagen"=> ""
+                );
+            $this->db->insert('eventos_galerias', $datos); 
+            if(isset($_FILES['imagen'.$imagen.'']) && strcmp (basename($_FILES['imagen'.$imagen.'']['name']),"")!==0)
+            {
+                $id=$this->db->insert_id();
+                $oldmask = umask(0);
+                umask($oldmask);        
+                $dir_subida = '/var/www/html/actitud_talento/assets/img/galerias/';
+                if(file_exists($dir_subida)){}
+                else{mkdir($dir_subida, 0700);}
+                $fichero_subido = $dir_subida . basename($_FILES['imagen'.$imagen.'']['name']);
+                move_uploaded_file($_FILES['imagen'.$imagen.'']['tmp_name'], $fichero_subido);
+                $ext=substr($fichero_subido, -4);            
+                $normal='/var/www/html/actitud_talento/assets/img/galerias/'.$id.$ext;            
+                $image = new Imagick($fichero_subido);
+                $image->cropThumbnailImage(90,90);
+                $image->writeImage($normal );
+                unlink($fichero_subido); 
+                $data_img = array(
+                               'imagen' => $evento.'-'.$id.$ext
+                            );
+
+                $this->db->where('id', $id);
+                $this->db->update('eventos_galerias', $data_img);  
+                $imagen++;
+            }             
+        }
+        
+        return $evento;        
+    }
 }

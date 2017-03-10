@@ -24,7 +24,7 @@
                 <button type="submit" class="btn btn-primary">Crear</button>
             </form>
         </div>
-<?php $this->load->view("admin/footer");?>
+<?php $this->load->view("admin/footer");?> 
 <script>
     $(document).ready(function(){
         var i=2;

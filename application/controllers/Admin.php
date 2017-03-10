@@ -170,7 +170,7 @@ class Admin extends CI_Controller
 
     public function agregar_patrocinadores_evento($evento=NULL)
     {
-        if($this->input->post("imagen"))
+        if($this->input->post("patrocinador"))
         {        
             $data=  $this->input->post();
             $evento=$this->patrocinadores_model->agregar_patrocinadores_evento($data);
@@ -178,6 +178,7 @@ class Admin extends CI_Controller
         }
         else
         {
+            $datos['patrocinadores']=$this->patrocinadores_model->traer_patrocinadores();
             $datos['evento']=$evento;
             $this->load->view("admin/agregar_patrocinadores_evento",$datos);             
         }
