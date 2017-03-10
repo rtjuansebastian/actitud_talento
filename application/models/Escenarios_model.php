@@ -77,4 +77,10 @@ class Escenarios_model extends CI_Model
     {
         $this->db->insert('escenarios', $data);       
     }
+    
+    public function actualizar_escenario($data)
+    {
+        $this->db->where('id', $data['id']);
+        $this->db->update('escenarios', $data); 
+    }
 }

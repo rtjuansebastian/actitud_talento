@@ -113,9 +113,24 @@ class Admin extends CI_Controller
 
     public function ver_escenarios()
     {
+        $datos['eventos']=  $this->eventos_model->traer_eventos();
         $datos['escenarios']=$this->escenarios_model->traer_escenarios();
         $this->load->view('admin/ver_escenarios',$datos);
-    }  
+    }
+    
+    public function editar_escenario()
+    {
+        $id=  $this->input->post("id");
+        $escenario=$this->escenarios_model->traer_escenario($id);
+        echo json_encode($escenario);
+    }
+    
+    public function actualizar_escenario()
+    {
+        $data=  $this->input->post();
+        $this->escenarios_model->actualizar_escenario($data);
+        $this->ver_escenarios();
+    }     
 
     public function agregar_escenario()
     {
