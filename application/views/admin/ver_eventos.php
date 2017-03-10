@@ -7,6 +7,7 @@
 foreach ($eventos as $evento)
 {
 ?>
+                    <button type="button" class="btn btn-primary btn-xs glyphicon glyphicon-pencil navbar-right editar_evento" data-id="<?=$evento['id']?>" data-toggle="modal" data-target="#modal_editar_evento"></button>
                     <table class="table table-bordered table-responsive">
                         <thead>
                             <tr id="acordeon<?=$evento['id']?>" data-toggle="collapse" data-target="#evento<?=$evento['id']?>" class="accordion-toggle" style=" cursor: pointer">
@@ -141,6 +142,7 @@ foreach ($eventos as $evento)
                               <th>Descrpción</th>
                               <th>Escenario</th>
                               <th>Conferencista</th>                              
+                              <th>Editar</th>
                           </tr>
                       </thead>
                       <tbody id="tabla_programacion">
@@ -168,6 +170,7 @@ foreach ($eventos as $evento)
                           <tr>
                               <th>Pregunta</th>
                               <th>Respuesta</th>
+                              <th>Editar</th>
                           </tr>
                       </thead>
                       <tbody id="tabla_preguntas">
@@ -196,6 +199,7 @@ foreach ($eventos as $evento)
                               <th>Nombre</th>
                               <th>Testimonio</th>
                               <th>Imagen</th>
+                              <th>Editar</th>
                           </tr>
                       </thead>
                       <tbody id="tabla_testimonios">
@@ -248,6 +252,7 @@ foreach ($eventos as $evento)
                                     '<td>'+items.descripcion+'</td>'+
                                     '<td>'+items.nombre_escenario+'</td>'+
                                     '<td>'+items.nombre_conferencista+'</td>'+
+                                    '<td><button class="btn btn-primary glyphicon glyphicon-pencil" type="button"></button></td>'+
                                 '</tr>';                            
                         });
                         $("#tabla_programacion").html(tabla_programacion);
@@ -267,6 +272,7 @@ foreach ($eventos as $evento)
                             tabla_preguntas=tabla_preguntas+'<tr>'+
                                     '<td>'+items.pregunta+'</td>'+
                                     '<td>'+items.respuesta+'</td>'+
+                                    '<td><button class="btn btn-primary glyphicon glyphicon-pencil" type="button"></button></td>'+
                                 '</tr>';                            
                         });
                         $("#tabla_preguntas").html(tabla_preguntas);
@@ -287,6 +293,7 @@ foreach ($eventos as $evento)
                                     '<td>'+items.nombre+'</td>'+
                                     '<td>'+items.testimonio+'</td>'+
                                     '<td><img src="<?=base_url()?>assets/img/testimonios/'+items.imagen+'" heigth="50" width="50"></td>'+
+                                    '<td><button class="btn btn-primary glyphicon glyphicon-pencil" type="button"></button></td>'+
                                 '</tr>';                            
                         });
                         $("#tabla_testimonios").html(tabla_testimonios);

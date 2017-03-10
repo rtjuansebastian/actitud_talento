@@ -78,6 +78,21 @@ class Escenarios_model extends CI_Model
         $this->db->insert('escenarios', $data);       
     }
     
+    public function agregar_escenarios_evento($data)
+    {
+        $total_escenarios=  count($data['nombre']);
+        for($i=0;$i<=($total_escenarios-1);$i++)
+        {
+            $datos=array("evento"=>$data['evento'][$i],
+                    "nombre"=>$data['nombre'][$i],
+                    "capacidad"=>$data['evento'][$i],
+                );
+            $this->db->insert('escenarios', $datos);       
+        }
+        
+        return $data['evento'][0];
+    }    
+    
     public function actualizar_escenario($data)
     {
         $this->db->where('id', $data['id']);

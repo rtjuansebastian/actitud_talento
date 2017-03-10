@@ -90,5 +90,13 @@ class Eventos_model extends CI_Model
         $evento['skype']=$row->skype;
         
         return $evento;
-    }    
+    } 
+    
+    public function agregar_evento($data)
+    {
+        $this->db->insert('eventos', $data); 
+        $id=$this->db->insert_id();
+        
+        return $id;
+    }
 }

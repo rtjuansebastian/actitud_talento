@@ -81,8 +81,54 @@ class Admin extends CI_Controller
 
     public function agregar_evento()
     {
-        
+        if($this->input->post())
+        {
+            $data=  $this->input->post();
+            $evento=$this->eventos_model->agregar_evento($data);
+            $this->agregar_escenarios_evento($evento);
+        }
+        else 
+        {        
+            $this->load->view("admin/agregar_evento");
+        }
     }  
+    
+    public function agregar_escenarios_evento($evento=NULL)
+    {
+        if($this->input->post("capacidad"))
+        {
+            $data=$this->input->post();
+            $evento=$this->escenarios_model->agregar_escenarios_evento($data);
+            $this->agregar_programacion_evento($evento);
+        }
+        else
+        {
+            $datos['evento']=$evento;
+            $this->load->view("admin/agregar_escenarios_evento",$datos);   
+        }        
+    }
+
+    public function agregar_programacion_evento($evento=NULL)
+    {
+        if($this->input->post("titulo"))
+        {
+            $data=  $this->input->post();
+            $evento=$this->programaciones_model->agregar_programaciones_evento($data);
+            $this->agregar_preguntas_evento($evento);
+        }   
+        else
+        {
+            $datos['evento']=$evento;
+            $datos['conferencistas']=$this->conferencistas_model->traer_conferencistas();
+            $datos['escenarios']=$this->escenarios_model->traer_escenarios_evento($evento);
+            $this->load->view("admin/agregar_programacion_evento",$datos);            
+        }
+    }
+    
+    public function agregar_preguntas_evento($evento=NULL)
+    {
+        
+    }
 
     public function ver_conferencistas()
     {

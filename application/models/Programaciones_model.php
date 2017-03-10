@@ -154,4 +154,26 @@ class Programaciones_model extends CI_Model
         
         return $programaciones;
     }
+    
+    public function agregar_programaciones_evento($data)
+    {
+        $total_programaciones=count($data['titulo']);
+        
+        for($i=0;$i<=($total_programaciones-1);$i++)
+        {
+            $datos=array(
+                "evento"=>$data['evento'][$i],                
+                "fecha"=>$data['fecha'][$i],
+                "duracion"=>$data['duracion'][$i],
+                "titulo"=>$data['titulo'][$i],
+                "descripcion"=>$data['descripcion'][$i],
+                "escenario"=>$data['escenario'][$i],
+                "conferencista"=>$data['conferencista'][$i]
+            );
+            
+            $this->db->insert('programaciones', $datos); 
+        }
+        
+        return $data['evento'][0];
+    }
 }
