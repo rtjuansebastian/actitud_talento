@@ -133,4 +133,15 @@ class Patrocinadores_model extends CI_Model
             $this->db->update('patrocinadores', $data);     
         }        
     }
+    
+    public function agregar_patrocinadores_evento($data)
+    {
+        $evento=$data['evento'][0];
+        $total_patrocinadores=  count($data['patrocinador']);
+        for($i=0;$i<=$total_patrocinadores-1;$i++)
+        {
+            $datos=array("evento"=>$evento, "patrocinador"=>$data['patrocinador'][$i]);
+            $this->db->insert('eventos_patrocinadores', $datos); 
+        }
+    }
 }

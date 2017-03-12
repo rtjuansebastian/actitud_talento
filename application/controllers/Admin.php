@@ -182,7 +182,15 @@ class Admin extends CI_Controller
             $datos['evento']=$evento;
             $this->load->view("admin/agregar_patrocinadores_evento",$datos);             
         }
-    }    
+    }
+
+    public function crear_patrocinador()
+    {
+        $data=  $this->input->post();
+        $this->patrocinadores_model->agregar_patrocinador($data);
+        $patrocinadores=$this->patrocinadores_model->traer_patrocinadores();
+        echo json_encode($patrocinadores);
+    }
 
     public function ver_conferencistas()
     {
