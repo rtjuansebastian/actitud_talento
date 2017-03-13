@@ -28,6 +28,8 @@ class Admin extends CI_Controller
         $this->load->model("programaciones_model");
         $this->load->model("galerias_model");
         $this->load->model("login_model");
+        $this->load->model('contactos_model');
+        $this->load->model('registros_model');
     }
     
     /**
@@ -458,4 +460,36 @@ class Admin extends CI_Controller
         }          
     }    
     
+    public function agregar_contacto()
+    {
+        $data=$this->input->post();
+        $this->contactos_model->agregar_contacto($data);
+    }
+    
+    public function agregar_registro_evento()
+    {
+        $data=$this->input->post();
+        $this->registros_model->agregar_registro_evento($data);
+    }
+
+    public function ver_registros()
+    {
+        $datos['registros']=$this->registros_model->traer_registros();
+        $this->load->view("admin/ver_registros",$datos);
+    }
+    
+    public function ver_contactos()
+    {
+        $datos['contactos']=$this->contactos_model->traer_contactos();
+        $this->load->view("admin/ver_contactos",$datos);
+    }
+
+    public function responder_contacto()
+    {
+        $id=  $this->input->post("id");
+        $contacto=$this->contactos_model->traer_contacto($id);
+        $respuesta=  $this->input->post("respuesta");
+        $this->contactos_model->responder_contacto($contacto,$respuesta);
+        $this->ver_contactos();
+    }
 }

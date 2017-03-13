@@ -79,7 +79,16 @@
                                         <li><a href="<?php echo base_url(); ?>admin/agregar_patrocinador">Agregar patrocinador</a></li>
                                         <!--<li><a href="<?php echo base_url(); ?>index.php/admin/agregar_patrocinador">Agregar patrocinador</a></li>-->
                                     </ul>
-                                </li>                                  
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Asistentes<span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="<?php echo base_url(); ?>admin/ver_registros">Ver personas registradas</a></li>
+                                        <!--<li><a href="<?php echo base_url(); ?>index.php/admin/ver_patrocinadores">Ver patrocinadores</a></li>-->
+                                        <li><a href="<?php echo base_url(); ?>admin/ver_contactos">Ver mensajes de contacto recibidos</a></li>
+                                        <!--<li><a href="<?php echo base_url(); ?>index.php/admin/agregar_patrocinador">Agregar patrocinador</a></li>-->
+                                    </ul>
+                                </li>                                
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a href="<?php echo base_url(); ?>login/cerrar_sesion">Desconectar</a></li>            

@@ -12,7 +12,7 @@ $(function () {
         $('#af-form .error').hide();
 
         var name = $("#af-form input#name").val();
-        if (name == "" || name == "Name...." || name == "Name" || name == "Name *" || name == "Type Your Name...") {
+        if (name == "" || name == "Nombre...." || name == "Nombre" || name == "Nombre *" || name == "Type Your Name...") {
             $("#af-form input#name").tooltip({placement: 'bottom', trigger: 'manual'}).tooltip('show');
             $("#af-form input#name").focus();
             return false;
@@ -27,21 +27,21 @@ $(function () {
             return false;
         }
         var message = $("#af-form #input-message").val();
-        if (message == "" || message == "Message...." || message == "Message" || message == "Message *" || message == "Type Your Message...") {
+        if (message == "" || message == "Message...." || message == "Mensaje" || message == "Message *" || message == "Type Your Message...") {
             $("#af-form #input-message").tooltip({placement: 'bottom', trigger: 'manual'}).tooltip('show');
             $("#af-form #input-message").focus();
             return false;
         }
 
-        var dataString = 'name=' + name + '&email=' + email + '&message=' + message;
+        var dataString = 'nombre=' + name + '&email=' + email + '&mensaje=' + message + '&evento=1';
         //alert (dataString);return false;
 
         $.ajax({
             type:"POST",
-            url:"assets/php/contact-form.php",
+            url:"http://localhost/actitud_talento/admin/agregar_contacto",
             data:dataString,
             success:function () {
-                $('#af-form').prepend("<div class=\"alert alert-success fade in\"><button class=\"close\" data-dismiss=\"alert\" type=\"button\">&times;</button><strong>Contact Form Submitted!</strong> We will be in touch soon.</div>");
+                $('#af-form').prepend("<div class=\"alert alert-success fade in\"><button class=\"close\" data-dismiss=\"alert\" type=\"button\">&times;</button><strong>Mensaje de contacto enviado!</strong> Nos comunicaremos contigo pronto.</div>");
                 $('#af-form')[0].reset();
                 //window.location.replace("http://www.google.com");
             }
@@ -99,18 +99,18 @@ $(function () {
             $form.find('.input-price').tooltip({placement: 'top', trigger: 'manual'}).tooltip('hide');
         }
 
-        var dataString = 'name=' + name + '&email=' + email + '&phone=' + phone + '&price=' + price;
+        var dataString = 'nombre=' + name + '&email=' + email + '&telefono=' + phone + '&evento=1';
         //alert(dataString); return false;
 
         $.ajax({
             type: 'POST',
-            url: 'assets/php/registration-form.php',
+            url: 'http://localhost/actitud_talento/admin/agregar_registro_evento',
             data: dataString,
             success: function () {
                 $form.find('.form-alert').append('' +
                 '<div class=\"alert alert-success registration-form-alert fade in\">' +
                 '<button class=\"close\" data-dismiss=\"alert\" type=\"button\">&times;</button>' +
-                '<strong>Registration Form Submitted!</strong> We will be in touch soon.' +
+                '<strong>Registro completo!</strong> Gracias por sumarte a nuestro evento.' +
                 '</div>' +
                 '');
                 $form[0].reset();
@@ -171,18 +171,18 @@ $(function () {
             $form.find('.input-price').tooltip({placement: 'top', trigger: 'manual'}).tooltip('hide');
         }
 
-        var dataString = 'name=' + name + '&email=' + email + '&phone=' + phone + '&price=' + price;
+        var dataString = 'nombre=' + name + '&email=' + email + '&telefono=' + phone + '&evento=1';
         //alert(dataString); return false;
 
         $.ajax({
             type: 'POST',
-            url: 'assets/php/registration-form.php',
+            url: 'http://localhost/actitud_talento/admin/agregar_registro_evento',
             data: dataString,
             success: function () {
                 $form.find('.form-alert').append('' +
                 '<div class=\"alert alert-success registration-form-alert fade in\">' +
                 '<button class=\"close\" data-dismiss=\"alert\" type=\"button\">&times;</button>' +
-                '<strong>Registration Form Submitted!</strong> We will be in touch soon.' +
+                '<strong>Registro completo!</strong> Gracias por sumarte a nuestro evento.' +
                 '</div>' +
                 '');
                 $form[0].reset();

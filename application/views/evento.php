@@ -12,7 +12,6 @@
     <title>A&T Eventos</title>
 
     <!-- Favicons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
     <link rel="shortcut icon" href="assets/ico/favicon.ico">
 
     <!-- CSS Global -->
@@ -155,7 +154,7 @@
                                         </h1>
                                     </div>
 
-                                    <form id="registration-form-alt" name="registration-form-alt" class="registration-form alt" action="#" method="post">
+                                    <form id="registration-form-alt" name="registration-form-alt" class="registration-form alt">
                                         <div class="row">
                                             <div class="col-sm-12 form-alert"></div>
                                             <div class="col-sm-12">
@@ -182,21 +181,10 @@
                                                 </div>
                                             </div>
                                             <div class="col-sm-12">
-                                                <div class="form-group selectpicker-wrapper">
-                                                    <select
-                                                            class="selectpicker input-price" data-live-search="false" data-width="100%"
-                                                            data-toggle="tooltip" title="Selecciona el precio">
-                                                        <option>Selecciona el precio</option>
-                                                        <option>$100</option>
-                                                        <option>$200</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-12">
                                                 <div class="text-center">
                                                     <button
                                                             data-animation="flipInY" data-animation-delay="100"
-                                                            class="btn btn-theme btn-block submit-button" type="submit"
+                                                            class="btn btn-theme btn-block submit-button" type="button"
                                                             > Registrate ahora <i class="fa fa-arrow-circle-right"></i></button>
                                                 </div>
                                             </div>
@@ -660,7 +648,7 @@ if(isset($conferencista['instagram']))
                     <span data-animation="flipInY" data-animation-delay="300" class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-ticket fa-stack-1x"></i></span></span>
                     <span data-animation="fadeInRight" data-animation-delay="500" class="title-inner">Registrate ahora</span>
                 </h1>
-                <form id="registration-form" name="registration-form" class="registration-form" action="#" method="post">
+                <form id="registration-form" name="registration-form" class="registration-form">
                     <div class="row">
                         <div class="col-sm-12 form-alert"></div>
                         <div class="col-sm-6 col-md-3">
@@ -686,22 +674,11 @@ if(isset($conferencista['instagram']))
                                         placeholder="Telefono"/>
                             </div>
                         </div>
-                        <div class="col-sm-6 col-md-3">
-                            <div class="form-group selectpicker-wrapper" data-animation="fadeInUp" data-animation-delay="800">
-                                <select
-                                        class="selectpicker input-price" data-live-search="false" data-width="100%"
-                                        data-toggle="tooltip" title="Selecciona un precio">
-                                    <option>Select Your Price Tab</option>
-                                    <option>$100</option>
-                                    <option>$200</option>
-                                </select>
-                            </div>
-                        </div>
                         <div class="col-md-12 overflowed">
                             <div class="text-center margin-top">
                                 <button
                                         data-animation="flipInY" data-animation-delay="100"
-                                        class="btn btn-theme btn-theme-xl submit-button" type="submit"
+                                        class="btn btn-theme btn-theme-xl submit-button" type="button"
                                         > Registrate Ahora<i class="fa fa-arrow-circle-right"></i></button>
                             </div>
                         </div>
@@ -913,7 +890,7 @@ foreach ($preguntas as $pregunta)
 
                 <h1 class="section-title">
                     <span data-animation="flipInY" data-animation-delay="100" class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-ticket fa-stack-1x"></i></span></span>
-                    <span data-animation="fadeInRight" data-animation-delay="100" class="title-inner">Contactenos <small>/ lorem ipsum</small></span>
+                    <span data-animation="fadeInRight" data-animation-delay="100" class="title-inner">Contactenos <small>/ en breve responderemos</small></span>
                 </h1>
 
                 <!-- Contact form -->
@@ -922,7 +899,7 @@ foreach ($preguntas as $pregunta)
                     <div class="col-sm-12 af-outer af-required">
                         <div class="form-group af-inner">
                             <input
-                                    type="text" name="name" id="name" placeholder="Nombre" value="" size="30"
+                                    type="text" name="nombre" id="name" placeholder="Nombre" value="" size="30"
                                     data-toggle="tooltip" title="Name is required"
                                     class="form-control placeholder"/>
                         </div>
@@ -940,7 +917,7 @@ foreach ($preguntas as $pregunta)
                     <div class="col-sm-12 af-outer af-required">
                         <div class="form-group af-inner">
                             <textarea
-                                    name="message" id="input-message" placeholder="Mensaje" rows="4" cols="50"
+                                    name="mensaje" id="input-message" placeholder="Mensaje" rows="4" cols="50"
                                     data-toggle="tooltip" title="Message is required"
                                     class="form-control placeholder"></textarea>
                         </div>
@@ -1086,7 +1063,7 @@ if(isset($evento['skype']))
                 jQuery('html,body').delay(0).animate({
                     scrollTop: jQuery(hash).offset().top - 44 + 'px'
                 }, {
-                    duration: 1200,
+                    duration: 600,
                     easing: "easeInOutExpo"
                 });
             }
