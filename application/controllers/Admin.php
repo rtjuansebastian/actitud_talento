@@ -143,6 +143,12 @@ class Admin extends CI_Controller
         $this->programaciones_model->actualizar_programacion($data);
     }
     
+    public function crear_programacion_evento()
+    {
+        $data=$this->input->post();
+        $this->programaciones_model->agregar_programacion_evento($data);
+    }
+    
     public function editar_pregunta_evento()
     {
         $id=  $this->input->post("pregunta");
@@ -343,6 +349,13 @@ class Admin extends CI_Controller
             $this->load->view('admin/agregar_conferencista');   
         }        
     }  
+    
+    public function traer_escenarios_evento()
+    {
+        $evento=  $this->input->post("evento");
+        $escenarios=$this->escenarios_model->traer_escenarios_evento($evento);
+        echo json_encode($escenarios);
+    }    
 
     public function ver_escenarios()
     {

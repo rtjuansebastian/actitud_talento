@@ -155,6 +155,11 @@ class Programaciones_model extends CI_Model
         return $programaciones;
     }
     
+    public function agregar_programacion_evento($data)
+    {
+        $this->db->insert('programaciones', $data);
+    }
+    
     public function agregar_programaciones_evento($data)
     {
         $total_programaciones=count($data['titulo']);

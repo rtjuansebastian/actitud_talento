@@ -128,31 +128,32 @@ foreach ($eventos as $evento)
         <div class="modal fade" id="modal_programacion" tabindex="-1" role="dialog" aria-labelledby="ModalLabelProgramacion">
           <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="ModalLabelProgramacion">Programación</h4>
-              </div>
-              <div class="modal-body">
-                  <table class="table table-responsive">
-                      <thead>
-                          <tr>
-                              <th>Fecha</th>
-                              <th>Duración (Horas)</th>
-                              <th>Titulo</th>
-                              <th>Descrpción</th>
-                              <th>Escenario</th>
-                              <th>Conferencista</th>                              
-                              <th>Editar</th>
-                          </tr>
-                      </thead>
-                      <tbody id="tabla_programacion">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="ModalLabelProgramacion">Programación</h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-responsive">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Duración (Horas)</th>
+                                <th>Titulo</th>
+                                <th>Descrpción</th>
+                                <th>Escenario</th>
+                                <th>Conferencista</th>                              
+                                <th>Editar</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla_programacion">
 
-                      </tbody>
-                  </table>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-              </div>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal_crear_programacion" id="crear_programacion">Crear conferencia</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>                
+                </div>
             </div>
           </div>
         </div>
@@ -534,10 +535,105 @@ foreach ($eventos as $evento)
                     </form>
                 </div>
             </div>
+        </div>
+        <!-- Modal crear programacion -->
+        <div class="modal fade" id="modal_crear_programacion" tabindex="-1" role="dialog" aria-labelledby="ModalLabelCrearConferencista">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form id="form_crear_programacion" enctype="multipart/form-data">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="ModalLabelCrearConferencista">Crear Conferencia</h4>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" id="evento_crear_programacion" name="evento"> 
+                            <div class="form-group">
+                                <label for="fecha">Fecha</label>
+                                <div class='input-group date' id='datetimepicker1'>
+                                    <input type='text' class="form-control" id="fecha" name="fecha"/>
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>                       
+                            </div> 
+                            <div class="form-group">
+                                <label for="perfil">Duración</label>
+                                <input type="number" class="form-control" id="duracion" name="duracion" required=""/>                                                        
+                            </div>                         
+                            <div class="form-group">
+                                <label for="nombre">Titulo</label>
+                                <input type="text" class="form-control" id="titulo" name="titulo" required=""/>
+                            </div>
+                            <div class="form-group">
+                                <label for="perfil">Descripción</label>
+                                <input type="text" class="form-control" id="descripcion" name="descripcion" required=""/>                                                        
+                            </div>
+                            <div class="form-group conferencistas">
+                                <label for="conferencista">Conferencista</label>
+                                <select class="form-control" id="conferencista_crear_programacion" name="conferencista">
+                                    <option></option>
+                                </select>
+                                <span>¿Nuevo conferencista? </span><button type="button" class="btn btn-success btn-xs glyphicon glyphicon-user" data-toggle="modal" data-target="#modal_crear_conferencista" id="crear_conferencista"></button>
+                            </div>
+                            <div class="form-group">
+                                <label for="escenario">Escenario</label>
+                                <select class="form-control" id="escenario_crear_programacion" name="escenario">
+                                    <option></option>
+                                </select>                            
+                            </div>                            
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" id="btn_crear_programacion">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>        
 <?php $this->load->view("admin/footer"); ?>
         <script>
             $(document).ready(function(){
+                
+                var conferencistas;
+                var escenarios;
+                function traer_conferencistas()
+                {
+                    $.ajax(
+                    {
+                        type: "POST",
+                        url: "<?= base_url()?>admin/traer_conferencistas",
+                        async:false,
+                        success:function(data)
+                        {
+                            var result=$.parseJSON(data);
+                            conferencistas=result;
+                        }
+                    });
+
+                    return conferencistas;
+                }                
+                
+                function traer_escenarios_evento(evento)
+                {
+                    $.ajax(
+                    {
+                        type: "POST",
+                        data: {evento:evento},
+                        url: "<?= base_url()?>admin/traer_escenarios_evento",
+                        async:false,
+                        success:function(data)
+                        {
+                            var result=$.parseJSON(data);
+                            escenarios=result;
+                        }
+                    });
+
+                    return escenarios;
+                }                                
+                
+                $('.date').datetimepicker({
+                    locale:'es',
+                    format:"YYYY-MM-DD"
+                });                
                 $(".accordion-toggle").click();
                 $(".ver_programacion").on("click",function(){
                     var evento=$(this).data("evento");
@@ -561,6 +657,7 @@ foreach ($eventos as $evento)
                                 '</tr>';                            
                         });
                         $("#tabla_programacion").html(tabla_programacion);
+                        $("#crear_programacion").data("evento",evento);
                     });                    
                 });
                 $(".ver_preguntas").on("click",function(){
@@ -818,6 +915,38 @@ foreach ($eventos as $evento)
                     });                
                     $('#modal_galerias').modal('hide');
                     location.reload();
-                });                
+                });
+                
+                $("#crear_programacion").click(function(){
+                    var evento=$(this).data("evento");
+                    var listado_conferencistas=traer_conferencistas(); 
+                    var lista='<option></option>';
+                    $.each(listado_conferencistas, function( llave, items) {
+                        lista=lista+'<option value="'+items.id+'">'+items.nombre+'</option>';                                                            
+                    });       
+                    $("#conferencista_crear_programacion").html(lista);
+                    var listado_escenarios=traer_escenarios_evento(evento);
+                    lista='<option></option>';
+                    $.each(listado_escenarios, function( llave, items) {
+                        lista=lista+'<option value="'+items.id+'">'+items.nombre+'</option>';                                                            
+                    }); 
+                    $("#escenario_crear_programacion").html(lista);
+                    $("#evento_crear_programacion").val(evento);
+                });
+                
+                $("#btn_crear_programacion").click(function(){
+                    var formData = new FormData(document.getElementById("form_crear_programacion"));
+                    $.ajax(
+                    {
+                        data:formData,
+                        type: "POST",
+                        url: "<?= base_url()?>admin/crear_programacion_evento",
+                        dataType: "html",
+                        cache: false,
+                        contentType: false,
+                        processData: false
+                    });                
+                    $('#modal_programacion').modal('hide');              
+                });
             });
         </script>        
