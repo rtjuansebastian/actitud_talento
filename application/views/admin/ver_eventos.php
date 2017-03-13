@@ -159,31 +159,32 @@ foreach ($eventos as $evento)
         </div>
         <!-- Modal Preguntas -->
         <div class="modal fade" id="modal_preguntas" tabindex="-1" role="dialog" aria-labelledby="ModalLabelProgramacion">
-          <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="ModalLabelProgramacion">Preguntas frecuentes</h4>
-              </div>
-              <div class="modal-body">
-                  <table class="table table-responsive">
-                      <thead>
-                          <tr>
-                              <th>Pregunta</th>
-                              <th>Respuesta</th>
-                              <th>Editar</th>
-                          </tr>
-                      </thead>
-                      <tbody id="tabla_preguntas">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="ModalLabelProgramacion">Preguntas frecuentes</h4>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-responsive">
+                            <thead>
+                                <tr>
+                                    <th>Pregunta</th>
+                                    <th>Respuesta</th>
+                                    <th>Editar</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabla_preguntas">
 
-                      </tbody>
-                  </table>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-              </div>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal_crear_pregunta" id="crear_pregunta">Crear pregunta</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
         <!-- Modal Testimonios -->
         <div class="modal fade" id="modal_testimonios" tabindex="-1" role="dialog" aria-labelledby="ModalLabelProgramacion">
@@ -537,13 +538,13 @@ foreach ($eventos as $evento)
             </div>
         </div>
         <!-- Modal crear programacion -->
-        <div class="modal fade" id="modal_crear_programacion" tabindex="-1" role="dialog" aria-labelledby="ModalLabelCrearConferencista">
+        <div class="modal fade" id="modal_crear_programacion" tabindex="-1" role="dialog" aria-labelledby="ModalLabelCrearProgramacion">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <form id="form_crear_programacion" enctype="multipart/form-data">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="ModalLabelCrearConferencista">Crear Conferencia</h4>
+                            <h4 class="modal-title" id="ModalLabelCrearProgramacion">Crear Conferencia</h4>
                         </div>
                         <div class="modal-body">
                             <input type="hidden" id="evento_crear_programacion" name="evento"> 
@@ -588,7 +589,35 @@ foreach ($eventos as $evento)
                     </form>
                 </div>
             </div>
-        </div>        
+        </div>    
+        <!-- Modal crear pregunta -->
+        <div class="modal fade" id="modal_crear_pregunta" tabindex="-1" role="dialog" aria-labelledby="ModalLabelCrearPregunta">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form id="form_crear_pregunta" enctype="multipart/form-data">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="ModalLabelCrearPregunta">Crear Pregunta</h4>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" id="evento_crear_pregunta" name="evento">                       
+                            <div class="form-group">
+                                <label for="pregunta">Pregunta</label>
+                                <input type="text" class="form-control" id="pregunta" name="pregunta" required=""/>
+                            </div>
+                            <div class="form-group">
+                                <label for="respuesta">Respuesta</label>
+                                <input type="text" class="form-control" id="respuesta" name="respuesta" required=""/>                                                        
+                            </div>                         
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" id="btn_crear_pregunta">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>            
 <?php $this->load->view("admin/footer"); ?>
         <script>
             $(document).ready(function(){
@@ -678,6 +707,7 @@ foreach ($eventos as $evento)
                                 '</tr>';                            
                         });
                         $("#tabla_preguntas").html(tabla_preguntas);
+                        $("#crear_pregunta").data("evento",evento);
                     });                    
                 }); 
                 $(".ver_testimonios").on("click",function(){
@@ -948,5 +978,24 @@ foreach ($eventos as $evento)
                     });                
                     $('#modal_programacion').modal('hide');              
                 });
+                $("#crear_pregunta").click(function(){
+                    var evento=$(this).data("evento");
+                    $("#evento_crear_pregunta").val(evento);
+                });
+                
+                $("#btn_crear_pregunta").click(function(){
+                    var formData = new FormData(document.getElementById("form_crear_pregunta"));
+                    $.ajax(
+                    {
+                        data:formData,
+                        type: "POST",
+                        url: "<?= base_url()?>admin/crear_pregunta_evento",
+                        dataType: "html",
+                        cache: false,
+                        contentType: false,
+                        processData: false
+                    });                
+                    $('#modal_preguntas').modal('hide');              
+                });                
             });
         </script>        

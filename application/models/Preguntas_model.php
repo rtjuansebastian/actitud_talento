@@ -67,7 +67,12 @@ class Preguntas_model extends CI_Model
         $testimonio['respuesta']=$row->respuesta;
       
         return $testimonio;
-    }    
+    }
+
+    public function agregar_pregunta_evento($data)
+    {
+        $this->db->insert('preguntas_frecuentes', $data);
+    }
     
     public function agregar_preguntas_evento($data)
     {

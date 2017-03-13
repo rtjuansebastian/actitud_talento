@@ -160,7 +160,13 @@ class Admin extends CI_Controller
     {
         $data=  $this->input->post();
         $this->preguntas_model->actualizar_pregunta($data);
-    } 
+    }
+    
+    public function crear_pregunta_evento()
+    {
+        $data=$this->input->post();
+        $this->preguntas_model->agregar_pregunta_evento($data);
+    }
     
     public function editar_testimonio_evento()
     {
