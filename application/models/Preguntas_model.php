@@ -82,5 +82,11 @@ class Preguntas_model extends CI_Model
         }
         
         return $data['evento'][0];
-    }    
+    }
+
+    public function actualizar_pregunta($data)
+    {
+        $this->db->where('id', $data['id']);
+        $this->db->update('preguntas_frecuentes', $data);        
+    }
 }

@@ -123,11 +123,24 @@ class Admin extends CI_Controller
         echo json_encode($datos);
     }
     
-    public function actualizar_programacion()
+    public function actualizar_programacion_evento()
     {
         $data=  $this->input->post();
         $this->programaciones_model->actualizar_programacion($data);
     }
+    
+    public function editar_pregunta_evento()
+    {
+        $id=  $this->input->post("pregunta");
+        $pregunta=  $this->preguntas_model->traer_pregunta($id);
+        echo json_encode($pregunta);
+    }
+    
+    public function actualizar_pregunta_evento()
+    {
+        $data=  $this->input->post();
+        $this->preguntas_model->actualizar_pregunta($data);
+    }    
 
     public function agregar_evento()
     {

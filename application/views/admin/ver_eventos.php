@@ -339,7 +339,35 @@ foreach ($eventos as $evento)
                     </form>
                 </div>
             </div>
-        </div>      
+        </div>
+        <!-- Modal editar pregunta -->
+        <div class="modal fade" id="modal_editar_pregunta" tabindex="-1" role="dialog" aria-labelledby="ModalLabelCrearConferencista">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form id="form_editar_pregunta">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="ModalLabelCrearConferencista">Editar pregunta</h4>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" id="id_pregunta" name="id">
+                            <div class="form-group">
+                                <label for="nombre">Pregunta</label>
+                                <input type="text" class="form-control" id="pregunta" name="pregunta" required=""/>
+                            </div>
+                            <div class="form-group">
+                                <label for="profesion">Respuesta</label>
+                                <input type="text" class="form-control" id="respuesta" name="respuesta" required=""/>                            
+                            </div>                             
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" id="btn_editar_pregunta">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>     
 <?php $this->load->view("admin/footer"); ?>
         <script>
             $(document).ready(function(){
@@ -382,7 +410,7 @@ foreach ($eventos as $evento)
                             tabla_preguntas=tabla_preguntas+'<tr>'+
                                     '<td>'+items.pregunta+'</td>'+
                                     '<td>'+items.respuesta+'</td>'+
-                                    '<td><button class="btn btn-primary glyphicon glyphicon-pencil" type="button"></button></td>'+
+                                    '<td><button class="btn btn-primary glyphicon glyphicon-pencil editar_pregunta" type="button" data-pregunta="'+items.id+'" data-toggle="modal" data-target="#modal_editar_pregunta"></button></td>'+
                                 '</tr>';                            
                         });
                         $("#tabla_preguntas").html(tabla_preguntas);
@@ -482,10 +510,36 @@ foreach ($eventos as $evento)
                     var dataString = $('#actualizar_programacion').serialize();                    
                     $.ajax({
                         type: "POST",
-                        url: "<?=  base_url()?>admin/actualizar_programacion",
+                        url: "<?=  base_url()?>admin/actualizar_programacion_evento",
                         data: dataString
                     });                    
                     $('#modal_programacion').modal('hide');
                 });
+                
+                $(document).on("click",".editar_pregunta",function(){
+                    var pregunta=$(this).data("pregunta");
+                    $.ajax({
+                      method: "POST",
+                      url: "<?=  base_url()?>admin/editar_pregunta_evento",
+                      data: { pregunta: pregunta}
+                    })
+                    .done(function( data ) {
+                        var result= $.parseJSON(data);
+                        $("#id_pregunta").val(result.id);
+                        $("#pregunta").val(result.pregunta);
+                        $("#respuesta").val(result.respuesta);
+                    });
+                });
+                
+                
+                $("#btn_editar_pregunta").click(function(){
+                    var dataString = $('#form_editar_pregunta').serialize();                    
+                    $.ajax({
+                        type: "POST",
+                        url: "<?=  base_url()?>admin/actualizar_pregunta_evento",
+                        data: dataString
+                    });
+                    $('#modal_preguntas').modal('hide');
+                });                
             });
         </script>        
