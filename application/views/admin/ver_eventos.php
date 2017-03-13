@@ -697,7 +697,7 @@ foreach ($eventos as $evento)
                 
                 $('.date').datetimepicker({
                     locale:'es',
-                    format:"YYYY-MM-DD"
+                    format:"YYYY-MM-DD HH:mm"
                 });                
                 $(".accordion-toggle").click();
                 $(".ver_programacion").on("click",function(){

@@ -103,7 +103,7 @@ foreach ($paises as $pais)
     $(document).ready(function(){        
         $('#datetimepicker1').datetimepicker({
             locale:'es',
-            format:"YYYY-MM-DD"
+            format:"YYYY-MM-DD HH:mm"
         });
     });
 </script>

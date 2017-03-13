@@ -125,7 +125,7 @@ foreach ($escenarios as $escenario)
         
         $('#datetimepicker1').datetimepicker({
             locale:'es',
-            format:"YYYY-MM-DD"
+            format:"YYYY-MM-DD HH:mm"
         });
         
         function traer_conferencistas()
@@ -224,7 +224,7 @@ foreach ($escenarios as $escenario)
             $("#conferencias").append(conferencia);
             $("#datetimepicker"+i).datetimepicker({
                 locale:'es',
-                format:"YYYY-MM-DD"
+                format:"YYYY-MM-DD HH:mm"
             });
             i++;
         });
