@@ -229,7 +229,117 @@ foreach ($eventos as $evento)
               </div>
             </div>
           </div>
-        </div>        
+        </div>  
+        <!-- Modal Editar Programación -->
+        <div class="modal fade" id="modal_editar_programcion" tabindex="-1" role="dialog" aria-labelledby="ModalLabelEditarProgramación">
+          <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">                
+                    <form id="actualizar_programacion">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <h4 class="modal-title" id="ModalLabelEditarProgramación">Conferencia</h4>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" id="id" name="id"> 
+                            <div class="form-group">
+                                <label for="fecha">Fecha conferencia</label>
+                                <div class='input-group date' id='datetimepicker1'>
+                                    <input type='text' class="form-control" id="fecha" name="fecha"/>
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>                       
+                            </div> 
+                            <div class="form-group">
+                                <label for="perfil">Duración conferencia</label>
+                                <input type="number" class="form-control" id="duracion" name="duracion" required=""/>                                                        
+                            </div>                         
+                            <div class="form-group">
+                                <label for="nombre">Titulo conferencia</label>
+                                <input type="text" class="form-control" id="titulo" name="titulo" required=""/>
+                            </div>
+                            <div class="form-group">
+                                <label for="perfil">Descripción conferencia</label>
+                                <input type="text" class="form-control" id="descripcion" name="descripcion" required=""/>                                                        
+                            </div>
+                            <div class="form-group conferencistas">
+                                <label for="conferencista">Conferencista</label>
+                                <select class="form-control" id="conferencista" name="conferencista">
+                                    <option></option>
+                                    <!-- Traer conferencistas por ajax -->
+                                </select>
+                                <span>¿Nuevo conferencista? </span><button type="button" class="btn btn-success btn-xs glyphicon glyphicon-user" data-toggle="modal" data-target="#modal_crear_conferencista" id="crear_conferencista"></button>
+                            </div>
+                            <div class="form-group">
+                                <label for="escenario">Escenario</label>
+                                <select class="form-control" id="escenario" name="escenario">
+                                    <option></option>
+                                    <!-- Traer escenarios por ajax -->
+                                </select>                            
+                            </div> 
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                          <button type="button" class="btn btn-primary" data-dismiss="modal" id="btn_actualizar_programacion">Guardar</button>
+                        </div>
+                    </form>                        
+                </div>
+            </div>
+          </div>
+        <!-- Modal crear conferencista -->
+        <div class="modal fade" id="modal_crear_conferencista" tabindex="-1" role="dialog" aria-labelledby="ModalLabelCrearConferencista">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form id="form_crear_conferencista" enctype="multipart/form-data">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="ModalLabelCrearConferencista">Crear Conferencista</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="nombre">Nombre</label>
+                                <input type="text" class="form-control" id="nombre" name="nombre" required=""/>
+                            </div>
+                            <div class="form-group">
+                                <label for="profesion">Profesión</label>
+                                <input type="text" class="form-control" id="profesion" name="profesion" required=""/>                            
+                            </div>
+                            <div class="form-group">
+                                <label for="perfil">Perfil</label>
+                                <input type="text" class="form-control" id="perfil" name="perfil" required=""/>                                                        
+                            </div>
+                            <div class="form-group">
+                                <label for="imagen" class="col-sm-2"><p class="text-left">Imagen</p></label>
+                                <input type="file" class="form-control" name="imagen" id="imagen"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="facebook">Facebook</label>
+                                <input type="text" class="form-control" id="facebook" name="facebook"/>                                
+                            </div>
+                            <div class="form-group">
+                                <label for="twitter">Twitter</label>
+                                <input type="text" class="form-control" id="twitter" name="twitter"/>                            
+                            </div>
+                            <div class="form-group">
+                                <label for="google_plus">Google Plus</label>
+                                <input type="text" class="form-control" id="google_plus" name="google_plus"/>                            
+                            </div>
+                            <div class="form-group">
+                                <label for="linkedin">LinkedIn</label>
+                                <input type="text" class="form-control" id="linkedin" name="linkedin"/>                            
+                            </div>
+                            <div class="form-group">
+                                <label for="instagram">Instagram</label>
+                                <input type="text" class="form-control" id="instagram" name="instagram"/>                            
+                            </div>                              
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" id="btn_crear_conferencista">Crear</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>      
 <?php $this->load->view("admin/footer"); ?>
         <script>
             $(document).ready(function(){
@@ -252,7 +362,7 @@ foreach ($eventos as $evento)
                                     '<td>'+items.descripcion+'</td>'+
                                     '<td>'+items.nombre_escenario+'</td>'+
                                     '<td>'+items.nombre_conferencista+'</td>'+
-                                    '<td><button class="btn btn-primary glyphicon glyphicon-pencil" type="button"></button></td>'+
+                                    '<td><button class="btn btn-primary glyphicon glyphicon-pencil editar_programacion" type="button" data-programacion="'+items.id+'" data-toggle="modal" data-target="#modal_editar_programcion"></button></td>'+
                                 '</tr>';                            
                         });
                         $("#tabla_programacion").html(tabla_programacion);
@@ -316,6 +426,66 @@ foreach ($eventos as $evento)
                         });
                         $("#galeria").html(galeria);
                     });                    
+                });
+                
+                $(document).on("click",".editar_programacion",function(){
+                    var conferencia=$(this).data("programacion");
+                    $.ajax({
+                      method: "POST",
+                      url: "<?=  base_url()?>admin/editar_programacion_evento",
+                      data: { conferencia: conferencia}
+                    })
+                    .done(function( data ) {
+                        var result= $.parseJSON(data);
+                        var lista_conferencistas='<option></option>';
+                        var lista_escenarios='<option></option>';
+                        $.each(result.conferencistas, function( llave, items) {
+                            lista_conferencistas=lista_conferencistas+'<option value="'+items.id+'">'+items.nombre+'</option>';                            
+                        });                        
+                        $("#conferencista").html(lista_conferencistas);
+                        $.each(result.escenarios, function( llave, items) {
+                            lista_escenarios=lista_escenarios+'<option value="'+items.id+'">'+items.nombre+'</option>';                            
+                        });                        
+                        $("#escenario").html(lista_escenarios);
+                        $("#id").val(result.conferencia.id);
+                        $("#fecha").val(result.conferencia.fecha);
+                        $("#duracion").val(result.conferencia.duracion);
+                        $("#titulo").val(result.conferencia.titulo);
+                        $("#descripcion").val(result.conferencia.descripcion);
+                        $("#conferencista").val(result.conferencia.conferencista);
+                        $("#escenario").val(result.conferencia.escenario);
+                    });
+                });
+                
+                $(document).on("click","#btn_crear_conferencista",function(){
+                    var formData = new FormData(document.getElementById("form_crear_conferencista"));
+                    $.ajax(
+                    {
+                        data:formData,
+                        type: "POST",
+                        url: "<?= base_url()?>admin/crear_conferencista",
+                        dataType: "html",
+                        cache: false,
+                        contentType: false,
+                        processData: false
+                    }).done(function (res){
+                            var result=$.parseJSON(res);
+                            var lista=  '';
+                            $.each(result, function( llave, items) {
+                                lista=lista+'<option value="'+items.id+'">'+items.nombre+'</option>';                                                            
+                            });
+                        $("#conferencista").html(lista);                               
+                    });             
                 });                
+                
+                $("#btn_actualizar_programacion").click(function(){
+                    var dataString = $('#actualizar_programacion').serialize();                    
+                    $.ajax({
+                        type: "POST",
+                        url: "<?=  base_url()?>admin/actualizar_programacion",
+                        data: dataString
+                    });                    
+                    $('#modal_programacion').modal('hide');
+                });
             });
         </script>        

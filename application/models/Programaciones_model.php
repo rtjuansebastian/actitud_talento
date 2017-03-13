@@ -176,4 +176,10 @@ class Programaciones_model extends CI_Model
         
         return $data['evento'][0];
     }
+    
+    public function actualizar_programacion($data)
+    {       
+        $this->db->where('id', $data['id']);
+        $this->db->update('programaciones', $data); 
+    }
 }

@@ -81,7 +81,7 @@ class Admin extends CI_Controller
     }
 
     public function ver_eventos()
-    {
+    {        
         $datos['eventos']=$this->eventos_model->traer_eventos();
         $this->load->view('admin/ver_eventos',$datos);
     }
@@ -112,6 +112,21 @@ class Admin extends CI_Controller
         $evento=$this->input->post("evento");
         $galeria=$this->galerias_model->traer_galerias_evento($evento);
         echo json_encode($galeria);        
+    }
+    
+    public function editar_programacion_evento()
+    {
+        $id=$this->input->post("conferencia");
+        $datos['conferencia']=  $this->programaciones_model->traer_programacion($id);
+        $datos['escenarios']=  $this->escenarios_model->traer_escenarios_evento($datos['conferencia']['evento']);
+        $datos['conferencistas']= $this->conferencistas_model->traer_conferencistas();
+        echo json_encode($datos);
+    }
+    
+    public function actualizar_programacion()
+    {
+        $data=  $this->input->post();
+        $this->programaciones_model->actualizar_programacion($data);
     }
 
     public function agregar_evento()
