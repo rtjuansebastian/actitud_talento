@@ -140,7 +140,20 @@ class Admin extends CI_Controller
     {
         $data=  $this->input->post();
         $this->preguntas_model->actualizar_pregunta($data);
-    }    
+    } 
+    
+    public function editar_testimonio_evento()
+    {
+        $id=  $this->input->post("testimonio");
+        $testimonio=  $this->testimonios_model->traer_testimonio($id);
+        echo json_encode($testimonio);
+    }
+    
+    public function actualizar_testimonio_evento()
+    {
+        $data=  $this->input->post();
+        $this->testimonios_model->actualizar_testimonio($data);
+    }     
 
     public function agregar_evento()
     {

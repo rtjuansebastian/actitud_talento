@@ -367,7 +367,39 @@ foreach ($eventos as $evento)
                     </form>
                 </div>
             </div>
-        </div>     
+        </div>
+        <!-- Modal editar testimonio -->
+        <div class="modal fade" id="modal_editar_testimonio" tabindex="-1" role="dialog" aria-labelledby="ModalLabelCrearConferencista">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form id="form_editar_testimonio" enctype="multipart/form-data">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="ModalLabelCrearConferencista">Editar testimonio</h4>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" id="id_testimonio" name="id">
+                            <div class="form-group">
+                                <label for="nombre">Nombre</label>
+                                <input type="text" class="form-control" id="nombre_testimonio" name="nombre" required=""/>                            
+                            </div>                               
+                            <div class="form-group">
+                                <label for="nombre">Testimonio</label>
+                                <input type="text" class="form-control" id="testimonio" name="testimonio" required=""/>
+                            </div>
+                            <div class="form-group">
+                                <label for="imagen" class="col-sm-2"><p class="text-left">Imagen</p></label>
+                                <input type="file" class="form-control" name="imagen" id="imagen_testimonio"/>
+                            </div>                            
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" id="btn_editar_testimonio">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>        
 <?php $this->load->view("admin/footer"); ?>
         <script>
             $(document).ready(function(){
@@ -431,7 +463,7 @@ foreach ($eventos as $evento)
                                     '<td>'+items.nombre+'</td>'+
                                     '<td>'+items.testimonio+'</td>'+
                                     '<td><img src="<?=base_url()?>assets/img/testimonios/'+items.imagen+'" heigth="50" width="50"></td>'+
-                                    '<td><button class="btn btn-primary glyphicon glyphicon-pencil" type="button"></button></td>'+
+                                    '<td><button class="btn btn-primary glyphicon glyphicon-pencil editar_testimonio" type="button" data-testimonio="'+items.id+'" data-toggle="modal" data-target="#modal_editar_testimonio"></button></td>'+
                                 '</tr>';                            
                         });
                         $("#tabla_testimonios").html(tabla_testimonios);
@@ -540,6 +572,37 @@ foreach ($eventos as $evento)
                         data: dataString
                     });
                     $('#modal_preguntas').modal('hide');
+                });
+                
+                $(document).on("click",".editar_testimonio",function(){
+                    var testimonio=$(this).data("testimonio");
+                    $.ajax({
+                      method: "POST",
+                      url: "<?=  base_url()?>admin/editar_testimonio_evento",
+                      data: { testimonio: testimonio}
+                    })
+                    .done(function( data ) {
+                        var result= $.parseJSON(data);
+                        $("#id_testimonio").val(result.id);
+                        $("#nombre_testimonio").val(result.nombre);
+                        $("#testimonio").val(result.testimonio);
+                    });
+                });
+                
+                
+                $("#btn_editar_testimonio").click(function(){
+                    var formData = new FormData(document.getElementById("form_editar_testimonio"));
+                    $.ajax(
+                    {
+                        data:formData,
+                        type: "POST",
+                        url: "<?= base_url()?>admin/actualizar_testimonio_evento",
+                        dataType: "html",
+                        cache: false,
+                        contentType: false,
+                        processData: false
+                    });                
+                    $('#modal_testimonios').modal('hide');
                 });                
             });
         </script>        
