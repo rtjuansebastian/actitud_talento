@@ -68,7 +68,7 @@ class Paises_model extends CI_Model
             $ext=substr($fichero_subido, -4);            
             $normal='/var/www/html/actitud_talento/assets/img/banderas/'.$id.$ext;            
             $image = new Imagick($fichero_subido);
-            $image->cropThumbnailImage(90,90);
+            $image->cropThumbnailImage(125,90);
             $image->writeImage($normal );
             unlink($fichero_subido); 
             $data_img = array(
@@ -99,7 +99,7 @@ class Paises_model extends CI_Model
             $ext=substr($fichero_subido, -4);            
             $normal='/var/www/html/actitud_talento/assets/img/banderas/'.$id.$ext;            
             $image = new Imagick($fichero_subido);
-            $image->cropThumbnailImage(90,90);
+            $image->cropThumbnailImage(125,90);
             $image->writeImage($normal );
             unlink($fichero_subido); 
             $data = array(

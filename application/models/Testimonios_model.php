@@ -88,7 +88,7 @@ class Testimonios_model extends CI_Model
             $ext=substr($fichero_subido, -4);            
             $normal='/var/www/html/actitud_talento/assets/img/testimonios/'.$id.$ext;            
             $image = new Imagick($fichero_subido);
-            $image->cropThumbnailImage(90,90);
+            $image->cropThumbnailImage(100,115);
             $image->writeImage($normal );
             unlink($fichero_subido); 
             $data_img = array(
@@ -125,7 +125,7 @@ class Testimonios_model extends CI_Model
                 $ext=substr($fichero_subido, -4);            
                 $normal='/var/www/html/actitud_talento/assets/img/testimonios/'.$id.$ext;            
                 $image = new Imagick($fichero_subido);
-                $image->cropThumbnailImage(90,90);
+                $image->cropThumbnailImage(100,115);
                 $image->writeImage($normal );
                 unlink($fichero_subido); 
                 $data_img = array(
@@ -158,7 +158,7 @@ class Testimonios_model extends CI_Model
             $ext=substr($fichero_subido, -4);            
             $normal='/var/www/html/actitud_talento/assets/img/testimonios/'.$id.$ext;            
             $image = new Imagick($fichero_subido);
-            $image->cropThumbnailImage(90,90);
+            $image->cropThumbnailImage(100,115);
             $image->writeImage($normal );
             unlink($fichero_subido); 
             $data_img = array(

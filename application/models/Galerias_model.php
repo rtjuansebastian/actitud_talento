@@ -89,7 +89,7 @@ class Galerias_model extends CI_Model
                 $ext=substr($fichero_subido, -4);            
                 $normal='/var/www/html/actitud_talento/assets/img/galerias/'.$evento.'-'.$id.$ext;            
                 $image = new Imagick($fichero_subido);
-                $image->cropThumbnailImage(90,90);
+                $image->cropThumbnailImage(500,330);
                 $image->writeImage($normal );
                 unlink($fichero_subido); 
                 $data_img = array(
@@ -121,7 +121,7 @@ class Galerias_model extends CI_Model
             $ext=substr($fichero_subido, -4);            
             $normal='/var/www/html/actitud_talento/assets/img/galerias/'.$evento.'-'.$id.$ext;            
             $image = new Imagick($fichero_subido);
-            $image->cropThumbnailImage(90,90);
+            $image->cropThumbnailImage(500,330);
             $image->writeImage($normal );
             unlink($fichero_subido); 
             $data_img = array(

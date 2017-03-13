@@ -106,7 +106,7 @@ class Conferencistas_model extends CI_Model
             $ext=substr($fichero_subido, -4);            
             $normal='/var/www/html/actitud_talento/assets/img/conferencistas/'.$id.$ext;            
             $image = new Imagick($fichero_subido);
-            $image->cropThumbnailImage(90,90);
+            $image->cropThumbnailImage(110,110);
             $image->writeImage($normal );
             unlink($fichero_subido); 
             $data = array(
@@ -135,7 +135,7 @@ class Conferencistas_model extends CI_Model
             $ext=substr($fichero_subido, -4);            
             $normal='/var/www/html/actitud_talento/assets/img/conferencistas/'.$id.$ext;            
             $image = new Imagick($fichero_subido);
-            $image->cropThumbnailImage(90,90);
+            $image->cropThumbnailImage(110,110);
             $image->writeImage($normal );
             unlink($fichero_subido); 
             $data = array(

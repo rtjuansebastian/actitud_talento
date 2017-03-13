@@ -93,7 +93,7 @@ class Patrocinadores_model extends CI_Model
             $ext=substr($fichero_subido, -4);            
             $normal='/var/www/html/actitud_talento/assets/img/patrocinadores/'.$id.$ext;            
             $image = new Imagick($fichero_subido);
-            $image->cropThumbnailImage(120,120);
+            $image->cropThumbnailImage(140,50);
             $image->writeImage($normal );
             unlink($fichero_subido); 
             $data = array(
@@ -122,7 +122,7 @@ class Patrocinadores_model extends CI_Model
             $ext=substr($fichero_subido, -4);            
             $normal='/var/www/html/actitud_talento/assets/img/patrocinadores/'.$id.$ext;            
             $image = new Imagick($fichero_subido);
-            $image->cropThumbnailImage(120,120);
+            $image->cropThumbnailImage(140,50);
             $image->writeImage($normal );
             unlink($fichero_subido); 
             $data = array(
