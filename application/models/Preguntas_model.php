@@ -94,4 +94,10 @@ class Preguntas_model extends CI_Model
         $this->db->where('id', $data['id']);
         $this->db->update('preguntas_frecuentes', $data);        
     }
+    
+    public function eliminar_pregunta_evento($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('preguntas_frecuentes');         
+    }    
 }

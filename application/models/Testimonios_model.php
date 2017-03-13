@@ -169,4 +169,10 @@ class Testimonios_model extends CI_Model
             $this->db->update('eventos_testimonios', $data_img);  
         }        
     }
+    
+    public function eliminar_testimonio_evento($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('eventos_testimonios');         
+    }
 }

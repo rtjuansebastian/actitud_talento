@@ -149,6 +149,12 @@ class Admin extends CI_Controller
         $this->programaciones_model->agregar_programacion_evento($data);
     }
     
+    public function eliminar_programacion_evento()
+    {
+        $id=$this->input->post("programacion");
+        $this->programaciones_model->eliminar_programacion_evento($id);
+    }
+
     public function editar_pregunta_evento()
     {
         $id=  $this->input->post("pregunta");
@@ -168,6 +174,12 @@ class Admin extends CI_Controller
         $this->preguntas_model->agregar_pregunta_evento($data);
     }
     
+    public function eliminar_pregunta_evento()
+    {
+        $id=$this->input->post("pregunta");
+        $this->preguntas_model->eliminar_pregunta_evento($id);
+    }    
+    
     public function crear_testimonio_evento()
     {
         $data=$this->input->post();
@@ -185,7 +197,13 @@ class Admin extends CI_Controller
     {
         $data=  $this->input->post();
         $this->testimonios_model->actualizar_testimonio($data);
-    } 
+    }
+    
+    public function eliminar_testimonio_evento()
+    {
+        $id=$this->input->post("testimonio");
+        $this->testimonios_model->eliminar_testimonio_evento($id);
+    }    
 
     public function editar_galeria_evento()
     {

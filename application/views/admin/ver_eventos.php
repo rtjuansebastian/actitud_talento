@@ -391,8 +391,9 @@ foreach ($eventos as $evento)
                             </div> 
                         </div>
                         <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                          <button type="button" class="btn btn-primary" data-dismiss="modal" id="btn_actualizar_programacion">Guardar</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal" id="btn_eliminar_programacion">Eliminar</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" id="btn_actualizar_programacion">Guardar</button>
                         </div>
                     </form>                        
                 </div>
@@ -474,6 +475,7 @@ foreach ($eventos as $evento)
                             </div>                             
                         </div>
                         <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal" id="btn_eliminar_pregunta">Eliminar</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                             <button type="button" class="btn btn-primary" data-dismiss="modal" id="btn_editar_pregunta">Guardar</button>
                         </div>
@@ -506,6 +508,7 @@ foreach ($eventos as $evento)
                             </div>                            
                         </div>
                         <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal" id="btn_eliminar_testimonio">Eliminar</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                             <button type="button" class="btn btn-primary" data-dismiss="modal" id="btn_editar_testimonio">Guardar</button>
                         </div>
@@ -858,6 +861,8 @@ foreach ($eventos as $evento)
                         $("#descripcion").val(result.conferencia.descripcion);
                         $("#conferencista").val(result.conferencia.conferencista);
                         $("#escenario").val(result.conferencia.escenario);
+                        
+                        $("#btn_eliminar_programacion").data("programacion",conferencia);
                     });
                 });
                 
@@ -904,6 +909,8 @@ foreach ($eventos as $evento)
                         $("#id_pregunta").val(result.id);
                         $("#pregunta").val(result.pregunta);
                         $("#respuesta").val(result.respuesta);
+                        
+                        $("#btn_eliminar_pregunta").data("pregunta",pregunta);
                     });
                 });
                 
@@ -930,6 +937,8 @@ foreach ($eventos as $evento)
                         $("#id_testimonio").val(result.id);
                         $("#nombre_testimonio").val(result.nombre);
                         $("#testimonio").val(result.testimonio);
+                        
+                        $("#btn_eliminar_testimonio").data("testimonio",testimonio);
                     });
                 });
                 
@@ -1049,6 +1058,36 @@ foreach ($eventos as $evento)
                         processData: false
                     });                
                     $('#modal_testimonios').modal('hide');              
-                });                
+                });
+                
+                $("#btn_eliminar_programacion").click(function(){
+                    var programacion=$(this).data("programacion");
+                    $.ajax({
+                        type: "POST",
+                        url: "<?=  base_url()?>admin/eliminar_programacion_evento",
+                        data: {programacion:programacion}
+                    });                    
+                    $('#modal_programacion').modal('hide');                    
+                });
+                
+                $("#btn_eliminar_pregunta").click(function(){
+                    var pregunta=$(this).data("pregunta");
+                    $.ajax({
+                        type: "POST",
+                        url: "<?=  base_url()?>admin/eliminar_pregunta_evento",
+                        data: {pregunta:pregunta}
+                    });                    
+                    $('#modal_preguntas').modal('hide');                    
+                }); 
+                
+                $("#btn_eliminar_testimonio").click(function(){
+                    var testimonio=$(this).data("testimonio");
+                    $.ajax({
+                        type: "POST",
+                        url: "<?=  base_url()?>admin/eliminar_testimonio_evento",
+                        data: {testimonio:testimonio}
+                    });                    
+                    $('#modal_testimonios').modal('hide');                    
+                });                 
             });
         </script>        

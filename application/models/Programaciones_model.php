@@ -187,4 +187,10 @@ class Programaciones_model extends CI_Model
         $this->db->where('id', $data['id']);
         $this->db->update('programaciones', $data); 
     }
+    
+    public function eliminar_programacion_evento($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('programaciones');         
+    }
 }
