@@ -28,19 +28,26 @@ class Index extends CI_Controller
         $this->load->model("galerias_model");
     }
     
+    public function index()
+    {
+        $datos['eventos']=$this->eventos_model->traer_eventos();
+        $this->load->view('index',$datos);        
+    }
+    
     /**
      * Metodo index
      * 
      * Este metodo es el encargado de cargar la pagina de inicio.
      */    
-    public function index()
-    {        
-        $datos['evento']=$this->eventos_model->traer_evento(1);
-        $datos['patrocinadores']=$this->patrocinadores_model->traer_patrocinadores_evento(1);
-        $datos['testimonios']=$this->testimonios_model->traer_testimonios_evento(1);
-        $datos['preguntas']=$this->preguntas_model->traer_preguntas_evento(1);
-        $datos['galerias']=$this->galerias_model->traer_galerias_evento(1);
-        $dias=$this->programaciones_model->traer_dias_evento(1);
+    public function evento()
+    {
+        $evento=  $this->input->get("evento");
+        $datos['evento']=$this->eventos_model->traer_evento($evento);
+        $datos['patrocinadores']=$this->patrocinadores_model->traer_patrocinadores_evento($evento);
+        $datos['testimonios']=$this->testimonios_model->traer_testimonios_evento($evento);
+        $datos['preguntas']=$this->preguntas_model->traer_preguntas_evento($evento);
+        $datos['galerias']=$this->galerias_model->traer_galerias_evento($evento);
+        $dias=$this->programaciones_model->traer_dias_evento($evento);
         foreach ($dias as $dia)
         {
             $programaciones['dias'][$dia['fecha']]['escenarios']=$this->programaciones_model->traer_escenarios_dia($dia['fecha']);
@@ -54,8 +61,8 @@ class Index extends CI_Controller
         }
         $datos['dias']=$dias;
         $datos['programaciones']=$programaciones;
-        $datos['conferencistas']=$this->conferencistas_model->traer_conferencistas_evento(1);
-        $this->load->view('index',$datos);
+        $datos['conferencistas']=$this->conferencistas_model->traer_conferencistas_evento($evento);
+        $this->load->view('evento',$datos);
     }
     
     

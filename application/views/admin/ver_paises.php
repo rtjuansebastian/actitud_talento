@@ -8,6 +8,7 @@
                             <tr>
                                 <th>ID</th>               
                                 <th>Nombre</th>                  
+                                <th>Bandera</th>
                                 <th>Editar</th>
                             </tr>
                         </thead>            
@@ -20,7 +21,7 @@ foreach ($paises as $pais)
                                 <td><?=$pais['id']?></td>
                                 <td><?=$pais['nombre']?></td>
                                 <td><img src="<?=  base_url()?>assets/img/banderas/<?=$pais['imagen']?>" height="50" width="100"></td>
-                                <td><button type="button" class="btn btn-primary btn-xs glyphicon glyphicon-pencil editar_pais" data-id="<?=$pais['id']?>" data-toggle="modal" data-target="#modal_editar_pais"></button></td>
+                                <td><button type="button" class="btn btn-primary glyphicon glyphicon-pencil editar_pais" data-id="<?=$pais['id']?>" data-toggle="modal" data-target="#modal_editar_pais"></button></td>
                             </tr>                   
 <?php                    
 }

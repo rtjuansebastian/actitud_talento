@@ -87,7 +87,7 @@ class Galerias_model extends CI_Model
                 $fichero_subido = $dir_subida . basename($_FILES['imagen'.$imagen.'']['name']);
                 move_uploaded_file($_FILES['imagen'.$imagen.'']['tmp_name'], $fichero_subido);
                 $ext=substr($fichero_subido, -4);            
-                $normal='/var/www/html/actitud_talento/assets/img/galerias/'.$id.$ext;            
+                $normal='/var/www/html/actitud_talento/assets/img/galerias/'.$evento.'-'.$id.$ext;            
                 $image = new Imagick($fichero_subido);
                 $image->cropThumbnailImage(90,90);
                 $image->writeImage($normal );
