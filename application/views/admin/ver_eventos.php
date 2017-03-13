@@ -210,6 +210,7 @@ foreach ($eventos as $evento)
                   </table>
               </div>
               <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal_crear_testimonio" id="crear_testimonio">Crear testimonio</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
               </div>
             </div>
@@ -617,7 +618,39 @@ foreach ($eventos as $evento)
                     </form>
                 </div>
             </div>
-        </div>            
+        </div>
+        <!-- Modal crear testimonio -->
+        <div class="modal fade" id="modal_crear_testimonio" tabindex="-1" role="dialog" aria-labelledby="ModalLabelCrearTestimonio">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form id="form_crear_testimonio" enctype="multipart/form-data">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="ModalLabelCrearTestimonio">Crear Testimonio</h4>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" id="evento_crear_testimonio" name="evento">                       
+                            <div class="form-group">
+                                <label for="nombre">Nombre</label>
+                                <input type="text" class="form-control" id="nombre" name="nombre" required=""/>                                                        
+                            </div>                              
+                            <div class="form-group">
+                                <label for="testimonio">Testimonio</label>
+                                <input type="text" class="form-control" id="testimonio" name="testimonio" required=""/>
+                            </div>                   
+                            <div class="form-group">
+                                <label for="imagen" class="col-sm-2"><p class="text-left">Imagen</p></label>
+                                <input type="file" class="form-control" name="imagen" id="imagen_testimonio"/>
+                            </div>                             
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" id="btn_crear_testimonio">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>        
 <?php $this->load->view("admin/footer"); ?>
         <script>
             $(document).ready(function(){
@@ -729,6 +762,7 @@ foreach ($eventos as $evento)
                                 '</tr>';                            
                         });
                         $("#tabla_testimonios").html(tabla_testimonios);
+                        $("#crear_testimonio").data("evento",evento);
                     });                    
                 });
                 $(".ver_galerias").on("click",function(){
@@ -996,6 +1030,25 @@ foreach ($eventos as $evento)
                         processData: false
                     });                
                     $('#modal_preguntas').modal('hide');              
+                });
+                $("#crear_testimonio").click(function(){
+                    var evento=$(this).data("evento");
+                    $("#evento_crear_testimonio").val(evento);
+                });
+                
+                $("#btn_crear_testimonio").click(function(){
+                    var formData = new FormData(document.getElementById("form_crear_testimonio"));
+                    $.ajax(
+                    {
+                        data:formData,
+                        type: "POST",
+                        url: "<?= base_url()?>admin/crear_testimonio_evento",
+                        dataType: "html",
+                        cache: false,
+                        contentType: false,
+                        processData: false
+                    });                
+                    $('#modal_testimonios').modal('hide');              
                 });                
             });
         </script>        
