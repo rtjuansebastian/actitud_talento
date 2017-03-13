@@ -105,7 +105,58 @@ class Eventos_model extends CI_Model
     {
         $this->db->insert('eventos', $data); 
         $id=$this->db->insert_id();
+        if(isset($_FILES['imagen_fondo']) && strcmp (basename($_FILES['imagen_fondo']['name']),"")!==0)
+        {
+            $oldmask = umask(0);
+            umask($oldmask);        
+            $dir_subida = '/var/www/html/actitud_talento/assets/img/fondos/';
+            if(file_exists($dir_subida)){}
+            else{mkdir($dir_subida, 0700);}
+            $fichero_subido = $dir_subida . basename($_FILES['imagen_fondo']['name']);
+            move_uploaded_file($_FILES['imagen_fondo']['tmp_name'], $fichero_subido);
+            $ext=substr($fichero_subido, -4);            
+            $normal='/var/www/html/actitud_talento/assets/img/fondos/'.$id.$ext;            
+            $image = new Imagick($fichero_subido);
+            $image->cropThumbnailImage(90,90);
+            $image->writeImage($normal );
+            unlink($fichero_subido); 
+            $data_img = array(
+                           'imagen' => base_url()."assets/img/fondos/".$id.$ext
+                        );
+
+            $this->db->where('id', $id);
+            $this->db->update('eventos', $data_img);  
+        }        
         
         return $id;
+    }
+    
+    public function actualizar_evento($data)
+    {
+        $this->db->where('id', $data['id']);
+        $this->db->update('eventos', $data);          
+        if(isset($_FILES['imagen_fondo']) && strcmp (basename($_FILES['imagen_fondo']['name']),"")!==0)
+        {
+            $id=$data['id'];
+            $oldmask = umask(0);
+            umask($oldmask);        
+            $dir_subida = '/var/www/html/actitud_talento/assets/img/fondos/';
+            if(file_exists($dir_subida)){}
+            else{mkdir($dir_subida, 0700);}
+            $fichero_subido = $dir_subida . basename($_FILES['imagen_fondo']['name']);
+            move_uploaded_file($_FILES['imagen_fondo']['tmp_name'], $fichero_subido);
+            $ext=substr($fichero_subido, -4);            
+            $normal='/var/www/html/actitud_talento/assets/img/fondos/'.$id.$ext;            
+            $image = new Imagick($fichero_subido);
+            $image->cropThumbnailImage(90,90);
+            $image->writeImage($normal );
+            unlink($fichero_subido); 
+            $data_img = array(
+                           'imagen' => base_url()."assets/img/fondos/".$id.$ext
+                        );
+
+            $this->db->where('id', $id);
+            $this->db->update('eventos', $data_img);  
+        }          
     }
 }

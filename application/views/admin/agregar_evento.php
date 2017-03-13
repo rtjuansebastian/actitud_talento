@@ -8,7 +8,7 @@
                             <input type="text" class="form-control" id="nombre" name="nombre" required=""/>
                         </div>
                         <div class="form-group">
-                            <label for="profesion">País</label>
+                            <label for="pais">País</label>
                             <select class="form-control selectpicker" id="pais" name="pais">
                                 <option></option>
 <?php
@@ -38,7 +38,7 @@ foreach ($paises as $pais)
                             </div>                       
                         </div>
                         <div class="form-group">
-                            <label for="perfil">Coordenadas</label>
+                            <label for="coordenadas">Coordenadas</label>
                             <input type="text" class="form-control" id="coordenadas" name="coordenadas" required=""/>                                                        
                         </div>                        
                         <div class="form-group">
@@ -51,7 +51,7 @@ foreach ($paises as $pais)
                         </div>        
                         <div class="form-group">
                             <label for="telefono">Telefono</label>
-                            <input type="text" class="form-control" id="telefono" name="telefono" required=""/>                                                        
+                            <input type="tel" class="form-control" id="telefono" name="telefono" required=""/>                                                        
                         </div>                  
                         <div class="form-group">
                             <label for="email">Email</label>
@@ -70,7 +70,7 @@ foreach ($paises as $pais)
                             <input type="text" class="form-control" id="twitter" name="twitter"/>                            
                         </div>
                         <div class="form-group">
-                            <label for="twitter">Dribbble</label>
+                            <label for="dribbble">Dribbble</label>
                             <input type="text" class="form-control" id="dribbble" name="dribbble"/>                            
                         </div>                        
                         <div class="form-group">

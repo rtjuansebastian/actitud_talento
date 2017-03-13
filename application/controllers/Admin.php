@@ -83,8 +83,9 @@ class Admin extends CI_Controller
     public function ver_eventos()
     {        
         $datos['eventos']=$this->eventos_model->traer_eventos();
+        $datos['paises']=$this->paises_model->traer_paises();
         $this->load->view('admin/ver_eventos',$datos);
-    }
+    }        
     
     public function traer_programacion_evento()
     {
@@ -113,6 +114,19 @@ class Admin extends CI_Controller
         $galeria=$this->galerias_model->traer_galerias_evento($evento);
         echo json_encode($galeria);        
     }
+    
+    public function editar_evento_evento()
+    {
+        $id=  $this->input->post("evento");
+        $evento=  $this->eventos_model->traer_evento($id);
+        echo json_encode($evento);
+    }
+    
+    public function actualizar_evento_evento()
+    {
+        $data=  $this->input->post();
+        $this->eventos_model->actualizar_evento($data);
+    }     
     
     public function editar_programacion_evento()
     {

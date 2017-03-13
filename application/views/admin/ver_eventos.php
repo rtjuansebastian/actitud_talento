@@ -7,7 +7,7 @@
 foreach ($eventos as $evento)
 {
 ?>
-                    <button type="button" class="btn btn-primary btn-xs glyphicon glyphicon-pencil navbar-right editar_evento" data-id="<?=$evento['id']?>" data-toggle="modal" data-target="#modal_editar_evento"></button>
+                    <button type="button" class="btn btn-primary btn-xs glyphicon glyphicon-pencil navbar-right editar_evento" data-evento="<?=$evento['id']?>" data-toggle="modal" data-target="#modal_editar_evento"></button>
                     <table class="table table-bordered table-responsive">
                         <thead>
                             <tr id="acordeon<?=$evento['id']?>" data-toggle="collapse" data-target="#evento<?=$evento['id']?>" class="accordion-toggle" style=" cursor: pointer">
@@ -230,6 +230,116 @@ foreach ($eventos as $evento)
             </div>
           </div>
         </div>  
+        <!-- Modal Editar Evento -->
+        <div class="modal fade" id="modal_editar_evento" tabindex="-1" role="dialog" aria-labelledby="ModalLabelEditarEvento">
+          <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">                
+                    <form id="actualizar_evento" enctype="multipart/form-data">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <h4 class="modal-title" id="ModalLabelEditarEvento">Evento</h4>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" id="id_evento" name="id"> 
+                            <div class="form-group">
+                                <label for="nombre">Nombre</label>
+                                <input type="text" class="form-control" id="nombre_evento" name="nombre" required=""/>
+                            </div>
+                            <div class="form-group">
+                                <label for="profesion">País</label>
+                                <select class="form-control" id="pais_evento" name="pais">
+                                    <option></option>
+    <?php
+    foreach ($paises as $pais)
+    {
+    ?>
+                                    <option value="<?=$pais['id']?>"><?=$pais['nombre']?></option>
+    <?php
+    }
+    ?>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="descripcion">Descripción</label>
+                                <textarea class="form-control" rows="3" id="descripcion_evento" name="descripcion"></textarea>                                                        
+                            </div>
+                            <div class="form-group">
+                                <label for="lugar">Lugar</label>
+                                <input type="text" class="form-control" id="lugar_evento" name="lugar" required=""/>                                                        
+                            </div>
+                            <div class="form-group">
+                                <label for="fecha">Fecha</label>
+                                <div class='input-group date' id='datetimepicker1'>
+                                    <input type='text' class="form-control" id="fecha_evento" name="fecha"/>
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>                       
+                            </div>
+                            <div class="form-group">
+                                <label for="perfil">Coordenadas</label>
+                                <input type="text" class="form-control" id="coordenadas_evento" name="coordenadas" required=""/>                                                        
+                            </div>                        
+                            <div class="form-group">
+                                <label for="cupos">Cupos</label>
+                                <input type="number" class="form-control" id="cupos_evento" name="cupos" required=""/>                                                        
+                            </div>
+                            <div class="form-group">
+                                <label for="dias">Días</label>
+                                <input type="number" class="form-control" id="dias_evento" name="dias" required=""/>                                                        
+                            </div>        
+                            <div class="form-group">
+                                <label for="telefono">Telefono</label>
+                                <input type="text" class="form-control" id="telefono_evento" name="telefono" required=""/>                                                        
+                            </div>                  
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="text" class="form-control" id="email_evento" name="email" required=""/>                                                        
+                            </div>                                          
+                            <div class="form-group">
+                                <label for="video">Video</label>
+                                <input type="text" class="form-control" id="video_evento" name="video" required=""/>                                                        
+                            </div>                                          
+                            <div class="form-group">
+                                <label for="imagen_fondo" class="col-sm-2"><p class="text-left">Imagen de Fondo</p></label>
+                                <input type="file" class="form-control" name="imagen_fondo" id="imagen_fondo_evento"/>
+                            </div>                       
+                            <div class="form-group">
+                                <label for="twitter">Twitter</label>
+                                <input type="text" class="form-control" id="twitter_evento" name="twitter"/>                            
+                            </div>
+                            <div class="form-group">
+                                <label for="twitter">Dribbble</label>
+                                <input type="text" class="form-control" id="dribbble_evento" name="dribbble"/>                            
+                            </div>                        
+                            <div class="form-group">
+                                <label for="facebook">Facebook</label>
+                                <input type="text" class="form-control" id="facebook_evento" name="facebook"/>                                
+                            </div>                        
+                            <div class="form-group">
+                                <label for="google_plus">Google Plus</label>
+                                <input type="text" class="form-control" id="google_plus_evento" name="google_plus"/>                            
+                            </div>
+                            <div class="form-group">
+                                <label for="instagram">Instagram</label>
+                                <input type="text" class="form-control" id="instagram_evento" name="instagram"/>                            
+                            </div>
+                            <div class="form-group">
+                                <label for="pinterest">Pinterest</label>
+                                <input type="text" class="form-control" id="pinterest_evento" name="pinterest"/>                            
+                            </div>                        
+                            <div class="form-group">
+                                <label for="skype">Skype</label>
+                                <input type="text" class="form-control" id="skype_evento" name="skype"/>                            
+                            </div>     
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                          <button type="button" class="btn btn-primary" data-dismiss="modal" id="btn_actualizar_evento">Guardar</button>
+                        </div>
+                    </form>                        
+                </div>
+            </div>
+        </div>        
         <!-- Modal Editar Programación -->
         <div class="modal fade" id="modal_editar_programcion" tabindex="-1" role="dialog" aria-labelledby="ModalLabelEditarProgramación">
           <div class="modal-dialog modal-lg" role="document">
@@ -513,6 +623,53 @@ foreach ($eventos as $evento)
                         $("#galeria").html(galeria);
                     });                    
                 });
+                
+                $(document).on("click",".editar_evento",function(){
+                    var evento=$(this).data("evento");
+                    $.ajax({
+                      method: "POST",
+                      url: "<?=  base_url()?>admin/editar_evento_evento",
+                      data: { evento: evento}
+                    })
+                    .done(function( data ) {
+                        var result= $.parseJSON(data);
+                        $("#id_evento").val(result.id);
+                        $("#nombre_evento").val(result.nombre);
+                        $("#pais_evento").val(result.pais);
+                        $("#descripcion_evento").val(result.descripcion);
+                        $("#lugar_evento").val(result.lugar);
+                        $("#fecha_evento").val(result.fecha);
+                        $("#coordenadas_evento").val(result.coordenadas);
+                        $("#cupos_evento").val(result.cupos);
+                        $("#dias_evento").val(result.dias);
+                        $("#telefono_evento").val(result.telefono);
+                        $("#email_evento").val(result.email);
+                        $("#video_evento").val(result.video);
+                        $("#twitter_evento").val(result.twitter);
+                        $("#dribbble_evento").val(result.dribbble);
+                        $("#facebook_evento").val(result.facebook);
+                        $("#google_plus_evento").val(result.google_plus);
+                        $("#instagram_evento").val(result.instagram);
+                        $("#pinterest_evento").val(result.pinterest);
+                        $("#skype_evento").val(result.skype);   
+                    });
+                });
+                
+                
+                $("#btn_actualizar_evento").click(function(){
+                    var formData = new FormData(document.getElementById("actualizar_evento"));
+                    $.ajax(
+                    {
+                        data:formData,
+                        type: "POST",
+                        url: "<?= base_url()?>admin/actualizar_evento_evento",
+                        dataType: "html",
+                        cache: false,
+                        contentType: false,
+                        processData: false
+                    });                
+                    location.reload();
+                });                 
                 
                 $(document).on("click",".editar_programacion",function(){
                     var conferencia=$(this).data("programacion");
