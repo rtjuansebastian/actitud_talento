@@ -125,6 +125,20 @@ class Admin extends CI_Controller
         }
     }
     
+    public function traer_conferencistas()
+    {
+        $conferencistas=$this->conferencistas_model->traer_conferencistas();
+        echo json_encode($conferencistas);
+    }
+    
+    public function crear_conferencista()
+    {
+        $data=$this->input->post();
+        $this->conferencistas_model->agregar_conferencista($data);
+        $conferencistas=$this->conferencistas_model->traer_conferencistas();
+        echo json_encode($conferencistas);
+    }    
+    
     public function agregar_preguntas_evento($evento=NULL)
     {
         if($this->input->post("pregunta"))

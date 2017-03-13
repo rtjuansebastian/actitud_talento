@@ -96,7 +96,8 @@
 <script>
     $(document).ready(function(){        
         $('#datetimepicker1').datetimepicker({
-            locale:'es'
+            locale:'es',
+            format:"YYYY-MM-DD"
         });
     });
 </script>
