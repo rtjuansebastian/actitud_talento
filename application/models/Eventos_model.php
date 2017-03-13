@@ -27,15 +27,17 @@ class Eventos_model extends CI_Model
     public function traer_eventos()
     {
         $eventos=array();
-        $this->db->select("eventos.id, eventos.pais, eventos.nombre, eventos.descripcion, eventos.lugar, eventos.fecha, eventos.coordenadas, eventos.cupos, eventos.dias, eventos.telefono, eventos.email, eventos.video, eventos.imagen_fondo, eventos.imagen_bandera, eventos.twitter, eventos.dribbble, eventos.facebook, eventos.google_plus, eventos.instagram, eventos.pinterest, eventos.skype, GROUP_CONCAT(patrocinadores.nombre SEPARATOR ',') AS patrocinadores");
+        $this->db->select("eventos.id, eventos.pais, paises.nombre as nombre_pais, eventos.nombre, eventos.descripcion, eventos.lugar, eventos.fecha, eventos.coordenadas, eventos.cupos, eventos.dias, eventos.telefono, eventos.email, eventos.video, eventos.imagen_fondo, paises.imagen as imagen_bandera, eventos.twitter, eventos.dribbble, eventos.facebook, eventos.google_plus, eventos.instagram, eventos.pinterest, eventos.skype, GROUP_CONCAT(patrocinadores.nombre SEPARATOR ',') AS patrocinadores");
         $this->db->from("eventos");
         $this->db->join("eventos_patrocinadores","eventos.id=eventos_patrocinadores.evento");
         $this->db->join("patrocinadores","eventos_patrocinadores.patrocinador=patrocinadores.id");
+        $this->db->join("paises","eventos.pais=paises.id");
         $query=$this->db->get();
         foreach ($query->result() as $row)
         {
             $eventos[$row->id]['id']=$row->id;
             $eventos[$row->id]['pais']=$row->pais;
+            $eventos[$row->id]['nombre_pais']=$row->nombre_pais;
             $eventos[$row->id]['nombre']=$row->nombre;
             $eventos[$row->id]['descripcion']=$row->descripcion;
             $eventos[$row->id]['lugar']=$row->lugar;
@@ -64,11 +66,17 @@ class Eventos_model extends CI_Model
     public function traer_evento($id)
     {
         $evento=array();
+        $this->db->select("eventos.id, eventos.pais, paises.nombre as nombre_pais, eventos.nombre, eventos.descripcion, eventos.lugar, eventos.fecha, eventos.coordenadas, eventos.cupos, eventos.dias, eventos.telefono, eventos.email, eventos.video, eventos.imagen_fondo, paises.imagen as imagen_bandera, eventos.twitter, eventos.dribbble, eventos.facebook, eventos.google_plus, eventos.instagram, eventos.pinterest, eventos.skype, GROUP_CONCAT(patrocinadores.nombre SEPARATOR ',') AS patrocinadores");
+        $this->db->from("eventos");
+        $this->db->join("eventos_patrocinadores","eventos.id=eventos_patrocinadores.evento");
+        $this->db->join("patrocinadores","eventos_patrocinadores.patrocinador=patrocinadores.id");
+        $this->db->join("paises","eventos.pais=paises.id");        
         $this->db->where('id',$id);
-        $query=$this->db->get('eventos');
+        $query=$this->db->get();
         $row=$query->row();
         $evento['id']=$row->id;
         $evento['pais']=$row->pais;
+        $evento['nombre_pais']=$row->nombre_pais;
         $evento['nombre']=$row->nombre;
         $evento['descripcion']=$row->descripcion;
         $evento['lugar']=$row->lugar;

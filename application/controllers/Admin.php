@@ -18,6 +18,7 @@ class Admin extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->model("paises_model");
         $this->load->model('conferencistas_model');
         $this->load->model("escenarios_model");
         $this->load->model("eventos_model");
@@ -45,6 +46,40 @@ class Admin extends CI_Controller
         $this->load->view('admin/ver_usuarios',$datos);        
     }
     
+    public function ver_paises()
+    {
+        $datos['paises']=$this->paises_model->traer_paises();
+        $this->load->view('admin/ver_paises',$datos);
+    }    
+    
+    public function editar_pais()
+    {
+        $id=  $this->input->post("id");
+        $pais=$this->paises_model->traer_pais($id);
+        echo json_encode($pais);
+    }
+    
+    public function actualizar_pais()
+    {
+        $data=$this->input->post();
+        $this->paises_model->actualizar_pais($data);
+        $this->ver_paises();
+    }
+    
+    public function agregar_pais()
+    {
+        if($this->input->post())
+        {
+            $data=  $this->input->post();
+            $this->paises_model->agregar_pais($data);
+            $this->ver_paises();
+        }
+        else 
+        {
+            $this->load->view('admin/agregar_pais');   
+        }        
+    }
+
     public function ver_eventos()
     {
         $datos['eventos']=$this->eventos_model->traer_eventos();
@@ -88,8 +123,9 @@ class Admin extends CI_Controller
             $this->agregar_escenarios_evento($evento);
         }
         else 
-        {        
-            $this->load->view("admin/agregar_evento");
+        {
+            $datos['paises']=$this->paises_model->traer_paises();
+            $this->load->view("admin/agregar_evento",$datos);
         }
     }  
     

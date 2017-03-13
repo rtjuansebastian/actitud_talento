@@ -141,6 +141,8 @@ class Conferencistas_model extends CI_Model
             $data = array(
                 'imagen' => $id.$ext
             );
+            $this->db->where('id', $id);
+            $this->db->update('conferencistas', $data);             
         }
     }    
 }

@@ -18,7 +18,7 @@ foreach ($eventos as $evento)
                         <tbody id="evento<?=$evento['id']?>" class="accordian-body collapse">            
                             <tr>
                                 <td>País</td>
-                                <td><?=$evento['pais']?></td>
+                                <td><?=$evento['nombre_pais']?></td>
                             </tr>
                             <tr>
                                 <td>Nombre</td>                    
@@ -66,7 +66,7 @@ foreach ($eventos as $evento)
                             </tr>
                             <tr>
                                 <td>Bandera</td>                            
-                                <td><img src="<?=$evento['imagen_bandera']?>" width="125" height="60"></td>
+                                <td><img src="<?=  base_url()?>assets/img/banderas/<?=$evento['imagen_bandera']?>" width="125" height="60"></td>
                             </tr>
                             <tr>
                                 <td>Twitter</td>                            

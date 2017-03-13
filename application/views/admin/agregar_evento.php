@@ -9,7 +9,17 @@
                         </div>
                         <div class="form-group">
                             <label for="profesion">País</label>
-                            <input type="text" class="form-control" id="pais" name="pais" required=""/>                            
+                            <select class="form-control selectpicker" id="pais" name="pais">
+                                <option></option>
+<?php
+foreach ($paises as $pais)
+{
+?>
+                                <option value="<?=$pais['id']?>"><?=$pais['nombre']?></option>
+<?php
+}
+?>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="descripcion">Descripción</label>
@@ -54,11 +64,7 @@
                         <div class="form-group">
                             <label for="imagen_fondo" class="col-sm-2"><p class="text-left">Imagen de Fondo</p></label>
                             <input type="file" class="form-control" name="imagen_fondo" id="imagen_fondo"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="imagen_bandera" class="col-sm-2"><p class="text-left">Bandera</p></label>
-                            <input type="file" class="form-control" name="imagen_bandera" id="imagen_bandera"/>
-                        </div>                        
+                        </div>                       
                         <div class="form-group">
                             <label for="twitter">Twitter</label>
                             <input type="text" class="form-control" id="twitter" name="twitter"/>                            
