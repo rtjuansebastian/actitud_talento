@@ -400,6 +400,31 @@ foreach ($eventos as $evento)
                 </div>
             </div>
         </div>        
+        <!-- Modal editar galeria -->
+        <div class="modal fade" id="modal_editar_galeria" tabindex="-1" role="dialog" aria-labelledby="ModalLabelCrearConferencista">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form id="form_editar_galeria" enctype="multipart/form-data">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="ModalLabelCrearConferencista">Editar galeria</h4>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" id="id_galeria" name="id">
+                            <input type="hidden" id="evento_galeria" name="evento">
+                            <div class="form-group">
+                                <label for="imagen" class="col-sm-2"><p class="text-left">Imagen</p></label>
+                                <input type="file" class="form-control" name="imagen" id="imagen_galeria"/>
+                            </div>                            
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" id="btn_editar_galeria">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>        
 <?php $this->load->view("admin/footer"); ?>
         <script>
             $(document).ready(function(){
@@ -482,6 +507,7 @@ foreach ($eventos as $evento)
                         $.each(result, function( llave, items) {
                             galeria=galeria+'<div class="col-md-6">'+
                                                 '<img src="<?=  base_url()?>assets/img/galerias/'+items.imagen+'" alt="" class="img-rounded" heigth="250" width="250">'+
+                                                '<button class="btn btn-primary glyphicon glyphicon-pencil editar_galeria" type="button" data-galeria="'+items.id+'" data-toggle="modal" data-target="#modal_editar_galeria"></button>'+
                                             '</div>';
                         });
                         $("#galeria").html(galeria);
@@ -603,6 +629,38 @@ foreach ($eventos as $evento)
                         processData: false
                     });                
                     $('#modal_testimonios').modal('hide');
+                    location.reload();
+                });
+                
+                $(document).on("click",".editar_galeria",function(){
+                    var galeria=$(this).data("galeria");
+                    $.ajax({
+                      method: "POST",
+                      url: "<?=  base_url()?>admin/editar_galeria_evento",
+                      data: { galeria: galeria}
+                    })
+                    .done(function( data ) {
+                        var result= $.parseJSON(data);
+                        $("#id_galeria").val(result.id);
+                        $("#evento_galeria").val(result.evento);
+                    });
+                });
+                
+                
+                $("#btn_editar_galeria").click(function(){
+                    var formData = new FormData(document.getElementById("form_editar_galeria"));
+                    $.ajax(
+                    {
+                        data:formData,
+                        type: "POST",
+                        url: "<?= base_url()?>admin/actualizar_galeria_evento",
+                        dataType: "html",
+                        cache: false,
+                        contentType: false,
+                        processData: false
+                    });                
+                    $('#modal_galerias').modal('hide');
+                    location.reload();
                 });                
             });
         </script>        

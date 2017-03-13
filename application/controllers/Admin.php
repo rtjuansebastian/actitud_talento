@@ -153,6 +153,19 @@ class Admin extends CI_Controller
     {
         $data=  $this->input->post();
         $this->testimonios_model->actualizar_testimonio($data);
+    } 
+
+    public function editar_galeria_evento()
+    {
+        $id=  $this->input->post("galeria");
+        $galeria=  $this->galerias_model->traer_galeria($id);
+        echo json_encode($galeria);
+    }
+    
+    public function actualizar_galeria_evento()
+    {
+        $data=  $this->input->post();
+        $this->galerias_model->actualizar_galeria($data);
     }     
 
     public function agregar_evento()
