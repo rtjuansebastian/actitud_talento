@@ -113,8 +113,7 @@ header("HTTP/1.1 200 OK"); ?>
                                     <div class="countdown-wrapper">
                                         <div id="defaultCountdown" class="defaultCountdown clearfix"></div>
                                     </div>
-                                    <p class="caption-text">
-                                        <a class="btn btn-theme btn-theme-xl scroll-to" href="#register" data-animation="flipInY" data-animation-delay="600"> Registro <i class="fa fa-arrow-circle-right"></i></a>
+                                    <p class="caption-text">                                        
                                     </p>
                                 </div>
                             </div>
@@ -279,7 +278,7 @@ header("HTTP/1.1 200 OK"); ?>
                                             </span>
                                     <div class="media-body">
                                         <h4 class="media-heading">Conferencistas</h4>
-                                        <span>Numero de conferencistas del evento</span>
+                                        <span><?=$numero_conferencistas?></span>
                                     </div>
                                 </div>
                             </div>

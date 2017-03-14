@@ -62,6 +62,7 @@ class Index extends CI_Controller
         $datos['dias']=$dias;
         $datos['programaciones']=$programaciones;
         $datos['conferencistas']=$this->conferencistas_model->traer_conferencistas_evento($evento);
+        $datos['numero_conferencistas']=$this->conferencistas_model->traer_numero_conferencistas_evento($evento);
         $this->load->view('evento',$datos);
     }
     

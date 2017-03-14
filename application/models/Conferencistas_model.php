@@ -143,5 +143,14 @@ class Conferencistas_model extends CI_Model
             $this->db->where('id', $id);
             $this->db->update('conferencistas', $data);             
         }
-    }    
+    }
+
+    public function traer_numero_conferencistas_evento($evento)
+    {
+        $this->db->where("evento",$evento);
+        $this->db->group_by("conferencista");
+        $query=$this->db->get("programaciones");
+        $total=$query->num_rows();
+        return $total;
+    }
 }
