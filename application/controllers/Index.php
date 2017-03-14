@@ -67,7 +67,28 @@ class Index extends CI_Controller
     
     public function ver_conferencistas_evento()
     {
-        
+        $evento=  $this->input->get("evento");
+        $datos['evento']=$this->eventos_model->traer_evento($evento);
+        $datos['patrocinadores']=$this->patrocinadores_model->traer_patrocinadores_evento($evento);
+        $datos['testimonios']=$this->testimonios_model->traer_testimonios_evento($evento);
+        $datos['preguntas']=$this->preguntas_model->traer_preguntas_evento($evento);
+        $datos['galerias']=$this->galerias_model->traer_galerias_evento($evento);
+        $dias=$this->programaciones_model->traer_dias_evento($evento);
+        foreach ($dias as $dia)
+        {
+            $programaciones['dias'][$dia['fecha']]['escenarios']=$this->programaciones_model->traer_escenarios_dia($dia['fecha']);
+        }        
+        foreach ($dias as $dia)
+        {
+            foreach ($programaciones['dias'][$dia['fecha']]['escenarios'] as $escenario)
+            {
+                $programaciones['dias'][$dia['fecha']]['escenarios'][$escenario['id']]['programaciones']=$this->programaciones_model->traer_programacion_escenario_dia($dia['fecha'],$escenario['id']);
+            }
+        }
+        $datos['dias']=$dias;
+        $datos['programaciones']=$programaciones;
+        $datos['conferencistas']=$this->conferencistas_model->traer_conferencistas_evento($evento);
+        $this->load->view('conferencistas',$datos);        
     }
     
 }

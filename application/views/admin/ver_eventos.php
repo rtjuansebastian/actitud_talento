@@ -493,7 +493,7 @@ foreach ($eventos as $evento)
                             </div>
                             <div class="form-group">
                                 <label for="profesion">Respuesta</label>
-                                <input type="text" class="form-control" id="respuesta" name="respuesta" required=""/>                            
+                                <textarea class="form-control" rows="3" id="respuesta" name="respuesta" required=""></textarea>
                             </div>                             
                         </div>
                         <div class="modal-footer">
@@ -522,7 +522,7 @@ foreach ($eventos as $evento)
                             </div>                               
                             <div class="form-group">
                                 <label for="nombre">Testimonio</label>
-                                <input type="text" class="form-control" id="testimonio" name="testimonio" required=""/>
+                                <textarea class="form-control"rows="3" id="testimonio" name="testimonio" required=""></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="imagen" class="col-sm-2"><p class="text-left">Imagen</p></label>
@@ -633,7 +633,7 @@ foreach ($eventos as $evento)
                             </div>
                             <div class="form-group">
                                 <label for="respuesta">Respuesta</label>
-                                <input type="text" class="form-control" id="respuesta" name="respuesta" required=""/>                                                        
+                                <textarea class="form-control"rows="3" id="respuesta" name="respuesta" required=""></textarea>
                             </div>                         
                         </div>
                         <div class="modal-footer">
@@ -661,7 +661,7 @@ foreach ($eventos as $evento)
                             </div>                              
                             <div class="form-group">
                                 <label for="testimonio">Testimonio</label>
-                                <input type="text" class="form-control" id="testimonio" name="testimonio" required=""/>
+                                <textarea class="form-control"rows="3" id="testimonio" name="testimonio" required=""></textarea>
                             </div>                   
                             <div class="form-group">
                                 <label for="imagen" class="col-sm-2"><p class="text-left">Imagen</p></label>

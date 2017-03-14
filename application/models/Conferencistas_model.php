@@ -53,7 +53,6 @@ class Conferencistas_model extends CI_Model
         $this->db->from("programaciones");
         $this->db->join("conferencistas","programaciones.conferencista=conferencistas.id");
         $this->db->where('programaciones.evento',$evento);
-         $this->db->limit(5);
         $query=$this->db->get();
         foreach ($query->result() as $row)
         {

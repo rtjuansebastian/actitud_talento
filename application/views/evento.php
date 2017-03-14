@@ -549,8 +549,10 @@ foreach ($testimonios as $testimonio)
                 <!-- Speakers row -->
                 <div class="row thumbnails clear">
 <?php
+$i=0;
 foreach ($conferencistas as $conferencista)
 {
+    if($i<4){
 ?>
                     <div class="col-sm-6 col-md-3" data-animation="fadeInUp" data-animation-delay="100">
                         <div class="thumbnail no-border no-padding text-center">
@@ -627,13 +629,15 @@ if(isset($conferencista['instagram']))
                     </div>
                     <!-- -->
 <?php
+    $i++;
+    }
 }
 ?>
                 </div>
                 <!-- /Speakers row -->
 
                 <div class="text-center margin-top">
-                    <a data-animation="fadeInUp" data-animation-delay="100" href="#" class="btn btn-theme"><i class="fa fa-user"></i> Ver todos los conferencistas</a>
+                    <a data-animation="fadeInUp" data-animation-delay="100" href="<?=  base_url()?>index/ver_conferencistas_evento?evento=<?=$evento['id']?>" class="btn btn-theme"><i class="fa fa-user"></i> Ver todos los conferencistas</a>
                 </div>
             </div>
         </section>
