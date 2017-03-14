@@ -96,7 +96,6 @@ class Contactos_model extends CI_Model
     
     public function responder_contacto($contacto,$respuesta)
     {
-        $this->load->library('email');
         $this->email->from('contacto@actitudytalento.com');
         $this->email->to($contacto['email']);
         $this->email->subject('Respuesta sobre '.$contacto['nombre_evento'].'.');

@@ -65,6 +65,9 @@ class Index extends CI_Controller
         $this->load->view('evento',$datos);
     }
     
-    
+    public function ver_conferencistas_evento()
+    {
+        
+    }
     
 }

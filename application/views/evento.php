@@ -1,3 +1,5 @@
+<?php require_once('../actitud_talento_blog/wp-blog-header.php'); 
+header("HTTP/1.1 200 OK"); ?>
 <!DOCTYPE html>
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"><![endif]-->
 <!--[if IE 7 ]><html class="ie ie7" lang="en"><![endif]-->
@@ -80,7 +82,7 @@
                     <li><a href="#sponsors">Patrocinadores</a></li>
                     <li><a href="#speakers">Conferencistas</a></li>
                     <li><a href="#location">Lugar</a></li>
-                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="http://localhost/actitud_talento_blog/">Blog</a></li>
                 </ul>
             </nav>
             <!-- /Navigation -->
@@ -353,10 +355,11 @@ foreach ($galerias as $foto)
                             <span data-animation="fadeInRight" data-animation-delay="500" class="title-inner">Programación</small></span>
                         </h1>
                     </div>
+                    <!--
                     <div class="col-md-4 text-right-md pull-right">
                         <a href="#" class="btn btn-theme btn-theme-lg btn-theme-transparent-grey pull-right"
                            data-animation="flipInY" data-animation-delay="300"><i class="fa fa-print"></i> Descargar programación</a>
-                    </div>
+                    </div>-->
                 </div>
 
                 <!-- Schedule -->
@@ -423,12 +426,6 @@ foreach ($programaciones as $dias)
                                                     <div class="post-header">
                                                         <div class="post-meta">
                                                             <span class="post-date"><i class="fa fa-clock-o"></i><?=$conferencia['hora']?></span>
-                                                            <a href="#" class="pull-right">
-                                                                <span class="fa-stack fa-lg">
-                                                                    <i class="fa fa-stack-2x fa-circle-thin"></i>
-                                                                    <i class="fa fa-stack-1x fa-share-alt"></i>
-                                                                </span>
-                                                            </a>
                                                         </div>
                                                         <h2 class="post-title"><a href="#"><?=$conferencia['titulo']?></a></h2>
                                                     </div>
@@ -738,119 +735,11 @@ foreach ($preguntas as $pregunta)
                     <span data-animation="flipInY" data-animation-delay="300" class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-file-text-o fa-stack-1x"></i></span></span>
                     <span data-animation="fadeInRight" data-animation-delay="500" class="title-inner">Post Recientes <small> / Noticias!</small></span>
                 </h1>
-                <div class="row post-row">
-
-                    <!-- -->
-                    <div class="col-md-4">
-                        <article class="post-wrap" data-animation="fadeInUp" data-animation-delay="100">
-                            <div class="post-media">
-                                <div class="post-type">
-                                    <i class="fa fa-video-camera"></i>
-                                </div>
-                                <img src="<?=  base_url()?>assets/img/recent-post-1.jpg" alt=""/>
-                            </div>
-                            <div class="post-header">
-                                <h2 class="post-title"><a href="#">Standart Blog Post Header Here</a></h2>
-                                <div class="post-meta">
-                                    <span class="post-date">
-                                        Posted on
-                                        <span class="day">17th</span>
-                                        <span class="month">May</span>
-                                        <span class="year">2015</span>
-                                    </span>
-                                    <span class="pull-right">
-                                        <i class="fa fa-comment"></i> <a href="#">12</a>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="post-body">
-                                <div class="post-excerpt">
-                                    <p>Fusce pellentesque velvitae tincidunt egestas. Pellentesque habitant morbi tristiquetus et senectus et netus et malesuada ac turpis.</p>
-                                </div>
-                            </div>
-                            <div class="post-footer">
-                                <span class="post-readmore">
-                                    <a href="#" class="btn btn-theme btn-theme-transparent">Read more</a>
-                                </span>
-                            </div>
-                        </article>
-                    </div>
-
-                    <!-- -->
-                    <div class="col-md-4">
-                        <article class="post-wrap" data-animation="fadeInUp" data-animation-delay="300">
-                            <div class="post-media">
-                                <div class="post-type">
-                                    <i class="fa fa-photo"></i>
-                                </div>
-                                <img src="<?=  base_url()?>assets/img/recent-post-1.jpg" alt=""/>
-                            </div>
-                            <div class="post-header">
-                                <h2 class="post-title"><a href="#">Standart Blog Post Header Here</a></h2>
-                                <div class="post-meta">
-                                    <span class="post-date">
-                                        Posted on
-                                        <span class="day">17th</span>
-                                        <span class="month">May</span>
-                                        <span class="year">2015</span>
-                                    </span>
-                                    <span class="pull-right">
-                                        <i class="fa fa-comment"></i> <a href="#">12</a>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="post-body">
-                                <div class="post-excerpt">
-                                    <p>Fusce pellentesque velvitae tincidunt egestas. Pellentesque habitant morbi tristiquetus et senectus et netus et malesuada ac turpis.</p>
-                                </div>
-                            </div>
-                            <div class="post-footer">
-                                <span class="post-readmore">
-                                    <a href="#" class="btn btn-theme btn-theme-transparent">Read more</a>
-                                </span>
-                            </div>
-                        </article>
-                    </div>
-
-                    <!-- -->
-                    <div class="col-md-4">
-                        <article class="post-wrap" data-animation="fadeInUp" data-animation-delay="500">
-                            <div class="post-media">
-                                <div class="post-type">
-                                    <i class="fa fa-music"></i>
-                                </div>
-                                <img src="<?=  base_url()?>assets/img/recent-post-1.jpg" alt=""/>
-                            </div>
-                            <div class="post-header">
-                                <h2 class="post-title"><a href="#">Standart Blog Post Header Here</a></h2>
-                                <div class="post-meta">
-                                    <span class="post-date">
-                                        Posted on
-                                        <span class="day">17th</span>
-                                        <span class="month">May</span>
-                                        <span class="year">2014</span>
-                                    </span>
-                                    <span class="pull-right">
-                                        <i class="fa fa-comment"></i> <a href="#">12</a>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="post-body">
-                                <div class="post-excerpt">
-                                    <p>Fusce pellentesque velvitae tincidunt egestas. Pellentesque habitant morbi tristiquetus et senectus et netus et malesuada ac turpis.</p>
-                                </div>
-                            </div>
-                            <div class="post-footer">
-                                <span class="post-readmore">
-                                    <a href="#" class="btn btn-theme btn-theme-transparent">Read more</a>
-                                </span>
-                            </div>
-                        </article>
-                    </div>
-
+                <div class="row post-row">                
+                    <?php displayHomePosts(); ?><!-- Función de wordpress para los ultimos post -->
                 </div>
                 <div class="text-center margin-top">
-                    <a data-animation="flipInY" data-animation-delay="100" href="#" class="btn btn-theme"><i class="fa fa-file"></i> Ver todas las noticias </a>
+                    <a data-animation="flipInY" data-animation-delay="100" href="http://localhost/actitud_talento_blog/" class="btn btn-theme"><i class="fa fa-file"></i> Ver todas las noticias </a>
                 </div>
             </div>
         </section>
@@ -946,43 +835,43 @@ foreach ($preguntas as $pregunta)
                 <div class="clearfix">
                     <ul class="social-line list-inline">
 <?php                        
-if(isset($evento['twitter']))
+if(isset($evento['twitter']) && $evento['twitter']!=='')
 {
 ?>
                         <li data-animation="flipInY" data-animation-delay="100"><a href="<?=$evento['twitter']?>" class="twitter"><i class="fa fa-twitter"></i></a></li>
 <?php
 }
-if(isset($evento['dribbble']))
+if(isset($evento['dribbble']) && $evento['dribbble']!=='')
 {
 ?>                                
                         <li data-animation="flipInY" data-animation-delay="200"><a href="<?=$evento['dribbble']?>" class="dribbble"><i class="fa fa-dribbble"></i></a></li>
 <?php
 }
-if(isset($evento['facebook']))
+if(isset($evento['facebook']) && $evento['facebook']!=='')
 {
 ?>                          
                         <li data-animation="flipInY" data-animation-delay="300"><a href="<?=$evento['facebook']?>" class="facebook"><i class="fa fa-facebook"></i></a></li>
 <?php
 }
-if(isset($evento['google-plus']))
+if(isset($evento['google-plus']) && $evento['google-plus']!=='')
 {
 ?>                          
                         <li data-animation="flipInY" data-animation-delay="400"><a href="<?=$evento['google-plus']?>" class="google"><i class="fa fa-google-plus"></i></a></li>
 <?php
 }
-if(isset($evento['instagram']))
+if(isset($evento['instagram']) && $evento['instagram']!=='')
 {
 ?>                          
                         <li data-animation="flipInY" data-animation-delay="500"><a href="<?=$evento['instagram']?>" class="instagram"><i class="fa fa-instagram"></i></a></li>
 <?php
 }
-if(isset($evento['pinterest']))
+if(isset($evento['pinterest']) && $evento['pinterest']!=='')
 {
 ?>                          
                         <li data-animation="flipInY" data-animation-delay="600"><a href="<?=$evento['pinterest']?>" class="pinterest"><i class="fa fa-pinterest"></i></a></li>
 <?php
 }
-if(isset($evento['skype']))
+if(isset($evento['skype']) && $evento['skype']!=='')
 {
 ?>                          
                         <li data-animation="flipInY" data-animation-delay="700"><a href="<?=$evento['skype']?>" class="skype"><i class="fa fa-skype"></i></a></li>
