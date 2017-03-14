@@ -17,5 +17,6 @@
         <script src="<?=  base_url()?>assets/js/daterangepicker.js"></script>
         <script src="<?=  base_url()?>assets/js/bootstrap-select.js"></script>
         <script src="<?=  base_url()?>assets/js/tablesorter.js"></script>
+        <script src="<?=  base_url()?>assets/js/image-picker.min.js"></script>
     </body>
 </html>

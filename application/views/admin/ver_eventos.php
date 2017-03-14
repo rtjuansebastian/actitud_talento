@@ -65,6 +65,10 @@ foreach ($eventos as $evento)
                                 <td><img src="<?=$evento['imagen_fondo']?>" width="250" height="180"></td>
                             </tr>
                             <tr>
+                                <td>Color del tema</td>                            
+                                <td><img src="<?=  base_url()?>assets/img/<?=$evento['color']?>.png" width="50" height="50"></td>
+                            </tr>                            
+                            <tr>
                                 <td>Bandera</td>                            
                                 <td><img src="<?=  base_url()?>assets/img/banderas/<?=$evento['imagen_bandera']?>" width="125" height="60"></td>
                             </tr>
@@ -301,7 +305,25 @@ foreach ($eventos as $evento)
                             <div class="form-group">
                                 <label for="video">Video</label>
                                 <input type="text" class="form-control" id="video_evento" name="video" required=""/>                                                        
-                            </div>                                          
+                            </div>
+                            <div class="form-group">
+                                <label for="profesion">Color</label>
+                                <select class="form-control image-picker show-html" id="color" name="color">
+                                    <option data-img-src="http://localhost/actitud_talento/assets/img/blue-1.png" value="blue-1">Azul 1</option>
+                                    <option data-img-src="http://localhost/actitud_talento/assets/img/blue-2.png" value="blue-2">Azul 2</option>
+                                    <option data-img-src="http://localhost/actitud_talento/assets/img/green-1.png" value="green-1">Verde 1</option>
+                                    <option data-img-src="http://localhost/actitud_talento/assets/img/green-2.png" value="green-2">Verde 2</option>
+                                    <option data-img-src="http://localhost/actitud_talento/assets/img/orange-1.png" value="orange-1">Naranja 1</option>
+                                    <option data-img-src="http://localhost/actitud_talento/assets/img/orange-2.png" value="orange-2">Naranja 2</option>
+                                    <option data-img-src="http://localhost/actitud_talento/assets/img/pink.png" value="pink">Rosa</option>
+                                    <option data-img-src="http://localhost/actitud_talento/assets/img/purple-1.png" value="purple-1">Morado 1</option>
+                                    <option data-img-src="http://localhost/actitud_talento/assets/img/purple-2.png" value="purble-2">Morado 2</option>
+                                    <option data-img-src="http://localhost/actitud_talento/assets/img/red-1.png" value="red-1">Rojo 1</option>
+                                    <option data-img-src="http://localhost/actitud_talento/assets/img/red-2.png" value="red-2">Rojo 2</option>
+                                    <option data-img-src="http://localhost/actitud_talento/assets/img/yellow-1.png" value="yellow-1">Amarillo 1</option>
+                                    <option data-img-src="http://localhost/actitud_talento/assets/img/yellow-2.png" value="yellow-2">Amarillo 2</option>
+                                </select>
+                            </div>
                             <div class="form-group">
                                 <label for="imagen_fondo" class="col-sm-2"><p class="text-left">Imagen de Fondo</p></label>
                                 <input type="file" class="form-control" name="imagen_fondo" id="imagen_fondo_evento"/>
@@ -656,8 +678,9 @@ foreach ($eventos as $evento)
         </div>        
 <?php $this->load->view("admin/footer"); ?>
         <script>
-            $(document).ready(function(){
+            $(document).ready(function(){        
                 
+                $("#color").imagepicker();
                 var conferencistas;
                 var escenarios;
                 function traer_conferencistas()
@@ -795,7 +818,7 @@ foreach ($eventos as $evento)
                       url: "<?=  base_url()?>admin/editar_evento_evento",
                       data: { evento: evento}
                     })
-                    .done(function( data ) {
+                    .done(function( data ) {                        
                         var result= $.parseJSON(data);
                         $("#id_evento").val(result.id);
                         $("#nombre_evento").val(result.nombre);
@@ -809,6 +832,7 @@ foreach ($eventos as $evento)
                         $("#telefono_evento").val(result.telefono);
                         $("#email_evento").val(result.email);
                         $("#video_evento").val(result.video);
+                        $("#color").val(result.color);
                         $("#twitter_evento").val(result.twitter);
                         $("#dribbble_evento").val(result.dribbble);
                         $("#facebook_evento").val(result.facebook);

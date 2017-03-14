@@ -28,7 +28,7 @@ header("HTTP/1.1 200 OK"); ?>
 
     <!--<link href="<?=base_url()?>assets/css/theme.css" rel="stylesheet">-->
     <link href="<?=base_url()?>assets/css/estilos.php?imagen=<?=$evento['imagen_fondo']?>" rel="stylesheet">
-    <link href="<?=base_url()?>assets/css/theme-red-1.css" rel="stylesheet" id="theme-config-link">
+    <link href="<?=base_url()?>assets/css/theme-<?=$evento['color']?>.css" rel="stylesheet" id="theme-config-link">
     <link href="<?=base_url()?>assets/css/custom.css" rel="stylesheet">
 
     <link type="text/css" media="screen" rel="stylesheet" href="<?=base_url()?>assets/css/awwwards.css" />
@@ -648,7 +648,7 @@ if(isset($conferencista['instagram']))
                 <form id="registration-form" name="registration-form" class="registration-form">
                     <div class="row">
                         <div class="col-sm-12 form-alert"></div>
-                        <div class="col-sm-6 col-md-3">
+                        <div class="col-sm-6 col-md-4">
                             <div class="form-group" data-animation="fadeInUp" data-animation-delay="200">
                                 <input
                                         type="text" class="form-control input-name"
@@ -656,7 +656,7 @@ if(isset($conferencista['instagram']))
                                         placeholder="Nombre y Apellido" />
                             </div>
                         </div>
-                        <div class="col-sm-6 col-md-3">
+                        <div class="col-sm-6 col-md-4">
                             <div class="form-group" data-animation="fadeInUp" data-animation-delay="400">
                                 <input
                                         type="text" class="form-control input-email"
@@ -664,7 +664,7 @@ if(isset($conferencista['instagram']))
                                         placeholder="Email"/>
                             </div>
                         </div>
-                        <div class="col-sm-6 col-md-3">
+                        <div class="col-sm-6 col-md-4">
                             <div class="form-group" data-animation="fadeInUp" data-animation-delay="600">
                                 <input
                                         type="text" class="form-control input-phone"
@@ -692,10 +692,11 @@ if(isset($conferencista['instagram']))
                             <span data-animation="fadeInRight" data-animation-delay="500" class="title-inner">Preguntas frecuentes del evento</span>
                         </h1>
                     </div>
+                    <!--
                     <div class="col-md-4 text-right-md pull-right">
-                        <a href="#" class="btn btn-theme btn-theme-lg btn-theme-transparent-grey pull-right"
+                        <a href="#af-form" class="btn btn-theme btn-theme-lg btn-theme-transparent-grey pull-right"
                            data-animation="flipInY" data-animation-delay="700"><i class="fa fa-pencil"></i> Hacer una pregunta</a>
-                    </div>
+                    </div>-->
                 </div>
                 <div class="row faq margin-top" data-animation="fadeInUp" data-animation-delay="100">
                     <div class="col-sm-6 col-md-6 pull-left">
@@ -756,8 +757,8 @@ foreach ($preguntas as $pregunta)
                         </h1>
                         <p data-animation="fadeInUp" data-animation-delay="200" class="text-uppercase"><?=$evento['lugar']?><br/>                            
                             <?=$evento['nombre_pais']?> <br/>
-                            <?=$evento['telefono']?></p>
-                        <p><a href="mailto:<?=$evento['email']?>">Correo</a></p>
+                            Telefono: <?=$evento['telefono']?></p>
+                        <p><a href="mailto:<?=$evento['email']?>">Correo: <?=$evento['email']?></a></p>
                         <a href="#" class="btn btn-theme"
                            data-animation="flipInY" data-animation-delay="300">Get Direction <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
@@ -917,7 +918,7 @@ if(isset($evento['skype']) && $evento['skype']!=='')
 
 <!--[if (gte IE 9)|!(IE)]><!-->
 <script src="<?=base_url()?>assets/js/jquery.cookie.js"></script>
-<script src="<?=base_url()?>assets/js/theme-config-light.js"></script>
+<!--<script src="<?=base_url()?>assets/js/theme-config-light.js"></script>-->
 <!--<![endif]-->
 
 <script type="text/javascript">

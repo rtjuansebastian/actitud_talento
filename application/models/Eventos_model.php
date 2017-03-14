@@ -27,7 +27,7 @@ class Eventos_model extends CI_Model
     public function traer_eventos()
     {
         $eventos=array();
-        $this->db->select("eventos.id, eventos.pais, paises.nombre as nombre_pais, eventos.nombre, eventos.descripcion, eventos.lugar, eventos.fecha, eventos.coordenadas, eventos.cupos, eventos.dias, eventos.telefono, eventos.email, eventos.video, eventos.imagen_fondo, paises.imagen as imagen_bandera, eventos.twitter, eventos.dribbble, eventos.facebook, eventos.google_plus, eventos.instagram, eventos.pinterest, eventos.skype, GROUP_CONCAT(patrocinadores.nombre SEPARATOR ',') AS patrocinadores");
+        $this->db->select("eventos.id, eventos.pais, paises.nombre as nombre_pais, eventos.nombre, eventos.descripcion, eventos.lugar, eventos.fecha, eventos.coordenadas, eventos.cupos, eventos.dias, eventos.telefono, eventos.email, eventos.video, eventos.imagen_fondo, eventos.color, paises.imagen as imagen_bandera, eventos.twitter, eventos.dribbble, eventos.facebook, eventos.google_plus, eventos.instagram, eventos.pinterest, eventos.skype, GROUP_CONCAT(patrocinadores.nombre SEPARATOR ',') AS patrocinadores");
         $this->db->from("eventos");
         $this->db->join("eventos_patrocinadores","eventos.id=eventos_patrocinadores.evento");
         $this->db->join("patrocinadores","eventos_patrocinadores.patrocinador=patrocinadores.id");
@@ -51,6 +51,7 @@ class Eventos_model extends CI_Model
             $eventos[$row->id]['video']=$row->video;
             $eventos[$row->id]['imagen_fondo']=$row->imagen_fondo;
             $eventos[$row->id]['imagen_bandera']=$row->imagen_bandera;
+            $eventos[$row->id]['color']=$row->color;
             $eventos[$row->id]['twitter']=$row->twitter;
             $eventos[$row->id]['dribbble']=$row->dribbble;
             $eventos[$row->id]['facebook']=$row->facebook;
@@ -67,7 +68,7 @@ class Eventos_model extends CI_Model
     public function traer_evento($id)
     {
         $evento=array();
-        $this->db->select("eventos.id, eventos.pais, paises.nombre as nombre_pais, eventos.nombre, eventos.descripcion, eventos.lugar, eventos.fecha, eventos.coordenadas, eventos.cupos, eventos.dias, eventos.telefono, eventos.email, eventos.video, eventos.imagen_fondo, paises.imagen as imagen_bandera, eventos.twitter, eventos.dribbble, eventos.facebook, eventos.google_plus, eventos.instagram, eventos.pinterest, eventos.skype, GROUP_CONCAT(patrocinadores.nombre SEPARATOR ',') AS patrocinadores");
+        $this->db->select("eventos.id, eventos.pais, paises.nombre as nombre_pais, eventos.nombre, eventos.descripcion, eventos.lugar, eventos.fecha, eventos.coordenadas, eventos.cupos, eventos.dias, eventos.telefono, eventos.email, eventos.video, eventos.imagen_fondo, eventos.color, paises.imagen as imagen_bandera, eventos.twitter, eventos.dribbble, eventos.facebook, eventos.google_plus, eventos.instagram, eventos.pinterest, eventos.skype, GROUP_CONCAT(patrocinadores.nombre SEPARATOR ',') AS patrocinadores");
         $this->db->from("eventos");
         $this->db->join("eventos_patrocinadores","eventos.id=eventos_patrocinadores.evento");
         $this->db->join("patrocinadores","eventos_patrocinadores.patrocinador=patrocinadores.id");
@@ -89,6 +90,7 @@ class Eventos_model extends CI_Model
         $evento['email']=$row->email;
         $evento['video']=$row->video;
         $evento['imagen_fondo']=$row->imagen_fondo;
+        $evento['color']=$row->color;
         $evento['imagen_bandera']=$row->imagen_bandera;
         $evento['twitter']=$row->twitter;
         $evento['dribbble']=$row->dribbble;
