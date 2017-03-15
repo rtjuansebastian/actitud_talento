@@ -359,6 +359,7 @@ foreach ($eventos as $evento)
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                          <button type="button" class="btn btn-danger" data-dismiss="modal" id="btn_eliminar_evento">Eliminar evento</button>
                           <button type="button" class="btn btn-primary" data-dismiss="modal" id="btn_actualizar_evento">Guardar</button>
                         </div>
                     </form>                        
@@ -1112,6 +1113,24 @@ foreach ($eventos as $evento)
                         data: {testimonio:testimonio}
                     });                    
                     $('#modal_testimonios').modal('hide');                    
-                });                 
+                }); 
+                
+                $("#btn_eliminar_evento").click(function(){
+                    if(confirm('¿Estas seguro de eliminar este evento?'))
+                    {
+                        var id= $("#id_evento").val();
+                        $.ajax(
+                        {
+                            method: "POST",
+                            url: "<?php echo base_url(); ?>admin/eliminar_evento",
+                            asyn:false,
+                            data: {id: id},
+                            success: function ()
+                            {
+                                location.reload();
+                            }
+                        });
+                    }
+                });                
             });
         </script>        

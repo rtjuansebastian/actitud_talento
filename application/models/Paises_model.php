@@ -27,6 +27,7 @@ class Paises_model extends CI_Model
     public function traer_paises()
     {
         $paises=array();
+        $this->db->where("estado","activo");
         $query=$this->db->get('paises');
         foreach ($query->result() as $row)
         {
@@ -41,6 +42,7 @@ class Paises_model extends CI_Model
     public function traer_pais($id)
     {
         $pais=array();        
+        $this->db->where("estado","activo");
         $this->db->where('id',$id);
         $query=$this->db->get('paises');
         $row=$query->row();
@@ -123,5 +125,14 @@ class Paises_model extends CI_Model
             $this->db->where('id', $id);
             $this->db->update('paises', $data_img);             
         }
+    }  
+    
+    public function eliminar_pais($id)
+    {
+        $data = array(
+            'estado' => "eliminado"
+        );        
+        $this->db->where('id', $id);
+        $this->db->update('paises', $data);         
     }    
 }

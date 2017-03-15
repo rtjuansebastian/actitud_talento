@@ -30,6 +30,7 @@ class Escenarios_model extends CI_Model
         $this->db->select("escenarios.id, evento, eventos.nombre as nombre_evento, escenarios.nombre, capacidad");
         $this->db->from("escenarios");
         $this->db->join("eventos","escenarios.evento=eventos.id");
+        $this->db->where('escenarios.estado','activo');
         $query=$this->db->get();
         foreach ($query->result() as $row)
         {
@@ -46,6 +47,7 @@ class Escenarios_model extends CI_Model
     public function traer_escenarios_evento($evento)
     {
         $escenarios=array();
+        $this->db->where('estado','activo');
         $this->db->where('evento',$evento);
         $query=$this->db->get('escenarios');
         foreach ($query->result() as $row)
@@ -62,6 +64,7 @@ class Escenarios_model extends CI_Model
     public function traer_escenario($id)
     {
         $escenario=array();
+        $this->db->where('estado','activo');
         $this->db->where('id',$id);
         $query=$this->db->get('escenarios');
         $row=$query->row();
@@ -98,4 +101,13 @@ class Escenarios_model extends CI_Model
         $this->db->where('id', $data['id']);
         $this->db->update('escenarios', $data); 
     }
+    
+    public function eliminar_escenario($id)
+    {
+        $data = array(
+            'estado' => "eliminado"
+        );        
+        $this->db->where('id', $id);
+        $this->db->update('escenarios', $data);         
+    }    
 }

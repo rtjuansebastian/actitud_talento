@@ -81,6 +81,12 @@ class Admin extends CI_Controller
             $this->load->view('admin/agregar_pais');   
         }        
     }
+    
+    public function eliminar_pais()
+    {
+        $id= $this->input->post("id");
+        $this->paises_model->eliminar_pais($id);        
+    }     
 
     public function ver_eventos()
     {        
@@ -267,6 +273,12 @@ class Admin extends CI_Controller
         }
     }
     
+    public function eliminar_evento()
+    {
+        $id= $this->input->post("id");
+        $this->eventos_model->eliminar_evento($id);
+    }
+
     public function traer_conferencistas()
     {
         $conferencistas=$this->conferencistas_model->traer_conferencistas();
@@ -414,7 +426,13 @@ class Admin extends CI_Controller
         $data=  $this->input->post();
         $this->escenarios_model->actualizar_escenario($data);
         $this->ver_escenarios();
-    }     
+    } 
+
+    public function eliminar_escenario()
+    {
+        $id= $this->input->post("id");
+        $this->escenarios_model->eliminar_escenario($id);        
+    }
 
     public function agregar_escenario()
     {
@@ -464,6 +482,12 @@ class Admin extends CI_Controller
         {
             $this->load->view('admin/agregar_patrocinador');   
         }          
+    }
+
+    public function eliminar_patrocinador()
+    {
+        $id= $this->input->post("id");
+        $this->patrocinadores_model->eliminar_patrocinador($id);        
     }    
     
     public function agregar_contacto()

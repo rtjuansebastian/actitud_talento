@@ -70,6 +70,7 @@ foreach ($patrocinadores as $patrocinador)
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-danger" id="eliminar_patrocinador" data-dismiss="modal">Eliminar patrocinador</button>
                             <button type="submit" class="btn btn-primary">Guardar</button>
                         </div>
                     </form>
@@ -98,5 +99,23 @@ foreach ($patrocinadores as $patrocinador)
                 }
             });
         });
+        
+        $("#eliminar_patrocinador").click(function(){
+            if(confirm('¿Estas seguro de eliminar este patrocinador?'))
+            {
+                var id= $("#id").val();
+                $.ajax(
+                {
+                    method: "POST",
+                    url: "<?php echo base_url(); ?>admin/eliminar_patrocinador",
+                    asyn:false,
+                    data: {id: id},
+                    success: function ()
+                    {
+                        location.reload();
+                    }
+                });
+            }
+        });        
     });
 </script>

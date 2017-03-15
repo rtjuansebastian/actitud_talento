@@ -32,6 +32,7 @@ class Eventos_model extends CI_Model
         $this->db->join("eventos_patrocinadores","eventos.id=eventos_patrocinadores.evento");
         $this->db->join("patrocinadores","eventos_patrocinadores.patrocinador=patrocinadores.id");
         $this->db->join("paises","eventos.pais=paises.id");
+        $this->db->where("eventos.estado","activo");
         $this->db->group_by("eventos.id");
         $query=$this->db->get();
         foreach ($query->result() as $row)
@@ -73,6 +74,7 @@ class Eventos_model extends CI_Model
         $this->db->join("eventos_patrocinadores","eventos.id=eventos_patrocinadores.evento");
         $this->db->join("patrocinadores","eventos_patrocinadores.patrocinador=patrocinadores.id");
         $this->db->join("paises","eventos.pais=paises.id");        
+        $this->db->where("eventos.estado","activo");
         $this->db->where('eventos.id',$id);
         $query=$this->db->get();
         $row=$query->row();
@@ -173,4 +175,13 @@ class Eventos_model extends CI_Model
             $this->db->update('eventos', $data_img);  
         }          
     }
+    
+    public function eliminar_evento($id)
+    {
+        $data = array(
+            'estado' => "eliminado"
+        );        
+        $this->db->where('id', $id);
+        $this->db->update('eventos', $data);         
+    }      
 }

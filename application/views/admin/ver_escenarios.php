@@ -41,7 +41,7 @@ foreach ($escenarios as $escenario)
                         <input type="hidden" id="id" name="id">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="modal_label_editar_escenario">Editar conferencista</h4>
+                            <h4 class="modal-title" id="modal_label_editar_escenario">Editar escenarios</h4>
                         </div>
                         <div class="modal-body">                    
                             <div class="form-group">
@@ -68,6 +68,7 @@ foreach ($escenarios as $escenario)
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-danger" id="eliminar_escenario" data-dismiss="modal">Eliminar escenario</button>
                             <button type="submit" class="btn btn-primary">Guardar</button>
                         </div>
                     </form>
@@ -95,5 +96,23 @@ foreach ($escenarios as $escenario)
                 }
             });
         });
+        
+        $("#eliminar_escenario").click(function(){
+            if(confirm('¿Estas seguro de eliminar este escenario?'))
+            {
+                var id= $("#id").val();
+                $.ajax(
+                {
+                    method: "POST",
+                    url: "<?php echo base_url(); ?>admin/eliminar_escenario",
+                    asyn:false,
+                    data: {id: id},
+                    success: function ()
+                    {
+                        location.reload();
+                    }
+                });
+            }
+        });        
     });
 </script>
