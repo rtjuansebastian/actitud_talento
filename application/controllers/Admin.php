@@ -380,7 +380,13 @@ class Admin extends CI_Controller
         {
             $this->load->view('admin/agregar_conferencista');   
         }        
-    }  
+    }
+    
+    public function eliminar_conferencista()
+    {
+        $id= $this->input->post("id");
+        $this->conferencistas_model->eliminar_conferencista($id);
+    }
     
     public function traer_escenarios_evento()
     {

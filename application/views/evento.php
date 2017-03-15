@@ -495,7 +495,10 @@ foreach ($patrocinadores as $patrocinador)
             </div>
         </section>
         <!-- /PAGE SPONSORS -->
-
+<?php
+if(count($testimonios)>0)
+{
+?>
         <section class="page-section color">
             <div class="container">
                 <h1 class="section-title">
@@ -503,7 +506,7 @@ foreach ($patrocinadores as $patrocinador)
                     <span data-animation="fadeInRight" data-animation-delay="500" class="title-inner">Testimonios<small> / Conoce la experiencia de quienes han participado</small></span>
                 </h1>
 
-                <!-- Testimonials -->
+                <!-- Testimonials -->             
                 <div id="testimonials" class="owl-carousel testimonials" data-animation="fadeInUp" data-animation-delay="100">
 <?php
 foreach ($testimonios as $testimonio)
@@ -533,10 +536,12 @@ foreach ($testimonios as $testimonio)
 ?>
                 </div>
                 <!-- Testimonials -->
-
+                
             </div>
         </section>
-
+<?php
+}
+?>       
         <!-- PAGE SPEAKERS -->
         <section class="page-section light" id="speakers">
             <div class="container">

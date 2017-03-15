@@ -110,6 +110,7 @@ foreach ($conferencistas as $conferencista)
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-danger" id="eliminar_conferencista" data-dismiss="modal">Eliminar conferencista</button>
                             <button type="submit" class="btn btn-primary">Guardar</button>
                         </div>
                     </form>
@@ -144,5 +145,22 @@ foreach ($conferencistas as $conferencista)
                 }
             });
         });
+        $("#eliminar_conferencista").click(function(){
+            if(confirm('¿Estas seguro de eliminar este conferencista?'))
+            {
+                var id= $("#id").val();
+                $.ajax(
+                {
+                    method: "POST",
+                    url: "<?php echo base_url(); ?>admin/eliminar_conferencista",
+                    asyn:false,
+                    data: {id: id},
+                    success: function ()
+                    {
+                        location.reload();
+                    }
+                });
+            }
+        });        
     });
 </script>

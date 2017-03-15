@@ -114,7 +114,7 @@ class Eventos_model extends CI_Model
             $dir_subida = '/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/fondos/';
             if(file_exists($dir_subida)){}
             else{mkdir($dir_subida, 0700);}
-            $fichero_subido = $dir_subida . basename($_FILES['imagen']['name']);
+            $fichero_subido = $dir_subida . basename($_FILES['imagen_fondo']['name']);
             $ext=substr($fichero_subido, -4); 
             $fichero_subido = $dir_subida . $id.$ext;
             move_uploaded_file($_FILES['imagen_fondo']['tmp_name'], $fichero_subido);      

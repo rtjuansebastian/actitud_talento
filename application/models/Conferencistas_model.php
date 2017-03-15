@@ -27,6 +27,7 @@ class Conferencistas_model extends CI_Model
     public function traer_conferencistas()
     {
         $conferencistas=array();
+        $this->db->where("estado","activo");
         $query=$this->db->get('conferencistas');
         foreach ($query->result() as $row)
         {
@@ -52,6 +53,7 @@ class Conferencistas_model extends CI_Model
         $this->db->select("conferencistas.id,conferencistas.nombre,conferencistas.profesion,conferencistas.perfil,conferencistas.imagen,conferencistas.facebook,conferencistas.twitter,conferencistas.google_plus,conferencistas.linkedin,conferencistas.instagram");
         $this->db->from("programaciones");
         $this->db->join("conferencistas","programaciones.conferencista=conferencistas.id");
+        $this->db->where("conferencistas.estado","activo");
         $this->db->where('programaciones.evento',$evento);
         $query=$this->db->get();
         foreach ($query->result() as $row)
@@ -74,6 +76,7 @@ class Conferencistas_model extends CI_Model
     {
         $conferencista=array();
         $this->db->where('id',$id);
+        $this->db->where("estado","activo");
         $query=$this->db->get('conferencistas');
         $row=$query->row();
         $conferencista['id']=$row->id;
@@ -158,10 +161,20 @@ class Conferencistas_model extends CI_Model
             $this->db->update('conferencistas', $data);             
         }
     }
+    
+    public function eliminar_conferencista($id)
+    {
+        $data = array(
+            'estado' => "eliminado"
+        );        
+        $this->db->where('id', $id);
+        $this->db->update('conferencistas', $data);         
+    }
 
     public function traer_numero_conferencistas_evento($evento)
     {
         $this->db->where("evento",$evento);
+        $this->db->where("estado","activo");
         $this->db->group_by("conferencista");
         $query=$this->db->get("programaciones");
         $total=$query->num_rows();
