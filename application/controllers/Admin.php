@@ -92,6 +92,7 @@ class Admin extends CI_Controller
     {        
         $datos['eventos']=$this->eventos_model->traer_eventos();
         $datos['paises']=$this->paises_model->traer_paises();
+        $datos['patrocinadores']=$this->patrocinadores_model->traer_patrocinadores();
         $this->load->view('admin/ver_eventos',$datos);
     }        
     
@@ -134,7 +135,19 @@ class Admin extends CI_Controller
     {
         $data=  $this->input->post();
         $this->eventos_model->actualizar_evento($data);
-    }     
+    }
+    
+    public function agregar_patrocinador_evento()
+    {
+        $data=  $this->input->post();
+        $this->patrocinadores_model->agregar_patrocinador_evento($data);        
+    }
+    
+    public function eliminar_patrocinador_evento()
+    {
+        $data=  $this->input->post();
+        $this->patrocinadores_model->eliminar_patrocinador_evento($data);        
+    }    
     
     public function editar_programacion_evento()
     {
@@ -404,6 +417,13 @@ class Admin extends CI_Controller
     {
         $evento=  $this->input->post("evento");
         $escenarios=$this->escenarios_model->traer_escenarios_evento($evento);
+        echo json_encode($escenarios);
+    }
+
+    public function traer_patrocinadores_evento()
+    {
+        $evento=  $this->input->post("evento");
+        $escenarios=$this->patrocinadores_model->traer_patrocinadores_evento($evento);
         echo json_encode($escenarios);
     }    
 

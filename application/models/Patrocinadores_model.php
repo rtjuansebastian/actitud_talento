@@ -160,6 +160,24 @@ class Patrocinadores_model extends CI_Model
         }
     }
     
+    public function agregar_patrocinador_evento($data)
+    {
+        $this->db->where("evento",$data["evento"]);
+        $this->db->where("patrocinador",$data["patrocinador"]);
+        $query=$this->db->get("eventos_patrocinadores");
+        if($query->num_rows()<1)
+        {
+            $this->db->insert('eventos_patrocinadores', $data); 
+        }        
+    }  
+    
+    public function eliminar_patrocinador_evento($data)
+    {
+        $this->db->where("evento",$data["evento"]);
+        $this->db->where("patrocinador",$data["patrocinador"]);
+        $this->db->delete('eventos_patrocinadores');
+    }
+    
     public function eliminar_patrocinador($id)
     {
         $data = array(

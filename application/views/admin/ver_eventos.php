@@ -102,7 +102,11 @@ foreach ($eventos as $evento)
                             </tr>
                             <tr>
                                 <td>Patrocinadores</td>                            
-                                <td><?=$evento['patrocinadores']?></td>
+                                <td><?=$evento['patrocinadores']?>
+                                    <br>
+                                    <button class="btn btn-primary glyphicon glyphicon-plus agregar_patrocinador_evento" data-evento="<?=$evento['id']?>" data-toggle="modal" data-target="#modal_agregar_patrocinador_evento"></button>
+                                    <button class="btn btn-primary glyphicon glyphicon-minus eliminar_patrocinador_evento" data-evento="<?=$evento['id']?>" data-toggle="modal" data-target="#modal_eliminar_patrocinador_evento"></button>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Programación</td>                            
@@ -676,7 +680,67 @@ foreach ($eventos as $evento)
                     </form>
                 </div>
             </div>
-        </div>        
+        </div> 
+        <!-- Modal agregar patrocinador evento -->
+        <div class="modal fade" id="modal_agregar_patrocinador_evento" tabindex="-1" role="dialog" aria-labelledby="ModalLabelAgregarPatrocinadorEvento">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form id="form_patrocinador_evento" enctype="multipart/form-data">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="ModalLabelAgregarPatrocinadorEvento">Agregar patrocinador al evento</h4>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" id="evento_agregar_patrocinador" name="evento">                       
+                            <div class="form-group">
+                                <label for="nombre">Patrocinador</label>
+                                <select class="form-control" id="patrocinador" name="patrocinador">
+                                    <option></option>
+    <?php
+    foreach ($patrocinadores as $patrocinador)
+    {
+    ?>
+                                    <option value="<?=$patrocinador['id']?>"><?=$patrocinador['nombre']?></option>
+    <?php
+    }
+    ?>
+                                </select>
+                            </div>                
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" id="btn_agregar_patrocinador_evento">Guardar</button>
+                        </div>                                            
+                    </form>
+                </div>
+            </div>
+        </div> 
+        <!-- Modal eliminar patrocinador evento -->
+        <div class="modal fade" id="modal_eliminar_patrocinador_evento" tabindex="-1" role="dialog" aria-labelledby="ModalLabelAgregarPatrocinadorEvento">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form id="form_eliminar_patrocinador_evento" enctype="multipart/form-data">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="ModalLabelAgregarPatrocinadorEvento">Agregar patrocinador al evento</h4>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" id="evento_eliminar_patrocinador" name="evento">                       
+                            <div class="form-group">
+                                <label for="nombre">Patrocinador</label>
+                                <select class="form-control" id="select_eliminar_patrocinador_evento" name="patrocinador">
+                                    <option></option>
+                                </select>
+                            </div>                
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" id="btn_eliminar_patrocinador_evento">Guardar</button>
+                        </div>                                            
+                    </form>
+                </div>
+            </div>
+        </div>         
 <?php $this->load->view("admin/footer"); ?>
         <script>
             $(document).ready(function(){        
@@ -684,6 +748,7 @@ foreach ($eventos as $evento)
                 $("#color").imagepicker();
                 var conferencistas;
                 var escenarios;
+                var patrocinadores_evento;
                 function traer_conferencistas()
                 {
                     $.ajax(
@@ -717,7 +782,25 @@ foreach ($eventos as $evento)
                     });
 
                     return escenarios;
-                }                                
+                }
+                
+                function traer_patrocinadores_evento(evento)
+                {
+                    $.ajax(
+                    {
+                        type: "POST",
+                        data: {evento:evento},
+                        url: "<?= base_url()?>admin/traer_patrocinadores_evento",
+                        async:false,
+                        success:function(data)
+                        {
+                            var result=$.parseJSON(data);
+                            patrocinadores_evento=result;
+                        }
+                    });
+
+                    return patrocinadores_evento;
+                }                
                 
                 $('.date').datetimepicker({
                     locale:'es',
@@ -1131,6 +1214,55 @@ foreach ($eventos as $evento)
                             }
                         });
                     }
+                });
+                
+                $(".agregar_patrocinador_evento").click(function(){
+                
+                    var evento= $(this).data("evento");
+                    $("#evento_agregar_patrocinador").val(evento);
+                });
+                
+                $("#btn_agregar_patrocinador_evento").click(function(){
+                    var formData = new FormData(document.getElementById("form_patrocinador_evento"));
+                    $.ajax(
+                    {
+                        data:formData,
+                        type: "POST",
+                        url: "<?= base_url()?>admin/agregar_patrocinador_evento",
+                        dataType: "html",
+                        cache: false,
+                        contentType: false,
+                        processData: false
+                    });                
+                    location.reload();                    
+                });
+                
+                
+                $(".eliminar_patrocinador_evento").click(function(){
+                
+                    var evento= $(this).data("evento");
+                    $("#evento_eliminar_patrocinador").val(evento);
+                    var lista='<option></option>';
+                    var listado_patrocinadores=traer_patrocinadores_evento(evento);
+                    $.each(listado_patrocinadores, function( llave, items) {
+                        lista=lista+'<option value="'+items.patrocinador+'">'+items.nombre_patrocinador+'</option>';                                                            
+                    });       
+                    $("#select_eliminar_patrocinador_evento").html(lista);                    
+                });
+                
+                $("#btn_eliminar_patrocinador_evento").click(function(){
+                    var formData = new FormData(document.getElementById("form_eliminar_patrocinador_evento"));
+                    $.ajax(
+                    {
+                        data:formData,
+                        type: "POST",
+                        url: "<?= base_url()?>admin/eliminar_patrocinador_evento",
+                        dataType: "html",
+                        cache: false,
+                        contentType: false,
+                        processData: false
+                    });                
+                    location.reload();                    
                 });                
             });
         </script>        
