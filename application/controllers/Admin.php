@@ -30,6 +30,7 @@ class Admin extends CI_Controller
         $this->load->model("login_model");
         $this->load->model('contactos_model');
         $this->load->model('registros_model');
+        $this->load->model('precios_model');
     }
     
     /**
@@ -103,6 +104,13 @@ class Admin extends CI_Controller
         echo json_encode($programaciones);
     }
     
+    public function traer_precios_evento()
+    {
+        $evento=$this->input->post("evento");
+        $precios=$this->precios_model->traer_precios_evento($evento);
+        echo json_encode($precios);
+    }    
+    
     public function traer_preguntas_evento()
     {
         $evento=$this->input->post("evento");
@@ -169,6 +177,12 @@ class Admin extends CI_Controller
         $data=$this->input->post();
         $this->programaciones_model->agregar_programacion_evento($data);
     }
+    
+    public function crear_precios_evento()
+    {
+        $data=$this->input->post();
+        $this->precios_model->agregar_precios_evento($data);
+    }    
     
     public function eliminar_programacion_evento()
     {

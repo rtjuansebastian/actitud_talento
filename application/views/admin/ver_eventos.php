@@ -113,6 +113,10 @@ foreach ($eventos as $evento)
                                 <td><button class="btn btn-primary glyphicon glyphicon-search ver_programacion" data-evento="<?=$evento['id']?>" data-toggle="modal" data-target="#modal_programacion"></button></td>
                             </tr> 
                             <tr>
+                                <td>Precios</td>                            
+                                <td><button class="btn btn-primary glyphicon glyphicon-search ver_precios" data-evento="<?=$evento['id']?>" data-toggle="modal" data-target="#modal_precios"></button></td>
+                            </tr>                             
+                            <tr>
                                 <td>Preguntas frecuentes</td>                            
                                 <td><button class="btn btn-primary glyphicon glyphicon-search ver_preguntas" data-evento="<?=$evento['id']?>" data-toggle="modal" data-target="#modal_preguntas"></button></td>
                             </tr> 
@@ -165,6 +169,37 @@ foreach ($eventos as $evento)
             </div>
           </div>
         </div>
+        <!-- Modal Precios -->
+        <div class="modal fade" id="modal_precios" tabindex="-1" role="dialog" aria-labelledby="ModalLabelPrecios">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="ModalLabelPrecios">Precios</h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-responsive">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Descripción</th>
+                                <th>Precio</th>
+                                <th>Editar</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla_precios">
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal_crear_precios" id="crear_precios">Crear Precios</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>                
+                </div>
+            </div>
+          </div>
+        </div>        
         <!-- Modal Preguntas -->
         <div class="modal fade" id="modal_preguntas" tabindex="-1" role="dialog" aria-labelledby="ModalLabelProgramacion">
             <div class="modal-dialog modal-lg" role="document">
@@ -426,6 +461,39 @@ foreach ($eventos as $evento)
                 </div>
             </div>
           </div>
+        <!-- Modal Editar Precios -->
+        <div class="modal fade" id="modal_editar_programcion" tabindex="-1" role="dialog" aria-labelledby="ModalLabelEditarPrecios">
+          <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">                
+                    <form id="actualizar_precios">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <h4 class="modal-title" id="ModalLabelEditarPrecios">Precio</h4>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" id="id" name="id">  
+                            <div class="form-group">
+                                <label for="perfil">Nombre</label>
+                                <input type="text" class="form-control" id="nombre" name="nombre" required=""/>                                                        
+                            </div>                         
+                            <div class="form-group">
+                                <label for="perfil">Descripción</label>
+                                <input type="text" class="form-control" id="descripcion" name="descripcion" required=""/>                                                        
+                            </div> 
+                            <div class="form-group">
+                                <label for="perfil">Precio</label>
+                                <input type="number" class="form-control" id="precio" name="precio" required=""/>                                                        
+                            </div>                             
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal" id="btn_eliminar_precios">Eliminar</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" id="btn_actualizar_precios">Guardar</button>
+                        </div>
+                    </form>                        
+                </div>
+            </div>
+          </div>        
         <!-- Modal crear conferencista -->
         <div class="modal fade" id="modal_crear_conferencista" tabindex="-1" role="dialog" aria-labelledby="ModalLabelCrearConferencista">
             <div class="modal-dialog" role="document">
@@ -621,6 +689,38 @@ foreach ($eventos as $evento)
                 </div>
             </div>
         </div>    
+        <!-- Modal crear precios -->
+        <div class="modal fade" id="modal_crear_precios" tabindex="-1" role="dialog" aria-labelledby="ModalLabelCrearProgramacion">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form id="form_crear_precios" enctype="multipart/form-data">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="ModalLabelCrearProgramacion">Crear Precio</h4>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" id="evento_crear_precios" name="evento"> 
+                            <div class="form-group">
+                                <label for="perfil">Nombre</label>
+                                <input type="text" class="form-control" id="nombre" name="nombre" required=""/>                                                        
+                            </div>                         
+                            <div class="form-group">
+                                <label for="perfil">Descripción</label>
+                                <input type="text" class="form-control" id="descripcion" name="descripcion" required=""/>                                                        
+                            </div> 
+                            <div class="form-group">
+                                <label for="perfil">Precio</label>
+                                <input type="number" class="form-control" id="precio" name="precio" required=""/>                                                        
+                            </div>                            
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" id="btn_crear_precios">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>        
         <!-- Modal crear pregunta -->
         <div class="modal fade" id="modal_crear_pregunta" tabindex="-1" role="dialog" aria-labelledby="ModalLabelCrearPregunta">
             <div class="modal-dialog" role="document">
@@ -832,6 +932,29 @@ foreach ($eventos as $evento)
                         $("#crear_programacion").data("evento",evento);
                     });                    
                 });
+                $(".ver_precios").on("click",function(){
+                    var evento=$(this).data("evento");
+                    $.ajax({
+                      method: "POST",
+                      url: "<?=  base_url()?>admin/traer_precios_evento",
+                      data: { evento: evento}
+                    })
+                    .done(function( data ) {
+                        var result= $.parseJSON(data);
+                        var tabla_precios='';      
+                        $.each(result, function( llave, items) {
+                            tabla_precios=tabla_precios+'<tr>'+
+                                    '<td>'+items.id+'</td>'+
+                                    '<td>'+items.nombre+'</td>'+
+                                    '<td>'+items.descripcion+'</td>'+
+                                    '<td>'+items.precio+'</td>'+
+                                    '<td><button class="btn btn-primary glyphicon glyphicon-pencil editar_precios" type="button" data-precios="'+items.id+'" data-toggle="modal" data-target="#modal_editar_precio"></button></td>'+
+                                '</tr>';                            
+                        });
+                        $("#tabla_precios").html(tabla_precios);
+                        $("#crear_precios").data("evento",evento);
+                    });                    
+                });                
                 $(".ver_preguntas").on("click",function(){
                     var evento=$(this).data("evento");
                     $.ajax({
@@ -1005,6 +1128,16 @@ foreach ($eventos as $evento)
                     $('#modal_programacion').modal('hide');
                 });
                 
+                $("#btn_actualizar_precios").click(function(){
+                    var dataString = $('#actualizar_precios').serialize();                    
+                    $.ajax({
+                        type: "POST",
+                        url: "<?=  base_url()?>admin/actualizar_precios_evento",
+                        data: dataString
+                    });                    
+                    $('#modal_precios').modal('hide');
+                });                
+                
                 $(document).on("click",".editar_pregunta",function(){
                     var pregunta=$(this).data("pregunta");
                     $.ajax({
@@ -1129,6 +1262,7 @@ foreach ($eventos as $evento)
                     });                
                     $('#modal_programacion').modal('hide');              
                 });
+                
                 $("#crear_pregunta").click(function(){
                     var evento=$(this).data("evento");
                     $("#evento_crear_pregunta").val(evento);
@@ -1147,6 +1281,25 @@ foreach ($eventos as $evento)
                         processData: false
                     });                
                     $('#modal_preguntas').modal('hide');              
+                });                
+                $("#crear_precios").click(function(){
+                    var evento=$(this).data("evento");
+                    $("#evento_crear_precios").val(evento);
+                });
+                
+                $("#btn_crear_precios").click(function(){
+                    var formData = new FormData(document.getElementById("form_crear_precios"));
+                    $.ajax(
+                    {
+                        data:formData,
+                        type: "POST",
+                        url: "<?= base_url()?>admin/crear_precios_evento",
+                        dataType: "html",
+                        cache: false,
+                        contentType: false,
+                        processData: false
+                    });                
+                    $('#modal_precios').modal('hide');              
                 });
                 $("#crear_testimonio").click(function(){
                     var evento=$(this).data("evento");
@@ -1177,6 +1330,16 @@ foreach ($eventos as $evento)
                     });                    
                     $('#modal_programacion').modal('hide');                    
                 });
+                
+                $("#btn_eliminar_precios").click(function(){
+                    var precios=$(this).data("precios");
+                    $.ajax({
+                        type: "POST",
+                        url: "<?=  base_url()?>admin/eliminar_precios_evento",
+                        data: {precios:precios}
+                    });                    
+                    $('#modal_precios').modal('hide');                    
+                });                
                 
                 $("#btn_eliminar_pregunta").click(function(){
                     var pregunta=$(this).data("pregunta");
