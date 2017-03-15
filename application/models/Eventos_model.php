@@ -114,14 +114,20 @@ class Eventos_model extends CI_Model
             $dir_subida = '/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/fondos/';
             if(file_exists($dir_subida)){}
             else{mkdir($dir_subida, 0700);}
-            $fichero_subido = $dir_subida . basename($_FILES['imagen_fondo']['name']);
-            move_uploaded_file($_FILES['imagen_fondo']['tmp_name'], $fichero_subido);
-            $ext=substr($fichero_subido, -4);            
-            $normal='/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/fondos/'.$id.$ext;            
-            $image = new Imagick($fichero_subido);
-            $image->cropThumbnailImage(1700,900);
-            $image->writeImage($normal );
-            unlink($fichero_subido); 
+            $fichero_subido = $dir_subida . basename($_FILES['imagen']['name']);
+            $ext=substr($fichero_subido, -4); 
+            $fichero_subido = $dir_subida . $id.$ext;
+            move_uploaded_file($_FILES['imagen_fondo']['tmp_name'], $fichero_subido);      
+            $normal='/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/fondos/';            
+            $config['image_library'] = 'gd2';
+            $config['source_image'] = $fichero_subido;
+            $config['create_thumb'] = TRUE;
+            $config['maintain_ratio'] = TRUE;
+            $config['new_image']=$normal;
+            $config['width'] = 1700;
+            $config['height'] = 900;
+            $this->load->library('image_lib', $config); 
+            $this->image_lib->resize(); 
             $data_img = array(
                            'imagen' => base_url()."assets/img/fondos/".$id.$ext
                         );
@@ -145,14 +151,20 @@ class Eventos_model extends CI_Model
             $dir_subida = '/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/fondos/';
             if(file_exists($dir_subida)){}
             else{mkdir($dir_subida, 0700);}
-            $fichero_subido = $dir_subida . basename($_FILES['imagen_fondo']['name']);
-            move_uploaded_file($_FILES['imagen_fondo']['tmp_name'], $fichero_subido);
-            $ext=substr($fichero_subido, -4);            
-            $normal='/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/fondos/'.$id.$ext;            
-            $image = new Imagick($fichero_subido);
-            $image->cropThumbnailImage(1700,900);
-            $image->writeImage($normal );
-            unlink($fichero_subido); 
+            $fichero_subido = $dir_subida . basename($_FILES['imagen']['name']);
+            $ext=substr($fichero_subido, -4); 
+            $fichero_subido = $dir_subida . $id.$ext;
+            move_uploaded_file($_FILES['imagen_fondo']['tmp_name'], $fichero_subido);      
+            $normal='/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/fondos/';            
+            $config['image_library'] = 'gd2';
+            $config['source_image'] = $fichero_subido;
+            $config['create_thumb'] = TRUE;
+            $config['maintain_ratio'] = TRUE;
+            $config['new_image']=$normal;
+            $config['width'] = 1700;
+            $config['height'] = 900;
+            $this->load->library('image_lib', $config); 
+            $this->image_lib->resize(); 
             $data_img = array(
                            'imagen' => base_url()."assets/img/fondos/".$id.$ext
                         );

@@ -88,14 +88,20 @@ class Patrocinadores_model extends CI_Model
             $dir_subida = '/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/patrocinadores/';
             if(file_exists($dir_subida)){}
             else{mkdir($dir_subida, 0700);}
-            $fichero_subido = $dir_subida . basename($_FILES['imagen_patrocinador']['name']);
-            move_uploaded_file($_FILES['imagen_patrocinador']['tmp_name'], $fichero_subido);
-            $ext=substr($fichero_subido, -4);            
-            $normal='/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/patrocinadores/'.$id.$ext;            
-            $image = new Imagick($fichero_subido);
-            $image->cropThumbnailImage(140,50);
-            $image->writeImage($normal );
-            unlink($fichero_subido); 
+            $fichero_subido = $dir_subida . basename($_FILES['imagen']['name']);
+            $ext=substr($fichero_subido, -4); 
+            $fichero_subido = $dir_subida . $id.$ext;
+            move_uploaded_file($_FILES['imagen_patrocinador']['tmp_name'], $fichero_subido);         
+            $normal='/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/patrocinadores/';            
+            $config['image_library'] = 'gd2';
+            $config['source_image'] = $fichero_subido;
+            $config['create_thumb'] = TRUE;
+            $config['maintain_ratio'] = TRUE;
+            $config['new_image']=$normal;
+            $config['width'] = 125;
+            $config['height'] = 90;
+            $this->load->library('image_lib', $config); 
+            $this->image_lib->resize(); 
             $data = array(
                            'imagen_patrocinador' => $id.$ext
                         );
@@ -117,14 +123,20 @@ class Patrocinadores_model extends CI_Model
             $dir_subida = '/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/patrocinadores/';
             if(file_exists($dir_subida)){}
             else{mkdir($dir_subida, 0700);}
-            $fichero_subido = $dir_subida . basename($_FILES['imagen_patrocinador']['name']);
-            move_uploaded_file($_FILES['imagen_patrocinador']['tmp_name'], $fichero_subido);
-            $ext=substr($fichero_subido, -4);            
-            $normal='/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/patrocinadores/'.$id.$ext;            
-            $image = new Imagick($fichero_subido);
-            $image->cropThumbnailImage(140,50);
-            $image->writeImage($normal );
-            unlink($fichero_subido); 
+            $fichero_subido = $dir_subida . basename($_FILES['imagen']['name']);
+            $ext=substr($fichero_subido, -4); 
+            $fichero_subido = $dir_subida . $id.$ext;
+            move_uploaded_file($_FILES['imagen_patrocinador']['tmp_name'], $fichero_subido);         
+            $normal='/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/patrocinadores/';            
+            $config['image_library'] = 'gd2';
+            $config['source_image'] = $fichero_subido;
+            $config['create_thumb'] = TRUE;
+            $config['maintain_ratio'] = TRUE;
+            $config['new_image']=$normal;
+            $config['width'] = 125;
+            $config['height'] = 90;
+            $this->load->library('image_lib', $config); 
+            $this->image_lib->resize();
             $data = array(
                            'imagen_patrocinador' => $id.$ext
                         );

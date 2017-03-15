@@ -64,13 +64,19 @@ class Paises_model extends CI_Model
             if(file_exists($dir_subida)){}
             else{mkdir($dir_subida, 0700);}
             $fichero_subido = $dir_subida . basename($_FILES['imagen']['name']);
-            move_uploaded_file($_FILES['imagen']['tmp_name'], $fichero_subido);
-            $ext=substr($fichero_subido, -4);            
-            $normal='/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/banderas/'.$id.$ext;            
-            $image = new Imagick($fichero_subido);
-            $image->cropThumbnailImage(125,90);
-            $image->writeImage($normal );
-            unlink($fichero_subido); 
+            $ext=substr($fichero_subido, -4); 
+            $fichero_subido = $dir_subida . $id.$ext;
+            move_uploaded_file($_FILES['imagen']['tmp_name'], $fichero_subido);          
+            $normal='/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/banderas/';            
+            $config['image_library'] = 'gd2';
+            $config['source_image'] = $fichero_subido;
+            $config['create_thumb'] = TRUE;
+            $config['maintain_ratio'] = TRUE;
+            $config['new_image']=$normal;
+            $config['width'] = 125;
+            $config['height'] = 90;
+            $this->load->library('image_lib', $config); 
+            $this->image_lib->resize(); 
             $data_img = array(
                            'imagen' => $id.$ext
                         );
@@ -92,21 +98,30 @@ class Paises_model extends CI_Model
             $oldmask = umask(0);
             umask($oldmask);        
             $dir_subida = '/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/banderas/';
+            //$dir_subida = '/var/www/html/actitud_talento/assets/img/banderas/';
             if(file_exists($dir_subida)){}
             else{mkdir($dir_subida, 0700);}
             $fichero_subido = $dir_subida . basename($_FILES['imagen']['name']);
+            $ext=substr($fichero_subido, -4); 
+            $fichero_subido = $dir_subida . $id.$ext;
             move_uploaded_file($_FILES['imagen']['tmp_name'], $fichero_subido);
-            $ext=substr($fichero_subido, -4);            
-            $normal='/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/banderas/'.$id.$ext;            
-            $image = new Imagick($fichero_subido);
-            $image->cropThumbnailImage(125,90);
-            $image->writeImage($normal );
-            unlink($fichero_subido); 
-            $data = array(
-                'imagen' => $id.$ext
-            );
+            $normal='/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/banderas/';            
+            //$normal='/var/www/html/actitud_talento/assets/img/banderas/';            
+            $config['image_library'] = 'gd2';
+            $config['source_image'] = $fichero_subido;
+            $config['create_thumb'] = TRUE;
+            $config['maintain_ratio'] = TRUE;
+            $config['new_image']=$normal;
+            $config['width'] = 125;
+            $config['height'] = 90;
+            $this->load->library('image_lib', $config); 
+            $this->image_lib->resize(); 
+            $data_img = array(
+                           'imagen' => $id.$ext
+                        );
+
             $this->db->where('id', $id);
-            $this->db->update('paises', $data);             
+            $this->db->update('paises', $data_img);             
         }
     }    
 }

@@ -101,6 +101,8 @@ class Conferencistas_model extends CI_Model
             if(file_exists($dir_subida)){}
             else{mkdir($dir_subida, 0700);}
             $fichero_subido = $dir_subida . basename($_FILES['imagen']['name']);
+            $ext=substr($fichero_subido, -4); 
+            $fichero_subido = $dir_subida . $id.$ext;
             move_uploaded_file($_FILES['imagen']['tmp_name'], $fichero_subido);          
             $normal='/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/conferencistas/';            
             $config['image_library'] = 'gd2';
@@ -113,7 +115,7 @@ class Conferencistas_model extends CI_Model
             $this->load->library('image_lib', $config); 
             $this->image_lib->resize(); 
             $data = array(
-                           'imagen' => basename($_FILES['imagen']['name'])
+                           'imagen' => $id.$ext
                         );
 
             $this->db->where('id', $id);
@@ -135,6 +137,8 @@ class Conferencistas_model extends CI_Model
             if(file_exists($dir_subida)){}
             else{mkdir($dir_subida, 0700);}
             $fichero_subido = $dir_subida . basename($_FILES['imagen']['name']);
+            $ext=substr($fichero_subido, -4); 
+            $fichero_subido = $dir_subida . $id.$ext;            
             move_uploaded_file($_FILES['imagen']['tmp_name'], $fichero_subido);
             $normal='/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/conferencistas/';                        
             //$normal='/var/www/html/actitud_talento/assets/img/conferencistas/';                        
@@ -148,7 +152,7 @@ class Conferencistas_model extends CI_Model
             $this->load->library('image_lib', $config); 
             $this->image_lib->resize();                      
             $data = array(
-                'imagen' => basename($_FILES['imagen']['name'])
+                'imagen' => $id.$ext
             );
             $this->db->where('id', $id);
             $this->db->update('conferencistas', $data);             

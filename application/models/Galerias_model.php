@@ -85,13 +85,19 @@ class Galerias_model extends CI_Model
                 if(file_exists($dir_subida)){}
                 else{mkdir($dir_subida, 0700);}
                 $fichero_subido = $dir_subida . basename($_FILES['imagen'.$imagen.'']['name']);
-                move_uploaded_file($_FILES['imagen'.$imagen.'']['tmp_name'], $fichero_subido);
-                $ext=substr($fichero_subido, -4);            
-                $normal='/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/galerias/'.$evento.'-'.$id.$ext;            
-                $image = new Imagick($fichero_subido);
-                $image->cropThumbnailImage(500,330);
-                $image->writeImage($normal );
-                unlink($fichero_subido); 
+                $ext=substr($fichero_subido, -4); 
+                $fichero_subido = $dir_subida . $evento.'-'.$id.$ext;
+                move_uploaded_file($_FILES['imagen'.$imagen.'']['tmp_name'], $fichero_subido);         
+                $normal='/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/galerias/';            
+                $config['image_library'] = 'gd2';
+                $config['source_image'] = $fichero_subido;
+                $config['create_thumb'] = TRUE;
+                $config['maintain_ratio'] = TRUE;
+                $config['new_image']=$normal;
+                $config['width'] = 500;
+                $config['height'] = 330;
+                $this->load->library('image_lib', $config); 
+                $this->image_lib->resize();                  
                 $data_img = array(
                                'imagen' => $evento.'-'.$id.$ext
                             );
@@ -117,13 +123,19 @@ class Galerias_model extends CI_Model
             if(file_exists($dir_subida)){}
             else{mkdir($dir_subida, 0700);}
             $fichero_subido = $dir_subida . basename($_FILES['imagen']['name']);
+            $ext=substr($fichero_subido, -4); 
+            $fichero_subido = $dir_subida . $evento.'-'.$id.$ext;
             move_uploaded_file($_FILES['imagen']['tmp_name'], $fichero_subido);
-            $ext=substr($fichero_subido, -4);            
-            $normal='/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/galerias/'.$evento.'-'.$id.$ext;            
-            $image = new Imagick($fichero_subido);
-            $image->cropThumbnailImage(500,330);
-            $image->writeImage($normal );
-            unlink($fichero_subido); 
+            $normal='/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/galerias/';            
+            $config['image_library'] = 'gd2';
+            $config['source_image'] = $fichero_subido;
+            $config['create_thumb'] = TRUE;
+            $config['maintain_ratio'] = TRUE;
+            $config['new_image']=$normal;
+            $config['width'] = 500;
+            $config['height'] = 330;
+            $this->load->library('image_lib', $config); 
+            $this->image_lib->resize();
             $data_img = array(
                            'imagen' => $evento.'-'.$id.$ext
                         );

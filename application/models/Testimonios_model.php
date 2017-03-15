@@ -84,13 +84,19 @@ class Testimonios_model extends CI_Model
             if(file_exists($dir_subida)){}
             else{mkdir($dir_subida, 0700);}
             $fichero_subido = $dir_subida . basename($_FILES['imagen']['name']);
-            move_uploaded_file($_FILES['imagen']['tmp_name'], $fichero_subido);
-            $ext=substr($fichero_subido, -4);            
-            $normal='/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/testimonios/'.$id.$ext;            
-            $image = new Imagick($fichero_subido);
-            $image->cropThumbnailImage(100,115);
-            $image->writeImage($normal );
-            unlink($fichero_subido); 
+            $ext=substr($fichero_subido, -4); 
+            $fichero_subido = $dir_subida . $id.$ext;
+            move_uploaded_file($_FILES['imagen']['tmp_name'], $fichero_subido);          
+            $normal='/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/testimonios/';            
+            $config['image_library'] = 'gd2';
+            $config['source_image'] = $fichero_subido;
+            $config['create_thumb'] = TRUE;
+            $config['maintain_ratio'] = TRUE;
+            $config['new_image']=$normal;
+            $config['width'] = 100;
+            $config['height'] = 115;
+            $this->load->library('image_lib', $config); 
+            $this->image_lib->resize();            
             $data_img = array(
                            'imagen' => $id.$ext
                         );
@@ -121,13 +127,19 @@ class Testimonios_model extends CI_Model
                 if(file_exists($dir_subida)){}
                 else{mkdir($dir_subida, 0700);}
                 $fichero_subido = $dir_subida . basename($_FILES['imagen'.$imagen.'']['name']);
-                move_uploaded_file($_FILES['imagen'.$imagen.'']['tmp_name'], $fichero_subido);
-                $ext=substr($fichero_subido, -4);            
-                $normal='/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/testimonios/'.$id.$ext;            
-                $image = new Imagick($fichero_subido);
-                $image->cropThumbnailImage(100,115);
-                $image->writeImage($normal );
-                unlink($fichero_subido); 
+                $ext=substr($fichero_subido, -4); 
+                $fichero_subido = $dir_subida . $id.$ext;
+                move_uploaded_file($_FILES['imagen'.$imagen.'']['tmp_name'], $fichero_subido);          
+                $normal='/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/testimonios/';            
+                $config['image_library'] = 'gd2';
+                $config['source_image'] = $fichero_subido;
+                $config['create_thumb'] = TRUE;
+                $config['maintain_ratio'] = TRUE;
+                $config['new_image']=$normal;
+                $config['width'] = 100;
+                $config['height'] = 115;
+                $this->load->library('image_lib', $config); 
+                $this->image_lib->resize();   
                 $data_img = array(
                                'imagen' => $id.$ext
                             );
@@ -154,13 +166,19 @@ class Testimonios_model extends CI_Model
             if(file_exists($dir_subida)){}
             else{mkdir($dir_subida, 0700);}
             $fichero_subido = $dir_subida . basename($_FILES['imagen']['name']);
-            move_uploaded_file($_FILES['imagen']['tmp_name'], $fichero_subido);
-            $ext=substr($fichero_subido, -4);            
-            $normal='/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/testimonios/'.$id.$ext;            
-            $image = new Imagick($fichero_subido);
-            $image->cropThumbnailImage(100,115);
-            $image->writeImage($normal );
-            unlink($fichero_subido); 
+            $ext=substr($fichero_subido, -4); 
+            $fichero_subido = $dir_subida . $id.$ext;
+            move_uploaded_file($_FILES['imagen']['tmp_name'], $fichero_subido);          
+            $normal='/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/testimonios/';            
+            $config['image_library'] = 'gd2';
+            $config['source_image'] = $fichero_subido;
+            $config['create_thumb'] = TRUE;
+            $config['maintain_ratio'] = TRUE;
+            $config['new_image']=$normal;
+            $config['width'] = 100;
+            $config['height'] = 115;
+            $this->load->library('image_lib', $config); 
+            $this->image_lib->resize();  
             $data_img = array(
                            'imagen' => $id.$ext
                         );
