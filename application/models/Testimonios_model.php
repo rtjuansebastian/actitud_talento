@@ -80,13 +80,13 @@ class Testimonios_model extends CI_Model
             $id=$this->db->insert_id();
             $oldmask = umask(0);
             umask($oldmask);        
-            $dir_subida = '/var/www/html/actitud_talento/assets/img/testimonios/';
+            $dir_subida = '/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/testimonios/';
             if(file_exists($dir_subida)){}
             else{mkdir($dir_subida, 0700);}
             $fichero_subido = $dir_subida . basename($_FILES['imagen']['name']);
             move_uploaded_file($_FILES['imagen']['tmp_name'], $fichero_subido);
             $ext=substr($fichero_subido, -4);            
-            $normal='/var/www/html/actitud_talento/assets/img/testimonios/'.$id.$ext;            
+            $normal='/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/testimonios/'.$id.$ext;            
             $image = new Imagick($fichero_subido);
             $image->cropThumbnailImage(100,115);
             $image->writeImage($normal );
@@ -117,13 +117,13 @@ class Testimonios_model extends CI_Model
                 $id=$this->db->insert_id();
                 $oldmask = umask(0);
                 umask($oldmask);        
-                $dir_subida = '/var/www/html/actitud_talento/assets/img/testimonios/';
+                $dir_subida = '/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/testimonios/';
                 if(file_exists($dir_subida)){}
                 else{mkdir($dir_subida, 0700);}
                 $fichero_subido = $dir_subida . basename($_FILES['imagen'.$imagen.'']['name']);
                 move_uploaded_file($_FILES['imagen'.$imagen.'']['tmp_name'], $fichero_subido);
                 $ext=substr($fichero_subido, -4);            
-                $normal='/var/www/html/actitud_talento/assets/img/testimonios/'.$id.$ext;            
+                $normal='/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/testimonios/'.$id.$ext;            
                 $image = new Imagick($fichero_subido);
                 $image->cropThumbnailImage(100,115);
                 $image->writeImage($normal );
@@ -150,13 +150,13 @@ class Testimonios_model extends CI_Model
             $id=$data['id'];
             $oldmask = umask(0);
             umask($oldmask);        
-            $dir_subida = '/var/www/html/actitud_talento/assets/img/testimonios/';
+            $dir_subida = '/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/testimonios/';
             if(file_exists($dir_subida)){}
             else{mkdir($dir_subida, 0700);}
             $fichero_subido = $dir_subida . basename($_FILES['imagen']['name']);
             move_uploaded_file($_FILES['imagen']['tmp_name'], $fichero_subido);
             $ext=substr($fichero_subido, -4);            
-            $normal='/var/www/html/actitud_talento/assets/img/testimonios/'.$id.$ext;            
+            $normal='/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/testimonios/'.$id.$ext;            
             $image = new Imagick($fichero_subido);
             $image->cropThumbnailImage(100,115);
             $image->writeImage($normal );

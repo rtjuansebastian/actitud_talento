@@ -336,7 +336,7 @@ var theme = function () {
         initGoogleMap: function() {
             var map;
             var marker;
-            var image = 'http://localhost/actitud_talento/assets/img/icon-google-map.png'; // marker icon
+            var image = 'http://eventos.gincomex.com/assets/img/icon-google-map.png'; // marker icon
             function initialize() {
                 var mapOptions = {
                     scrollwheel: false,

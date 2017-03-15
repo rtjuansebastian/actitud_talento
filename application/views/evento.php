@@ -1,4 +1,4 @@
-<?php require_once('../actitud_talento_blog/wp-blog-header.php'); 
+<?php require_once('/hermes/bosnaweb02a/b976/dom.ealvarezec/public_html/eventos/actitud_talento_blog/wp-blog-header.php'); 
 header("HTTP/1.1 200 OK"); ?>
 <!DOCTYPE html>
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"><![endif]-->
@@ -82,7 +82,7 @@ header("HTTP/1.1 200 OK"); ?>
                     <li><a href="#sponsors">Patrocinadores</a></li>
                     <li><a href="#speakers">Conferencistas</a></li>
                     <li><a href="#location">Lugar</a></li>
-                    <li><a href="http://localhost/actitud_talento_blog/">Blog</a></li>
+                    <li><a href="http://cambioycultura.org/actitud_talento_blog">Blog</a></li>
                 </ul>
             </nav>
             <!-- /Navigation -->
@@ -743,7 +743,7 @@ foreach ($preguntas as $pregunta)
                     <?php displayHomePosts(); ?><!-- Función de wordpress para los ultimos post -->
                 </div>
                 <div class="text-center margin-top">
-                    <a data-animation="flipInY" data-animation-delay="100" href="http://localhost/actitud_talento_blog/" class="btn btn-theme"><i class="fa fa-file"></i> Ver todas las noticias </a>
+                    <a data-animation="flipInY" data-animation-delay="100" href="http://cambioycultura.org/actitud_talento_blog" class="btn btn-theme"><i class="fa fa-file"></i> Ver todas las noticias </a>
                 </div>
             </div>
         </section>

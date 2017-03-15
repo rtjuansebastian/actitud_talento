@@ -75,13 +75,13 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
+        'hostname' => 'localhost',
+	//'hostname' => 'ealvarezec.domaincommysql.com',
 	'username' => 'root',
-        //'username' => 'gincomex_admin',
+        //'username' => 'actitud_talento',
 	'password' => 'm0v3',
-        //'password' => 'Arpas2015',
+        //'password' => 'actitud_talento',
 	'database' => 'actitud_talento',
-        //'database' => 'gincomex_actitud_talento',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

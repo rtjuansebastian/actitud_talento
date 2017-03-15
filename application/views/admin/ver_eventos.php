@@ -309,19 +309,19 @@ foreach ($eventos as $evento)
                             <div class="form-group">
                                 <label for="profesion">Color</label>
                                 <select class="form-control image-picker show-html" id="color" name="color">
-                                    <option data-img-src="http://localhost/actitud_talento/assets/img/blue-1.png" value="blue-1">Azul 1</option>
-                                    <option data-img-src="http://localhost/actitud_talento/assets/img/blue-2.png" value="blue-2">Azul 2</option>
-                                    <option data-img-src="http://localhost/actitud_talento/assets/img/green-1.png" value="green-1">Verde 1</option>
-                                    <option data-img-src="http://localhost/actitud_talento/assets/img/green-2.png" value="green-2">Verde 2</option>
-                                    <option data-img-src="http://localhost/actitud_talento/assets/img/orange-1.png" value="orange-1">Naranja 1</option>
-                                    <option data-img-src="http://localhost/actitud_talento/assets/img/orange-2.png" value="orange-2">Naranja 2</option>
-                                    <option data-img-src="http://localhost/actitud_talento/assets/img/pink.png" value="pink">Rosa</option>
-                                    <option data-img-src="http://localhost/actitud_talento/assets/img/purple-1.png" value="purple-1">Morado 1</option>
-                                    <option data-img-src="http://localhost/actitud_talento/assets/img/purple-2.png" value="purble-2">Morado 2</option>
-                                    <option data-img-src="http://localhost/actitud_talento/assets/img/red-1.png" value="red-1">Rojo 1</option>
-                                    <option data-img-src="http://localhost/actitud_talento/assets/img/red-2.png" value="red-2">Rojo 2</option>
-                                    <option data-img-src="http://localhost/actitud_talento/assets/img/yellow-1.png" value="yellow-1">Amarillo 1</option>
-                                    <option data-img-src="http://localhost/actitud_talento/assets/img/yellow-2.png" value="yellow-2">Amarillo 2</option>
+                                    <option data-img-src="http://cambioycultura.org/assets/img/blue-1.png" value="blue-1">Azul 1</option>
+                                    <option data-img-src="http://cambioycultura.org/assets/img/blue-2.png" value="blue-2">Azul 2</option>
+                                    <option data-img-src="http://cambioycultura.org/assets/img/green-1.png" value="green-1">Verde 1</option>
+                                    <option data-img-src="http://cambioycultura.org/assets/img/green-2.png" value="green-2">Verde 2</option>
+                                    <option data-img-src="http://cambioycultura.org/assets/img/orange-1.png" value="orange-1">Naranja 1</option>
+                                    <option data-img-src="http://cambioycultura.org/assets/img/orange-2.png" value="orange-2">Naranja 2</option>
+                                    <option data-img-src="http://cambioycultura.org/assets/img/pink.png" value="pink">Rosa</option>
+                                    <option data-img-src="http://cambioycultura.org/assets/img/purple-1.png" value="purple-1">Morado 1</option>
+                                    <option data-img-src="http://cambioycultura.org/assets/img/purple-2.png" value="purble-2">Morado 2</option>
+                                    <option data-img-src="http://cambioycultura.org/assets/img/red-1.png" value="red-1">Rojo 1</option>
+                                    <option data-img-src="http://cambioycultura.org/assets/img/red-2.png" value="red-2">Rojo 2</option>
+                                    <option data-img-src="http://cambioycultura.org/assets/img/yellow-1.png" value="yellow-1">Amarillo 1</option>
+                                    <option data-img-src="http://cambioycultura.org/assets/img/yellow-2.png" value="yellow-2">Amarillo 2</option>
                                 </select>
                             </div>
                             <div class="form-group">

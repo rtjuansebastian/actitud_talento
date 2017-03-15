@@ -111,13 +111,13 @@ class Eventos_model extends CI_Model
         {
             $oldmask = umask(0);
             umask($oldmask);        
-            $dir_subida = '/var/www/html/actitud_talento/assets/img/fondos/';
+            $dir_subida = '/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/fondos/';
             if(file_exists($dir_subida)){}
             else{mkdir($dir_subida, 0700);}
             $fichero_subido = $dir_subida . basename($_FILES['imagen_fondo']['name']);
             move_uploaded_file($_FILES['imagen_fondo']['tmp_name'], $fichero_subido);
             $ext=substr($fichero_subido, -4);            
-            $normal='/var/www/html/actitud_talento/assets/img/fondos/'.$id.$ext;            
+            $normal='/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/fondos/'.$id.$ext;            
             $image = new Imagick($fichero_subido);
             $image->cropThumbnailImage(1700,900);
             $image->writeImage($normal );
@@ -142,13 +142,13 @@ class Eventos_model extends CI_Model
             $id=$data['id'];
             $oldmask = umask(0);
             umask($oldmask);        
-            $dir_subida = '/var/www/html/actitud_talento/assets/img/fondos/';
+            $dir_subida = '/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/fondos/';
             if(file_exists($dir_subida)){}
             else{mkdir($dir_subida, 0700);}
             $fichero_subido = $dir_subida . basename($_FILES['imagen_fondo']['name']);
             move_uploaded_file($_FILES['imagen_fondo']['tmp_name'], $fichero_subido);
             $ext=substr($fichero_subido, -4);            
-            $normal='/var/www/html/actitud_talento/assets/img/fondos/'.$id.$ext;            
+            $normal='/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/fondos/'.$id.$ext;            
             $image = new Imagick($fichero_subido);
             $image->cropThumbnailImage(1700,900);
             $image->writeImage($normal );
