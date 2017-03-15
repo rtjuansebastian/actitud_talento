@@ -1,4 +1,4 @@
-<?php require_once('/hermes/bosnaweb02a/b976/dom.ealvarezec/public_html/eventos/actitud_talento_blog/wp-blog-header.php'); 
+<?php require_once(BLOG_NOTICIAS); 
 header("HTTP/1.1 200 OK"); ?>
 <!DOCTYPE html>
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"><![endif]-->

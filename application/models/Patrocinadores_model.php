@@ -49,7 +49,7 @@ class Patrocinadores_model extends CI_Model
         $this->db->join("eventos","eventos.id=eventos_patrocinadores.evento");
         $this->db->join("patrocinadores","patrocinadores.id=eventos_patrocinadores.patrocinador");
         $this->db->where('eventos_patrocinadores.evento',$evento);
-        $this->db->where('estado','activo');
+        $this->db->where('patrocinadores.estado','activo');
         $query=$this->db->get();
         foreach ($query->result() as $row)
         {
@@ -88,14 +88,14 @@ class Patrocinadores_model extends CI_Model
             $id=$this->db->insert_id();
             $oldmask = umask(0);
             umask($oldmask);        
-            $dir_subida = '/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/patrocinadores/';
+            $dir_subida = DIRECTORIO_IMG.'patrocinadores/';
             if(file_exists($dir_subida)){}
             else{mkdir($dir_subida, 0700);}
             $fichero_subido = $dir_subida . basename($_FILES['imagen']['name']);
             $ext=substr($fichero_subido, -4); 
             $fichero_subido = $dir_subida . $id.$ext;
             move_uploaded_file($_FILES['imagen_patrocinador']['tmp_name'], $fichero_subido);         
-            $normal='/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/patrocinadores/';            
+            $normal=DIRECTORIO_IMG.'patrocinadores/';            
             $config['image_library'] = 'gd2';
             $config['source_image'] = $fichero_subido;
             $config['create_thumb'] = TRUE;
@@ -123,14 +123,14 @@ class Patrocinadores_model extends CI_Model
             $id=$data['id'];
             $oldmask = umask(0);
             umask($oldmask);        
-            $dir_subida = '/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/patrocinadores/';
+            $dir_subida = DIRECTORIO_IMG.'patrocinadores/';
             if(file_exists($dir_subida)){}
             else{mkdir($dir_subida, 0700);}
             $fichero_subido = $dir_subida . basename($_FILES['imagen_patrocinador']['name']);
             $ext=substr($fichero_subido, -4); 
             $fichero_subido = $dir_subida . $id.$ext;
             move_uploaded_file($_FILES['imagen_patrocinador']['tmp_name'], $fichero_subido);         
-            $normal='/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/patrocinadores/';            
+            $normal=DIRECTORIO_IMG.'patrocinadores/';            
             $config['image_library'] = 'gd2';
             $config['source_image'] = $fichero_subido;
             $config['create_thumb'] = TRUE;

@@ -62,14 +62,14 @@ class Paises_model extends CI_Model
         {
             $oldmask = umask(0);
             umask($oldmask);        
-            $dir_subida = '/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/banderas/';
+            $dir_subida = DIRECTORIO_IMG.'banderas/';
             if(file_exists($dir_subida)){}
             else{mkdir($dir_subida, 0700);}
             $fichero_subido = $dir_subida . basename($_FILES['imagen']['name']);
             $ext=substr($fichero_subido, -4); 
             $fichero_subido = $dir_subida . $id.$ext;
             move_uploaded_file($_FILES['imagen']['tmp_name'], $fichero_subido);          
-            $normal='/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/banderas/';            
+            $normal=DIRECTORIO_IMG.'banderas/';            
             $config['image_library'] = 'gd2';
             $config['source_image'] = $fichero_subido;
             $config['create_thumb'] = TRUE;
@@ -99,7 +99,7 @@ class Paises_model extends CI_Model
             $id=$data['id'];
             $oldmask = umask(0);
             umask($oldmask);        
-            $dir_subida = '/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/banderas/';
+            $dir_subida = DIRECTORIO_IMG.'banderas/';
             //$dir_subida = '/var/www/html/actitud_talento/assets/img/banderas/';
             if(file_exists($dir_subida)){}
             else{mkdir($dir_subida, 0700);}
@@ -107,7 +107,7 @@ class Paises_model extends CI_Model
             $ext=substr($fichero_subido, -4); 
             $fichero_subido = $dir_subida . $id.$ext;
             move_uploaded_file($_FILES['imagen']['tmp_name'], $fichero_subido);
-            $normal='/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/banderas/';            
+            $normal=DIRECTORIO_IMG.'banderas/';            
             //$normal='/var/www/html/actitud_talento/assets/img/banderas/';            
             $config['image_library'] = 'gd2';
             $config['source_image'] = $fichero_subido;

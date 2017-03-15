@@ -100,14 +100,14 @@ class Conferencistas_model extends CI_Model
             $id=$this->db->insert_id();
             $oldmask = umask(0);
             umask($oldmask);        
-            $dir_subida = '/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/conferencistas/';
+            $dir_subida = DIRECTORIO_IMG.'conferencistas/';
             if(file_exists($dir_subida)){}
             else{mkdir($dir_subida, 0700);}
             $fichero_subido = $dir_subida . basename($_FILES['imagen']['name']);
             $ext=substr($fichero_subido, -4); 
             $fichero_subido = $dir_subida . $id.$ext;
             move_uploaded_file($_FILES['imagen']['tmp_name'], $fichero_subido);          
-            $normal='/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/conferencistas/';            
+            $normal=DIRECTORIO_IMG.'conferencistas/';            
             $config['image_library'] = 'gd2';
             $config['source_image'] = $fichero_subido;
             $config['create_thumb'] = TRUE;
@@ -135,7 +135,7 @@ class Conferencistas_model extends CI_Model
             $id=$data['id'];
             $oldmask = umask(0);
             umask($oldmask);        
-            $dir_subida = '/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/conferencistas/';
+            $dir_subida = DIRECTORIO_IMG.'conferencistas/';
             //$dir_subida = '/var/www/html/actitud_talento/assets/img/conferencistas/';
             if(file_exists($dir_subida)){}
             else{mkdir($dir_subida, 0700);}
@@ -143,7 +143,7 @@ class Conferencistas_model extends CI_Model
             $ext=substr($fichero_subido, -4); 
             $fichero_subido = $dir_subida . $id.$ext;            
             move_uploaded_file($_FILES['imagen']['tmp_name'], $fichero_subido);
-            $normal='/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/conferencistas/';                        
+            $normal=DIRECTORIO_IMG.'conferencistas/';                        
             //$normal='/var/www/html/actitud_talento/assets/img/conferencistas/';                        
             $config['image_library'] = 'gd2';
             $config['source_image'] = $fichero_subido;
