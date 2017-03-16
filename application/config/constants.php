@@ -86,4 +86,4 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 //define("BLOG_NOTICIAS", "/hermes/bosnaweb02a/b976/dom.ealvarezec/public_html/eventos/actitud_talento_blog/wp-blog-header.php");
 define("BLOG_NOTICIAS", "../actitud_talento_blog/wp-blog-header.php");
 //define("DIRECTORIO_IMG", "/home/users/web/b976/dom.ealvarezec/public_html/eventos/assets/img/");
-define("DIRECTORIO_IMG", "/var/www/html/actitud_talento/assets/img/conferencistas/");
+define("DIRECTORIO_IMG", "/var/www/html/actitud_talento/assets/img/");

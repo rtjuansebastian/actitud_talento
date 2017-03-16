@@ -131,7 +131,7 @@ class Eventos_model extends CI_Model
             $this->load->library('image_lib', $config); 
             $this->image_lib->resize(); 
             $data_img = array(
-                           'imagen' => base_url()."assets/img/fondos/".$id.$ext
+                           'imagen_fondo' => base_url()."assets/img/fondos/".$id.$ext
                         );
 
             $this->db->where('id', $id);

@@ -345,7 +345,7 @@ class Admin extends CI_Controller
         {        
             $data=  $this->input->post();
             $evento=$this->preguntas_model->agregar_preguntas_evento($data);
-            $this->agregar_testimonios_evento($evento);            
+            $this->agregar_precios_evento($evento);            
         }
         else
         {
@@ -353,6 +353,21 @@ class Admin extends CI_Controller
             $this->load->view("admin/agregar_preguntas_evento",$datos);             
         }
     }
+    
+    public function agregar_precios_evento($evento=NULL)
+    {
+        if($this->input->post("precio"))
+        {        
+            $data=  $this->input->post();
+            $evento=$this->precios_model->agregar_precios_evento($data);
+            $this->agregar_testimonios_evento($evento);            
+        }
+        else
+        {
+            $datos['evento']=$evento;
+            $this->load->view("admin/agregar_precios_evento",$datos);             
+        }
+    }    
     
     public function agregar_testimonios_evento($evento=NULL)
     {
