@@ -83,15 +83,15 @@ class Patrocinadores_model extends CI_Model
     public function agregar_patrocinador($data)
     {
         $this->db->insert('patrocinadores', $data);
+        $id=$this->db->insert_id();
         if(isset($_FILES['imagen_patrocinador']) && strcmp (basename($_FILES['imagen_patrocinador']['name']),"")!==0)
         {
-            $id=$this->db->insert_id();
             $oldmask = umask(0);
             umask($oldmask);        
             $dir_subida = DIRECTORIO_IMG.'patrocinadores/';
             if(file_exists($dir_subida)){}
             else{mkdir($dir_subida, 0700);}
-            $fichero_subido = $dir_subida . basename($_FILES['imagen']['name']);
+            $fichero_subido = $dir_subida . basename($_FILES['imagen_patrocinador']['name']);
             $ext=substr($fichero_subido, -4); 
             $fichero_subido = $dir_subida . $id.$ext;
             move_uploaded_file($_FILES['imagen_patrocinador']['tmp_name'], $fichero_subido);         
@@ -111,7 +111,9 @@ class Patrocinadores_model extends CI_Model
 
             $this->db->where('id', $id);
             $this->db->update('patrocinadores', $data);     
-        }        
+        } 
+        
+        return $id;
     }
     
     public function actualizar_patrocinador($data)

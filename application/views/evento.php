@@ -490,7 +490,7 @@ foreach ($patrocinadores as $patrocinador)
                     </div>
                 </div>
                 <div class="text-center margin-top">
-                    <a data-animation="flipInY" data-animation-delay="500" href="#" class="btn btn-theme"><i class="fa fa-thumbs-up"></i> Conviertete en patrocinador</a>
+                    <a data-animation="flipInY" data-animation-delay="500" href="<?=  base_url()?>index/conviertete_patrocinador?evento=<?=$evento['id']?>" class="btn btn-theme"><i class="fa fa-thumbs-up"></i> Conviertete en patrocinador</a>
                 </div>
             </div>
         </section>

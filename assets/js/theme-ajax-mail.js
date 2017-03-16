@@ -38,7 +38,7 @@ $(function () {
 
         $.ajax({
             type:"POST",
-            url:"http://eventos.gincomex.com/admin/agregar_contacto",
+            url:"http://localhost/actitud_talento/admin/agregar_contacto",
             data:dataString,
             success:function () {
                 $('#af-form').prepend("<div class=\"alert alert-success fade in\"><button class=\"close\" data-dismiss=\"alert\" type=\"button\">&times;</button><strong>Mensaje de contacto enviado!</strong> Nos comunicaremos contigo pronto.</div>");
@@ -104,7 +104,7 @@ $(function () {
 
         $.ajax({
             type: 'POST',
-            url: 'http://eventos.gincomex.com/admin/agregar_registro_evento',
+            url: 'http://localhost/actitud_talento/admin/agregar_registro_evento',
             data: dataString,
             success: function () {
                 $form.find('.form-alert').append('' +
@@ -176,7 +176,7 @@ $(function () {
 
         $.ajax({
             type: 'POST',
-            url: 'http://eventos.gincomex.com/admin/agregar_registro_evento',
+            url: 'http://localhost/actitud_talento/admin/agregar_registro_evento',
             data: dataString,
             success: function () {
                 $form.find('.form-alert').append('' +
