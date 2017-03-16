@@ -49,6 +49,41 @@ class Admin extends CI_Controller
         $this->load->view('admin/ver_usuarios',$datos);        
     }
     
+    public function agregar_usuario()
+    {
+        if($this->input->post())
+        {
+            $data=  $this->input->post();
+            $this->login_model->agregar_usuario($data);
+            $this->ver_usuarios();
+        }
+        else 
+        {        
+            $this->load->view("admin/agregar_usuario");
+        }
+
+    }
+    
+    public function editar_usuario()
+    {
+        $id=  $this->input->post("usuario");
+        $usuario=$this->login_model->traer_usuario($id);
+        echo json_encode($usuario);
+    }
+    
+    public function actualizar_usuario()
+    {
+        $data=  $this->input->post();
+        $this->login_model->actualizar_usuario($data);
+        $this->ver_usuarios();
+    }
+    
+    public function eliminar_usuario()
+    {
+        $id=  $this->input->post("id");
+        $this->login_model->eliminar_usuario($id);        
+    }
+
     public function ver_paises()
     {
         $datos['paises']=$this->paises_model->traer_paises();

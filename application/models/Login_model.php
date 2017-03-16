@@ -91,15 +91,49 @@ class Login_model extends CI_Model
     public function traer_usuarios()
     {
         $usuarios=array();
+        $this->db->where("estado","activo");
         $query=$this->db->get("usuarios");
         foreach ($query->result() as $row)
         {
-            $usuarios[$row->email]['email']=$row->email;
-            $usuarios[$row->email]['password']=$row->password;
-            $usuarios[$row->email]['nombre']=$row->nombre;
+            $usuarios[$row->numero_identificacion]['numero_identificacion']=$row->numero_identificacion;
+            $usuarios[$row->numero_identificacion]['email']=$row->email;
+            $usuarios[$row->numero_identificacion]['password']=$row->password;
+            $usuarios[$row->numero_identificacion]['nombre']=$row->nombre;
         }
         
         return $usuarios;
     }
+    
+    public function agregar_usuario($data)
+    {
+        $this->db->insert("usuarios",$data);
+    }
+    
+    public function traer_usuario($id)
+    {
+        $usuario=array();
+        $this->db->where("numero_identificacion",$id);
+        $query=$this->db->get("usuarios");
+        $row=$query->row();
+        $usuario['email']=$row->email;
+        $usuario['password']=$row->password;
+        $usuario['nombre']=$row->nombre;
+        
+        return $usuario;
+    }    
   
+    public function actualizar_usuario($data)
+    {        
+        $this->db->where('numero_identificacion', $data['numero_identificacion']);
+        $this->db->update('usuarios', $data);     
+    } 
+
+    public function eliminar_usuario($id)
+    {
+        $data = array(
+               'estado' => 'eliminado',
+            );
+        $this->db->where('numero_identificacion', $id);
+        $this->db->update('usuarios',$data);        
+    }
 }    
