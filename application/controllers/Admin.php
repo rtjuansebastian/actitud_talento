@@ -178,17 +178,36 @@ class Admin extends CI_Controller
         $this->programaciones_model->agregar_programacion_evento($data);
     }
     
-    public function crear_precio_evento()
-    {
-        $data=$this->input->post();
-        $this->precios_model->agregar_precio($data);
-    }    
-    
     public function eliminar_programacion_evento()
     {
         $id=$this->input->post("programacion");
         $this->programaciones_model->eliminar_programacion_evento($id);
     }
+
+    public function crear_precio_evento()
+    {
+        $data=$this->input->post();
+        $this->precios_model->agregar_precio($data);
+    }  
+    
+    public function editar_precio_evento()
+    {
+        $id=  $this->input->post("precio");
+        $precio=  $this->precios_model->traer_precio($id);
+        echo json_encode($precio);
+    } 
+    
+    public function actualizar_precio_evento()
+    {
+        $data=  $this->input->post();
+        $this->precios_model->actualizar_precio($data);
+    }    
+
+    public function eliminar_precio_evento()
+    {
+        $id=$this->input->post("precio");
+        $this->precios_model->eliminar_precio($id);
+    }        
 
     public function editar_pregunta_evento()
     {

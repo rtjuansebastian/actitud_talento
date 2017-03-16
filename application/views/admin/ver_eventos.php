@@ -462,7 +462,7 @@ foreach ($eventos as $evento)
             </div>
           </div>
         <!-- Modal Editar Precios -->
-        <div class="modal fade" id="modal_editar_programcion" tabindex="-1" role="dialog" aria-labelledby="ModalLabelEditarPrecios">
+        <div class="modal fade" id="modal_editar_precio" tabindex="-1" role="dialog" aria-labelledby="ModalLabelEditarPrecios">
           <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">                
                     <form id="actualizar_precios">
@@ -471,18 +471,18 @@ foreach ($eventos as $evento)
                           <h4 class="modal-title" id="ModalLabelEditarPrecios">Precio</h4>
                         </div>
                         <div class="modal-body">
-                            <input type="hidden" id="id" name="id">  
+                            <input type="hidden" id="id_editar_precio" name="id">  
                             <div class="form-group">
                                 <label for="perfil">Nombre</label>
-                                <input type="text" class="form-control" id="nombre" name="nombre" required=""/>                                                        
+                                <input type="text" class="form-control" id="nombre_editar_precio" name="nombre" required=""/>                                                        
                             </div>                         
                             <div class="form-group">
                                 <label for="perfil">Descripción</label>
-                                <input type="text" class="form-control" id="descripcion" name="descripcion" required=""/>                                                        
+                                <input type="text" class="form-control" id="descripcion_editar_precio" name="descripcion" required=""/>                                                        
                             </div> 
                             <div class="form-group">
                                 <label for="perfil">Precio</label>
-                                <input type="number" class="form-control" id="precio" name="precio" required=""/>                                                        
+                                <input type="number" class="form-control" id="precio_editar_precio" name="precio" required=""/>                                                        
                             </div>                             
                         </div>
                         <div class="modal-footer">
@@ -1128,11 +1128,29 @@ foreach ($eventos as $evento)
                     $('#modal_programacion').modal('hide');
                 });
                 
+                $(document).on("click",".editar_precios",function(){
+                    var precio=$(this).data("precios");
+                    $.ajax({
+                      method: "POST",
+                      url: "<?=  base_url()?>admin/editar_precio_evento",
+                      data: { precio: precio}
+                    })
+                    .done(function( data ) {
+                        var result= $.parseJSON(data);                      
+                        $("#id_editar_precio").val(result.id);
+                        $("#nombre_editar_precio").val(result.nombre);
+                        $("#descripcion_editar_precio").val(result.descripcion);
+                        $("#precio_editar_precio").val(result.precio);
+                        
+                        $("#btn_eliminar_precios").data("precio",precio);
+                    });
+                });                
+                
                 $("#btn_actualizar_precios").click(function(){
                     var dataString = $('#actualizar_precios').serialize();                    
                     $.ajax({
                         type: "POST",
-                        url: "<?=  base_url()?>admin/actualizar_precios_evento",
+                        url: "<?=  base_url()?>admin/actualizar_precio_evento",
                         data: dataString
                     });                    
                     $('#modal_precios').modal('hide');
@@ -1332,11 +1350,11 @@ foreach ($eventos as $evento)
                 });
                 
                 $("#btn_eliminar_precios").click(function(){
-                    var precios=$(this).data("precios");
+                    var precio=$(this).data("precio");
                     $.ajax({
                         type: "POST",
-                        url: "<?=  base_url()?>admin/eliminar_precios_evento",
-                        data: {precios:precios}
+                        url: "<?=  base_url()?>admin/eliminar_precio_evento",
+                        data: {precio:precio}
                     });                    
                     $('#modal_precios').modal('hide');                    
                 });                
