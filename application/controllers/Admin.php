@@ -178,10 +178,10 @@ class Admin extends CI_Controller
         $this->programaciones_model->agregar_programacion_evento($data);
     }
     
-    public function crear_precios_evento()
+    public function crear_precio_evento()
     {
         $data=$this->input->post();
-        $this->precios_model->agregar_precios_evento($data);
+        $this->precios_model->agregar_precio($data);
     }    
     
     public function eliminar_programacion_evento()

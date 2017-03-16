@@ -26,6 +26,7 @@ class Index extends CI_Controller
         $this->load->model("preguntas_model");
         $this->load->model("programaciones_model");
         $this->load->model("galerias_model");
+        $this->load->model("precios_model");
     }
     
     public function index()
@@ -63,6 +64,7 @@ class Index extends CI_Controller
         $datos['programaciones']=$programaciones;
         $datos['conferencistas']=$this->conferencistas_model->traer_conferencistas_evento($evento);
         $datos['numero_conferencistas']=$this->conferencistas_model->traer_numero_conferencistas_evento($evento);
+        $datos['precios']=$this->precios_model->traer_precios_evento($evento);
         $this->load->view('evento',$datos);
     }
     

@@ -693,7 +693,7 @@ foreach ($eventos as $evento)
         <div class="modal fade" id="modal_crear_precios" tabindex="-1" role="dialog" aria-labelledby="ModalLabelCrearProgramacion">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <form id="form_crear_precios" enctype="multipart/form-data">
+                    <form id="form_crear_precios">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                             <h4 class="modal-title" id="ModalLabelCrearProgramacion">Crear Precio</h4>
@@ -702,11 +702,11 @@ foreach ($eventos as $evento)
                             <input type="hidden" id="evento_crear_precios" name="evento"> 
                             <div class="form-group">
                                 <label for="perfil">Nombre</label>
-                                <input type="text" class="form-control" id="nombre" name="nombre" required=""/>                                                        
+                                <input type="text" class="form-control" id="nombre_precios" name="nombre" required=""/>                                                        
                             </div>                         
                             <div class="form-group">
                                 <label for="perfil">Descripción</label>
-                                <input type="text" class="form-control" id="descripcion" name="descripcion" required=""/>                                                        
+                                <textarea class="form-control" id="descripcion_precios" name="descripcion"></textarea>                                                        
                             </div> 
                             <div class="form-group">
                                 <label for="perfil">Precio</label>
@@ -1293,7 +1293,7 @@ foreach ($eventos as $evento)
                     {
                         data:formData,
                         type: "POST",
-                        url: "<?= base_url()?>admin/crear_precios_evento",
+                        url: "<?= base_url()?>admin/crear_precio_evento",
                         dataType: "html",
                         cache: false,
                         contentType: false,
