@@ -586,6 +586,28 @@ class Admin extends CI_Controller
             $this->load->view('admin/agregar_patrocinador');   
         }          
     }
+    
+    public function ver_solicitudes_patrocinadores()
+    {
+        $datos['solicitudes']=$this->patrocinadores_model->traer_solicitudes_patrocinadores();
+        $this->load->view('admin/ver_solicitudes_patrocinador',$datos);           
+    }
+    
+    public function aceptar_solicitud()
+    {
+        $id=$this->input->get("patrocinador");
+        $evento=$this->input->get("evento");
+        $this->patrocinadores_model->aceptar_solicitud_patrocinador($id,$evento);
+        $this->ver_solicitudes_patrocinadores();
+    }
+    
+    public function rechazar_solicitud()
+    {
+        $id=$this->input->get("patrocinador");
+        $evento=$this->input->get("evento");
+        $this->patrocinadores_model->rechazar_solicitud_patrocinador($id,$evento);
+        $this->ver_solicitudes_patrocinadores();
+    }
 
     public function eliminar_patrocinador()
     {

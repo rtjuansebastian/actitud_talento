@@ -41,16 +41,9 @@ class Index extends CI_Controller
      * 
      * Este metodo es el encargado de cargar la pagina de inicio.
      */    
-    public function evento($id)
+public function evento()
     {
-        if($id)
-        {
-            $evento=$id;
-        }
-        else
-        {
-            $evento=  $this->input->get("evento");
-        }
+        $evento=  $this->input->get("evento");
         $datos['evento']=$this->eventos_model->traer_evento($evento);
         $datos['patrocinadores']=$this->patrocinadores_model->traer_patrocinadores_evento($evento);
         $datos['testimonios']=$this->testimonios_model->traer_testimonios_evento($evento);
@@ -102,30 +95,23 @@ class Index extends CI_Controller
         $this->load->view('conferencistas',$datos);        
     }
     
-    public function conviertete_patrocinador()
+    public function conviertete_patrocinador($mensaje=NULL,$id=NULL)
     {
-        $evento=  $this->input->get("evento");
+        if($mensaje)
+        {
+            $datos['mensaje']=$mensaje;
+        }
+        if($id)
+        {
+            $evento=$id;
+        }
+        else
+        {
+            $evento=  $this->input->get("evento");
+        }
         $datos['evento']=$this->eventos_model->traer_evento($evento);
-        $datos['patrocinadores']=$this->patrocinadores_model->traer_patrocinadores_evento($evento);
-        $datos['testimonios']=$this->testimonios_model->traer_testimonios_evento($evento);
-        $datos['preguntas']=$this->preguntas_model->traer_preguntas_evento($evento);
         $datos['galerias']=$this->galerias_model->traer_galerias_evento($evento);
         $datos['precios_patrocinadores']=  $this->precios_patrocinadores_model->traer_precios_patrocinadores_evento($evento);
-        $dias=$this->programaciones_model->traer_dias_evento($evento);
-        foreach ($dias as $dia)
-        {
-            $programaciones['dias'][$dia['fecha']]['escenarios']=$this->programaciones_model->traer_escenarios_dia($dia['fecha']);
-        }        
-        foreach ($dias as $dia)
-        {
-            foreach ($programaciones['dias'][$dia['fecha']]['escenarios'] as $escenario)
-            {
-                $programaciones['dias'][$dia['fecha']]['escenarios'][$escenario['id']]['programaciones']=$this->programaciones_model->traer_programacion_escenario_dia($dia['fecha'],$escenario['id']);
-            }
-        }
-        $datos['dias']=$dias;
-        $datos['programaciones']=$programaciones;
-        $datos['conferencistas']=$this->conferencistas_model->traer_conferencistas_evento($evento);
         $this->load->view('conviertete_patrocinador',$datos);        
     }  
     
@@ -149,7 +135,7 @@ class Index extends CI_Controller
             "estado" => "pendiente"
         );
         $this->patrocinadores_model->agregar_patrocinador_evento($data_patrocinador_evento);
-        
-        $this->evento($evento);
+        $mensaje="Gracias por comunicarte con nostros en breve te responderemos";
+        $this->conviertete_patrocinador($mensaje,$evento);
     }
 }

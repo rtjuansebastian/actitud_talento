@@ -104,7 +104,14 @@ header("HTTP/1.1 200 OK"); ?>
                         <!-- PAGE CONTACT -->
                         <section class="page-section color">
                             <div class="container">
-
+<?php
+if(isset($mensaje))
+{
+?>
+                                <div class="alert alert-success fade in"><button class="close" data-dismiss="alert" type="button">&times;</button><?=$mensaje?></div>
+<?php
+}
+?>
                                 <h1 class="section-title">
                                     <span data-animation="flipInY" data-animation-delay="100" class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-ticket fa-stack-1x"></i></span></span>
                                     <span data-animation="fadeInRight" data-animation-delay="100" class="title-inner">Envianos tus datos <small>/ en breve nos comunicamos</small></span>

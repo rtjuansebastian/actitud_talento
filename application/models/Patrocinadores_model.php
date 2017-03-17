@@ -49,7 +49,7 @@ class Patrocinadores_model extends CI_Model
         $this->db->join("eventos","eventos.id=eventos_patrocinadores.evento");
         $this->db->join("patrocinadores","patrocinadores.id=eventos_patrocinadores.patrocinador");
         $this->db->where('eventos_patrocinadores.evento',$evento);
-        $this->db->where('patrocinadores.estado','activo');
+        $this->db->where('eventos_patrocinadores.estado','activo');
         $query=$this->db->get();
         foreach ($query->result() as $row)
         {
@@ -68,7 +68,6 @@ class Patrocinadores_model extends CI_Model
     {
         $patrocinador=array();
         $this->db->where('id',$id);
-        $this->db->where('estado','activo');
         $query=$this->db->get('patrocinadores');
         $row=$query->row();
         $patrocinador['id']=$row->id;
@@ -78,8 +77,75 @@ class Patrocinadores_model extends CI_Model
         $patrocinador['imagen_patrocinador']=$row->imagen_patrocinador;
         
         return $patrocinador;
-    }    
+    }
+
+    public function traer_solicitudes_patrocinadores()
+    {
+        $solicitudes=array();
+        $this->db->select("patrocinadores.id, patrocinadores.nombre, patrocinadores.descripcion, url, imagen_patrocinador, nombre_contacto, telefono_contacto, patrocinadores.estado, eventos_patrocinadores.id as id_patrocinador_evento, eventos_patrocinadores.evento, eventos.nombre as nombre_evento, eventos_precios_patrocinio.precio, eventos_precios_patrocinio.nombre as nombre_precio, eventos_patrocinadores.estado as estado_patrocinador_evento");
+        $this->db->from("patrocinadores");        
+        $this->db->join("eventos_patrocinadores","patrocinadores.id=eventos_patrocinadores.patrocinador");
+        $this->db->join("eventos","eventos_patrocinadores.evento=eventos.id");
+        $this->db->join("eventos_precios_patrocinio","eventos_patrocinadores.evento=eventos_precios_patrocinio.evento");
+        $this->db->where("patrocinadores.estado","pendiente");
+        $query=$this->db->get();
+        foreach ($query->result() as $row)
+        {
+            $solicitudes[$row->id]['id']=$row->id;
+            $solicitudes[$row->id]['nombre']=$row->nombre;
+            $solicitudes[$row->id]['descripcion']=$row->descripcion;
+            $solicitudes[$row->id]['url']=$row->url;
+            $solicitudes[$row->id]['imagen_patrocinador']=$row->imagen_patrocinador;
+            $solicitudes[$row->id]['nombre_contacto']=$row->nombre_contacto;
+            $solicitudes[$row->id]['telefono_contacto']=$row->telefono_contacto;
+            $solicitudes[$row->id]['estado']=$row->estado;
+            $solicitudes[$row->id]['id_patrocinador_evento']=$row->id_patrocinador_evento;
+            $solicitudes[$row->id]['evento']=$row->evento;
+            $solicitudes[$row->id]['nombre_evento']=$row->nombre_evento;
+            $solicitudes[$row->id]['precio']=$row->precio;
+            $solicitudes[$row->id]['estado_patrocinador_evento']=$row->estado_patrocinador_evento;
+            
+        }
+        
+        return $solicitudes;
+    }
     
+    public function aceptar_solicitud_patrocinador($id,$evento)
+    {
+        $data = array(
+                       'estado' => 'activo'
+                    );
+
+        $this->db->where('id', $id);
+        $this->db->update('patrocinadores', $data);
+        
+        $data = array(
+                       'estado' => 'activo'
+                    );
+
+        $this->db->where('patrocinador', $id);
+        $this->db->where('evento', $evento);
+        $this->db->update('eventos_patrocinadores', $data);        
+    }
+    
+    public function rechazar_solicitud_patrocinador($id,$evento)
+    {
+        $data = array(
+                       'estado' => 'rechazado'
+                    );
+
+        $this->db->where('id', $id);
+        $this->db->update('patrocinadores', $data);
+        
+        $data = array(
+                       'estado' => 'rechazado'
+                    );
+
+        $this->db->where('patrocinador', $id);
+        $this->db->where('evento', $evento);
+        $this->db->update('eventos_patrocinadores', $data);        
+    }    
+
     public function agregar_patrocinador($data)
     {
         $this->db->insert('patrocinadores', $data);
