@@ -33,6 +33,7 @@ class Index extends CI_Controller
     public function index()
     {
         $datos['eventos']=$this->eventos_model->traer_eventos();
+        $datos['galerias']=$this->galerias_model->traer_galerias();
         $this->load->view('index',$datos);        
     }
     

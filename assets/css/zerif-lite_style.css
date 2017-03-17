@@ -16,6 +16,12 @@ Tags: one-column, two-columns, right-sidebar,full-width-template,rtl-language-su
 /*--------------------------------------------------------------
 1.0 - Reset
 --------------------------------------------------------------*/
+/* font-family: 'Raleway', sans-serif; */
+@import url('http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900');
+/* font-family: 'Roboto', sans-serif; */
+@import url('http://fonts.googleapis.com/css?family=Roboto:400,900italic,900,700italic,700,500italic,500,400italic,300,100,100italic,300italic');
+/* font-family: 'Roboto Slab', serif; */
+@import url('http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700');
 html {
 	font-size: 62.5%; /* Corrects text resizing oddly in IE6/7 when body font-size is set using em units http://clagnut.com/blog/348/#c790 */
 	overflow-y: scroll; /* Keeps page centered in all browsers regardless of content height */
@@ -31,7 +37,7 @@ dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td {
 	border: 0;
-	font-family: inherit;
+	font-family: 'Raleway', sans-serif;
 	font-size: 16px;
 	font-style: inherit;
 	font-weight: inherit;
@@ -46,9 +52,6 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 	-webkit-box-sizing: border-box; /* Not needed for modern webkit but still used by Blackberry Browser 7.0; see http://caniuse.com/#search=box-sizing */
 	-moz-box-sizing:    border-box; /* Still needed for Firefox 28; see http://caniuse.com/#search=box-sizing */
 	box-sizing:         border-box;
-}
-body {
-	background: #fff;
 }
 article,
 aside,
@@ -100,7 +103,7 @@ a img {
 	border: 0;
 }
 body {
-	font-family: 'Lato', Helvetica, sans-serif !important;
+	font-family: 'Raleway', sans-serif;
 	font-size: 14px;
 	color: #808080;
 	font-weight: normal;
@@ -185,7 +188,7 @@ input,
 select,
 textarea {
 	color: #404040;
-	font-family: sans-serif;
+	font-family: 'Raleway', sans-serif;
 	font-size: 16px;
 	font-size: 1.6rem;
 	line-height: 1.5;
@@ -217,7 +220,7 @@ address {
 }
 pre {
 	background: #eee;
-	font-family: "Courier 10 Pitch", Courier, monospace;
+	font-family: 'Raleway', sans-serif;
 	font-size: 15px;
 	font-size: 1.5rem;
 	line-height: 1.6;
@@ -272,7 +275,7 @@ h1, h2, h3, h4, h5, h6 {
 	clear: both;
 }
 h1,h2 {
-	font-family: 'Montserrat', Helvetica, sans-serif;
+	font-family: 'Raleway', sans-serif;
 	font-weight: 700;
 	line-height: 35px;
 }
