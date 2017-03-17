@@ -4,7 +4,7 @@
         <br>                
         <footer>
             <div class="container">
-                <p class="text-muted text-center">Todos los derechos reservados PoBox 2017</p>
+                <p class="text-muted text-center">Todos los derechos reservados Actitud y Talento 2017</p>
             </div>
         </footer>       
         <script src="<?=  base_url()?>assets/js/jquery.js"></script>
