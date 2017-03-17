@@ -111,7 +111,7 @@ var themeConfig = {
         var $this = this;
         if (this.init) return;
 
-        $('head').append($('<link rel="stylesheet">').attr('href', 'http://eventos.gincomex.com/assets/css/theme-config.css'));
+        $('head').append($('<link rel="stylesheet">').attr('href', 'http://cambioycultura.org//assets/css/theme-config.css'));
         $this.build();
         $this.events();
 
@@ -418,7 +418,7 @@ var themeConfig = {
         if (this.isChanging) {
             return false;
         }
-        $colorConfigLink.attr('href', 'http://eventos.gincomex.com/assets/css/theme-' + color + '.css');
+        $colorConfigLink.attr('href', 'http://cambioycultura.org//assets/css/theme-' + color + '.css');
         $.cookie('color', color);
     },
     setBackground: function (background) {
@@ -430,12 +430,12 @@ var themeConfig = {
         if (background == 'dark') {
             $('.partners-carousel img').each(function () {
                 var arr = $(this).attr('src').split('/');
-                $(this).attr('src', 'http://eventos.gincomex.com/assets/img/patrocinadores/' + background + '/' + arr[arr.length - 1]);
+                $(this).attr('src', 'http://cambioycultura.org//assets/img/patrocinadores/' + background + '/' + arr[arr.length - 1]);
             });
         } else {
             $('.partners-carousel img').each(function () {
                 var arr = $(this).attr('src').split('/');
-                $(this).attr('src', 'http://eventos.gincomex.com/assets/img/patrocinadores/' + arr[arr.length - 1]);
+                $(this).attr('src', 'http://cambioycultura.org/assets/img/patrocinadores/' + arr[arr.length - 1]);
             });
         }
     },
