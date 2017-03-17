@@ -109,6 +109,10 @@ foreach ($eventos as $evento)
                                 </td>
                             </tr>
                             <tr>
+                                <td>Precios patrocinadores</td>                            
+                                <td><button class="btn btn-primary glyphicon glyphicon-search ver_precios_patrocinadores" data-evento="<?=$evento['id']?>" data-toggle="modal" data-target="#modal_precios_patrocinadores"></button></td>
+                            </tr>                             
+                            <tr>
                                 <td>Programación</td>                            
                                 <td><button class="btn btn-primary glyphicon glyphicon-search ver_programacion" data-evento="<?=$evento['id']?>" data-toggle="modal" data-target="#modal_programacion"></button></td>
                             </tr> 
@@ -169,6 +173,37 @@ foreach ($eventos as $evento)
             </div>
           </div>
         </div>
+        <!-- Modal Precios patrocinadores -->
+        <div class="modal fade" id="modal_precios_patrocinadores" tabindex="-1" role="dialog" aria-labelledby="ModalLabelPreciosPatrocinadores">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="ModalLabelPreciosPatrocinadores">Precios patrocinadores</h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-responsive">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Descripcion</th>
+                                <th>Precio</th>
+                                <th>Editar</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla_precios_patrocinadores">
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal_crear_precios_patrocinadores" id="crear_precios_patrocinadores">Crear Precios</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>                
+                </div>
+            </div>
+          </div>
+        </div>         
         <!-- Modal Precios -->
         <div class="modal fade" id="modal_precios" tabindex="-1" role="dialog" aria-labelledby="ModalLabelPrecios">
           <div class="modal-dialog modal-lg" role="document">
@@ -462,6 +497,39 @@ foreach ($eventos as $evento)
             </div>
           </div>
         <!-- Modal Editar Precios -->
+        <div class="modal fade" id="modal_editar_precio_patrocinadores" tabindex="-1" role="dialog" aria-labelledby="ModalLabelEditarPrecios">
+          <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">                
+                    <form id="actualizar_precios_patrocinadores">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <h4 class="modal-title" id="ModalLabelEditarPrecios">Precio</h4>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" id="id_editar_precio_patrocinador" name="id">  
+                            <div class="form-group">
+                                <label for="perfil">Nombre</label>
+                                <input type="text" class="form-control" id="nombre_editar_precio_patrocinador" name="nombre" required=""/>                                                        
+                            </div>                         
+                            <div class="form-group">
+                                <label for="perfil">Descripción</label>
+                                <input type="text" class="form-control" id="descripcion_editar_precio_patrocinador" name="descripcion" required=""/>                                                        
+                            </div> 
+                            <div class="form-group">
+                                <label for="perfil">Precio</label>
+                                <input type="number" class="form-control" id="precio_editar_precio_patrocinador" name="precio" required=""/>                                                        
+                            </div>                             
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal" id="btn_eliminar_precios_patrocinadores">Eliminar</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" id="btn_actualizar_precios_patrocinadores">Guardar</button>
+                        </div>
+                    </form>                        
+                </div>
+            </div>
+          </div>          
+        <!-- Modal Editar Precios -->
         <div class="modal fade" id="modal_editar_precio" tabindex="-1" role="dialog" aria-labelledby="ModalLabelEditarPrecios">
           <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">                
@@ -689,6 +757,38 @@ foreach ($eventos as $evento)
                 </div>
             </div>
         </div>    
+        <!-- Modal crear precios_patrocinadores -->
+        <div class="modal fade" id="modal_crear_precios_patrocinadores" tabindex="-1" role="dialog" aria-labelledby="ModalLabelCrearPreciosPatrocinadores">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form id="form_crear_precios_patrocinadores">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="ModalLabelCrearPreciosPatrocinadores">Crear Precio patrocinadores</h4>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" id="evento_crear_precios_patrocinadores" name="evento"> 
+                            <div class="form-group">
+                                <label for="perfil">Nombre</label>
+                                <input type="text" class="form-control" id="nombre_precios_patrocinadores" name="nombre" required=""/>                                                        
+                            </div>                         
+                            <div class="form-group">
+                                <label for="perfil">Descripción</label>
+                                <textarea class="form-control" id="descripcion_precios_patrocinadores" name="descripcion"></textarea>                                                        
+                            </div> 
+                            <div class="form-group">
+                                <label for="perfil">Precio</label>
+                                <input type="number" class="form-control" id="precio" name="precio" required=""/>                                                        
+                            </div>                            
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" id="btn_crear_precios_patrocinadores">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>          
         <!-- Modal crear precios -->
         <div class="modal fade" id="modal_crear_precios" tabindex="-1" role="dialog" aria-labelledby="ModalLabelCrearProgramacion">
             <div class="modal-dialog" role="document">
@@ -805,7 +905,12 @@ foreach ($eventos as $evento)
     }
     ?>
                                 </select>
-                            </div>                
+                            </div>       
+                            <div class="form-group">
+                                <label for="nombre">Precio</label>
+                                <select class="form-control" id="precio_editar_patrocinador" name="precio">
+                                </select>
+                            </div>                                   
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
@@ -822,7 +927,7 @@ foreach ($eventos as $evento)
                     <form id="form_eliminar_patrocinador_evento" enctype="multipart/form-data">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="ModalLabelAgregarPatrocinadorEvento">Agregar patrocinador al evento</h4>
+                            <h4 class="modal-title" id="ModalLabelAgregarPatrocinadorEvento">Quitar patrocinador del evento</h4>
                         </div>
                         <div class="modal-body">
                             <input type="hidden" id="evento_eliminar_patrocinador" name="evento">                       
@@ -849,6 +954,7 @@ foreach ($eventos as $evento)
                 var conferencistas;
                 var escenarios;
                 var patrocinadores_evento;
+                var precios_patrocinio_evento;
                 function traer_conferencistas()
                 {
                     $.ajax(
@@ -900,7 +1006,25 @@ foreach ($eventos as $evento)
                     });
 
                     return patrocinadores_evento;
-                }                
+                } 
+                
+                function traer_precios_patrocinio_evento(evento)
+                {
+                    $.ajax(
+                    {
+                        type: "POST",
+                        data: {evento:evento},
+                        url: "<?= base_url()?>admin/traer_precios_patrocinio_evento",
+                        async:false,
+                        success:function(data)
+                        {
+                            var result=$.parseJSON(data);
+                            precios_patrocinio_evento=result;
+                        }
+                    });
+
+                    return precios_patrocinio_evento;
+                }                 
                 
                 $('.date').datetimepicker({
                     locale:'es',
@@ -932,6 +1056,23 @@ foreach ($eventos as $evento)
                         $("#crear_programacion").data("evento",evento);
                     });                    
                 });
+                $(".ver_precios_patrocinadores").on("click",function(){
+                    var evento=$(this).data("evento");
+                    var result=traer_precios_patrocinio_evento(evento);
+                    var tabla_precios_patrocinadores='';
+                    $.each(result, function( llave, items) {
+                        tabla_precios_patrocinadores=tabla_precios_patrocinadores+'<tr>'+
+                                '<td>'+items.id+'</td>'+
+                                '<td>'+items.nombre+'</td>'+
+                                '<td>'+items.descripcion+'</td>'+
+                                '<td>'+items.precio+'</td>'+
+                                '<td><button class="btn btn-primary glyphicon glyphicon-pencil editar_precios_patrocinadores" type="button" data-precios="'+items.id+'" data-toggle="modal" data-target="#modal_editar_precio_patrocinadores"></button></td>'+
+                            '</tr>';                            
+                    });
+                    $("#tabla_precios_patrocinadores").html(tabla_precios_patrocinadores);
+                    $("#crear_precios_patrocinadores").data("evento",evento);                   
+                });                
+                
                 $(".ver_precios").on("click",function(){
                     var evento=$(this).data("evento");
                     $.ajax({
@@ -1127,7 +1268,35 @@ foreach ($eventos as $evento)
                     });                    
                     $('#modal_programacion').modal('hide');
                 });
+
+                $(document).on("click",".editar_precios_patrocinadores",function(){
+                    var precio=$(this).data("precios");
+                    $.ajax({
+                      method: "POST",
+                      url: "<?=  base_url()?>admin/editar_precio_patrocinador_evento",
+                      data: { precio: precio}
+                    })
+                    .done(function( data ) {
+                        var result= $.parseJSON(data);                      
+                        $("#id_editar_precio_patrocinador").val(result.id);
+                        $("#nombre_editar_precio_patrocinador").val(result.nombre);
+                        $("#descripcion_editar_precio_patrocinador").val(result.descripcion);
+                        $("#precio_editar_precio_patrocinador").val(result.precio);
+                        
+                        $("#btn_eliminar_precios_patrocinadores").data("precio",precio);
+                    });
+                });                
                 
+                $("#btn_actualizar_precios_patrocinadores").click(function(){
+                    var dataString = $('#actualizar_precios_patrocinadores').serialize();                    
+                    $.ajax({
+                        type: "POST",
+                        url: "<?=  base_url()?>admin/actualizar_precio_patrocinador_evento",
+                        data: dataString
+                    });                    
+                    $('#modal_precios_patrocinadores').modal('hide');
+                });
+
                 $(document).on("click",".editar_precios",function(){
                     var precio=$(this).data("precios");
                     $.ajax({
@@ -1300,6 +1469,26 @@ foreach ($eventos as $evento)
                     });                
                     $('#modal_preguntas').modal('hide');              
                 });                
+                $("#crear_precios_patrocinadores").click(function(){
+                    var evento=$(this).data("evento");
+                    $("#evento_crear_precios_patrocinadores").val(evento);
+                });
+                
+                $("#btn_crear_precios_patrocinadores").click(function(){
+                    var formData = new FormData(document.getElementById("form_crear_precios_patrocinadores"));
+                    $.ajax(
+                    {
+                        data:formData,
+                        type: "POST",
+                        url: "<?= base_url()?>admin/crear_precio_patrocinadores_evento",
+                        dataType: "html",
+                        cache: false,
+                        contentType: false,
+                        processData: false
+                    });                
+                    $('#modal_precios_patrocinadores').modal('hide');              
+                });                
+                
                 $("#crear_precios").click(function(){
                     var evento=$(this).data("evento");
                     $("#evento_crear_precios").val(evento);
@@ -1348,7 +1537,17 @@ foreach ($eventos as $evento)
                     });                    
                     $('#modal_programacion').modal('hide');                    
                 });
-                
+
+                $("#btn_eliminar_precios_patrocinadores").click(function(){
+                    var precio=$(this).data("precio");
+                    $.ajax({
+                        type: "POST",
+                        url: "<?=  base_url()?>admin/eliminar_precio_patrocinador_evento",
+                        data: {precio:precio}
+                    });                    
+                    $('#modal_precios_patrocinadores').modal('hide');                    
+                });
+
                 $("#btn_eliminar_precios").click(function(){
                     var precio=$(this).data("precio");
                     $.ajax({
@@ -1400,7 +1599,13 @@ foreach ($eventos as $evento)
                 $(".agregar_patrocinador_evento").click(function(){
                 
                     var evento= $(this).data("evento");
+                    var precios=traer_precios_patrocinio_evento(evento);
+                    var lista_precios='<option></<option>';
                     $("#evento_agregar_patrocinador").val(evento);
+                    $.each(precios, function( llave, items) {
+                        lista_precios=lista_precios+'<option value="'+items.id+'">'+items.nombre+'. '+items.precio+'</option>';                                                            
+                    }); 
+                    $("#precio_editar_patrocinador").html(lista_precios);
                 });
                 
                 $("#btn_agregar_patrocinador_evento").click(function(){

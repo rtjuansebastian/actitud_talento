@@ -223,7 +223,11 @@ class Patrocinadores_model extends CI_Model
         $total_patrocinadores=  count($data['patrocinador']);
         for($i=0;$i<=$total_patrocinadores-1;$i++)
         {
-            $datos=array("evento"=>$evento, "patrocinador"=>$data['patrocinador'][$i]);
+            $datos=array(
+                "evento"=>$evento, 
+                "patrocinador"=>$data['patrocinador'][$i], 
+                "precio" => $data['precio'][$i]
+            );
             $this->db->insert('eventos_patrocinadores', $datos); 
         }
     }

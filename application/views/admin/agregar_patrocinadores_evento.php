@@ -2,29 +2,44 @@
         <div class="container">
             <h1>Patrocinadores del evento</h1>
             <form method="post" action="<?=  base_url()?>admin/agregar_patrocinadores_evento">                            
-                <div class="row" id="testimonios">
-                    <div class="col-md-6" id="testimonio1">                        
+                <div class="row" id="patrocinadores">
+                    <div class="col-md-6" id="patrocinador_1">                        
                         <input type="hidden" id="evento" name="evento[]" value="<?=$evento?>">
                         <div id="lista_patrocinadores">
-                        <div class="form-group">
-                            <label for="patrocinadores">Patrocinadores</label>
-                            <select class="form-control selectpicker" id="patrocinadores" name="patrocinador[]" multiple="">
-                                <option></option>
-<?php
-foreach ($patrocinadores as $patrocinador)
-{
-?>
-                                <option value="<?=$patrocinador['id']?>"><?=$patrocinador['nombre']?></option>
-<?php
-}
-?>
-                            </select>                            
-                        </div> 
+                            <div class="form-group">
+                                <label for="patrocinadores">Patrocinadores</label>
+                                <select class="form-control selectpicker" id="patrocinador1" name="patrocinador[]">
+                                    <option></option>
+    <?php
+    foreach ($patrocinadores as $patrocinador)
+    {
+    ?>
+                                    <option value="<?=$patrocinador['id']?>"><?=$patrocinador['nombre']?></option>
+    <?php
+    }
+    ?>
+                                </select>                            
+                            </div>
+                            <div class="form-group">
+                                <label for="patrocinadores">Precios</label>
+                                <select class="form-control selectpicker" id="precio1" name="precio[]">
+                                    <option></option>
+    <?php
+    foreach ($precios_patrocinadores as $precio)
+    {
+    ?>
+                                    <option value="<?=$precio['id']?>"><?=$precio['nombre']?>. <?=$precio['precio']?></option>
+    <?php
+    }
+    ?>
+                                </select>                            
+                            </div>                            
                         </div>
                     </div>                
                 </div>
                 <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal_crear_patrocinador">Crear patrocinador</button>
-                <button type="submit" class="btn btn-primary">Agregar</button>
+                <button type="button" class="btn btn-primary" id="agregar_otro_patrocinador">Agregar otro patrocinador</button>
+                <button type="submit" class="btn btn-primary">Crear</button>
             </form>
         </div>
 <!-- Modal -->
@@ -90,6 +105,49 @@ foreach ($patrocinadores as $patrocinador)
                 $('.selectpicker').selectpicker();                
             });             
         });
-       
+        var i=2;
+        $("#agregar_otro_patrocinador").click(function(){
+            var patrocinador=   '<div class="col-md-6" id="patrocinador_'+i+'">'+
+                                    '<input type="hidden" id="evento" name="evento[]" value="<?=$evento?>">'+
+                                    '<div id="lista_patrocinadores">'+
+                                        '<div class="form-group">'+
+                                            '<label for="patrocinadores">Patrocinadores</label>'+
+                                            '<select class="form-control selectpicker" id="patrocinador'+i+'" name="patrocinador[]">'+
+                                                '<option></option>'+
+                <?php
+                foreach ($patrocinadores as $patrocinador)
+                {
+                ?>
+                                                '<option value="<?=$patrocinador['id']?>"><?=$patrocinador['nombre']?></option>'+
+                <?php
+                }
+                ?>
+                                            '</select>'+
+                                        '</div>'+
+                                        '<div class="form-group">'+
+                                            '<label for="patrocinadores">Precios</label>'+
+                                            '<select class="form-control selectpicker" id="precio'+i+'" name="precio[]">'+
+                                                '<option></option>'+
+                <?php
+                foreach ($precios_patrocinadores as $precio)
+                {
+                ?>
+                                                '<option value="<?=$precio['id']?>"><?=$precio['nombre']?>. <?=$precio['precio']?></option>'+
+                <?php
+                }
+                ?>
+                                            '</select>'+
+                                        '</div>'+                    
+                                    '</div>'+
+                                '</div>';            
+            $("#patrocinadores").append(patrocinador);
+            $(".selectpicker").selectpicker();
+            i++;
+        });
+        
+        $(document).on("click","#eliminar_patrocinador", function(e){
+            $("#patrocinador_"+i).remove();
+            i=i-1;
+        });         
     });
 </script> 

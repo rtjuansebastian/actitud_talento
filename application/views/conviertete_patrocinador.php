@@ -101,6 +101,41 @@ header("HTTP/1.1 200 OK"); ?>
                 <h1 class="section-title">
                 </h1>
                 <div class="row">
+        <!-- PAGE PRICE -->
+                    <section class="page-section" id="price">
+                        <div class="container">
+                            <h1 class="section-title clearfix">
+                                <span data-animation="flipInY" data-animation-delay="300" class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-user fa-stack-1x"></i></span></span>
+                                <span data-animation="fadeInRight" data-animation-delay="500" class="title-inner">Lista de precios de inscripción <small></small></span>
+                            </h1>
+                            <div class="row price-tables">
+            <?php
+            foreach ($precios_patrocinadores as $precio)
+            {
+            ?>
+                                <div class="col-xsp-6 col-sm-6 col-md-6 col-lg-4">
+                                    <div class="price-table" data-animation="fadeInUp" data-animation-delay="100">
+                                        <div class="price-table-header">
+                                            <div class="price-label">
+                                                <h2 class="price-label-title"><?=$precio['nombre']?></h2>
+                                            </div>
+                                            <div class="price-value">
+                                                <span class="price-number"><?=$precio['precio']?></span><span class="price-unit">$</span><span class="price-per"></span>
+                                            </div>
+                                        </div>
+                                        <div class="price-table-rows">
+                                            <div class="price-table-row"><i class="fa fa-check-circle-o"></i><?=$precio['descripcion']?></div>
+                                        </div>
+                                    </div>
+                                </div>
+            <?php
+            }
+            ?>                    
+                            </div>
+                        </div>
+                    </section>
+                    <!-- /PAGE PRICE -->                    
+                    
                         <!-- PAGE CONTACT -->
                         <section class="page-section color">
                             <div class="container">

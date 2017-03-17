@@ -27,7 +27,7 @@ class Precios_patrocinadores_model extends CI_Model
     public function traer_precios_patrocinadores()
     {
         $precios_patrocinadores=array();
-        $this->db->select("eventos_precios_patrocinio.id, evento, eventos.nombre as nombre_evento, eventos_precios_patrocinio.nombre, eventos_precios_patrocinio.precio");
+        $this->db->select("eventos_precios_patrocinio.id, evento, eventos.nombre as nombre_evento, eventos_precios_patrocinio.nombre, eventos_precios_patrocinio.descripcion, eventos_precios_patrocinio.precio");
         $this->db->from("eventos_precios_patrocinio");
         $this->db->join("eventos","eventos_precios_patrocinio.evento=eventos.id");
         $this->db->where('estado','activo');
@@ -56,6 +56,7 @@ class Precios_patrocinadores_model extends CI_Model
             $precios_patrocinadores[$row->id]['id']=$row->id;
             $precios_patrocinadores[$row->id]['evento']=$row->evento;
             $precios_patrocinadores[$row->id]['nombre']=$row->nombre;
+            $precios_patrocinadores[$row->id]['descripcion']=$row->descripcion;
             $precios_patrocinadores[$row->id]['precio']=$row->precio;
         }
         
@@ -90,6 +91,7 @@ class Precios_patrocinadores_model extends CI_Model
         {
             $datos=array("evento"=>$data['evento'][$i],
                     "nombre"=>$data['nombre'][$i],
+                    "descripcion"=>$data['descripcion'][$i],
                     "precio"=>$data['precio'][$i],
                 );
             $this->db->insert('eventos_precios_patrocinio', $datos);       

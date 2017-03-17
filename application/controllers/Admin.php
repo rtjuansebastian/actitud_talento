@@ -31,6 +31,7 @@ class Admin extends CI_Controller
         $this->load->model('contactos_model');
         $this->load->model('registros_model');
         $this->load->model('precios_model');
+        $this->load->model('precios_patrocinadores_model');
     }
     
     /**
@@ -128,7 +129,7 @@ class Admin extends CI_Controller
     {        
         $datos['eventos']=$this->eventos_model->traer_eventos();
         $datos['paises']=$this->paises_model->traer_paises();
-        $datos['patrocinadores']=$this->patrocinadores_model->traer_patrocinadores();
+        $datos['patrocinadores']=$this->patrocinadores_model->traer_patrocinadores();        
         $this->load->view('admin/ver_eventos',$datos);
     }        
     
@@ -190,8 +191,40 @@ class Admin extends CI_Controller
     {
         $data=  $this->input->post();
         $this->patrocinadores_model->eliminar_patrocinador_evento($data);        
-    }    
+    }   
     
+    public function traer_precios_patrocinio_evento()
+    {
+        $evento=$this->input->post("evento");
+        $precios=$this->precios_patrocinadores_model->traer_precios_patrocinadores_evento($evento);
+        echo json_encode($precios);
+    }
+    
+    public function crear_precio_patrocinadores_evento()
+    {
+        $data=$this->input->post();
+        $this->precios_patrocinadores_model->agregar_precio($data);
+    }   
+    
+    public function editar_precio_patrocinador_evento()
+    {
+        $id=$this->input->post("precio");
+        $precio=$this->precios_patrocinadores_model->traer_precio_patrocinio($id);
+        echo json_encode($precio);
+    }
+    
+    public function actualizar_precio_patrocinador_evento()
+    {
+        $data=$this->input->post();
+        $this->precios_patrocinadores_model->actualizar_precio($data);        
+    }
+    
+    public function eliminar_precio_patrocinador_evento()
+    {
+        $id=  $this->input->post("precio");
+        $this->precios_patrocinadores_model->eliminar_precio($id);                
+    }
+
     public function editar_programacion_evento()
     {
         $id=$this->input->post("conferencia");
@@ -429,8 +462,23 @@ class Admin extends CI_Controller
     {
         $data=  $this->input->post();
         $evento=$this->galerias_model->agregar_galerias_evento($data);
-        $this->agregar_patrocinadores_evento($evento);         
+        $this->agregar_precios_patrocinadores_evento($evento);         
     }
+    
+    public function agregar_precios_patrocinadores_evento($evento=NULL)
+    {
+        if($this->input->post("precio"))
+        {        
+            $data=  $this->input->post();
+            $evento=$this->precios_patrocinadores_model->agregar_precios_patrocinadores_evento($data);
+            $this->agregar_patrocinadores_evento($evento);            
+        }
+        else
+        {
+            $datos['evento']=$evento;
+            $this->load->view("admin/agregar_precios_patrocinadores_evento",$datos);             
+        }
+    }     
 
     public function agregar_patrocinadores_evento($evento=NULL)
     {
@@ -443,6 +491,7 @@ class Admin extends CI_Controller
         else
         {
             $datos['patrocinadores']=$this->patrocinadores_model->traer_patrocinadores();
+            $datos['precios_patrocinadores']=$this->precios_patrocinadores_model->traer_precios_patrocinadores_evento($evento);
             $datos['evento']=$evento;
             $this->load->view("admin/agregar_patrocinadores_evento",$datos);             
         }
