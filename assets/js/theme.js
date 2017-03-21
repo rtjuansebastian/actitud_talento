@@ -244,7 +244,7 @@ var theme = function () {
         },
         // CountDown
         initCountDown: function () {
-            var austDay = new Date(""+fecha+"");
+            var austDay = new Date(fecha.replace(/-/g, '/'));
             $('#defaultCountdown').countdown({until: austDay});
             $('#year').text(austDay.getFullYear());
         },
