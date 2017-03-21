@@ -27,7 +27,7 @@
             <div class="container">
                 <div class="navbar-header responsive-logo">			
                     <div class="navbar-brand">
-                        <h1 class="dark-text"> Congreso internacional de gestión del cambio y la cultura organizacional </h1>
+                        <h1 class="dark-text"> Gestión del Cambio y Cultura Organizacional </h1>
                     </div> <!-- /.navbar-brand -->
                 </div> <!-- /.navbar-header -->
             </div> <!-- /.container -->
@@ -38,6 +38,7 @@
         <div class="container">
             <div class="section-header">
                 <!-- SECTION TITLE AND SUBTITLE -->
+                <img src="<?=  base_url()?>assets/img/inicio.png"/>
                 <h2 class="dark-text">No te quedes sin participar</h2>
             </div>            
             <div id="main-slider" class="owl-carousel owl-theme">
