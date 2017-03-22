@@ -1,6 +1,6 @@
 <?php $this->load->view("admin/header_admin");  ?>      
         <div class="container">
-            <h1>Precios del evento</h1>
+            <h1>Precios de auspicio del evento</h1>
             <form method="post" action="<?=  base_url()?>admin/agregar_precios_patrocinadores_evento">                            
                 <div class="row" id="precios_patrocinadores">
                     <div class="col-md-6" id="precio1">                        

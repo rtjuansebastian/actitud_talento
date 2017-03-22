@@ -19,47 +19,65 @@
     <link href="<?=base_url()?>assets/css/owl.carousel.min.css" rel="stylesheet">
     <link href="<?=base_url()?>assets/css/owl.theme.default.min.css" rel="stylesheet">   
     <link href="<?=base_url()?>assets/css/zerif-lite_style.css" rel="stylesheet">
+    <link href="<?=base_url()?>assets/css/estilos.css" rel="stylesheet">
 </head>
-<body id="home" class="wide body-light">
+<body>
+        <header> 
 
-    <header id="home" class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
-	<div id="main-nav" class="navbar navbar-inverse bs-docs-nav" role="banner">
-            <div class="container">
-                <div class="navbar-header responsive-logo">			
-                    <div class="navbar-brand">
-                        <h1 class="dark-text"> Gestión del Cambio y Cultura Organizacional </h1>
-                    </div> <!-- /.navbar-brand -->
-                </div> <!-- /.navbar-header -->
-            </div> <!-- /.container -->
-	</div> <!-- /#main-nav -->
-	<!-- / END TOP BAR -->
-    </header> <!-- / END HOME SECTION  --> 
-    <section class="focus" id="focus">	
-        <div class="container">
-            <div class="section-header">
-                <!-- SECTION TITLE AND SUBTITLE -->
-                <img src="<?=  base_url()?>assets/img/inicio.png"/>
-                <h2 class="dark-text">No te quedes sin participar</h2>
-            </div>            
-            <div id="main-slider" class="owl-carousel owl-theme">
-<?php
-foreach ($galerias as $galeria)
-{
-?>    
-                        <div class="item">
-                            <img src="<?=  base_url()?>assets/img/galerias/<?=$galeria['imagen']?>" alt="Owl Image">
-                            <div class="title"></div>
-                        </div>
-<?php
-}
-?>                                
-            </div>
-            <div class="section-header">
-                <!-- SECTION TITLE AND SUBTITLE -->
-                <h2 class="dark-text">Fechas proximos eventos </h2><div class="section-legend">Eventos en distintos paises </div>
-            </div>
-            <div class="row">
-                <span id="ctup-ads-widget-1" class="">
+
+
+<!-- Carousel
+================================================== -->
+<div id="myCarousel1" class="carousel slide">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="item active">
+        <img src="<?=  base_url()?>/assets/img/inicio.png">
+      <div class="container">
+        <div class="carousel-caption">
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="http://lorempixel.com/1500/600/abstract/1">
+      <div class="container">
+        <div class="carousel-caption">
+          <h1>Changes to the Grid</h1>
+          <p>Bootstrap 3 still features a 12-column grid, but many of the CSS class names have completely changed.</p>
+          <p><a class="btn btn-large btn-primary" href="#">Learn more</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="http://placehold.it/1500X500">
+      <div class="container">
+        <div class="carousel-caption">
+          <h1>Percentage-based sizing</h1>
+          <p>With "mobile-first" there is now only one percentage-based grid.</p>
+          <p><a class="btn btn-large btn-primary" href="#">Browse gallery</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Controls -->
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="icon-prev"></span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="icon-next"></span>
+  </a>  
+</div>
+<!-- /.carousel -->         
+        </header> <!-- / END HOME SECTION  -->                  
+        <section class="focus" id="focus">	                            
+            <div class="row">             
+                <h1>Eventos en diferentes paises</h1>
+                <span>
 <?php
 foreach ($eventos as $evento)
 {
@@ -70,7 +88,6 @@ foreach ($eventos as $evento)
                             <i class="pixeden" style="background:url(<?=  base_url()?>assets/img/banderas/<?=$evento['imagen_bandera']?>) no-repeat center;width:100%; height:100%;"></i>
                         </a>	
                         <h3 class="red-border-bottom"><?=$evento['nombre_pais']?></h3>
-                        <!-- FOCUS HEADING -->
                         <p>Evento: <?=$evento['nombre']?>  Fecha: <?=$evento['fecha']?> Lugar: <?=$evento['lugar']?></p>
                     </div>
 <?php
@@ -78,40 +95,12 @@ foreach ($eventos as $evento)
 ?>
                 </span>
             </div>
-        </div> <!-- / END CONTAINER -->	
-    </section>  <!-- / END FOCUS SECTION -->
-<footer id="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
-
-	<div class="footer-widget-wrap">
+        </section>
+        <footer>
             <div class="container">
-                <div class="footer-widget col-xs-12 col-sm-4">
-                    <aside id="sow-editor-3" class="widget footer-widget-footer widget_sow-editor">
-                        <div class="so-widget-sow-editor so-widget-sow-editor-base">
-                        </div>
-                    </aside>                        
-                </div>                
-            </div>                
-        </div>
-	<div class="container">	
-            <div class="col-md-4 company-details">
-                <div class="zerif-footer-address"> 
-                </div>                        
-            </div>
-            <div class="col-md-4 company-details">
-                <div class="zerif-footer-email">
-                    Congreso internacional de gestión del cambio y la cultura organizacional
-                    <br>
-                    <br>
-                    Actitud y Talento 2017
-                </div>
-            </div>
-            <div class="col-md-4 company-details">
-                <div class="zerif-footer-phone">
-                </div>
-            </div>			
-        </div> <!-- / END CONTAINER -->
-
-</footer> <!-- / END FOOOTER  -->    
+                <p class="text-muted text-center">Todos los derechos reservados Actitud y Talento 2017</p>
+            </div>            
+        </footer>  
 <!-- /Wrap all content -->
 <!--[if gte IE 9]><!--><script src="<?=base_url()?>assets/js/jquery-2.1.1.min.js"></script><!--<![endif]-->
 <script src="<?=base_url()?>assets/js//modernizr.custom.js"></script>
@@ -119,16 +108,8 @@ foreach ($eventos as $evento)
 <!-- JS Page Level -->
 <script src="<?=base_url()?>assets/js/owl.carousel.min.js"></script>
 <script>
-$(document).ready(function() { 
-   $("#main-slider").owlCarousel({
-                //items: 1,
-                autoplay: true,
-                autoplayHoverPause: false,
-                loop: true,
-                margin: 0,
-                dots: false,
-                responsiveRefreshRate: 100
-    });
+$(document).ready(function() {
+   
 });
 </script>
 </body>
