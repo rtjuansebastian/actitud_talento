@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-    <title>A&T Eventos</title>
+    <title>Cambio&Cultura</title>
 
     <!-- Favicons -->
     <link rel="shortcut icon" href="<?=  base_url()?>assets/img/favicon.png">
