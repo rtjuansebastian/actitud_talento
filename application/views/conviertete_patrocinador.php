@@ -76,7 +76,7 @@ header("HTTP/1.1 200 OK"); ?>
             <nav class="navigation closed clearfix">
                 <a href="#" class="menu-toggle btn"><i class="fa fa-bars"></i></a>
                 <ul class="sf-menu nav">
-                    <li class="active"><a href="#home">Inicio</a></li>
+                    <li class="active"><a href="<?=  base_url()?>index/evento?evento=<?=$evento['id']?>#home">Inicio</a></li>
                     <li><a href="<?=  base_url()?>index/evento?evento=<?=$evento['id']?>#about">Descripción</a></li>
                     <li><a href="<?=  base_url()?>index/evento?evento=<?=$evento['id']?>#schedule">Programación</a></li>
                     <li><a href="<?=  base_url()?>index/evento?evento=<?=$evento['id']?>#sponsors">Patrocinadores</a></li>
@@ -91,155 +91,167 @@ header("HTTP/1.1 200 OK"); ?>
         </div>
     </header>
     <!-- /HEADER -->
-
     <!-- Content area -->
-    <div class="content-area">   
+    <div class="content-area">    
+        <img src="<?=  base_url()?>assets/img/gris.png" height="100px" width="100%">
         <!-- PAGE ABOUT -->
-        <img src="<?=$evento['imagen_fondo']?>">
-        <section class="page-section" id="about">
-            <div class="container">
+        <section class="page-section" id="about">            
+            <div class="container">                
                 <h1 class="section-title">
+                    Convierte en patrocinador
                 </h1>
                 <div class="row">
-        <!-- PAGE PRICE -->
-                    <section class="page-section" id="price">
-                        <div class="container">
-                            <h1 class="section-title clearfix">
-                                <span data-animation="flipInY" data-animation-delay="300" class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-user fa-stack-1x"></i></span></span>
-                                <span data-animation="fadeInRight" data-animation-delay="500" class="title-inner">Lista de precios de inscripción <small></small></span>
-                            </h1>
-                            <div class="row price-tables">
-            <?php
-            foreach ($precios_patrocinadores as $precio)
-            {
-            ?>
-                                <div class="col-xsp-6 col-sm-6 col-md-6 col-lg-4">
-                                    <div class="price-table" data-animation="fadeInUp" data-animation-delay="100">
-                                        <div class="price-table-header">
-                                            <div class="price-label">
-                                                <h2 class="price-label-title"><?=$precio['nombre']?></h2>
-                                            </div>
-                                            <div class="price-value">
-                                                <span class="price-number"><?=$precio['precio']?></span><span class="price-unit">$</span><span class="price-per"></span>
-                                            </div>
-                                        </div>
-                                        <div class="price-table-rows">
-                                            <div class="price-table-row"><i class="fa fa-check-circle-o"></i><?=$precio['descripcion']?></div>
-                                        </div>
-                                    </div>
+                    <div class="col-lg-8">
+                        <p data-animation="fadeInUp" data-animation-delay="300">Precios de auspicio del <?=$evento['nombre']?></p>
+                        <p class="btn-row">
+                        </p>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 pull-left">
+
+                    </div>
+                </div>
+            </div>
+        </section>        
+        <div>
+       <section class="page-section" id="price">
+            <div class="container">
+                <h1 class="section-title clearfix">
+                    <span data-animation="flipInY" data-animation-delay="300" class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-user fa-stack-1x"></i></span></span>
+                    <span data-animation="fadeInRight" data-animation-delay="500" class="title-inner">Lista de precios de auspicio <small></small></span>
+                </h1>
+                <div class="row price-tables">
+    <?php
+    foreach ($precios_patrocinadores as $precio)
+    {
+    ?>
+                    <div class="col-xsp-6 col-sm-6 col-md-6 col-lg-4">
+                        <div class="price-table" data-animation="fadeInUp" data-animation-delay="100">
+                            <div class="price-table-header">
+                                <div class="price-label">
+                                    <h2 class="price-label-title"><?=$precio['nombre']?></h2>
                                 </div>
-            <?php
-            }
-            ?>                    
+                                <div class="price-value">
+                                    <span class="price-number"><?=$precio['precio']?></span><span class="price-unit">$</span><span class="price-per"></span>
+                                </div>
+                            </div>
+                            <div class="price-table-rows">
+                                <div class="price-table-row"><i class="fa fa-check-circle-o"></i><?=$precio['descripcion']?></div>
                             </div>
                         </div>
-                    </section>
-                    <!-- /PAGE PRICE -->                    
-                    
-                        <!-- PAGE CONTACT -->
-                        <section class="page-section color">
-                            <div class="container">
+                    </div>
+    <?php
+    }
+    ?>                    
+                </div>
+            </div>
+        </section>
+        <!-- /PAGE PRICE -->                  
+        </div>
+        <div>
+        <!-- PAGE CONTACT -->
+        <section class="page-section color">
+            <div class="container">
 <?php
 if(isset($mensaje))
 {
 ?>
-                                <div class="alert alert-success fade in"><button class="close" data-dismiss="alert" type="button">&times;</button><?=$mensaje?></div>
+                <div class="alert alert-success fade in">
+                    <button class="close" data-dismiss="alert" type="button">&times;</button><?=$mensaje?>
+                </div>
 <?php
 }
 ?>
-                                <h1 class="section-title">
-                                    <span data-animation="flipInY" data-animation-delay="100" class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-ticket fa-stack-1x"></i></span></span>
-                                    <span data-animation="fadeInRight" data-animation-delay="100" class="title-inner">Envianos tus datos <small>/ en breve nos comunicamos</small></span>
-                                </h1>
+                <h1 class="section-title">
+                    <span data-animation="flipInY" data-animation-delay="100" class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-ticket fa-stack-1x"></i></span></span>
+                    <span data-animation="fadeInRight" data-animation-delay="100" class="title-inner">Envianos tus datos <small>/ en breve nos comunicamos</small></span>
+                </h1>
 
-                                <!-- Contact form -->
-                                <form name="patrocinador-form" class="af-form row" id="patrocinador-form" method="post" action="<?=  base_url()?>index/solicitud_patrocinador" enctype="multipart/form-data">
-                                    <input type="hidden" name="estado" id="estado" value="pendiente"/>
-                                    <input type="hidden" name="evento" id="evento" value="<?=$evento['id']?>"/>
-                                    <div class="col-sm-12 af-outer af-required">
-                                        <div class="form-group af-inner">
-                                            <input type="text" name="nombre_contacto" id="nombre_contacto" placeholder="Nombre persona de contacto" size="30" required=""
-                                                    data-toggle="tooltip" title="Name is required"
-                                                    class="form-control placeholder"/>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="col-sm-12 af-outer af-required">
-                                        <div class="form-group af-inner">
-                                            <input type="text" name="telefono_contacto" id="telefono_contacto" placeholder="Telefono persona de contacto" size="30" required=""
-                                                    data-toggle="tooltip" title="Name is required"
-                                                    class="form-control placeholder"/>
-                                        </div>
-                                    </div>                                    
-                                    
-                                    <div class="col-sm-12 af-outer af-required">
-                                        <div class="form-group af-inner">
-                                            <input type="text" name="nombre" id="nombre" placeholder="Nombre patrocinador" size="30" required=""
-                                                    data-toggle="tooltip" title="Name is required"
-                                                    class="form-control placeholder"/>
-                                        </div>
-                                    </div>                                    
-                                    
-                                    <div class="col-sm-12 af-outer af-required">
-                                        <div class="form-group af-inner">
-                                            <textarea
-                                                    name="descripcion" id="descripcion" placeholder="Descripción" rows="4" cols="50"
-                                                    data-toggle="tooltip" title="Message is required"
-                                                    class="form-control placeholder"></textarea>
-                                        </div>
-                                    </div>                                    
+                <!-- Contact form -->
+                <form name="patrocinador-form" class="af-form row" id="patrocinador-form" method="post" action="<?=  base_url()?>index/solicitud_patrocinador" enctype="multipart/form-data">
+                    <input type="hidden" name="estado" id="estado" value="pendiente"/>
+                    <input type="hidden" name="evento" id="evento" value="<?=$evento['id']?>"/>
+                    <div class="col-sm-12 af-outer af-required">
+                        <div class="form-group af-inner">
+                            <input type="text" name="nombre_contacto" id="nombre_contacto" placeholder="Nombre persona de contacto" size="30" required=""
+                                    data-toggle="tooltip" title="Name is required"
+                                    class="form-control placeholder"/>
+                        </div>
+                    </div>
 
-                                    <div class="col-sm-12 af-outer af-required">
-                                        <div class="form-group af-inner">
-                                            <input
-                                                    type="text" name="url" id="url" placeholder="Dirección web" size="30" required=""
-                                                    data-toggle="tooltip" title="Email is required"
-                                                    class="form-control placeholder"/>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="col-sm-12 af-outer af-required">
-                                        <div class="form-group af-inner">
-                                            <label for="imagen_patrocinador">Logo del patrocinador</label>
-                                            <input
-                                                type="file" name="imagen_patrocinador" id="imagen_patrocinador" placeholder="Dirección web" required="" size="30"
-                                                    data-toggle="tooltip" title="Imagen is required"
-                                                    class="form-control placeholder"/>
-                                        </div>
-                                    </div>   
+                    <div class="col-sm-12 af-outer af-required">
+                        <div class="form-group af-inner">
+                            <input type="text" name="telefono_contacto" id="telefono_contacto" placeholder="Telefono persona de contacto" size="30" required=""
+                                    data-toggle="tooltip" title="Name is required"
+                                    class="form-control placeholder"/>
+                        </div>
+                    </div>                                    
 
-                                    <div class="col-sm-12 af-outer af-required">
-                                        <div class="form-group af-inner">
-                                            <label for="imagen_patrocinador">Tipo de auspicio</label>
-                                            <select id="precio" name="precio" class="form-control">
+                    <div class="col-sm-12 af-outer af-required">
+                        <div class="form-group af-inner">
+                            <input type="text" name="nombre" id="nombre" placeholder="Nombre patrocinador" size="30" required=""
+                                    data-toggle="tooltip" title="Name is required"
+                                    class="form-control placeholder"/>
+                        </div>
+                    </div>                                    
+
+                    <div class="col-sm-12 af-outer af-required">
+                        <div class="form-group af-inner">
+                            <textarea
+                                    name="descripcion" id="descripcion" placeholder="Descripción" rows="4" cols="50"
+                                    data-toggle="tooltip" title="Message is required"
+                                    class="form-control placeholder"></textarea>
+                        </div>
+                    </div>                                    
+
+                    <div class="col-sm-12 af-outer af-required">
+                        <div class="form-group af-inner">
+                            <input
+                                    type="text" name="url" id="url" placeholder="Dirección web" size="30" required=""
+                                    data-toggle="tooltip" title="Email is required"
+                                    class="form-control placeholder"/>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 af-outer af-required">
+                        <div class="form-group af-inner">
+                            <label for="imagen_patrocinador">Logo del patrocinador</label>
+                            <input
+                                type="file" name="imagen_patrocinador" id="imagen_patrocinador" required="" size="30"
+                                    data-toggle="tooltip" title="Imagen is required"
+                                    class="form-control placeholder"/>
+                        </div>
+                    </div>   
+
+                    <div class="col-sm-12 af-outer af-required">
+                        <div class="form-group af-inner">
+                            <label for="imagen_patrocinador">Tipo de auspicio</label>
+                            <select id="precio" name="precio" class="form-control">
 <?php                                     
 foreach ($precios_patrocinadores as $precio)                                    
 {
 ?>                               
-                                                <option value="<?=$precio['id']?>"><?=$precio['nombre']?>. $<?=$precio['precio']?></option>
+                                    <option value="<?=$precio['id']?>"><?=$precio['nombre']?>. $<?=$precio['precio']?></option>
 <?php                                    
 }
 ?>                                                                               
-                                            </select>
-                                        </div>
-                                    </div> 
+                            </select>
+                        </div>
+                    </div> 
 
-                                    <div class="col-sm-12 af-outer af-required text-center">
-                                        <div class="form-group af-inner">
-                                            <input type="submit" name="submit" class="form-button form-button-submit btn btn-theme btn-theme-lg btn-theme-transparent" id="submit_btn" value="Enviar solicitud" />
-                                        </div>
-                                    </div>
+                    <div class="col-sm-12 af-outer af-required text-center">
+                        <div class="form-group af-inner">
+                            <input type="submit" name="submit" class="form-button form-button-submit btn btn-theme btn-theme-lg btn-theme-transparent" id="submit_btn" value="Enviar solicitud" />
+                        </div>
+                    </div>
 
-                                </form>
-                                <!-- /Contact form -->
+                </form>
+                <!-- /Contact form -->
 
-                            </div>
-                        </section>
-                        <!-- /PAGE CONTACT -->
-                </div>
             </div>
-        </section>        
-    </div>
+        </section>
+        <!-- /PAGE CONTACT -->               
+        </div>
+    </div>   
     <!-- /Content area -->
     <!-- FOOTER -->
     <footer class="footer">
@@ -303,6 +315,8 @@ if(isset($evento['skype']) && $evento['skype']!=='')
 
 </div>
 <!-- /Wrap all content -->
+
+<!-- JS Global -->
 
 <!--[if lt IE 9]><script src="assets/plugins/jquery/jquery-1.11.1.min.js"></script><![endif]-->
 <!--[if gte IE 9]><!--><script src="<?=base_url()?>assets/js/jquery-2.1.1.min.js"></script><!--<![endif]-->
@@ -373,4 +387,4 @@ if(isset($evento['skype']) && $evento['skype']!=='')
 </script>
 
 </body>
-</html>
+</html>     

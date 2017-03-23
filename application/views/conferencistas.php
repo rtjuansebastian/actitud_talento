@@ -76,7 +76,7 @@ header("HTTP/1.1 200 OK"); ?>
             <nav class="navigation closed clearfix">
                 <a href="#" class="menu-toggle btn"><i class="fa fa-bars"></i></a>
                 <ul class="sf-menu nav">
-                    <li class="active"><a href="#home">Inicio</a></li>
+                    <li class="active"><a href="<?=  base_url()?>index/evento?evento=<?=$evento['id']?>#home">Inicio</a></li>
                     <li><a href="<?=  base_url()?>index/evento?evento=<?=$evento['id']?>#about">Descripción</a></li>
                     <li><a href="<?=  base_url()?>index/evento?evento=<?=$evento['id']?>#schedule">Programación</a></li>
                     <li><a href="<?=  base_url()?>index/evento?evento=<?=$evento['id']?>#sponsors">Patrocinadores</a></li>
@@ -93,7 +93,7 @@ header("HTTP/1.1 200 OK"); ?>
     <!-- /HEADER -->
     <!-- Content area -->
     <div class="content-area">    
-        
+        <img src="<?=  base_url()?>assets/img/gris.png" height="100px" width="100%">
         <!-- PAGE ABOUT -->
         <section class="page-section" id="about">
             <div class="container">
@@ -197,7 +197,6 @@ if(isset($conferencista['instagram']))
                 </div>
                 <!-- /Speakers row -->
             </div>
-        </section>
         <!-- /PAGE SPEAKERS -->    
     <!-- /Content area -->
     <!-- FOOTER -->
