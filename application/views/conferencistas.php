@@ -147,7 +147,7 @@ foreach ($conferencistas as $conferencista)
                                 <p><?=$conferencista['perfil']?></p>
                                 <ul class="social-line list-inline text-center">
 <?php 
-if(isset($conferencista['facebook']))
+if(!empty($conferencista['facebook']))
 {
 ?>
                                     <li><a href="<?=$conferencista['facebook']?>" class="facebook"><i class="fa fa-facebook"></i></a></li>
@@ -155,7 +155,7 @@ if(isset($conferencista['facebook']))
 }
 ?>
 <?php 
-if(isset($conferencista['twitter']))
+if(!empty($conferencista['twitter']))
 {
 ?>                                    
                                     <li><a href="<?=$conferencista['twitter']?>" class="twitter"><i class="fa fa-twitter"></i></a></li>
@@ -163,7 +163,7 @@ if(isset($conferencista['twitter']))
 }
 ?>
 <?php 
-if(isset($conferencista['google_plus']))
+if(!empty($conferencista['google_plus']))
 {
 ?>                                      
                                     <li><a href="<?=$conferencista['google_plus']?>" class="google"><i class="fa fa-google-plus"></i></a></li>
@@ -171,7 +171,7 @@ if(isset($conferencista['google_plus']))
 }
 ?>
 <?php 
-if(isset($conferencista['linkedin']))
+if(!empty($conferencista['linkedin']))
 {
 ?>                                      
                                     <li><a href="<?=$conferencista['linkedin']?>" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
@@ -179,7 +179,7 @@ if(isset($conferencista['linkedin']))
 }
 ?>
 <?php 
-if(isset($conferencista['instagram']))
+if(!empty($conferencista['instagram']))
 {
 ?>                                      
                                     <li><a href="<?=$conferencista['instagram']?>" class="instagram"><i class="fa fa-instagram"></i></a></li>
@@ -206,49 +206,49 @@ if(isset($conferencista['instagram']))
                 <div class="clearfix">
                     <ul class="social-line list-inline">
 <?php                        
-if(isset($evento['twitter']) && $evento['twitter']!=='')
+if(!empty($evento['twitter']))
 {
 ?>
                         <li data-animation="flipInY" data-animation-delay="100"><a href="<?=$evento['twitter']?>" class="twitter"><i class="fa fa-twitter"></i></a></li>
 <?php
 }
-if(isset($evento['dribbble']) && $evento['dribbble']!=='')
+if(!empty($evento['dribbble']))
 {
 ?>                                
                         <li data-animation="flipInY" data-animation-delay="200"><a href="<?=$evento['dribbble']?>" class="dribbble"><i class="fa fa-dribbble"></i></a></li>
 <?php
 }
-if(isset($evento['facebook']) && $evento['facebook']!=='')
+if(!empty($evento['facebook']))
 {
 ?>                          
                         <li data-animation="flipInY" data-animation-delay="300"><a href="<?=$evento['facebook']?>" class="facebook"><i class="fa fa-facebook"></i></a></li>
 <?php
 }
-if(isset($evento['google-plus']) && $evento['google-plus']!=='')
+if(!empty($evento['google-plus']) )
 {
 ?>                          
                         <li data-animation="flipInY" data-animation-delay="400"><a href="<?=$evento['google-plus']?>" class="google"><i class="fa fa-google-plus"></i></a></li>
 <?php
 }
-if(isset($evento['instagram']) && $evento['instagram']!=='')
+if(!empty($evento['instagram']))
 {
 ?>                          
                         <li data-animation="flipInY" data-animation-delay="500"><a href="<?=$evento['instagram']?>" class="instagram"><i class="fa fa-instagram"></i></a></li>
 <?php
 }
-if(isset($evento['pinterest']) && $evento['pinterest']!=='')
+if(!empty($evento['pinterest']))
 {
 ?>                          
                         <li data-animation="flipInY" data-animation-delay="600"><a href="<?=$evento['pinterest']?>" class="pinterest"><i class="fa fa-pinterest"></i></a></li>
 <?php
 }
-if(isset($evento['skype']) && $evento['skype']!=='')
+if(!empty($evento['skype']))
 {
 ?>                          
                         <li data-animation="flipInY" data-animation-delay="700"><a href="<?=$evento['skype']?>" class="skype"><i class="fa fa-skype"></i></a></li>
 <?php
 }
-?>                          
+?>                                  
                     </ul>
                 </div>
                 <span class="copyright" data-animation="fadeInUp" data-animation-delay="100">&copy; 2017 Actitud y Talento</span>

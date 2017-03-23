@@ -513,11 +513,11 @@ foreach ($eventos as $evento)
                             </div>                         
                             <div class="form-group">
                                 <label for="perfil">Descripción</label>
-                                <input type="text" class="form-control" id="descripcion_editar_precio_patrocinador" name="descripcion" required=""/>                                                        
+                                <textarea class="form-control" id="descripcion_editar_precio_patrocinador" name="descripcion" required=""></textarea>
                             </div> 
                             <div class="form-group">
                                 <label for="perfil">Precio</label>
-                                <input type="number" class="form-control" id="precio_editar_precio_patrocinador" name="precio" required=""/>                                                        
+                                <input type="text" class="form-control" id="precio_editar_precio_patrocinador" name="precio" required=""/>                                                        
                             </div>                             
                         </div>
                         <div class="modal-footer">
@@ -550,7 +550,7 @@ foreach ($eventos as $evento)
                             </div> 
                             <div class="form-group">
                                 <label for="perfil">Precio</label>
-                                <input type="number" class="form-control" id="precio_editar_precio" name="precio" required=""/>                                                        
+                                <input type="text" class="form-control" id="precio_editar_precio" name="precio" required=""/>                                                        
                             </div>                             
                         </div>
                         <div class="modal-footer">
@@ -778,7 +778,7 @@ foreach ($eventos as $evento)
                             </div> 
                             <div class="form-group">
                                 <label for="perfil">Precio</label>
-                                <input type="number" class="form-control" id="precio" name="precio" required=""/>                                                        
+                                <input type="text" class="form-control" id="precio" name="precio" required=""/>                                                        
                             </div>                            
                         </div>
                         <div class="modal-footer">

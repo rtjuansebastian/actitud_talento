@@ -15,7 +15,7 @@
                         </div>                        
                         <div class="form-group">
                             <label for="precio">Precio 1</label>
-                            <input type="number" class="form-control" id="precio" name="precio[]" required=""/>
+                            <input type="text" class="form-control" id="precio" name="precio[]" required=""/>
                         </div>                        
                     </div>                
                 </div>

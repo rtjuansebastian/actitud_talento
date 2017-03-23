@@ -135,7 +135,15 @@ header("HTTP/1.1 200 OK"); ?>
                                 </div>
                             </div>
                             <div class="price-table-rows">
-                                <div class="price-table-row"><i class="fa fa-check-circle-o"></i><?=$precio['descripcion']?></div>
+<?php
+$items=  explode("\n", $precio['descripcion']);
+foreach ($items as $item)
+{
+?>
+                                <div class="price-table-row"><i class="fa fa-check-circle-o"></i><?=$item?></div>
+<?php
+}
+?>
                             </div>
                         </div>
                     </div>
@@ -260,49 +268,49 @@ foreach ($precios_patrocinadores as $precio)
                 <div class="clearfix">
                     <ul class="social-line list-inline">
 <?php                        
-if(isset($evento['twitter']) && $evento['twitter']!=='')
+if(!empty($evento['twitter']))
 {
 ?>
                         <li data-animation="flipInY" data-animation-delay="100"><a href="<?=$evento['twitter']?>" class="twitter"><i class="fa fa-twitter"></i></a></li>
 <?php
 }
-if(isset($evento['dribbble']) && $evento['dribbble']!=='')
+if(!empty($evento['dribbble']))
 {
 ?>                                
                         <li data-animation="flipInY" data-animation-delay="200"><a href="<?=$evento['dribbble']?>" class="dribbble"><i class="fa fa-dribbble"></i></a></li>
 <?php
 }
-if(isset($evento['facebook']) && $evento['facebook']!=='')
+if(!empty($evento['facebook']))
 {
 ?>                          
                         <li data-animation="flipInY" data-animation-delay="300"><a href="<?=$evento['facebook']?>" class="facebook"><i class="fa fa-facebook"></i></a></li>
 <?php
 }
-if(isset($evento['google-plus']) && $evento['google-plus']!=='')
+if(!empty($evento['google-plus']) )
 {
 ?>                          
                         <li data-animation="flipInY" data-animation-delay="400"><a href="<?=$evento['google-plus']?>" class="google"><i class="fa fa-google-plus"></i></a></li>
 <?php
 }
-if(isset($evento['instagram']) && $evento['instagram']!=='')
+if(!empty($evento['instagram']))
 {
 ?>                          
                         <li data-animation="flipInY" data-animation-delay="500"><a href="<?=$evento['instagram']?>" class="instagram"><i class="fa fa-instagram"></i></a></li>
 <?php
 }
-if(isset($evento['pinterest']) && $evento['pinterest']!=='')
+if(!empty($evento['pinterest']))
 {
 ?>                          
                         <li data-animation="flipInY" data-animation-delay="600"><a href="<?=$evento['pinterest']?>" class="pinterest"><i class="fa fa-pinterest"></i></a></li>
 <?php
 }
-if(isset($evento['skype']) && $evento['skype']!=='')
+if(!empty($evento['skype']))
 {
 ?>                          
                         <li data-animation="flipInY" data-animation-delay="700"><a href="<?=$evento['skype']?>" class="skype"><i class="fa fa-skype"></i></a></li>
 <?php
 }
-?>                          
+?>                         
                     </ul>
                 </div>
                 <span class="copyright" data-animation="fadeInUp" data-animation-delay="100">&copy; 2017 Actitud y Talento</span>
