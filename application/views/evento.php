@@ -146,7 +146,7 @@ header("HTTP/1.1 200 OK"); ?>
                         <div class="div-table">
                         <div class="div-cell">
                             <div class="row">
-                                <div class="col-md-6 col-lg-4">
+                                <div class="col-md-6 col-lg-4" id="form_registro_owl">
                                     <div class="form-background">
                                     <div class="form-header color">
                                         <h1 class="section-title">
@@ -978,7 +978,16 @@ if(isset($evento['skype']) && $evento['skype']!=='')
         theme.initCountDown();
         theme.initPartnerSlider();
         theme.initTestimonials();
-        theme.initGoogleMap();        
+        theme.initGoogleMap();     
+
+        jQuery('#form_registro_owl').on('mouseover', function (e){
+            jQuery('.owl-carousel').trigger('stop.owl.autoplay');
+        });
+        
+        jQuery('#form_registro_owl').on('mouseleave', function (e){
+            jQuery('.owl-carousel').trigger('play.owl.autoplay');
+        });        
+        
     });
     jQuery(window).load(function () {
         theme.initAnimation();
