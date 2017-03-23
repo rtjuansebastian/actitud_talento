@@ -575,7 +575,7 @@ foreach ($testimonios as $testimonio)
             <div class="container">
                 <h1 class="section-title">
                     <span data-animation="flipInY" data-animation-delay="300" class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-user fa-stack-1x"></i></span></span>
-                    <span data-animation="fadeInUp" data-animation-delay="500" class="title-inner">Conferencistas del evento <small> / meet with greaters</small></span>
+                    <span data-animation="fadeInUp" data-animation-delay="500" class="title-inner">Conferencistas del evento <small> </small></span>
                 </h1>
 
                 <!-- Speakers row -->
@@ -700,7 +700,7 @@ foreach ($precios as $precio)
                             <div class="price-table-rows">
                                 <div class="price-table-row"><i class="fa fa-check-circle-o"></i><?=$precio['descripcion']?></div>
                                 <div class="price-table-row-bottom">
-                                    <a class="btn btn-theme scroll-to" href="#register">Register</a>
+                                    <a class="btn btn-theme scroll-to" href="#register">Registro</a>
                                 </div>
                             </div>
                         </div>
