@@ -14,7 +14,7 @@ header("HTTP/1.1 200 OK"); ?>
     <title>A&T Eventos</title>
 
     <!-- Favicons -->
-    <link rel="shortcut icon" href="assets/ico/favicon.ico">
+    <link rel="shortcut icon" href="assets/img/favicon.png">
 
     <!-- CSS Global -->
     <link href="<?=base_url()?>assets/css/bootstrap.min.css" rel="stylesheet">

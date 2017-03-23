@@ -32,6 +32,7 @@ class Admin extends CI_Controller
         $this->load->model('registros_model');
         $this->load->model('precios_model');
         $this->load->model('precios_patrocinadores_model');
+        $this->load->model('configuracion_model');
     }
     
     /**
@@ -695,5 +696,18 @@ class Admin extends CI_Controller
         $respuesta=  $this->input->post("respuesta");
         $this->contactos_model->responder_contacto($contacto,$respuesta);
         $this->ver_contactos();
+    }
+    
+    public function configuracion()
+    {
+        $datos['configuracion']=$this->configuracion_model->traer_configuracion();
+        $this->load->view("admin/configuracion",$datos);
+    }
+    
+    public function actualizar_configuracion()
+    {
+        $data=  $this->input->post();
+        $this->configuracion_model->actualizar_configuracion($data);
+        $this->configuracion();
     }
 }

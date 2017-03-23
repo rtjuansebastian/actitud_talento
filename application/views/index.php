@@ -12,67 +12,45 @@
     <title>A&T Eventos</title>
 
     <!-- Favicons -->
-    <link rel="shortcut icon" href="<?=  base_url()?>assets/img/favicon.ico">
+    <link rel="shortcut icon" href="<?=  base_url()?>assets/img/favicon.png">
     <!-- CSS Global -->
     <link href="<?=base_url()?>assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?=base_url()?>assets/css/font-awesome.min.css" rel="stylesheet">
     <link href="<?=base_url()?>assets/css/owl.carousel.min.css" rel="stylesheet">
     <link href="<?=base_url()?>assets/css/owl.theme.default.min.css" rel="stylesheet">   
     <link href="<?=base_url()?>assets/css/zerif-lite_style.css" rel="stylesheet">
-    <link href="<?=base_url()?>assets/css/estilos.css" rel="stylesheet">
+    <link href="<?=base_url()?>assets/css/estilos.css" rel="stylesheet">        
+    <link href="<?=base_url()?>assets/css/slider_welcome_page.css" rel="stylesheet">
+    <link href="<?=base_url()?>assets/css/demo.css" rel="stylesheet">
+    <link href="<?=base_url()?>assets/css/footer_welcome_page.css" rel="stylesheet">
 </head>
 <body>
         <header> 
-
-
-
-<!-- Carousel
-================================================== -->
-<div id="myCarousel1" class="carousel slide">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="item active">
-        <img src="<?=  base_url()?>/assets/img/inicio.png">
-      <div class="container">
-        <div class="carousel-caption">
-        </div>
-      </div>
-    </div>
-    <div class="item">
-      <img src="http://lorempixel.com/1500/600/abstract/1">
-      <div class="container">
-        <div class="carousel-caption">
-          <h1>Changes to the Grid</h1>
-          <p>Bootstrap 3 still features a 12-column grid, but many of the CSS class names have completely changed.</p>
-          <p><a class="btn btn-large btn-primary" href="#">Learn more</a></p>
-        </div>
-      </div>
-    </div>
-    <div class="item">
-      <img src="http://placehold.it/1500X500">
-      <div class="container">
-        <div class="carousel-caption">
-          <h1>Percentage-based sizing</h1>
-          <p>With "mobile-first" there is now only one percentage-based grid.</p>
-          <p><a class="btn btn-large btn-primary" href="#">Browse gallery</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Controls -->
-  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-    <span class="icon-prev"></span>
-  </a>
-  <a class="right carousel-control" href="#myCarousel" data-slide="next">
-    <span class="icon-next"></span>
-  </a>  
-</div>
-<!-- /.carousel -->         
+            <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:1500px;height:600px;overflow:hidden;visibility:hidden;">
+                <!-- Loading Screen -->
+                <div data-u="loading" class="jssorl-oval" style="position:absolute;top:0px;left:0px;text-align:center;background-color:rgba(0,0,0,0.7);">
+                    <img style="margin-top:-19.0px;position:relative;top:50%;width:38px;height:38px;" src="<?=  base_url()?>assets/img/oval.svg" />
+                </div>
+                <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:1500px;height:600px;overflow:hidden;">
+                    <div>
+                        <img data-u="image" src="<?=  base_url()?>assets/img/<?=$configuracion['imagen_1']?>" />
+                    </div>
+                    <div>
+                        <img data-u="image" src="<?=  base_url()?>assets/img/<?=$configuracion['imagen_1']?>" />
+                    </div>
+                    <div>
+                        <img data-u="image" src="<?=  base_url()?>assets/img/<?=$configuracion['imagen_1']?>" />
+                    </div>
+                </div>
+                <!-- Bullet Navigator -->
+                <div data-u="navigator" class="jssorb05" style="bottom:16px;right:16px;" data-autocenter="1">
+                    <!-- bullet navigator item prototype -->
+                    <div data-u="prototype" style="width:16px;height:16px;"></div>
+                </div>
+                <!-- Arrow Navigator -->
+                <span data-u="arrowleft" class="jssora22l" style="top:0px;left:8px;width:40px;height:58px;" data-autocenter="2"></span>
+                <span data-u="arrowright" class="jssora22r" style="top:0px;right:8px;width:40px;height:58px;" data-autocenter="2"></span>
+            </div>            
         </header> <!-- / END HOME SECTION  -->                  
         <section class="focus" id="focus">	                            
             <div class="row">             
@@ -97,20 +75,69 @@ foreach ($eventos as $evento)
             </div>
         </section>
         <footer>
-            <div class="container">
-                <p class="text-muted text-center">Todos los derechos reservados Actitud y Talento 2017</p>
-            </div>            
-        </footer>  
+            <div class="footer-distributed">
+                <div class="footer-left">
+                    <img src="<?=  base_url()?>assets/img/logo.png" height="40px">
+                        <p class="footer-company-name"><?=$configuracion['nombre']?> &copy; 2017</p>
+                </div>
+                <div class="footer-center">
+                    <div>
+                            <i class="fa fa-map-marker"></i>
+                            <p><span><?=$configuracion['direccion']?></span> <?=$configuracion['lugar']?></p>
+                    </div>
+                    <div>
+                            <i class="fa fa-phone"></i>
+                            <p>+1 555 123456</p>
+                    </div>
+                    <div>
+                            <i class="fa fa-envelope"></i>
+                            <p><a href="mailto:<?=$configuracion['correo']?>"><?=$configuracion['correo']?></a></p>
+                    </div>
+                </div>
+                <div class="footer-right">
+                    <p class="footer-company-about">
+                            <span>Nosotros</span>
+                            <?=$configuracion['perfil']?>
+                    </p>
+                    <div class="footer-icons">
+<?php
+if(!empty($configuracion['facebook']))
+{
+?>
+                            <a href="<?=$configuracion['facebook']?>"><i class="fa fa-facebook"></i></a>
+<?php
+}
+if(!empty($configuracion['twitter']))
+{
+?>
+                            <a href="<?=$configuracion['twitter']?>"><i class="fa fa-twitter"></i></a>
+<?php
+}
+if(!empty($configuracion['linkedin']))
+{
+?>                            
+                            <a href="<?=$configuracion['linkedin']?>"><i class="fa fa-linkedin"></i></a>
+<?php
+}
+if(!empty($configuracion['instagram']))
+{
+?>                            
+                            <a href="<?=$configuracion['instagram']?>"><i class="fa fa-instagram"></i></a>
+<?php
+}
+?>
+                    </div>
+                </div>
+            </div> 
+        </footer>
 <!-- /Wrap all content -->
 <!--[if gte IE 9]><!--><script src="<?=base_url()?>assets/js/jquery-2.1.1.min.js"></script><!--<![endif]-->
 <script src="<?=base_url()?>assets/js//modernizr.custom.js"></script>
 <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
 <!-- JS Page Level -->
 <script src="<?=base_url()?>assets/js/owl.carousel.min.js"></script>
-<script>
-$(document).ready(function() {
-   
-});
-</script>
+<script src="<?=base_url()?>assets/js/jssor.slider-22.2.16.min.js" type="text/javascript"></script>
+<script src="<?=base_url()?>assets/js/slider_welcome_page.js" type="text/javascript"></script>
+<script type="text/javascript">jssor_1_slider_init();</script>
 </body>
 </html>

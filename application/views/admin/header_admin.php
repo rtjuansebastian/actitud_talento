@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="<?=  base_url()?>assets/css/tablesorter.css" />
         <link rel="stylesheet" href="<?=  base_url()?>assets/css/daterangepicker.css" />                
         <link rel="stylesheet" href="<?=  base_url()?>assets/css/image-picker.css" />
-        <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/img/favicon.ico" />                
+        <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/img/favicon.png" />                
     </head>
     <body>
         <header>
@@ -28,7 +28,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                           </button>
-                            <a class="navbar-brand" href="<?=  base_url()?>"><img alt="Brand" src="<?=  base_url()?>assets/img/logo.png"></a>
+                            <a class="navbar-brand" href="<?=  base_url()?>"><img alt="Brand" src="<?=  base_url()?>assets/img/logo.png" height="20px"></a>
                         </div>
 
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -85,7 +85,13 @@
                                 </li>                                
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a href="<?php echo base_url(); ?>login/cerrar_sesion">Desconectar</a></li>            
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle glyphicon glyphicon-cog" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
+                                    <ul class="dropdown-menu">                                        
+                                        <li><a href="<?php echo base_url(); ?>admin/configuracion">Configuración</a></li>
+                                        <li><a href="<?php echo base_url(); ?>login/cerrar_sesion">Desconectar</a></li>            
+                                    </ul> 
+                                </li>
                             </ul>                            
                         </div><!-- /.navbar-collapse -->
                     </div><!-- /.container-fluid -->

@@ -28,12 +28,13 @@ class Index extends CI_Controller
         $this->load->model("galerias_model");
         $this->load->model("precios_model");
         $this->load->model("precios_patrocinadores_model");
+        $this->load->model('configuracion_model');
     }
     
     public function index()
     {
+        $datos['configuracion']=$this->configuracion_model->traer_configuracion();
         $datos['eventos']=$this->eventos_model->traer_eventos();
-        $datos['galerias']=$this->galerias_model->traer_galerias();
         $this->load->view('index',$datos);        
     }
     
