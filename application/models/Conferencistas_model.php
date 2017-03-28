@@ -24,10 +24,10 @@ class Conferencistas_model extends CI_Model
         parent::__construct();
     }
     
-    public function traer_conferencistas()
+    public function traer_conferencistas($estado="activo")
     {
         $conferencistas=array();
-        $this->db->where("estado","activo");
+        $this->db->where("estado",$estado);
         $query=$this->db->get('conferencistas');
         foreach ($query->result() as $row)
         {
@@ -41,6 +41,7 @@ class Conferencistas_model extends CI_Model
             $conferencistas[$row->id]['google_plus']=$row->google_plus;
             $conferencistas[$row->id]['linkedin']=$row->linkedin;
             $conferencistas[$row->id]['instagram']=$row->instagram;
+            $conferencistas[$row->id]['estado']=$row->estado;
             
         }
         
@@ -76,7 +77,6 @@ class Conferencistas_model extends CI_Model
     {
         $conferencista=array();
         $this->db->where('id',$id);
-        $this->db->where("estado","activo");
         $query=$this->db->get('conferencistas');
         $row=$query->row();
         $conferencista['id']=$row->id;
@@ -89,6 +89,7 @@ class Conferencistas_model extends CI_Model
         $conferencista['google_plus']=$row->google_plus;
         $conferencista['linkedin']=$row->linkedin;
         $conferencista['instagram']=$row->instagram;        
+        $conferencista['estado']=$row->estado;
         return $conferencista;
     }
 

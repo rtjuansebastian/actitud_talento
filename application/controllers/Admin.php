@@ -89,6 +89,7 @@ class Admin extends CI_Controller
     public function ver_paises()
     {
         $datos['paises']=$this->paises_model->traer_paises();
+        $datos['paises']+=$this->paises_model->traer_paises("inactivo");
         $this->load->view('admin/ver_paises',$datos);
     }    
     
@@ -129,6 +130,7 @@ class Admin extends CI_Controller
     public function ver_eventos()
     {        
         $datos['eventos']=$this->eventos_model->traer_eventos();
+        $datos['eventos']+=$this->eventos_model->traer_eventos("inactivo");
         $datos['paises']=$this->paises_model->traer_paises();
         $datos['patrocinadores']=$this->patrocinadores_model->traer_patrocinadores();        
         $this->load->view('admin/ver_eventos',$datos);
@@ -509,6 +511,7 @@ class Admin extends CI_Controller
     public function ver_conferencistas()
     {
         $datos['conferencistas']=$this->conferencistas_model->traer_conferencistas();
+        $datos['conferencistas']+=$this->conferencistas_model->traer_conferencistas("inactivo");
         $this->load->view('admin/ver_conferencistas',$datos);
     }
     

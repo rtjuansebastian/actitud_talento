@@ -101,6 +101,10 @@ foreach ($eventos as $evento)
                                 <td><?=$evento['skype']?></td>
                             </tr>
                             <tr>
+                                <td>Estado</td>                            
+                                <td><?=$evento['estado']?></td>
+                            </tr>                            
+                            <tr>
                                 <td>Patrocinadores</td>                            
                                 <td><?=$evento['patrocinadores']?>
                                     <br>
@@ -429,7 +433,14 @@ foreach ($eventos as $evento)
                             <div class="form-group">
                                 <label for="skype">Skype</label>
                                 <input type="text" class="form-control" id="skype_evento" name="skype"/>                            
-                            </div>     
+                            </div>   
+                            <div class="form-group">
+                                <label for="estado">Estado</label>
+                                <select class="form-control" name="estado" id="estado_evento">
+                                    <option value="activo">Activo</option>
+                                    <option value="inactivo">Inactivo</option>
+                                </select>
+                            </div>                             
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -1188,6 +1199,7 @@ foreach ($eventos as $evento)
                         $("#instagram_evento").val(result.instagram);
                         $("#pinterest_evento").val(result.pinterest);
                         $("#skype_evento").val(result.skype);   
+                        $("#estado_evento").val(result.estado);
                     });
                 });
                 

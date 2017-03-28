@@ -24,16 +24,17 @@ class Paises_model extends CI_Model
         parent::__construct();
     }
     
-    public function traer_paises()
+    public function traer_paises($estado="activo")
     {
         $paises=array();
-        $this->db->where("estado","activo");
+        $this->db->where("estado",$estado);
         $query=$this->db->get('paises');
         foreach ($query->result() as $row)
         {
             $paises[$row->id]['id']=$row->id;
             $paises[$row->id]['nombre']=$row->nombre;
             $paises[$row->id]['imagen']=$row->imagen;
+            $paises[$row->id]['estado']=$row->estado;
         }
         
         return $paises;
@@ -42,13 +43,13 @@ class Paises_model extends CI_Model
     public function traer_pais($id)
     {
         $pais=array();        
-        $this->db->where("estado","activo");
         $this->db->where('id',$id);
         $query=$this->db->get('paises');
         $row=$query->row();
         $pais['id']=$row->id;       
         $pais['nombre']=$row->nombre;
         $pais['imagen']=$row->imagen;
+        $pais['estado']=$row->estado;
         
         return $pais;
     } 

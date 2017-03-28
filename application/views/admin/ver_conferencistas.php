@@ -52,6 +52,10 @@ foreach ($conferencistas as $conferencista)
                                 <td>Instagram</td>                            
                                 <td><?=$conferencista['instagram']?></td>
                             </tr>
+                            <tr>
+                                <td>Estado</td>                            
+                                <td><?=$conferencista['estado']?></td>
+                            </tr>                            
                         </tbody>
                     </table>                    
 <?php                    
@@ -107,6 +111,13 @@ foreach ($conferencistas as $conferencista)
                                 <label for="instagram">Instagram</label>
                                 <input type="text" class="form-control" id="instagram" name="instagram"/>                            
                             </div>  
+                            <div class="form-group">
+                                <label for="estado">Estado</label>
+                                <select class="form-control" name="estado" id="estado">
+                                    <option value="activo">Activo</option>
+                                    <option value="inactivo">Inactivo</option>
+                                </select>
+                            </div>                              
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
@@ -142,6 +153,7 @@ foreach ($conferencistas as $conferencista)
                     $("#google_plus").val(result.google_plus);
                     $("#linkedin").val(result.linkedin);
                     $("#instagram").val(result.instagram);
+                    $("#estado").val(result.estado);
                 }
             });
         });

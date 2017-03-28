@@ -9,6 +9,7 @@
                                 <th>ID</th>               
                                 <th>Nombre</th>                  
                                 <th>Bandera</th>
+                                <th>Estado</th>
                                 <th>Editar</th>
                             </tr>
                         </thead>            
@@ -21,6 +22,7 @@ foreach ($paises as $pais)
                                 <td><?=$pais['id']?></td>
                                 <td><?=$pais['nombre']?></td>
                                 <td><img src="<?=  base_url()?>assets/img/banderas/<?=$pais['imagen']?>" height="50" width="100"></td>
+                                <td><?=$pais['estado']?></td>
                                 <td><button type="button" class="btn btn-primary glyphicon glyphicon-pencil editar_pais" data-id="<?=$pais['id']?>" data-toggle="modal" data-target="#modal_editar_pais"></button></td>
                             </tr>                   
 <?php                    
@@ -50,6 +52,13 @@ foreach ($paises as $pais)
                                 <label for="imagen" class="col-sm-2"><p class="text-left">Imagen</p></label>
                                 <input type="file" class="form-control" name="imagen" id="imagen"/>
                             </div>
+                            <div class="form-group">
+                                <label for="estado">Estado</label>
+                                <select class="form-control" name="estado" id="estado">
+                                    <option value="activo">Activo</option>
+                                    <option value="inactivo">Inactivo</option>
+                                </select>
+                            </div>                             
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
@@ -76,6 +85,7 @@ foreach ($paises as $pais)
                     var result=$.parseJSON(data);
                     $("#id").val(id);
                     $("#nombre").val(result.nombre);
+                    $("#estado").val(result.estado);
                 }
             });
         });
