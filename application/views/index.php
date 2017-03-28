@@ -85,8 +85,15 @@ foreach ($eventos_pais as $pais)
         <footer>
             <div class="footer-distributed">
                 <div class="footer-left">
-                    <img src="<?=  base_url()?>assets/img/logo.png" height="40px">
-                        <p class="footer-company-name"><?=$configuracion['nombre']?> &copy; 2017</p>
+<?php
+foreach ($configuracion_patrocinadores as $patrocinador)
+{
+?>
+                    <img src="<?=  base_url()?>assets/img/configuracion/patrocinadores/<?=$patrocinador['imagen']?>" height="40px">
+                    <a href="<?=$patrocinador['url']?>" target="_blank"><p class="footer-company-name"><?=$patrocinador['nombre']?> &copy; 2017</p></a>
+<?php
+}
+?>
                 </div>
                 <div class="footer-center">
                     <div>

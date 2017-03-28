@@ -33,6 +33,7 @@ class Index extends CI_Controller
     
     public function index()
     {
+        $datos['configuracion_patrocinadores']=$this->configuracion_model->traer_configuracion_patrocinadores();
         $datos['configuracion']=$this->configuracion_model->traer_configuracion();
         $datos['eventos_pais']=$this->eventos_model->traer_eventos_pais();
         $this->load->view('index',$datos);        

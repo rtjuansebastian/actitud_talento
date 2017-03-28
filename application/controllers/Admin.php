@@ -728,6 +728,7 @@ class Admin extends CI_Controller
     public function configuracion()
     {
         $datos['configuracion']=$this->configuracion_model->traer_configuracion();
+        $datos['patrocinadores']=$this->configuracion_model->traer_configuracion_patrocinadores();
         $this->load->view("admin/configuracion",$datos);
     }
     
@@ -736,5 +737,32 @@ class Admin extends CI_Controller
         $data=  $this->input->post();
         $this->configuracion_model->actualizar_configuracion($data);
         $this->configuracion();
+    }
+    
+    public function editar_configuracion_patrocinador()
+    {
+        $id=$this->input->post("id");
+        $patrocinador=$this->configuracion_model->traer_configuracion_patrocinador($id);
+        echo json_encode($patrocinador);
+    }
+    
+    public function actualizar_configuracion_patrocinador()
+    {
+        $data=$this->input->post();
+        $this->configuracion_model->actualizar_configuracion_patrocinador($data);
+        redirect("/admin/configuracion/","refresh");
+    }
+    
+    public function crear_configuracion_patrocinador()
+    {
+        $data=  $this->input->post();
+        $this->configuracion_model->agregar_configuracion_patrocinador($data);
+        redirect("/admin/configuracion/","refresh");
+    }
+    
+    public function eliminar_configuracion_patrocinador()
+    {
+        $id=$this->input->post("id");
+        $this->configuracion_model->eliminar_configuracion_patrocinador($id);
     }
 }
