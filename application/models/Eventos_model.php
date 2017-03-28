@@ -27,16 +27,27 @@ class Eventos_model extends CI_Model
     public function traer_eventos($estado="activo")
     {
         $eventos=array();
-        $this->db->select("eventos.id, eventos.pais, paises.nombre as nombre_pais, eventos.nombre, eventos.descripcion, eventos.lugar, eventos.fecha, eventos.coordenadas, eventos.cupos, eventos.dias, eventos.telefono, eventos.email, eventos.video, eventos.imagen_fondo, eventos.color, paises.imagen as imagen_bandera, eventos.twitter, eventos.dribbble, eventos.facebook, eventos.google_plus, eventos.instagram, eventos.pinterest, eventos.skype, GROUP_CONCAT(patrocinadores.nombre SEPARATOR ',') AS patrocinadores, eventos.estado");
-        $this->db->from("eventos");
-        $this->db->join("eventos_patrocinadores","eventos.id=eventos_patrocinadores.evento");
-        $this->db->join("patrocinadores","eventos_patrocinadores.patrocinador=patrocinadores.id");
+        $this->db->select("eventos.id, eventos.pais, paises.nombre as nombre_pais, eventos.nombre, eventos.descripcion, eventos.lugar, eventos.fecha, eventos.coordenadas, eventos.cupos, eventos.dias, eventos.telefono, eventos.email, eventos.video, eventos.imagen_fondo, eventos.color, paises.imagen as imagen_bandera, eventos.twitter, eventos.dribbble, eventos.facebook, eventos.google_plus, eventos.instagram, eventos.pinterest, eventos.skype, eventos.estado");
+        $this->db->from("eventos");        
         $this->db->join("paises","eventos.pais=paises.id");
         $this->db->where("eventos.estado",$estado);
         $this->db->group_by("eventos.id");
         $query=$this->db->get();
         foreach ($query->result() as $row)
         {
+            $eventos[$row->id]['patrocinadores']="";
+            $this->db->select("eventos.id, patrocinadores.nombre as patrocinador");
+            $this->db->from("eventos_patrocinadores");
+            $this->db->join("patrocinadores","eventos_patrocinadores.patrocinador=patrocinadores.id");
+            $this->db->join("eventos","eventos_patrocinadores.evento=eventos.id");
+            $this->db->where("eventos.id",$row->id);
+            $query_patrocinadores=$this->db->get();
+            
+            foreach ($query_patrocinadores->result() as $row_patrocinador)
+            {
+                $eventos[$row->id]['patrocinadores'].=$row_patrocinador->patrocinador.', ';
+            }
+            
             $eventos[$row->id]['id']=$row->id;
             $eventos[$row->id]['pais']=$row->pais;
             $eventos[$row->id]['nombre_pais']=$row->nombre_pais;
@@ -59,8 +70,7 @@ class Eventos_model extends CI_Model
             $eventos[$row->id]['google-plus']=$row->google_plus;
             $eventos[$row->id]['instagram']=$row->instagram;
             $eventos[$row->id]['pinterest']=$row->pinterest;
-            $eventos[$row->id]['skype']=$row->skype;
-            $eventos[$row->id]['patrocinadores']=$row->patrocinadores;
+            $eventos[$row->id]['skype']=$row->skype;            
             $eventos[$row->id]['estado']=$row->estado;
         }
         

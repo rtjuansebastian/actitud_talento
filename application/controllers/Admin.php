@@ -349,7 +349,7 @@ class Admin extends CI_Controller
         {
             $data=  $this->input->post();
             $evento=$this->eventos_model->agregar_evento($data);
-            $this->agregar_escenarios_evento($evento);
+            redirect("/admin/ver_eventos/","refresh");
         }
         else 
         {
@@ -358,6 +358,7 @@ class Admin extends CI_Controller
         }
     }  
     
+    /*
     public function agregar_escenarios_evento($evento=NULL)
     {
         if($this->input->post("capacidad"))
@@ -389,6 +390,7 @@ class Admin extends CI_Controller
             $this->load->view("admin/agregar_programacion_evento",$datos);            
         }
     }
+     */
     
     public function eliminar_evento()
     {
@@ -410,6 +412,7 @@ class Admin extends CI_Controller
         echo json_encode($conferencistas);
     }    
     
+    /*
     public function agregar_preguntas_evento($evento=NULL)
     {
         if($this->input->post("pregunta"))
@@ -499,6 +502,8 @@ class Admin extends CI_Controller
             $this->load->view("admin/agregar_patrocinadores_evento",$datos);             
         }
     }
+     * 
+     */
 
     public function crear_patrocinador()
     {
@@ -555,6 +560,25 @@ class Admin extends CI_Controller
         $escenarios=$this->escenarios_model->traer_escenarios_evento($evento);
         echo json_encode($escenarios);
     }
+    
+    public function editar_escenario_evento()
+    {
+        $id=  $this->input->post("escenario");
+        $evento=$this->escenarios_model->traer_escenario($id);
+        echo json_encode($evento);
+    }
+
+    public function actualizar_escenario_evento()
+    {
+        $data=  $this->input->post();
+        $this->escenarios_model->actualizar_escenario($data);
+    }
+    
+    public function crear_escenario_evento()
+    {
+        $data=  $this->input->post();
+        $this->escenarios_model->agregar_escenario($data);
+    }
 
     public function traer_patrocinadores_evento()
     {
@@ -586,7 +610,7 @@ class Admin extends CI_Controller
 
     public function eliminar_escenario()
     {
-        $id= $this->input->post("id");
+        $id= $this->input->post("escenario");
         $this->escenarios_model->eliminar_escenario($id);        
     }
 

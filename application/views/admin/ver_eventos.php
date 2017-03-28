@@ -117,6 +117,10 @@ foreach ($eventos as $evento)
                                 <td><button class="btn btn-primary glyphicon glyphicon-search ver_precios_patrocinadores" data-evento="<?=$evento['id']?>" data-toggle="modal" data-target="#modal_precios_patrocinadores"></button></td>
                             </tr>                             
                             <tr>
+                                <td>Escenarios</td>                            
+                                <td><button class="btn btn-primary glyphicon glyphicon-search ver_escenarios" data-evento="<?=$evento['id']?>" data-toggle="modal" data-target="#modal_escenarios"></button></td>
+                            </tr>                            
+                            <tr>
                                 <td>Programación</td>                            
                                 <td><button class="btn btn-primary glyphicon glyphicon-search ver_programacion" data-evento="<?=$evento['id']?>" data-toggle="modal" data-target="#modal_programacion"></button></td>
                             </tr> 
@@ -143,6 +147,35 @@ foreach ($eventos as $evento)
 ?>
                 </div>
             </div>
+        </div>
+        <!-- Modal Escenario -->
+        <div class="modal fade" id="modal_escenarios" tabindex="-1" role="dialog" aria-labelledby="ModalLabelEscenarios">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="ModalLabelEscenarios">Escenarios</h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-responsive">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Capacidad</th>
+                                <th>Editar</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla_escenarios">
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal_crear_escenario" id="crear_escenario">Crear escenario</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>                
+                </div>
+            </div>
+          </div>
         </div>
         <!-- Modal Programación -->
         <div class="modal fade" id="modal_programacion" tabindex="-1" role="dialog" aria-labelledby="ModalLabelProgramacion">
@@ -332,7 +365,7 @@ foreach ($eventos as $evento)
                             </div>
                             <div class="form-group">
                                 <label for="profesion">País</label>
-                                <select class="form-control" id="pais_evento" name="pais">
+                                <select class="form-control" id="pais_evento" name="pais" required="">
                                     <option></option>
     <?php
     foreach ($paises as $pais)
@@ -451,6 +484,35 @@ foreach ($eventos as $evento)
                 </div>
             </div>
         </div>        
+        <!-- Modal Editar Escenario -->
+        <div class="modal fade" id="modal_editar_escenario" tabindex="-1" role="dialog" aria-labelledby="ModalLabelEditarProgramación">
+          <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">                
+                    <form id="actualizar_escenario">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <h4 class="modal-title" id="ModalLabelEditarProgramación">Escenario</h4>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" id="id_editar_escenario" name="id">     
+                            <div class="form-group">
+                                <label for="nombre">Nombre escenario</label>
+                                <input type="text" class="form-control" id="nombre_editar_escenario" name="nombre" required=""/>
+                            </div>                            
+                            <div class="form-group">
+                                <label for="capacidad">Capacidad escenario</label>
+                                <input type="number" class="form-control" id="capacidad_editar_escenario" name="capacidad" required=""/>                                                        
+                            </div>                         
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal" id="btn_eliminar_escenario">Eliminar</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" id="btn_actualizar_escenario">Guardar</button>
+                        </div>
+                    </form>                        
+                </div>
+            </div>
+          </div>        
         <!-- Modal Editar Programación -->
         <div class="modal fade" id="modal_editar_programcion" tabindex="-1" role="dialog" aria-labelledby="ModalLabelEditarProgramación">
           <div class="modal-dialog modal-lg" role="document">
@@ -484,7 +546,7 @@ foreach ($eventos as $evento)
                             </div>
                             <div class="form-group conferencistas">
                                 <label for="conferencista">Conferencista</label>
-                                <select class="form-control" id="conferencista" name="conferencista">
+                                <select class="form-control" id="conferencista" name="conferencista" required="">
                                     <option></option>
                                     <!-- Traer conferencistas por ajax -->
                                 </select>
@@ -492,7 +554,7 @@ foreach ($eventos as $evento)
                             </div>
                             <div class="form-group">
                                 <label for="escenario">Escenario</label>
-                                <select class="form-control" id="escenario" name="escenario">
+                                <select class="form-control" id="escenario" name="escenario" required="">
                                     <option></option>
                                     <!-- Traer escenarios por ajax -->
                                 </select>                            
@@ -715,6 +777,34 @@ foreach ($eventos as $evento)
                 </div>
             </div>
         </div>
+        <!-- Modal crear escenario -->
+        <div class="modal fade" id="modal_crear_escenario" tabindex="-1" role="dialog" aria-labelledby="ModalLabelCrearEscenario">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form id="form_crear_escenario" enctype="multipart/form-data">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="ModalLabelCrearEscenario">Crear Escenario</h4>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" id="evento_crear_escenario" name="evento"> 
+                            <div class="form-group">
+                                <label for="nombre">Titulo</label>
+                                <input type="text" class="form-control" id="nombre_escenario" name="nombre" required=""/>
+                            </div>
+                            <div class="form-group">
+                                <label for="capacidad">Capacidad</label>
+                                <input type="number" class="form-control" id="capacidad" name="capacidad" required=""/>                                                        
+                            </div>                                                  
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" id="btn_crear_escenario">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>         
         <!-- Modal crear programacion -->
         <div class="modal fade" id="modal_crear_programacion" tabindex="-1" role="dialog" aria-labelledby="ModalLabelCrearProgramacion">
             <div class="modal-dialog" role="document">
@@ -748,14 +838,14 @@ foreach ($eventos as $evento)
                             </div>
                             <div class="form-group conferencistas">
                                 <label for="conferencista">Conferencista</label>
-                                <select class="form-control" id="conferencista_crear_programacion" name="conferencista">
+                                <select class="form-control" id="conferencista_crear_programacion" name="conferencista" required="">
                                     <option></option>
                                 </select>
                                 <span>¿Nuevo conferencista? </span><button type="button" class="btn btn-success btn-xs glyphicon glyphicon-user" data-toggle="modal" data-target="#modal_crear_conferencista" id="crear_conferencista"></button>
                             </div>
                             <div class="form-group">
                                 <label for="escenario">Escenario</label>
-                                <select class="form-control" id="escenario_crear_programacion" name="escenario">
+                                <select class="form-control" id="escenario_crear_programacion" name="escenario" required="">
                                     <option></option>
                                 </select>                            
                             </div>                            
@@ -905,7 +995,7 @@ foreach ($eventos as $evento)
                             <input type="hidden" id="evento_agregar_patrocinador" name="evento">                       
                             <div class="form-group">
                                 <label for="nombre">Patrocinador</label>
-                                <select class="form-control" id="patrocinador" name="patrocinador">
+                                <select class="form-control" id="patrocinador" name="patrocinador" required="">
                                     <option></option>
     <?php
     foreach ($patrocinadores as $patrocinador)
@@ -919,7 +1009,7 @@ foreach ($eventos as $evento)
                             </div>       
                             <div class="form-group">
                                 <label for="nombre">Precio</label>
-                                <select class="form-control" id="precio_editar_patrocinador" name="precio">
+                                <select class="form-control" id="precio_editar_patrocinador" name="precio" required="">
                                 </select>
                             </div>                                   
                         </div>
@@ -944,7 +1034,7 @@ foreach ($eventos as $evento)
                             <input type="hidden" id="evento_eliminar_patrocinador" name="evento">                       
                             <div class="form-group">
                                 <label for="nombre">Patrocinador</label>
-                                <select class="form-control" id="select_eliminar_patrocinador_evento" name="patrocinador">
+                                <select class="form-control" id="select_eliminar_patrocinador_evento" name="patrocinador" required="">
                                     <option></option>
                                 </select>
                             </div>                
@@ -1042,6 +1132,27 @@ foreach ($eventos as $evento)
                     format:"YYYY-MM-DD HH:mm"
                 });                
                 $(".accordion-toggle").click();
+                $(".ver_escenarios").on("click",function(){
+                    var evento=$(this).data("evento");
+                    $.ajax({
+                      method: "POST",
+                      url: "<?=  base_url()?>admin/traer_escenarios_evento",
+                      data: { evento: evento}
+                    })
+                    .done(function( data ) {
+                        var result= $.parseJSON(data);
+                        var tabla_programacion='';      
+                        $.each(result, function( llave, items) {
+                            tabla_programacion=tabla_programacion+'<tr>'+
+                                    '<td>'+items.nombre+'</td>'+
+                                    '<td>'+items.capacidad+'</td>'+
+                                    '<td><button class="btn btn-primary glyphicon glyphicon-pencil editar_escenario" type="button" data-escenario="'+items.id+'" data-toggle="modal" data-target="#modal_editar_escenario"></button></td>'+
+                                '</tr>';                            
+                        });
+                        $("#tabla_escenarios").html(tabla_programacion);
+                        $("#crear_escenario").data("evento",evento);
+                    });                    
+                });                
                 $(".ver_programacion").on("click",function(){
                     var evento=$(this).data("evento");
                     $.ajax({
@@ -1219,6 +1330,22 @@ foreach ($eventos as $evento)
                     location.reload();
                 });                 
                 
+                $(document).on("click",".editar_escenario",function(){
+                    var escenario=$(this).data("escenario");
+                    $.ajax({
+                      method: "POST",
+                      url: "<?=  base_url()?>admin/editar_escenario_evento",
+                      data: { escenario: escenario}
+                    })
+                    .done(function( data ) {
+                        var result= $.parseJSON(data);
+                        $("#id_editar_escenario").val(result.id);
+                        $("#nombre_editar_escenario").val(result.nombre);
+                        $("#capacidad_editar_escenario").val(result.capacidad);
+                        
+                        $("#btn_eliminar_escenario").data("escenario",escenario);
+                    });
+                });
                 $(document).on("click",".editar_programacion",function(){
                     var conferencia=$(this).data("programacion");
                     $.ajax({
@@ -1270,7 +1397,17 @@ foreach ($eventos as $evento)
                         $("#conferencista").html(lista);                               
                     });             
                 });                
-                
+
+                $("#btn_actualizar_escenario").click(function(){
+                    var dataString = $('#actualizar_escenario').serialize();                    
+                    $.ajax({
+                        type: "POST",
+                        url: "<?=  base_url()?>admin/actualizar_escenario_evento",
+                        data: dataString
+                    });                    
+                    $('#modal_escenarios').modal('hide');
+                });
+
                 $("#btn_actualizar_programacion").click(function(){
                     var dataString = $('#actualizar_programacion').serialize();                    
                     $.ajax({
@@ -1430,6 +1567,26 @@ foreach ($eventos as $evento)
                     location.reload();
                 });
                 
+                $("#crear_escenario").click(function(){
+                    var evento=$(this).data("evento");                   
+                    $("#evento_crear_escenario").val(evento);
+                });                
+                
+                $("#btn_crear_escenario").click(function(){
+                    var formData = new FormData(document.getElementById("form_crear_escenario"));
+                    $.ajax(
+                    {
+                        data:formData,
+                        type: "POST",
+                        url: "<?= base_url()?>admin/crear_escenario_evento",
+                        dataType: "html",
+                        cache: false,
+                        contentType: false,
+                        processData: false
+                    });                
+                    $('#modal_escenarios').modal('hide');              
+                });                
+                
                 $("#crear_programacion").click(function(){
                     var evento=$(this).data("evento");
                     var listado_conferencistas=traer_conferencistas(); 
@@ -1538,6 +1695,16 @@ foreach ($eventos as $evento)
                         processData: false
                     });                
                     $('#modal_testimonios').modal('hide');              
+                });
+
+                $("#btn_eliminar_escenario").click(function(){
+                    var escenario=$(this).data("escenario");                    
+                    $.ajax({
+                        type: "POST",
+                        url: "<?=  base_url()?>admin/eliminar_escenario",
+                        data: {escenario:escenario}
+                    });                    
+                    $('#modal_escenarios').modal('hide');                    
                 });
                 
                 $("#btn_eliminar_programacion").click(function(){
@@ -1663,4 +1830,4 @@ foreach ($eventos as $evento)
                     location.reload();                    
                 });                
             });
-        </script>        
+        </script>           
