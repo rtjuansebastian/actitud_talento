@@ -57,16 +57,24 @@
                 <h1>Eventos en diferentes paises</h1>
                 <span>
 <?php
-foreach ($eventos as $evento)
+foreach ($eventos_pais as $pais)
 {
 ?>
                     <div class="col-lg-3 col-sm-3 focus-box" data-scrollreveal="enter left after 0.15s over 1s">
-                        <a href="<?=  base_url()?>index/evento?evento=<?=$evento['id']?>" class="service-icon">
-                            <span class="sr-only">Go to <?=$evento['nombre_pais']?></span>								
-                            <i class="pixeden" style="background:url(<?=  base_url()?>assets/img/banderas/<?=$evento['imagen_bandera']?>) no-repeat center;width:100%; height:100%;"></i>
-                        </a>	
-                        <h3 class="red-border-bottom"><?=$evento['nombre_pais']?></h3>
-                        <p>Evento: <?=$evento['nombre']?>  Fecha: <?=$evento['fecha']?> Lugar: <?=$evento['lugar']?></p>
+                        <div class="service-icon">
+                            <span class="sr-only">Go to <?=$pais['pais_nombre']?></span>								
+                            <i class="pixeden" style="background:url(<?=  base_url()?>assets/img/banderas/<?=$pais['imagen']?>) no-repeat center;width:100%; height:100%;"></i>
+                        </div>	
+                        <h3 class="red-border-bottom"><?=$pais['pais_nombre']?></h3>
+<?php
+    foreach ($pais["evento"] as $evento)
+    {
+        ?>                      <a href="<?=  base_url()?>index/evento?evento=<?=$evento['id_evento']?>">
+                                    <p>Evento: <?=$evento['evento_nombre']?>  Fecha: <?=$evento['fecha']?> Lugar: <?=$evento['lugar']?></p>
+                                </a>
+<?php
+    }
+?>
                     </div>
 <?php
 }

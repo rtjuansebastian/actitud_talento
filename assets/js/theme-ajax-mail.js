@@ -128,8 +128,7 @@ $(function () {
         
         $.ajax({
             type: 'POST',
-            //url: 'http://cambioycultura.org/admin/agregar_registro_evento',
-            url: 'http://localhost/actitud_talento/admin/agregar_registro_evento',
+            url: 'http://cambioycultura.org/admin/agregar_registro_evento',
             data: dataString,
             success: function () {
                 $form.find('.form-alert').append('' +

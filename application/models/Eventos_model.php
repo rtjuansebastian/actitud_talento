@@ -183,5 +183,30 @@ class Eventos_model extends CI_Model
         );        
         $this->db->where('id', $id);
         $this->db->update('eventos', $data);         
-    }      
+    } 
+
+    
+    public function traer_eventos_pais()
+    {
+        $eventos=array();
+        $this->db->select("paises.id as id_pais, paises.nombre as pais_nombre, paises.imagen, eventos.id as id_evento, eventos.nombre as evento_nombre, eventos.fecha, eventos.lugar");
+        $this->db->from("eventos");
+        $this->db->join("paises","eventos.pais=paises.id");
+        $this->db->order_by("pais_nombre, fecha");
+        $query=$this->db->get();
+        
+        foreach ($query->result() as $row)
+        {
+            $fecha=date_create($row->fecha);
+            $eventos[$row->id_pais]["id_pais"]=$row->id_pais;
+            $eventos[$row->id_pais]["pais_nombre"]=$row->pais_nombre;
+            $eventos[$row->id_pais]["imagen"]=$row->imagen;
+            $eventos[$row->id_pais]["evento"][$row->id_evento]["id_evento"]=$row->id_evento;
+            $eventos[$row->id_pais]["evento"][$row->id_evento]["evento_nombre"]=$row->evento_nombre;
+            $eventos[$row->id_pais]["evento"][$row->id_evento]["fecha"]=date_format($fecha,"Y-m-d");
+            $eventos[$row->id_pais]["evento"][$row->id_evento]["lugar"]=$row->lugar;
+        }
+        
+        return $eventos;
+    }
 }
