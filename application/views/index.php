@@ -104,25 +104,25 @@ foreach ($eventos as $evento)
 if(!empty($configuracion['facebook']))
 {
 ?>
-                            <a href="<?=$configuracion['facebook']?>"><i class="fa fa-facebook"></i></a>
+                            <a href="<?=$configuracion['facebook']?>" target="_blank"><i class="fa fa-facebook"></i></a>
 <?php
 }
 if(!empty($configuracion['twitter']))
 {
 ?>
-                            <a href="<?=$configuracion['twitter']?>"><i class="fa fa-twitter"></i></a>
+                            <a href="<?=$configuracion['twitter']?>" target="_blank"><i class="fa fa-twitter"></i></a>
 <?php
 }
 if(!empty($configuracion['linkedin']))
 {
 ?>                            
-                            <a href="<?=$configuracion['linkedin']?>"><i class="fa fa-linkedin"></i></a>
+                            <a href="<?=$configuracion['linkedin']?>" target="_blank"><i class="fa fa-linkedin"></i></a>
 <?php
 }
 if(!empty($configuracion['instagram']))
 {
 ?>                            
-                            <a href="<?=$configuracion['instagram']?>"><i class="fa fa-instagram"></i></a>
+                            <a href="<?=$configuracion['instagram']?>" target="_blank"><i class="fa fa-instagram"></i></a>
 <?php
 }
 ?>

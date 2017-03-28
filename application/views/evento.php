@@ -82,7 +82,7 @@ header("HTTP/1.1 200 OK"); ?>
                     <li><a href="#sponsors">Patrocinadores</a></li>
                     <li><a href="#speakers">Conferencistas</a></li>
                     <li><a href="#location">Lugar</a></li>
-                    <li><a href="http://cambioycultura.org/actitud_talento_blog">Blog</a></li>
+                    <li><a href="http://cambioycultura.org/actitud_talento_blog" target="_blank">Blog</a></li>
                 </ul>
             </nav>
             <!-- /Navigation -->
@@ -440,7 +440,7 @@ foreach ($programaciones as $dias)
     if(!empty($conferencia['facebook']))
     {
 ?>
-                                                            <a href="<?=$conferencia['facebook']?>"><i class="fa fa-facebook"></i></a>
+                                                            <a href="<?=$conferencia['facebook']?>" target="_blank"><i class="fa fa-facebook"></i></a>
 <?php                                                           
     }
 ?>
@@ -448,7 +448,7 @@ foreach ($programaciones as $dias)
     if(!empty($conferencia['twitter']))
     {
 ?>
-                                                            <a href="<?=$conferencia['twitter']?>"><i class="fa fa-twitter"></i></a>
+                                                            <a href="<?=$conferencia['twitter']?>" target="_blank"><i class="fa fa-twitter"></i></a>
 <?php
     }
 ?>
@@ -456,7 +456,7 @@ foreach ($programaciones as $dias)
     if(!empty($conferencia['linkedin']))
     {
 ?>
-                                                            <a href="<?=$conferencia['linkedin']?>"><i class="fa fa-linkedin"></i></a>
+                                                            <a href="<?=$conferencia['linkedin']?>" target="_blank"><i class="fa fa-linkedin"></i></a>
 <?php
     }
 ?>
@@ -464,7 +464,7 @@ foreach ($programaciones as $dias)
     if(!empty($conferencia['instagram']))
     {
 ?>
-                                                            <a href="<?=$conferencia['instagram']?>"><i class="fa fa-instagram"></i></a>
+                                                            <a href="<?=$conferencia['instagram']?>" target="_blank"><i class="fa fa-instagram"></i></a>
 <?php
     }
 ?>
@@ -511,14 +511,14 @@ foreach ($programaciones as $dias)
 foreach ($patrocinadores as $patrocinador)
 {
 ?>
-                        <div><a href="<?=$patrocinador['url']?>"><img src="<?=  base_url()?>/assets/img/patrocinadores/<?=$patrocinador['imagen_patrocinador']?>" alt=""/></a></div>
+                        <div><a href="<?=$patrocinador['url']?>" target="_blank"><img src="<?=  base_url()?>/assets/img/patrocinadores/<?=$patrocinador['imagen_patrocinador']?>" alt=""/></a></div>
 <?php
 }
 ?>
                     </div>
                 </div>
                 <div class="text-center margin-top">
-                    <a data-animation="flipInY" data-animation-delay="500" href="<?=  base_url()?>index/conviertete_patrocinador?evento=<?=$evento['id']?>" class="btn btn-theme"><i class="fa fa-thumbs-up"></i> Conviertete en patrocinador</a>
+                    <a data-animation="flipInY" data-animation-delay="500" href="<?=  base_url()?>index/conviertete_patrocinador?evento=<?=$evento['id']?>" class="btn btn-theme" target="_blank"><i class="fa fa-thumbs-up"></i> Conviertete en patrocinador</a>
                 </div>
             </div>
         </section>
@@ -619,7 +619,7 @@ foreach ($conferencistas as $conferencista)
 if(!empty($conferencista['facebook']))
 {
 ?>
-                                    <li><a href="<?=$conferencista['facebook']?>" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="<?=$conferencista['facebook']?>" class="facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
 <?php
 }
 ?>
@@ -627,7 +627,7 @@ if(!empty($conferencista['facebook']))
 if(!empty($conferencista['twitter']))
 {
 ?>                                    
-                                    <li><a href="<?=$conferencista['twitter']?>" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="<?=$conferencista['twitter']?>" class="twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
 <?php
 }
 ?>
@@ -635,7 +635,7 @@ if(!empty($conferencista['twitter']))
 if(!empty($conferencista['google_plus']))
 {
 ?>                                      
-                                    <li><a href="<?=$conferencista['google_plus']?>" class="google"><i class="fa fa-google-plus"></i></a></li>
+                                    <li><a href="<?=$conferencista['google_plus']?>" class="google" target="_blank"><i class="fa fa-google-plus"></i></a></li>
 <?php
 }
 ?>
@@ -643,7 +643,7 @@ if(!empty($conferencista['google_plus']))
 if(!empty($conferencista['linkedin']))
 {
 ?>                                      
-                                    <li><a href="<?=$conferencista['linkedin']?>" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
+                                    <li><a href="<?=$conferencista['linkedin']?>" class="linkedin" target="_blank"><i class="fa fa-linkedin"></i></a></li>
 <?php
 }
 ?>
@@ -651,7 +651,7 @@ if(!empty($conferencista['linkedin']))
 if(!empty($conferencista['instagram']))
 {
 ?>                                      
-                                    <li><a href="<?=$conferencista['instagram']?>" class="instagram"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="<?=$conferencista['instagram']?>" class="instagram" target="_blank"><i class="fa fa-instagram"></i></a></li>
 <?php
 }
 ?>                                    
@@ -669,7 +669,7 @@ if(!empty($conferencista['instagram']))
                 <!-- /Speakers row -->
 
                 <div class="text-center margin-top">
-                    <a data-animation="fadeInUp" data-animation-delay="100" href="<?=  base_url()?>index/ver_conferencistas_evento?evento=<?=$evento['id']?>" class="btn btn-theme"><i class="fa fa-user"></i> Ver todos los conferencistas</a>
+                    <a data-animation="fadeInUp" data-animation-delay="100" href="<?=  base_url()?>index/ver_conferencistas_evento?evento=<?=$evento['id']?>" class="btn btn-theme" target="_blank"><i class="fa fa-user"></i> Ver todos los conferencistas</a>
                 </div>
             </div>
         </section>
@@ -814,7 +814,7 @@ foreach ($preguntas as $pregunta)
                     <?php displayHomePosts(); ?><!-- Función de wordpress para los ultimos post -->
                 </div>
                 <div class="text-center margin-top">
-                    <a data-animation="flipInY" data-animation-delay="100" href="http://cambioycultura.org/actitud_talento_blog" class="btn btn-theme"><i class="fa fa-file"></i> Ver todas las noticias </a>
+                    <a data-animation="flipInY" data-animation-delay="100" href="http://cambioycultura.org/actitud_talento_blog" class="btn btn-theme" target="_blank"><i class="fa fa-file"></i> Ver todas las noticias </a>
                 </div>
             </div>
         </section>
@@ -913,43 +913,43 @@ foreach ($preguntas as $pregunta)
 if(!empty($evento['twitter']))
 {
 ?>
-                        <li data-animation="flipInY" data-animation-delay="100"><a href="<?=$evento['twitter']?>" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                        <li data-animation="flipInY" data-animation-delay="100"><a href="<?=$evento['twitter']?>" class="twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
 <?php
 }
 if(!empty($evento['dribbble']))
 {
 ?>                                
-                        <li data-animation="flipInY" data-animation-delay="200"><a href="<?=$evento['dribbble']?>" class="dribbble"><i class="fa fa-dribbble"></i></a></li>
+                        <li data-animation="flipInY" data-animation-delay="200"><a href="<?=$evento['dribbble']?>" class="dribbble" target="_blank"><i class="fa fa-dribbble"></i></a></li>
 <?php
 }
 if(!empty($evento['facebook']))
 {
 ?>                          
-                        <li data-animation="flipInY" data-animation-delay="300"><a href="<?=$evento['facebook']?>" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                        <li data-animation="flipInY" data-animation-delay="300"><a href="<?=$evento['facebook']?>" class="facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
 <?php
 }
 if(!empty($evento['google-plus']) )
 {
 ?>                          
-                        <li data-animation="flipInY" data-animation-delay="400"><a href="<?=$evento['google-plus']?>" class="google"><i class="fa fa-google-plus"></i></a></li>
+                        <li data-animation="flipInY" data-animation-delay="400"><a href="<?=$evento['google-plus']?>" class="google" target="_blank"><i class="fa fa-google-plus"></i></a></li>
 <?php
 }
 if(!empty($evento['instagram']))
 {
 ?>                          
-                        <li data-animation="flipInY" data-animation-delay="500"><a href="<?=$evento['instagram']?>" class="instagram"><i class="fa fa-instagram"></i></a></li>
+                        <li data-animation="flipInY" data-animation-delay="500"><a href="<?=$evento['instagram']?>" class="instagram" target="_blank"><i class="fa fa-instagram"></i></a></li>
 <?php
 }
 if(!empty($evento['pinterest']))
 {
 ?>                          
-                        <li data-animation="flipInY" data-animation-delay="600"><a href="<?=$evento['pinterest']?>" class="pinterest"><i class="fa fa-pinterest"></i></a></li>
+                        <li data-animation="flipInY" data-animation-delay="600"><a href="<?=$evento['pinterest']?>" class="pinterest" target="_blank"><i class="fa fa-pinterest"></i></a></li>
 <?php
 }
 if(!empty($evento['skype']))
 {
 ?>                          
-                        <li data-animation="flipInY" data-animation-delay="700"><a href="<?=$evento['skype']?>" class="skype"><i class="fa fa-skype"></i></a></li>
+                        <li data-animation="flipInY" data-animation-delay="700"><a href="<?=$evento['skype']?>" class="skype" target="_blank"><i class="fa fa-skype"></i></a></li>
 <?php
 }
 ?>                          

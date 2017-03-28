@@ -82,7 +82,7 @@ header("HTTP/1.1 200 OK"); ?>
                     <li><a href="<?=  base_url()?>index/evento?evento=<?=$evento['id']?>#sponsors">Patrocinadores</a></li>
                     <li><a href="<?=  base_url()?>index/evento?evento=<?=$evento['id']?>#speakers">Conferencistas</a></li>
                     <li><a href="<?=  base_url()?>index/evento?evento=<?=$evento['id']?>#location">Lugar</a></li>
-                    <li><a href="http://cambioycultura.org/actitud_talento_blog">Blog</a></li>
+                    <li><a href="http://cambioycultura.org/actitud_talento_blog" target="_blank">Blog</a></li>
                 </ul>
             </nav>
             <!-- /Navigation -->
@@ -271,43 +271,43 @@ foreach ($precios_patrocinadores as $precio)
 if(!empty($evento['twitter']))
 {
 ?>
-                        <li data-animation="flipInY" data-animation-delay="100"><a href="<?=$evento['twitter']?>" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                        <li data-animation="flipInY" data-animation-delay="100"><a href="<?=$evento['twitter']?>" class="twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
 <?php
 }
 if(!empty($evento['dribbble']))
 {
 ?>                                
-                        <li data-animation="flipInY" data-animation-delay="200"><a href="<?=$evento['dribbble']?>" class="dribbble"><i class="fa fa-dribbble"></i></a></li>
+                        <li data-animation="flipInY" data-animation-delay="200"><a href="<?=$evento['dribbble']?>" class="dribbble" target="_blank"><i class="fa fa-dribbble"></i></a></li>
 <?php
 }
 if(!empty($evento['facebook']))
 {
 ?>                          
-                        <li data-animation="flipInY" data-animation-delay="300"><a href="<?=$evento['facebook']?>" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                        <li data-animation="flipInY" data-animation-delay="300"><a href="<?=$evento['facebook']?>" class="facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
 <?php
 }
 if(!empty($evento['google-plus']) )
 {
 ?>                          
-                        <li data-animation="flipInY" data-animation-delay="400"><a href="<?=$evento['google-plus']?>" class="google"><i class="fa fa-google-plus"></i></a></li>
+                        <li data-animation="flipInY" data-animation-delay="400"><a href="<?=$evento['google-plus']?>" class="google" target="_blank"><i class="fa fa-google-plus"></i></a></li>
 <?php
 }
 if(!empty($evento['instagram']))
 {
 ?>                          
-                        <li data-animation="flipInY" data-animation-delay="500"><a href="<?=$evento['instagram']?>" class="instagram"><i class="fa fa-instagram"></i></a></li>
+                        <li data-animation="flipInY" data-animation-delay="500"><a href="<?=$evento['instagram']?>" class="instagram" target="_blank"><i class="fa fa-instagram"></i></a></li>
 <?php
 }
 if(!empty($evento['pinterest']))
 {
 ?>                          
-                        <li data-animation="flipInY" data-animation-delay="600"><a href="<?=$evento['pinterest']?>" class="pinterest"><i class="fa fa-pinterest"></i></a></li>
+                        <li data-animation="flipInY" data-animation-delay="600"><a href="<?=$evento['pinterest']?>" class="pinterest" target="_blank"><i class="fa fa-pinterest"></i></a></li>
 <?php
 }
 if(!empty($evento['skype']))
 {
 ?>                          
-                        <li data-animation="flipInY" data-animation-delay="700"><a href="<?=$evento['skype']?>" class="skype"><i class="fa fa-skype"></i></a></li>
+                        <li data-animation="flipInY" data-animation-delay="700"><a href="<?=$evento['skype']?>" class="skype" target="_blank"><i class="fa fa-skype"></i></a></li>
 <?php
 }
 ?>                         
