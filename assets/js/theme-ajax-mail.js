@@ -63,6 +63,14 @@ $(function () {
     // validate and process form
     $form.find('.submit-button').on('click', function () {
 
+        // event
+        var event = $form.find('.input-event').val();
+        if (event == '' || event == 'Name....' || event == 'Name' || event == 'Name *' || event == 'Type Your Name...' || event == 'Name and Surname') {
+            $form.find('.input-event').tooltip({placement: 'top', trigger: 'manual'}).tooltip('show');
+            $form.find('.input-event').focus();
+            return false;
+        }
+
         // Name
         var name = $form.find('.input-name').val();
         if (name == '' || name == 'Name....' || name == 'Name' || name == 'Name *' || name == 'Type Your Name...' || name == 'Name and Surname') {
@@ -89,22 +97,39 @@ $(function () {
         }
 
         // Price list
-        var price = $form.find('.input-price').val();
+        var tipo = $form.find('.input-type-person').val();
         if (price == '' || price == 'Select Your Price Tab') {
-            $form.find('.input-price').tooltip({placement: 'top', trigger: 'manual'}).tooltip('show');
-            $form.find('.input-price').focus();
+            $form.find('.input-type-person').tooltip({placement: 'top', trigger: 'manual'}).tooltip('show');
+            $form.find('.input-type-person').focus();
             return false;
         }
         else {
-            $form.find('.input-price').tooltip({placement: 'top', trigger: 'manual'}).tooltip('hide');
+            $form.find('.input-type-person').tooltip({placement: 'top', trigger: 'manual'}).tooltip('hide');
         }
+        
+        var phone_corporate = $form.find('.input-phone-corporate').val();
+        if (phone_corporate == 'Your Phone Number') {
+            phone_corporate = '';
+        } 
+        
+        // Email address
+        var email_corporate = $form.find('.input-email-corporate').val();
+        //var filter = /^[a-zA-Z0-9]+[a-zA-Z0-9_.-]+[a-zA-Z0-9_-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{2,4}$/;
+        var filter = /^[a-zA-Z0-9]+[a-zA-Z0-9_.-]+[a-zA-Z0-9_-]+@[a-zA-Z0-9.-]+.[a-zA-z0-9]{2,4}$/;
+        //console.log(filter.test(email));
+        if (!filter.test(email)) {
+            $form.find('.input-email-corporate').tooltip({placement: 'top', trigger: 'manual'}).tooltip('show');
+            $form.find('.input-email-corporate').focus();
+            return false;
+        }                
 
-        var dataString = 'nombre=' + name + '&email=' + email + '&telefono=' + phone + '&evento=1';
+        var dataString = 'evento=' + event + '&fecha='+ moment().format("YYYY-MM-DD H:mm:ss") + '&nombre=' + name + '&email=' + email + '&telefono=' + phone + '&tipo=' + tipo + '&telefono_oficina=' + phone_corporate + '&email_oficina=' + email_corporate;
         //alert(dataString); return false;
-
+        
         $.ajax({
             type: 'POST',
-            url: 'http://cambioycultura.org/admin/agregar_registro_evento',
+            //url: 'http://cambioycultura.org/admin/agregar_registro_evento',
+            url: 'http://localhost/actitud_talento/admin/agregar_registro_evento',
             data: dataString,
             success: function () {
                 $form.find('.form-alert').append('' +

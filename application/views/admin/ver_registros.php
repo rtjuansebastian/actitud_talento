@@ -3,7 +3,7 @@
             <div class="row">
                 <div class="col-md-12">            
                     <h1>Personas registradas</h1>                    
-                    <table class="table table-bordered table-responsive">
+                    <table id="registro" class="table table-bordered table-responsive tablesorter">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -11,6 +11,10 @@
                                 <th>Nombre</th>                  
                                 <th>Email</th>                  
                                 <th>Telefono</th>
+                                <th>Tipo</th>                  
+                                <th>Email corporativo</th>                  
+                                <th>Telefono corporativo</th>   
+                                <th>Fecha de registro</th>
                             </tr>
                         </thead>            
                         <tbody id="escenarios">                 
@@ -24,6 +28,10 @@ foreach ($registros as $registro)
                                 <td><?=$registro['nombre']?></td>
                                 <td><?=$registro['email']?></td>
                                 <td><?=$registro['telefono']?></td>
+                                <td><?=$registro['tipo']?></td>
+                                <td><?=$registro['email_oficina']?></td>
+                                <td><?=$registro['telefono_oficina']?></td>                                
+                                <td><?=$registro['fecha']?></td>
                             </tr>                   
 <?php                    
 }
@@ -34,3 +42,10 @@ foreach ($registros as $registro)
             </div>
         </div>   
 <?php $this->load->view("admin/footer"); ?>
+<script>
+$(document).ready(function() 
+    { 
+        $("#registro").tablesorter(); 
+    } 
+);     
+</script>

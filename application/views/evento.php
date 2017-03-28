@@ -626,6 +626,7 @@ foreach ($precios as $precio)
         </section>
         <!-- /PAGE PRICE -->
         
+        <!-- PAGE REGISTER -->
         <section class="page-section image" id="register">
             <div class="container">
                 <h1 class="section-title">
@@ -633,6 +634,7 @@ foreach ($precios as $precio)
                     <span data-animation="fadeInRight" data-animation-delay="500" class="title-inner">Registrate ahora</span>
                 </h1>
                 <form id="registration-form" name="registration-form" class="registration-form">
+                    <input type="hidden" class="input-event" value="<?=$evento['id']?>">
                     <div class="row">
                         <div class="col-sm-12 form-alert"></div>
                         <div class="col-sm-6 col-md-4">
@@ -658,6 +660,32 @@ foreach ($precios as $precio)
                                         placeholder="Telefono"/>
                             </div>
                         </div>
+                        <div class="col-sm-6 col-md-4">
+                            <div class="form-group" data-animation="fadeInUp" data-animation-delay="200">
+                                <select
+                                        class="form-control input-type-person"
+                                        data-toggle="tooltip" title="Type is required">
+                                    <option>Tipo de asistente</option>
+                                    <option value="natural">Independiente</option>
+                                    <option value="corporativo">Empresa</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <div class="form-group" data-animation="fadeInUp" data-animation-delay="400">
+                                <input
+                                        type="text" class="form-control input-email-corporate"
+                                        data-toggle="tooltip" title="Mail is required"
+                                        placeholder="Email corporativo"/>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <div class="form-group" data-animation="fadeInUp" data-animation-delay="600">
+                                <input
+                                        type="text" class="form-control input-phone-corporate"
+                                        placeholder="Telefono oficina"/>
+                            </div>
+                        </div>                        
                         <div class="col-md-12 overflowed">
                             <div class="text-center margin-top">
                                 <button
@@ -670,6 +698,8 @@ foreach ($precios as $precio)
                 </form>
             </div>
         </section>
+        <!-- /PAGE REGISTER -->
+        
         <section class="page-section light">
             <div class="container">
                 <div class="row">
@@ -886,6 +916,7 @@ if(!empty($evento['skype']))
 <script src="<?=base_url()?>assets/js//modernizr.custom.js"></script>
 <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
 <script src="<?=base_url()?>assets/js/bootstrap-select.min.js"></script>
+<script src="<?=base_url()?>assets/js/moment.js"></script>
 <script src="<?=base_url()?>assets/js/superfish.js"></script>
 <script src="<?=base_url()?>assets/js/jquery.prettyPhoto.js"></script>
 <script src="<?=base_url()?>assets/js/placeholdem.min.js"></script>
