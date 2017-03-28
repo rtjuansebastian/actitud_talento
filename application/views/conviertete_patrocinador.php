@@ -222,7 +222,7 @@ if(isset($mensaje))
 
                     <div class="col-sm-12 af-outer af-required">
                         <div class="form-group af-inner">
-                            <label for="imagen_patrocinador">Logo del patrocinador</label>
+                            <label for="imagen_patrocinador">Logo del patrocinador (Min. 125x90)</label>
                             <input
                                 type="file" name="imagen_patrocinador" id="imagen_patrocinador" required="" size="30"
                                     data-toggle="tooltip" title="Imagen is required"

@@ -109,103 +109,16 @@ header("HTTP/1.1 200 OK"); ?>
                             <div class="div-table">
                                 <div class="div-cell">
                                     <h2 class="caption-title" data-animation="fadeInDown" data-animation-delay="100"><span><?=  date_format(date_create($evento['fecha']),"Y-m-d")?></span></h2>
-                                    <h3 class="caption-subtitle" data-animation="fadeInUp" data-animation-delay="300"><?=$evento['nombre']?></h3>
+                                    <h3 class="caption-subtitle" data-animation="fadeInUp" data-animation-delay="300"><?=$evento['nombre']?></h3>                                  
                                     <div class="countdown-wrapper">
                                         <div id="defaultCountdown" class="defaultCountdown clearfix"></div>
                                     </div>
-                                    <p class="caption-text">                                        
-                                    </p>
+                                    <p class="caption-text">
+                                        <a class="btn btn-theme btn-theme-xl scroll-to" href="#register" data-animation="flipInY" data-animation-delay="600"> Registro <i class="fa fa-arrow-circle-right"></i></a>
+                                    </p>                                     
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Slide -->
-                <div class="item page text-center slide1">
-                    <div class="caption">
-                    <div class="container">
-                        <div class="div-table">
-                        <div class="div-cell">
-                            <h2 class="caption-title" data-animation="fadeInDown" data-animation-delay="100"><span><?=  date_format(date_create($evento['fecha']),"Y-m-d")?></span></h2>
-                            <h3 class="caption-subtitle" data-animation="fadeInUp" data-animation-delay="300"><?=$evento['nombre']?></h3>
-                            <p class="caption-text">
-                                <a class="btn btn-theme btn-theme-xl scroll-to" href="#register" data-animation="flipInY" data-animation-delay="600"> Registro <i class="fa fa-arrow-circle-right"></i></a><!--
-                                --><a class="btn btn-theme btn-theme-xl btn-theme-transparent-white" href="<?=$evento['video']?>" data-gal="prettyPhoto" data-animation="flipInY" data-animation-delay="900">Ver video</a>
-                            </p>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-
-                <!-- Slide -->
-                <div class="item page slide2">
-                    <div class="caption">
-                    <div class="container">
-                        <div class="div-table">
-                        <div class="div-cell">
-                            <div class="row">
-                                <div class="col-md-6 col-lg-4" id="form_registro_owl">
-                                    <div class="form-background">
-                                    <div class="form-header color">
-                                        <h1 class="section-title">
-                                            <span class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-ticket fa-stack-1x"></i></span></span>
-                                            <span class="title-inner">Registro</span>
-                                        </h1>
-                                    </div>
-
-                                    <form id="registration-form-alt" name="registration-form-alt" class="registration-form alt">
-                                        <div class="row">
-                                            <div class="col-sm-12 form-alert"></div>
-                                            <div class="col-sm-12">
-                                                <div class="form-group">
-                                                    <input
-                                                            type="text" class="form-control input-name"
-                                                            data-toggle="tooltip" title="El nombre es obligatorio"
-                                                            placeholder="Nombre y Apellido"/>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-12">
-                                                <div class="form-group">
-                                                    <input
-                                                            type="text" class="form-control input-email"
-                                                            data-toggle="tooltip" title="El Email es obligatorio"
-                                                            placeholder="Email"/>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-12">
-                                                <div class="form-group">
-                                                    <input
-                                                            type="text" class="form-control input-phone"
-                                                            placeholder="Numero telefonico"/>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-12">
-                                                <div class="text-center">
-                                                    <button
-                                                            data-animation="flipInY" data-animation-delay="100"
-                                                            class="btn btn-theme btn-block submit-button" type="button"
-                                                            > Registrate ahora <i class="fa fa-arrow-circle-right"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-8">
-                                    <div class="text-holder">
-                                    <h2 class="caption-title"><?=  date_format(date_create($evento['fecha']),"Y-m-d")?></h2>
-                                    <h3 class="caption-subtitle"><?=$evento['nombre']?> </h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Event description -->
-                            <!-- /Event description -->
-                        </div>
-                        </div>
-                    </div>
                     </div>
                 </div>
 
