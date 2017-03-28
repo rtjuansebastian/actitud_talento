@@ -36,10 +36,10 @@
                         <img data-u="image" src="<?=  base_url()?>assets/img/<?=$configuracion['imagen_1']?>" />
                     </div>
                     <div>
-                        <img data-u="image" src="<?=  base_url()?>assets/img/<?=$configuracion['imagen_1']?>" />
+                        <img data-u="image" src="<?=  base_url()?>assets/img/<?=$configuracion['imagen_2']?>" />
                     </div>
                     <div>
-                        <img data-u="image" src="<?=  base_url()?>assets/img/<?=$configuracion['imagen_1']?>" />
+                        <img data-u="image" src="<?=  base_url()?>assets/img/<?=$configuracion['imagen_3']?>" />
                     </div>
                 </div>
                 <!-- Bullet Navigator -->
