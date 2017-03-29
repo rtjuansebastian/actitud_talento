@@ -46,6 +46,7 @@ class Index extends CI_Controller
      */    
 public function evento()
     {
+        $programaciones=array();
         $evento=  $this->input->get("evento");
         $datos['evento']=$this->eventos_model->traer_evento($evento);
         $datos['patrocinadores']=$this->patrocinadores_model->traer_patrocinadores_evento($evento);

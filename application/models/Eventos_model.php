@@ -22,6 +22,7 @@ class Eventos_model extends CI_Model
     public function __construct()
     {
         parent::__construct();
+        $this->load->model("galerias_model");
     }
     
     public function traer_eventos($estado="activo")
@@ -118,6 +119,7 @@ class Eventos_model extends CI_Model
     
     public function agregar_evento($data)
     {
+        $galeria=array();
         $this->db->insert('eventos', $data); 
         $id=$this->db->insert_id();
         if(isset($_FILES['imagen_fondo']) && strcmp (basename($_FILES['imagen_fondo']['name']),"")!==0)
@@ -147,7 +149,10 @@ class Eventos_model extends CI_Model
 
             $this->db->where('id', $id);
             $this->db->update('eventos', $data_img);  
-        }        
+        }
+
+        $galeria['evento'][]=$id;
+        $this->galerias_model->agregar_galerias_evento($galeria);
         
         return $id;
     }

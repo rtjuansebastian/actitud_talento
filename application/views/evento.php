@@ -228,8 +228,10 @@ header("HTTP/1.1 200 OK"); ?>
                         <!-- BUSCAR 4 IMAGENES DE CADA EVENTO Y GUARDARLAS EN 2 TAMAÑOS -->
                         <div class="row thumbnails">
 <?php
-foreach ($galerias as $foto)
+if(!empty($galerias))
 {
+    foreach ($galerias as $foto)
+    {
 ?>
                             <div class="col-sm-6 col-xs-6">
                                 <div class="thumbnail no-border no-padding" data-animation="fadeInLeft" data-animation-delay="100">
@@ -246,6 +248,7 @@ foreach ($galerias as $foto)
                                 </div>
                             </div>
 <?php
+    }
 }
 ?>
                         </div>
@@ -279,11 +282,14 @@ foreach ($galerias as $foto)
                     <div class="schedule-tabs lv1">
                         <ul id="tabs-lv1"  class="nav nav-justified">
 <?php
-foreach ($dias as $dia)
+if(!empty($dias))
 {
+    foreach ($dias as $dia)
+    {
 ?>    
                             <li><a href="#tab-dia-<?=$dia['fecha']?>" data-toggle="tab" class="dia_programacion"><strong>Dia 1</strong> <br/><?=$dia['fecha']?></a></li>
 <?php
+    }
 }
 ?>
                         </ul>
@@ -291,41 +297,43 @@ foreach ($dias as $dia)
                     <div class="tab-content lv1">
                         <!-- tab1 -->
 <?php
-foreach ($programaciones as $dias)
+if(!empty($programaciones))
 {
+    foreach ($programaciones as $dias)
+    {
 ?> 
 <?php
-    foreach ($dias as $fecha=>$dia)
-    {
+        foreach ($dias as $fecha=>$dia)
+        {
 ?>                         
                         <div id="tab-dia-<?=$fecha?>" class="tab-pane fade">
                             <div class="schedule-tabs lv2">
                                 <ul id="tabs-lv21"  class="nav nav-justified">
 <?php
-    foreach ($dia as $dia_escenario)
-    {
-        foreach ($dia_escenario as $escenario)
-        {
+            foreach ($dia as $dia_escenario)
+            {
+                foreach ($dia_escenario as $escenario)
+                {
 ?>
                                     <li><a href="#tab-escenario-dia-<?=$fecha?>-<?=$escenario['id']?>" data-toggle="tab" class="escenario_programacion"><?=$escenario['nombre']?></a></li>
 <?php
-        }
-    }
+                }
+            }
 ?>
                                 </ul>
                             </div>
                             <div class="tab-content lv2">
 <?php
-    foreach ($dia as $dia_escenario)
-    {        
-        foreach ($dia_escenario as $escenario)
-        {        
+            foreach ($dia as $dia_escenario)
+            {        
+                foreach ($dia_escenario as $escenario)
+                {        
 ?>                                
                                 <div id="tab-escenario-dia-<?=$fecha?>-<?=$escenario['id']?>" class="tab-pane fade">
                                     <div class="timeline">
 <?php
-            foreach ($escenario['programaciones'] as $conferencia)
-            {
+                    foreach ($escenario['programaciones'] as $conferencia)
+                    {
 ?>
                                         <article class="post-wrap" data-animation="fadeInUp" data-animation-delay="300">
                                             <div class="media">
@@ -350,36 +358,36 @@ foreach ($programaciones as $dias)
                                                         <span class="post-readmore">
                                                             <i class="fa fa-microphone"></i> <strong><?=$conferencia['nombre']?></strong> / <?=$conferencia['profesion']?>
 <?php
-    if(!empty($conferencia['facebook']))
-    {
+        if(!empty($conferencia['facebook']))
+        {
 ?>
                                                             <a href="<?=$conferencia['facebook']?>" target="_blank"><i class="fa fa-facebook"></i></a>
 <?php                                                           
-    }
+        }
 ?>
 <?php
-    if(!empty($conferencia['twitter']))
-    {
+        if(!empty($conferencia['twitter']))
+        {
 ?>
                                                             <a href="<?=$conferencia['twitter']?>" target="_blank"><i class="fa fa-twitter"></i></a>
 <?php
-    }
+        }
 ?>
 <?php
-    if(!empty($conferencia['linkedin']))
-    {
+        if(!empty($conferencia['linkedin']))
+        {
 ?>
                                                             <a href="<?=$conferencia['linkedin']?>" target="_blank"><i class="fa fa-linkedin"></i></a>
 <?php
-    }
+        }
 ?>
 <?php
-    if(!empty($conferencia['instagram']))
-    {
+        if(!empty($conferencia['instagram']))
+        {
 ?>
                                                             <a href="<?=$conferencia['instagram']?>" target="_blank"><i class="fa fa-instagram"></i></a>
 <?php
-    }
+        }
 ?>
                                                         </span>
                                                     </div>
@@ -388,18 +396,19 @@ foreach ($programaciones as $dias)
                                             </div>
                                         </article>
 <?php
-            }
+                    }
 ?>
                                     </div>
                                 </div>                            
 <?php   
-        }
-    }
+                }
+            }
 ?>
                             </div>
                         </div>
                         <!-- Termina el dia -->
 <?php
+        }
     }
 }
 ?>
@@ -421,11 +430,14 @@ foreach ($programaciones as $dias)
                 <div class="partners-carousel" data-animation="fadeInUp" data-animation-delay="300">
                     <div class="owl-carousel">
 <?php
-foreach ($patrocinadores as $patrocinador)
+if(!empty($patrocinadores))
 {
+    foreach ($patrocinadores as $patrocinador)
+    {
 ?>
                         <div><a href="<?=$patrocinador['url']?>" target="_blank"><img src="<?=  base_url()?>/assets/img/patrocinadores/<?=$patrocinador['imagen_patrocinador']?>" alt=""/></a></div>
 <?php
+    }
 }
 ?>
                     </div>
@@ -450,8 +462,8 @@ if(count($testimonios)>0)
                 <!-- Testimonials -->             
                 <div id="testimonials" class="owl-carousel testimonials" data-animation="fadeInUp" data-animation-delay="100">
 <?php
-foreach ($testimonios as $testimonio)
-{
+    foreach ($testimonios as $testimonio)
+    {
 ?>
                     <div class="media testimonial">
                         <div class="media-object pull-right" data-animation="flipInY" data-animation-delay="300">
@@ -473,7 +485,7 @@ foreach ($testimonios as $testimonio)
                         </div>
                     </div>
 <?php
-}
+    }
 ?>
                 </div>
                 <!-- Testimonials -->
@@ -597,8 +609,10 @@ if(!empty($conferencista['instagram']))
                 </h1>
                 <div class="row price-tables">
 <?php
-foreach ($precios as $precio)
+if(!empty($precios))
 {
+    foreach ($precios as $precio)
+    {
 ?>
                     <div class="col-xsp-6 col-sm-6 col-md-6 col-lg-4">
                         <div class="price-table" data-animation="fadeInUp" data-animation-delay="100">
@@ -619,6 +633,7 @@ foreach ($precios as $precio)
                         </div>
                     </div>
 <?php
+    }
 }
 ?>                    
                 </div>
@@ -719,11 +734,14 @@ foreach ($precios as $precio)
                     <div class="col-sm-6 col-md-6 pull-left">
                         <ul id="tabs-faq"  class="nav">
 <?php
-foreach ($preguntas as $pregunta)
+if(!empty($preguntas))
 {
+    foreach ($preguntas as $pregunta)
+    {
 ?> 
                             <li><a href="#tab-faq<?=$pregunta['id']?>" data-toggle="tab" class="preguntas"><i class="fa fa-plus"></i> <span class="faq-inner"><?=$pregunta['pregunta']?></span></a></li>
 <?php
+    }
 }
 ?>
                         </ul>
@@ -731,8 +749,10 @@ foreach ($preguntas as $pregunta)
                     <div class="col-sm-6 col-md-6 pull-right">
                         <div class="tab-content">
 <?php
-foreach ($preguntas as $pregunta)
+if(!empty($preguntas))
 {
+    foreach ($preguntas as $pregunta)
+    {
 ?>
                             <div id="tab-faq<?=$pregunta['id']?>" class="tab-pane fade in active">
                                 <div>
@@ -740,6 +760,7 @@ foreach ($preguntas as $pregunta)
                                 </div>
                             </div>
 <?php
+    }
 }
 ?>
                         </div>

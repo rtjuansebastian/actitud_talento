@@ -33,13 +33,13 @@
                 </div>
                 <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:1500px;height:600px;overflow:hidden;">
                     <div>
-                        <img data-u="image" src="<?=  base_url()?>assets/img/<?=$configuracion['imagen_1']?>" />
+                        <img data-u="image" src="<?=  base_url()?>assets/img/configuracion/<?=$configuracion['imagen_1']?>" />
                     </div>
                     <div>
-                        <img data-u="image" src="<?=  base_url()?>assets/img/<?=$configuracion['imagen_2']?>" />
+                        <img data-u="image" src="<?=  base_url()?>assets/img/configuracion/<?=$configuracion['imagen_2']?>" />
                     </div>
                     <div>
-                        <img data-u="image" src="<?=  base_url()?>assets/img/<?=$configuracion['imagen_3']?>" />
+                        <img data-u="image" src="<?=  base_url()?>assets/img/configuracion/<?=$configuracion['imagen_3']?>" />
                     </div>
                 </div>
                 <!-- Bullet Navigator -->
@@ -90,7 +90,10 @@ foreach ($configuracion_patrocinadores as $patrocinador)
 {
 ?>
                     <img src="<?=  base_url()?>assets/img/configuracion/patrocinadores/<?=$patrocinador['imagen']?>" height="40px">
-                    <a href="<?=$patrocinador['url']?>" target="_blank"><p class="footer-company-name"><?=$patrocinador['nombre']?> &copy; 2017</p></a>
+                    <div>
+                        <br>
+                        <a href="<?=$patrocinador['url']?>" target="_blank"><p class="footer-company-name"><?=$patrocinador['nombre']?> &copy; 2017</p></a>
+                    </div>
 <?php
 }
 ?>
@@ -102,7 +105,7 @@ foreach ($configuracion_patrocinadores as $patrocinador)
                     </div>
                     <div>
                             <i class="fa fa-phone"></i>
-                            <p>+1 555 123456</p>
+                            <p><?=$configuracion['telefono']?></p>
                     </div>
                     <div>
                             <i class="fa fa-envelope"></i>

@@ -57,7 +57,7 @@ class Admin extends CI_Controller
         {
             $data=  $this->input->post();
             $this->login_model->agregar_usuario($data);
-            $this->ver_usuarios();
+            redirect("/admin/ver_usuarios/","refresh");
         }
         else 
         {        
@@ -77,7 +77,7 @@ class Admin extends CI_Controller
     {
         $data=  $this->input->post();
         $this->login_model->actualizar_usuario($data);
-        $this->ver_usuarios();
+        redirect("/admin/ver_usuarios/","refresh");
     }
     
     public function eliminar_usuario()
@@ -104,7 +104,7 @@ class Admin extends CI_Controller
     {
         $data=$this->input->post();
         $this->paises_model->actualizar_pais($data);
-        $this->ver_paises();
+        redirect("/admin/ver_paises/","refresh");
     }
     
     public function agregar_pais()
@@ -113,7 +113,7 @@ class Admin extends CI_Controller
         {
             $data=  $this->input->post();
             $this->paises_model->agregar_pais($data);
-            $this->ver_paises();
+            redirect("/admin/ver_paises/","refresh");
         }
         else 
         {
@@ -531,7 +531,7 @@ class Admin extends CI_Controller
     {
         $data=  $this->input->post();
         $this->conferencistas_model->actualizar_conferencista($data);
-        $this->ver_conferencistas();
+        redirect("/admin/ver_conferencistas/","refresh");
     }    
 
     public function agregar_conferencista()
@@ -540,7 +540,7 @@ class Admin extends CI_Controller
         {
             $data=  $this->input->post();
             $this->conferencistas_model->agregar_conferencista($data);
-            $this->ver_conferencistas();
+            redirect("/admin/ver_conferencistas/","refresh");
         }
         else 
         {
@@ -605,7 +605,7 @@ class Admin extends CI_Controller
     {
         $data=  $this->input->post();
         $this->escenarios_model->actualizar_escenario($data);
-        $this->ver_escenarios();
+        redirect("/admin/ver_escenarios/","refresh");
     } 
 
     public function eliminar_escenario()
@@ -620,7 +620,7 @@ class Admin extends CI_Controller
         {
             $data=$this->input->post();
             $this->escenarios_model->agregar_escenario($data);
-            $this->ver_escenarios();
+            redirect("/admin/ver_escenarios/","refresh");
         }
         else 
         {
@@ -647,7 +647,7 @@ class Admin extends CI_Controller
     {
         $data=  $this->input->post();
         $this->patrocinadores_model->actualizar_patrocinador($data);
-        $this->ver_patrocinadores();
+        redirect("/admin/ver_patrocinadores/","refresh");
     }     
 
     public function agregar_patrocinador()
@@ -656,7 +656,7 @@ class Admin extends CI_Controller
         {
             $data=  $this->input->post();
             $this->patrocinadores_model->agregar_patrocinador($data);
-            $this->ver_patrocinadores();
+            redirect("/admin/ver_patrocinadores/","refresh");
         }
         else 
         {
@@ -675,7 +675,7 @@ class Admin extends CI_Controller
         $id=$this->input->get("patrocinador");
         $evento=$this->input->get("evento");
         $this->patrocinadores_model->aceptar_solicitud_patrocinador($id,$evento);
-        $this->ver_solicitudes_patrocinadores();
+        redirect("/admin/ver_solicitudes_patrocinadores/","refresh");
     }
     
     public function rechazar_solicitud()
@@ -683,7 +683,7 @@ class Admin extends CI_Controller
         $id=$this->input->get("patrocinador");
         $evento=$this->input->get("evento");
         $this->patrocinadores_model->rechazar_solicitud_patrocinador($id,$evento);
-        $this->ver_solicitudes_patrocinadores();
+        redirect("/admin/ver_solicitudes_patrocinadores/","refresh");
     }
 
     public function eliminar_patrocinador()
@@ -722,7 +722,7 @@ class Admin extends CI_Controller
         $contacto=$this->contactos_model->traer_contacto($id);
         $respuesta=  $this->input->post("respuesta");
         $this->contactos_model->responder_contacto($contacto,$respuesta);
-        $this->ver_contactos();
+        redirect("/admin/ver_contactos/","refresh");
     }
     
     public function configuracion()
@@ -736,7 +736,7 @@ class Admin extends CI_Controller
     {
         $data=  $this->input->post();
         $this->configuracion_model->actualizar_configuracion($data);
-        $this->configuracion();
+        redirect("/admin/configuracion/","refresh");
     }
     
     public function editar_configuracion_patrocinador()

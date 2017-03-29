@@ -22,6 +22,10 @@
                             <input class="form-control" type="text" name="direccion" id="direccion" value="<?=$configuracion['direccion']?>"/>
                         </div>
                         <div class="form-group">
+                            <label>Nosotros</label>
+                            <textarea class="form-control" rows="3" name="perfil" id="perfil"><?=$configuracion['perfil']?></textarea>
+                        </div>
+                        <div class="form-group">
                             <label>Facebook</label>
                             <input class="form-control" type="text" name="facebook" id="facebook" value="<?=$configuracion['facebook']?>"/>
                         </div>
@@ -116,7 +120,7 @@ foreach ($patrocinadores as $patrocinador)
                                 <input type="text" class="form-control" name="nombre" required=""/>
                             </div>
                             <div class="form-group">
-                                <label for="perfil">Url</label>
+                                <label for="url">Url</label>
                                 <input type="text" class="form-control" name="url" required=""/>                                                        
                             </div>
                             <div class="form-group">

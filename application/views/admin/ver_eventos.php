@@ -367,14 +367,14 @@ foreach ($eventos as $evento)
                                 <label for="profesion">País</label>
                                 <select class="form-control" id="pais_evento" name="pais" required="">
                                     <option></option>
-    <?php
-    foreach ($paises as $pais)
-    {
-    ?>
+<?php
+foreach ($paises as $pais)
+{
+?>
                                     <option value="<?=$pais['id']?>"><?=$pais['nombre']?></option>
-    <?php
-    }
-    ?>
+<?php
+}
+?>
                                 </select>
                             </div>
                             <div class="form-group">
