@@ -6,6 +6,10 @@
                     <form method="post" action="<?=  base_url()?>admin/actualizar_configuracion" enctype="multipart/form-data">
                         <input type="hidden" name="id" value="<?=$configuracion['id']?>">
                         <div class="form-group">
+                            <label>Título pagina principal</label>
+                            <input class="form-control" type="text" name="titulo" id="titulo" value="<?=$configuracion['titulo']?>"/>
+                        </div>                        
+                        <div class="form-group">
                             <label>Empresas</label>
                             <button type="button" class=" form-control btn btn-primary btn-xs glyphicon glyphicon-search navbar-right" data-toggle="modal" data-target="#modal_ver_patrocinadores"></button>
                         </div>
@@ -22,9 +26,13 @@
                             <input class="form-control" type="text" name="direccion" id="direccion" value="<?=$configuracion['direccion']?>"/>
                         </div>
                         <div class="form-group">
+                            <label>Lugar</label>
+                            <input class="form-control" type="text" name="lugar" id="lugar" value="<?=$configuracion['lugar']?>"/>
+                        </div>                        
+                        <div class="form-group">
                             <label>Nosotros</label>
                             <textarea class="form-control" rows="3" name="perfil" id="perfil"><?=$configuracion['perfil']?></textarea>
-                        </div>
+                        </div>                        
                         <div class="form-group">
                             <label>Facebook</label>
                             <input class="form-control" type="text" name="facebook" id="facebook" value="<?=$configuracion['facebook']?>"/>
@@ -67,7 +75,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="modal_label_editar_patrocinador">Editar patrocinador</h4>
+                        <h4 class="modal-title" id="modal_label_editar_patrocinador">Editar Organizador</h4>
                     </div>
                     <div class="modal-body">                    
                         <h1>Empresas</h1>
@@ -112,7 +120,7 @@ foreach ($patrocinadores as $patrocinador)
                         <input type="hidden" id="id_patrocinador" name="id">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="modal_label_editar_patrocinador">Crear patrocinador</h4>
+                            <h4 class="modal-title" id="modal_label_editar_patrocinador">Crear Organizador</h4>
                         </div>
                         <div class="modal-body">                    
                             <div class="form-group">
@@ -144,7 +152,7 @@ foreach ($patrocinadores as $patrocinador)
                         <input type="hidden" id="id_patrocinador" name="id">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="modal_label_editar_patrocinador">Editar patrocinador</h4>
+                            <h4 class="modal-title" id="modal_label_editar_patrocinador">Editar Organizador</h4>
                         </div>
                         <div class="modal-body">                    
                             <div class="form-group">

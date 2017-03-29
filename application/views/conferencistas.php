@@ -81,6 +81,7 @@ header("HTTP/1.1 200 OK"); ?>
                     <li><a href="<?=  base_url()?>index/evento?evento=<?=$evento['id']?>#schedule">Programación</a></li>
                     <li><a href="<?=  base_url()?>index/evento?evento=<?=$evento['id']?>#sponsors">Patrocinadores</a></li>
                     <li><a href="<?=  base_url()?>index/evento?evento=<?=$evento['id']?>#speakers">Conferencistas</a></li>
+                    <li><a href="<?=  base_url()?>index/evento?evento=<?=$evento['id']?>#price">Precios</a></li>
                     <li><a href="<?=  base_url()?>index/evento?evento=<?=$evento['id']?>#location">Lugar</a></li>
                     <li><a href="http://cambioycultura.org/actitud_talento_blog" target="_blank">Blog</a></li>
                 </ul>

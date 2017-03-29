@@ -81,6 +81,7 @@ header("HTTP/1.1 200 OK"); ?>
                     <li><a href="#schedule">Programación</a></li>
                     <li><a href="#sponsors">Patrocinadores</a></li>
                     <li><a href="#speakers">Conferencistas</a></li>
+                    <li><a href="#price">Precios</a></li>
                     <li><a href="#location">Lugar</a></li>
                     <li><a href="http://cambioycultura.org/actitud_talento_blog" target="_blank">Blog</a></li>
                 </ul>
@@ -100,48 +101,47 @@ header("HTTP/1.1 200 OK"); ?>
         <section class="page-section no-padding background-img-slider">
             <div class="container">
 
-            <div id="main-slider" class="owl-carousel owl-theme">
+                <div id="main-slider" class="owl-carousel owl-theme">
 
-                <!-- Slide -->
-                <div class="item page text-center slide0">
-                    <div class="caption">
-                        <div class="container">
-                            <div class="div-table">
-                                <div class="div-cell">
-                                    <h2 class="caption-title" data-animation="fadeInDown" data-animation-delay="100"><span><?=  date_format(date_create($evento['fecha']),"Y-m-d")?></span></h2>
-                                    <h3 class="caption-subtitle" data-animation="fadeInUp" data-animation-delay="300"><?=$evento['nombre']?></h3>                                  
-                                    <div class="countdown-wrapper">
-                                        <div id="defaultCountdown" class="defaultCountdown clearfix"></div>
+                    <!-- Slide -->
+                    <div class="item page text-center slide0">
+                        <div class="caption">
+                            <div class="container">
+                                <div class="div-table">
+                                    <div class="div-cell">
+                                        <h2 class="caption-title" data-animation="fadeInDown" data-animation-delay="100"><span><?=  date_format(date_create($evento['fecha']),"Y-m-d")?></span></h2>
+                                        <h3 class="caption-subtitle" data-animation="fadeInUp" data-animation-delay="300"><?=$evento['nombre']?></h3>                                  
+                                        <div class="countdown-wrapper">
+                                            <div id="defaultCountdown" class="defaultCountdown clearfix"></div>
+                                        </div>
+                                        <p class="caption-text">
+                                            <a class="btn btn-theme btn-theme-xl scroll-to" href="#register" data-animation="flipInY" data-animation-delay="600"> Registro <i class="fa fa-arrow-circle-right"></i></a>
+                                        </p>                                     
                                     </div>
-                                    <p class="caption-text">
-                                        <a class="btn btn-theme btn-theme-xl scroll-to" href="#register" data-animation="flipInY" data-animation-delay="600"> Registro <i class="fa fa-arrow-circle-right"></i></a>
-                                    </p>                                     
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Slide -->
-                <div class="item page text-center slide3">
-                    <div class="caption">
-                    <div class="container">
-                        <div class="div-table">
-                        <div class="div-cell">
-                            <h2 class="caption-title"><span><?=  date_format(date_create($evento['fecha']),"Y-m-d")?></span></h2>
-                            <h3 class="caption-subtitle"><?=$evento['nombre']?></h3>
-                            <p class="caption-text">
-                                <a class="btn btn-play" href="<?=$evento['video']?>" data-gal="prettyPhoto"><i class="fa fa-play"></i></a>
-                            </p>
-                            <!-- Event description -->
-                            <!-- /Event description -->
-                        </div>
+                     <!-- Slide -->
+                    <div class="item page text-center slide1">
+                        <div class="caption">
+                            <div class="container">
+                                <div class="div-table">
+                                    <div class="div-cell">
+                                        <h2 class="caption-title" data-animation="fadeInDown" data-animation-delay="100"><span><?=  date_format(date_create($evento['fecha']),"Y-m-d")?></span></h2>
+                                        <h3 class="caption-subtitle" data-animation="fadeInUp" data-animation-delay="300"><?=$evento['nombre']?></h3>
+                                        <p class="caption-text">
+                                            <a class="btn btn-theme btn-theme-xl scroll-to" href="#register" data-animation="flipInY" data-animation-delay="600"> Registro <i class="fa fa-arrow-circle-right"></i></a>
+                                            <a class="btn btn-theme btn-theme-xl scroll-to" href="<?=$evento['video']?>" data-gal="prettyPhoto" data-animation="flipInY" data-animation-delay="900">Ver video</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    </div>
-                </div>
 
-            </div>
+                </div>
             </div>
 
             <!-- Event description -->
@@ -151,7 +151,8 @@ header("HTTP/1.1 200 OK"); ?>
                 <div class="event-background">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-xs-12 col-sm-6 col-md-3">
+                            <div class="col-md-1"></div>
+                            <div class="col-xs-12 col-sm-6 col-md-2">
                                 <div class="media">
                                             <span class="pull-left">
                                                 <i class="fa fa-calendar fa-2x"></i>
@@ -162,7 +163,18 @@ header("HTTP/1.1 200 OK"); ?>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-6 col-md-4">
+                            <div class="col-xs-12 col-sm-6 col-md-2">
+                                <div class="media">
+                                            <span class="pull-left">
+                                                <i class="fa fa-circle fa-2x"></i>
+                                            </span>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">País</h4>
+                                        <span><?=$evento['nombre_pais']?></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-2">
                                 <div class="media">
                                             <span class="pull-left">
                                                 <i class="fa fa-map-marker fa-2x"></i>
@@ -184,7 +196,7 @@ header("HTTP/1.1 200 OK"); ?>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-6 col-md-3">
+                            <div class="col-xs-12 col-sm-6 col-md-2">
                                 <div class="media">
                                             <span class="pull-left">
                                                 <i class="fa fa-microphone fa-2x"></i>
@@ -195,6 +207,7 @@ header("HTTP/1.1 200 OK"); ?>
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-md-1"></div>
                         </div>
                     </div>
                 </div>
@@ -212,7 +225,7 @@ header("HTTP/1.1 200 OK"); ?>
             <div class="container">
                 <h1 class="section-title">
                     <span data-animation="flipInY" data-animation-delay="300" class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-star fa-stack-1x"></i></span></span>
-                    <span data-animation="fadeInRight" data-animation-delay="500" class="title-inner">acerca de este evento <small>/ <?=$evento['nombre']?></small></span>
+                    <span data-animation="fadeInRight" data-animation-delay="500" class="title-inner">acerca de este evento <br><small><?=$evento['nombre']?></small></span>
                 </h1>
                 <div class="row">
                     <div class="col-lg-8">
@@ -443,7 +456,7 @@ if(!empty($patrocinadores))
                     </div>
                 </div>
                 <div class="text-center margin-top">
-                    <a data-animation="flipInY" data-animation-delay="500" href="<?=  base_url()?>index/conviertete_patrocinador?evento=<?=$evento['id']?>" class="btn btn-theme" target="_blank"><i class="fa fa-thumbs-up"></i> Conviertete en patrocinador</a>
+                    <a data-animation="flipInY" data-animation-delay="500" href="<?=  base_url()?>index/conviertete_patrocinador?evento=<?=$evento['id']?>" class="btn btn-theme" target="_blank"><i class="fa fa-thumbs-up"></i> Conviértete en patrocinador</a>
                 </div>
             </div>
         </section>
@@ -646,7 +659,7 @@ if(!empty($precios))
             <div class="container">
                 <h1 class="section-title">
                     <span data-animation="flipInY" data-animation-delay="300" class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-ticket fa-stack-1x"></i></span></span>
-                    <span data-animation="fadeInRight" data-animation-delay="500" class="title-inner">Registrate ahora</span>
+                    <span data-animation="fadeInRight" data-animation-delay="500" class="title-inner">Regístrate ahora</span>
                 </h1>
                 <form id="registration-form" name="registration-form" class="registration-form">
                     <input type="hidden" class="input-event" value="<?=$evento['id']?>">
@@ -672,7 +685,7 @@ if(!empty($precios))
                             <div class="form-group" data-animation="fadeInUp" data-animation-delay="600">
                                 <input
                                         type="text" class="form-control input-phone"
-                                        placeholder="Telefono"/>
+                                        placeholder="Teléfono"/>
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-4">
@@ -698,7 +711,7 @@ if(!empty($precios))
                             <div class="form-group" data-animation="fadeInUp" data-animation-delay="600">
                                 <input
                                         type="text" class="form-control input-phone-corporate"
-                                        placeholder="Telefono oficina"/>
+                                        placeholder="Teléfono oficina"/>
                             </div>
                         </div>                        
                         <div class="col-md-12 overflowed">
@@ -706,7 +719,7 @@ if(!empty($precios))
                                 <button
                                         data-animation="flipInY" data-animation-delay="100"
                                         class="btn btn-theme btn-theme-xl submit-button" type="button"
-                                        > Registrate Ahora<i class="fa fa-arrow-circle-right"></i></button>
+                                        > Regístrate Ahora<i class="fa fa-arrow-circle-right"></i></button>
                             </div>
                         </div>
                     </div>
@@ -795,7 +808,7 @@ if(!empty($preguntas))
                         </h1>
                         <p data-animation="fadeInUp" data-animation-delay="200" class="text-uppercase"><?=$evento['lugar']?><br/>                            
                             <?=$evento['nombre_pais']?> <br/>
-                            Telefono: <?=$evento['telefono']?></p>
+                            Teléfono: <?=$evento['telefono']?></p>
                         <p><a href="mailto:<?=$evento['email']?>">Correo: <?=$evento['email']?></a></p>
                         <a href="#" class="btn btn-theme"
                            data-animation="flipInY" data-animation-delay="300">Get Direction <i class="fa fa-arrow-circle-right"></i></a>
@@ -818,7 +831,7 @@ if(!empty($preguntas))
 
                 <h1 class="section-title">
                     <span data-animation="flipInY" data-animation-delay="100" class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-ticket fa-stack-1x"></i></span></span>
-                    <span data-animation="fadeInRight" data-animation-delay="100" class="title-inner">Contactenos <small>/ en breve responderemos</small></span>
+                    <span data-animation="fadeInRight" data-animation-delay="100" class="title-inner">Contáctenos <small>/ en breve responderemos</small></span>
                 </h1>
 
                 <!-- Contact form -->

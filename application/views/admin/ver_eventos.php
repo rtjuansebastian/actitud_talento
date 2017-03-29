@@ -257,6 +257,7 @@ foreach ($eventos as $evento)
                                 <th>Nombre</th>
                                 <th>Descripción</th>
                                 <th>Precio</th>
+                                <th>Estado</th>
                                 <th>Editar</th>
                             </tr>
                         </thead>
@@ -625,6 +626,13 @@ foreach ($paises as $pais)
                                 <label for="perfil">Precio</label>
                                 <input type="text" class="form-control" id="precio_editar_precio" name="precio" required=""/>                                                        
                             </div>                             
+                            <div class="form-group">
+                                <label for="estado">Estado</label>
+                                <select class="form-control" name="estado" id="estado_editar_precio">
+                                    <option value="activo">Activo</option>
+                                    <option value="inactivo">Inactivo</option>
+                                </select>
+                            </div>                          
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal" id="btn_eliminar_precios">Eliminar</button>
@@ -1211,6 +1219,7 @@ foreach ($paises as $pais)
                                     '<td>'+items.nombre+'</td>'+
                                     '<td>'+items.descripcion+'</td>'+
                                     '<td>'+items.precio+'</td>'+
+                                    '<td>'+items.estado+'</td>'+
                                     '<td><button class="btn btn-primary glyphicon glyphicon-pencil editar_precios" type="button" data-precios="'+items.id+'" data-toggle="modal" data-target="#modal_editar_precio"></button></td>'+
                                 '</tr>';                            
                         });
@@ -1459,6 +1468,7 @@ foreach ($paises as $pais)
                         $("#nombre_editar_precio").val(result.nombre);
                         $("#descripcion_editar_precio").val(result.descripcion);
                         $("#precio_editar_precio").val(result.precio);
+                        $("#estado_editar_precio").val(result.estado);
                         
                         $("#btn_eliminar_precios").data("precio",precio);
                     });

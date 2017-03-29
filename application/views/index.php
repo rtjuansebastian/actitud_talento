@@ -54,7 +54,7 @@
         </header> <!-- / END HOME SECTION  -->                  
         <section class="focus" id="focus">	                            
             <div class="row">             
-                <h1>Eventos en diferentes paises</h1>
+                <h1><?=$configuracion['titulo']?></h1>
                 <span>
 <?php
 foreach ($eventos_pais as $pais)
@@ -70,7 +70,9 @@ foreach ($eventos_pais as $pais)
     foreach ($pais["evento"] as $evento)
     {
         ?>                      <a href="<?=  base_url()?>index/evento?evento=<?=$evento['id_evento']?>">
-                                    <p>Evento: <?=$evento['evento_nombre']?>  Fecha: <?=$evento['fecha']?> Lugar: <?=$evento['lugar']?></p>
+                                    <p><?=$evento['evento_nombre']?></p>  
+                                    <p>Fecha: <?=$evento['fecha']?></p> 
+                                    <p>Lugar: <?=$evento['lugar']?></p>
                                 </a>
 <?php
     }
@@ -89,6 +91,7 @@ foreach ($eventos_pais as $pais)
 foreach ($configuracion_patrocinadores as $patrocinador)
 {
 ?>
+                    <br>
                     <img src="<?=  base_url()?>assets/img/configuracion/patrocinadores/<?=$patrocinador['imagen']?>" height="40px">
                     <div>
                         <br>

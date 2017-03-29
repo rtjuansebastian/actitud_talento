@@ -24,13 +24,13 @@ class Precios_model extends CI_Model
         parent::__construct();
     }
     
-    public function traer_precios()
+    public function traer_precios($estado="activo")
     {
         $precios=array();
         $this->db->select("precios.id, evento, eventos.nombre as nombre_evento, precios.nombre, precios.descripcion, precios.precio");
         $this->db->from("eventos_precios");
         $this->db->join("eventos","precios.evento=eventos.id");
-        $this->db->where('precios.estado','activo');
+        $this->db->where('precios.estado',$estado);
         $query=$this->db->get();
         foreach ($query->result() as $row)
         {
@@ -40,16 +40,18 @@ class Precios_model extends CI_Model
             $precios[$row->id]['nombre']=$row->nombre;
             $precios[$row->id]['descripcion']=$row->descripcion;
             $precios[$row->id]['precio']=$row->precio;
+            $precios[$row->id]['estado']=$row->estado;
         }
         
         return $precios;
     }
     
-    public function traer_precios_evento($evento)
+    public function traer_precios_evento($evento,$estado="activo")
     {
         $precios=array();
-        $this->db->where('estado','activo');
+        $this->db->where('estado',$estado);
         $this->db->where('evento',$evento);
+        $this->db->order_by("precio","desc");
         $query=$this->db->get('eventos_precios');
         foreach ($query->result() as $row)
         {
@@ -58,6 +60,7 @@ class Precios_model extends CI_Model
             $precios[$row->id]['nombre']=$row->nombre;
             $precios[$row->id]['descripcion']=$row->descripcion;
             $precios[$row->id]['precio']=$row->precio;
+            $precios[$row->id]['estado']=$row->estado;
         }
         
         return $precios;
@@ -66,7 +69,6 @@ class Precios_model extends CI_Model
     public function traer_precio($id)
     {
         $precio=array();
-        $this->db->where('estado','activo');
         $this->db->where('id',$id);
         $query=$this->db->get('eventos_precios');
         $row=$query->row();
@@ -75,6 +77,7 @@ class Precios_model extends CI_Model
         $precio['nombre']=$row->nombre;        
         $precio['descripcion']=$row->descripcion;        
         $precio['precio']=$row->precio;        
+        $precio['estado']=$row->estado;  
         
         return $precio;
     }    

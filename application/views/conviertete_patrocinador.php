@@ -81,6 +81,7 @@ header("HTTP/1.1 200 OK"); ?>
                     <li><a href="<?=  base_url()?>index/evento?evento=<?=$evento['id']?>#schedule">Programación</a></li>
                     <li><a href="<?=  base_url()?>index/evento?evento=<?=$evento['id']?>#sponsors">Patrocinadores</a></li>
                     <li><a href="<?=  base_url()?>index/evento?evento=<?=$evento['id']?>#speakers">Conferencistas</a></li>
+                    <li><a href="<?=  base_url()?>index/evento?evento=<?=$evento['id']?>#price">Precios</a></li>
                     <li><a href="<?=  base_url()?>index/evento?evento=<?=$evento['id']?>#location">Lugar</a></li>
                     <li><a href="http://cambioycultura.org/actitud_talento_blog" target="_blank">Blog</a></li>
                 </ul>
@@ -98,7 +99,7 @@ header("HTTP/1.1 200 OK"); ?>
         <section class="page-section" id="about">            
             <div class="container">                
                 <h1 class="section-title">
-                    Convierte en patrocinador
+                    Conviérte en patrocinador
                 </h1>
                 <div class="row">
                     <div class="col-lg-8">
@@ -188,7 +189,7 @@ if(isset($mensaje))
 
                     <div class="col-sm-12 af-outer af-required">
                         <div class="form-group af-inner">
-                            <input type="text" name="telefono_contacto" id="telefono_contacto" placeholder="Telefono persona de contacto" size="30" required=""
+                            <input type="text" name="telefono_contacto" id="telefono_contacto" placeholder="Teléfono persona de contacto" size="30" required=""
                                     data-toggle="tooltip" title="Name is required"
                                     class="form-control placeholder"/>
                         </div>

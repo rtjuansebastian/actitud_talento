@@ -44,6 +44,7 @@ class Configuracion_model extends CI_Model
             $configuracion['twitter']=$row->twitter;
             $configuracion['linkedin']=$row->linkedin;
             $configuracion['instagram']=$row->instagram;
+            $configuracion['titulo']=$row->titulo;
             
         }
         
