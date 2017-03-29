@@ -113,18 +113,22 @@ class Galerias_model extends CI_Model
     
     public function actualizar_galeria($data)
     {
-        if(isset($_FILES['imagen']) && strcmp (basename($_FILES['imagen']['name']),"")!==0)
-        {
+        if(isset( $_FILES ) && isset($_FILES['imagen']) && !empty( $_FILES['imagen']['name']) && !empty($_FILES['imagen']['tmp_name']))
+        {            
             $id=$data['id'];
             $evento=$data['evento'];
             $oldmask = umask(0);
             umask($oldmask);        
+            unlink(DIRECTORIO_IMG.'galerias/'.$evento.'-'.$id.'.jpg');
+            unlink(DIRECTORIO_IMG.'galerias/'.$evento.'-'.$id.'.png');
+            unlink(DIRECTORIO_IMG.'galerias/'.$evento.'-'.$id.'.jpeg');
+            opendir(DIRECTORIO_IMG.'galerias/');
             $dir_subida = DIRECTORIO_IMG.'galerias/';
             if(file_exists($dir_subida)){}
             else{mkdir($dir_subida, 0700);}
             $fichero_subido = $dir_subida . basename($_FILES['imagen']['name']);
-            $ext=substr($fichero_subido, -4); 
-            $fichero_subido = $dir_subida . $evento.'-'.$id.$ext;
+            $ext= pathinfo( $fichero_subido, PATHINFO_EXTENSION );
+            $fichero_subido = $dir_subida . $evento.'-'.$id.'.'.$ext;
             move_uploaded_file($_FILES['imagen']['tmp_name'], $fichero_subido);
             $normal=DIRECTORIO_IMG.'galerias/';            
             $config['image_library'] = 'gd2';
@@ -132,16 +136,18 @@ class Galerias_model extends CI_Model
             $config['create_thumb'] = TRUE;
             $config['maintain_ratio'] = TRUE;
             $config['new_image']=$normal;
+            $config['file_permissions']=0755;
             $config['width'] = 500;
             $config['height'] = 330;
             $this->load->library('image_lib', $config); 
             $this->image_lib->resize();
             $data_img = array(
-                           'imagen' => $evento.'-'.$id.$ext
+                           'imagen' => $evento.'-'.$id.'.'.$ext
                         );
 
             $this->db->where('id', $id);
-            $this->db->update('eventos_galerias', $data_img); 
+            $this->db->update('eventos_galerias', $data_img);
+            chmod($normal.$evento.'-'.$id.'.'.$ext, 0755);
         }        
     }
 }

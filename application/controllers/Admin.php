@@ -201,6 +201,7 @@ class Admin extends CI_Controller
     {
         $evento=$this->input->post("evento");
         $precios=$this->precios_patrocinadores_model->traer_precios_patrocinadores_evento($evento);
+        $precios+=$this->precios_patrocinadores_model->traer_precios_patrocinadores_evento($evento,"inactivo");
         echo json_encode($precios);
     }
     

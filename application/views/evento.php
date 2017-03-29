@@ -132,8 +132,8 @@ header("HTTP/1.1 200 OK"); ?>
                                         <h2 class="caption-title" data-animation="fadeInDown" data-animation-delay="100"><span><?=  date_format(date_create($evento['fecha']),"Y-m-d")?></span></h2>
                                         <h3 class="caption-subtitle" data-animation="fadeInUp" data-animation-delay="300"><?=$evento['nombre']?></h3>
                                         <p class="caption-text">
-                                            <a class="btn btn-theme btn-theme-xl scroll-to" href="#register" data-animation="flipInY" data-animation-delay="600"> Registro <i class="fa fa-arrow-circle-right"></i></a>
-                                            <a class="btn btn-theme btn-theme-xl scroll-to" href="<?=$evento['video']?>" data-gal="prettyPhoto" data-animation="flipInY" data-animation-delay="900">Ver video</a>
+                                            <a class="btn btn-theme btn-theme-xl scroll-to" href="#register" data-animation="flipInY" data-animation-delay="600"> Registro <i class="fa fa-arrow-circle-right"></i></a><!--
+                                        --> <a class="btn btn-theme btn-theme-xl" href="<?=$evento['video']?>" data-gal="prettyPhoto" data-animation="flipInY" data-animation-delay="900">Ver video</a>
                                         </p>
                                     </div>
                                 </div>
