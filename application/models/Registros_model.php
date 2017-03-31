@@ -24,12 +24,13 @@ class Registros_model extends CI_Model
         parent::__construct();
     }
     
-    public function traer_registros()
+    public function traer_registros($estado='activo')
     {
         $registros=array();
         $this->db->select("eventos_registro.id, eventos_registro.evento, eventos_registro.fecha, eventos.nombre as nombre_evento, eventos_registro.nombre, eventos_registro.email, eventos_registro.telefono, eventos_registro.tipo, eventos_registro.email_oficina, eventos_registro.telefono_oficina");
         $this->db->from("eventos_registro");
-        $this->db->join("eventos","eventos_registro.evento=eventos.id");        
+        $this->db->join("eventos","eventos_registro.evento=eventos.id"); 
+        $this->db->where("eventos_registro.estado",$estado);
         $query=$this->db->get();
         foreach ($query->result() as $row)
         {
@@ -116,5 +117,12 @@ class Registros_model extends CI_Model
 
         $this->db->where('email_oficina', "Email corporativo");
         $this->db->update('eventos_registro', $data_email);        
+    }
+    
+    public function eliminar_registro($registro)
+    {
+        $this->db->where('id', $registro);
+        $data=array('estado'=>'eliminado');
+        $this->db->update('eventos_registro', $data);        
     }
 }

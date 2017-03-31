@@ -27,9 +27,11 @@ class Contactos_model extends CI_Model
     public function traer_contactos()
     {
         $registros=array();
+        $estado=array('eliminado');        
         $this->db->select("eventos_contacto.id, eventos_contacto.evento, eventos.nombre as nombre_evento, eventos_contacto.nombre, eventos_contacto.email, eventos_contacto.mensaje, eventos_contacto.estado");
         $this->db->from("eventos_contacto");
-        $this->db->join("eventos","eventos_contacto.evento=eventos.id");        
+        $this->db->join("eventos","eventos_contacto.evento=eventos.id"); 
+        $this->db->where_not_in("eventos_contacto.estado",$estado);
         $query=$this->db->get();
         foreach ($query->result() as $row)
         {
@@ -51,7 +53,7 @@ class Contactos_model extends CI_Model
         $this->db->select("eventos_contacto.id, eventos_contacto.evento, eventos.nombre as nombre_evento, eventos_contacto.nombre, eventos_contacto.email, eventos_contacto.mensaje, eventos_contacto.estado");
         $this->db->from("eventos_contacto");
         $this->db->join("eventos","eventos_contacto.evento=eventos.id");        
-        $this->db->where("eventos_contacto.id",$id);
+        $this->db->where("eventos_contacto.id",$id);        
         $query=$this->db->get();
         foreach ($query->result() as $row)
         {
@@ -96,7 +98,7 @@ class Contactos_model extends CI_Model
     
     public function responder_contacto($contacto,$respuesta)
     {
-        $this->email->from('contacto@actitudytalento.com');
+        $this->email->from('info@cambioycultura.org');
         $this->email->to($contacto['email']);
         $this->email->subject('Respuesta sobre '.$contacto['nombre_evento'].'.');
         $this->email->message($respuesta);
@@ -108,4 +110,12 @@ class Contactos_model extends CI_Model
         $this->db->where('id', $contacto['id']);
         $this->db->update('eventos_contacto', $data);         
     }
+    
+    
+    public function eliminar_contacto($contacto)
+    {
+        $this->db->where('id', $contacto);
+        $data=array('estado'=>'eliminado');
+        $this->db->update('eventos_contacto', $data);        
+    }    
 }

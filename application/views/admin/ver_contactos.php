@@ -37,7 +37,10 @@ foreach ($contactos as $contacto)
                             </tr>                            
                             <tr>
                                 <td>Responder</td>                            
-                                <td><button class="btn btn-success glyphicon glyphicon-check responder" data-contacto="<?=$contacto['id']?>" data-toggle="modal" data-target="#modal_responder_contacto"></button></td>
+                                <td>
+                                    <button class="btn btn-success glyphicon glyphicon-check responder" data-contacto="<?=$contacto['id']?>" data-toggle="modal" data-target="#modal_responder_contacto"></button>
+                                    <button class="btn btn-danger glyphicon glyphicon-remove eliminar_contacto" data-contacto="<?=$contacto['id']?>"></button>
+                                </td>
                             </tr>                            
                         </tbody>
                     </table>                    
@@ -78,5 +81,13 @@ foreach ($contactos as $contacto)
             var contacto=$(this).data("contacto");
             $("#id").val(contacto);
         });
+        
+        $(".eliminar_contacto").click(function(){
+            var contacto=$(this).data("contacto");
+            if (window.confirm("Desea eliminar este mensaje?") == true)
+            {
+               window.location = "<?=  base_url()?>admin/eliminar_contacto?contacto="+contacto+"";
+            }            
+        });        
     });
 </script>

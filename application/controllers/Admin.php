@@ -773,4 +773,18 @@ class Admin extends CI_Controller
         $id=$this->input->post("id");
         $this->configuracion_model->eliminar_configuracion_patrocinador($id);
     }
+    
+    public function eliminar_registro()
+    {
+        $registro=  $this->input->get("registro");
+        $this->registros_model->eliminar_registro($registro);
+        redirect("/admin/ver_registros/","refresh");
+    }
+    
+    public function eliminar_contacto()
+    {
+        $contacto=  $this->input->get("contacto");
+        $this->contactos_model->eliminar_contacto($contacto);
+        redirect("/admin/ver_contactos/","refresh");
+    }    
 }

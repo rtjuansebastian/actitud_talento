@@ -15,6 +15,7 @@
                                 <th>Email corporativo</th>                  
                                 <th>Telefono corporativo</th>   
                                 <th>Fecha de registro</th>
+                                <th>Eliminar</th>
                             </tr>
                         </thead>            
                         <tbody id="escenarios">                 
@@ -32,6 +33,7 @@ foreach ($registros as $registro)
                                 <td><?=$registro['email_oficina']?></td>
                                 <td><?=$registro['telefono_oficina']?></td>                                
                                 <td><?=$registro['fecha']?></td>
+                                <td><button data-registro="<?=$registro['id']?>" class="btn btn-danger glyphicon glyphicon-remove eliminar_registro"></button></td>
                             </tr>                   
 <?php                    
 }
@@ -46,6 +48,14 @@ foreach ($registros as $registro)
 $(document).ready(function() 
     { 
         $("#registro").tablesorter(); 
+        
+        $(".eliminar_registro").click(function(){
+            var registro=$(this).data("registro");
+            if (window.confirm("Desea eliminar el registro?") == true)
+            {
+               window.location = "<?=  base_url()?>admin/eliminar_registro?registro="+registro+"";
+            }            
+        });
     } 
 );     
 </script>
