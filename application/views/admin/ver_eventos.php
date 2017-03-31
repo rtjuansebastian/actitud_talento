@@ -109,7 +109,7 @@ foreach ($eventos as $evento)
                                 <td><?=$evento['patrocinadores']?>
                                     <br>
                                     <button class="btn btn-primary glyphicon glyphicon-plus agregar_patrocinador_evento" data-evento="<?=$evento['id']?>" data-toggle="modal" data-target="#modal_agregar_patrocinador_evento"></button>
-                                    <button class="btn btn-primary glyphicon glyphicon-minus eliminar_patrocinador_evento" data-evento="<?=$evento['id']?>" data-toggle="modal" data-target="#modal_eliminar_patrocinador_evento"></button>
+                                    <button class="btn btn-primary glyphicon glyphicon-search eliminar_patrocinador_evento" data-evento="<?=$evento['id']?>" data-toggle="modal" data-target="#modal_eliminar_patrocinador_evento"></button>
                                 </td>
                             </tr>
                             <tr>
@@ -1062,9 +1062,12 @@ foreach ($paises as $pais)
                                     <option></option>
                                 </select>
                             </div>
-                            <p id="estado_patrocinador_evento"></p>
                             <div class="form-group">
-                                <label for="estado">Estado</label>
+                                <label for="estado">Estado actual</label>
+                                <p id="estado_patrocinador_evento"></p>
+                            </div>                            
+                            <div class="form-group">
+                                <label for="estado">Modificar estado</label>
                                 <select class="form-control" name="estado" id="estado">
                                     <option value="eliminado">Eliminar del evento</option>
                                     <option value="inactivo">Inactivar del evento</option>

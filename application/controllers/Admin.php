@@ -640,6 +640,7 @@ class Admin extends CI_Controller
     public function ver_patrocinadores()
     {
         $datos['patrocinadores']=$this->patrocinadores_model->traer_patrocinadores();
+        $datos['patrocinadores']+=$this->patrocinadores_model->traer_patrocinadores("inactivo");
         $this->load->view('admin/ver_patrocinadores',$datos);        
     }
     

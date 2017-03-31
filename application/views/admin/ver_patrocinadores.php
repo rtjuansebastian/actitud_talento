@@ -107,6 +107,7 @@ foreach ($patrocinadores as $patrocinador)
                     $("#nombre").val(result.nombre);
                     $("#descripcion").val(result.descripcion);
                     $("#url").val(result.url);
+                    $("#estado").val(result.estado);
                 }
             });
         });
