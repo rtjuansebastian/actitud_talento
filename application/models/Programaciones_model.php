@@ -61,15 +61,17 @@ class Programaciones_model extends CI_Model
         return $conferencista;
     }
     
-    public function traer_programacion_evento($evento)
+    public function traer_programacion_evento($evento,$estado_conferencia='activo',$estado_conferencista='activo')
     {
         $programaciones=array();
-        $this->db->select("programaciones.id, programaciones.evento, eventos.nombre as nombre_evento, programaciones.fecha, programaciones.duracion, programaciones.titulo, programaciones.descripcion, programaciones.escenario, escenarios.nombre as nombre_escenario, programaciones.conferencista, conferencistas.nombre as nombre_conferencista");
+        $this->db->select("programaciones.id, programaciones.evento, eventos.nombre as nombre_evento, programaciones.fecha, programaciones.duracion, programaciones.titulo, programaciones.descripcion, programaciones.escenario, escenarios.nombre as nombre_escenario, programaciones.conferencista, conferencistas.nombre as nombre_conferencista, programaciones.estado as estado");
         $this->db->from("programaciones");
         $this->db->join("eventos","programaciones.evento=eventos.id");
         $this->db->join("conferencistas","programaciones.conferencista=conferencistas.id");
         $this->db->join("escenarios","programaciones.escenario=escenarios.id");
         $this->db->where("programaciones.evento",$evento);
+        $this->db->where("programaciones.estado",$estado_conferencia);
+        $this->db->where("conferencistas.estado",$estado_conferencista);
         $this->db->order_by("fecha");
         $query=$this->db->get();
         foreach ($query->result() as $row)
@@ -85,6 +87,7 @@ class Programaciones_model extends CI_Model
             $programaciones[$row->id]['nombre_escenario']=$row->nombre_escenario;
             $programaciones[$row->id]['conferencista']=$row->conferencista;
             $programaciones[$row->id]['nombre_conferencista']=$row->nombre_conferencista;
+            $programaciones[$row->id]['estado']=$row->estado;
         }
         
         return $programaciones;
@@ -126,15 +129,17 @@ class Programaciones_model extends CI_Model
         return $escenarios;
     }
     
-    public function traer_programacion_escenario_dia($dia,$escenario)
+    public function traer_programacion_escenario_dia($dia,$escenario,$estado_conferencia='activo',$estado_conferencista='activo')
     {
         $where="DATE(fecha) = DATE_FORMAT(STR_TO_DATE('$dia', '%Y-%M-%d'),'%Y-%m-%d')";
         $programaciones=array();
-        $this->db->select("programaciones.id, Date_format(programaciones.fecha,'%h:%i') as hora, programaciones.titulo, programaciones.descripcion, conferencistas.nombre, conferencistas.profesion, conferencistas.imagen, conferencistas.facebook, conferencistas.twitter, conferencistas.linkedin, conferencistas.instagram");
+        $this->db->select("programaciones.id, Date_format(programaciones.fecha,'%h:%i') as hora, programaciones.titulo, programaciones.descripcion, programaciones.estado as estado, conferencistas.nombre, conferencistas.profesion, conferencistas.imagen, conferencistas.facebook, conferencistas.twitter, conferencistas.linkedin, conferencistas.instagram");
         $this->db->from("programaciones");
         $this->db->join("conferencistas","programaciones.conferencista=conferencistas.id");
         $this->db->where($where);
         $this->db->where("escenario",$escenario);
+        $this->db->where("programaciones.estado",$estado_conferencia);
+        $this->db->where("conferencistas.estado",$estado_conferencista);        
         $this->db->order_by("fecha");
         $query=$this->db->get();
         foreach ($query->result() as $row)
@@ -150,6 +155,7 @@ class Programaciones_model extends CI_Model
             $programaciones[$row->id]['twitter']=$row->twitter;
             $programaciones[$row->id]['linkedin']=$row->linkedin;
             $programaciones[$row->id]['instagram']=$row->instagram;            
+            $programaciones[$row->id]['estado']=$row->estado; 
         }
         
         return $programaciones;

@@ -32,6 +32,10 @@ foreach ($patrocinadores as $patrocinador)
                                 <td>Imagen</td>                            
                                 <td><img src="<?=  base_url()?>assets/img/patrocinadores/<?=$patrocinador['imagen_patrocinador']?>" height="60"></td>
                             </tr>
+                            <tr>
+                                <td>Estado</td>                            
+                                <td><?=$patrocinador['estado']?></td>
+                            </tr>                              
                         </tbody>
                     </table>                    
 <?php                    
@@ -67,6 +71,13 @@ foreach ($patrocinadores as $patrocinador)
                                 <label for="imagen_patrocinador" class="col-sm-2"><p class="text-left">Imagen</p></label>
                                 <input type="file" class="form-control" name="imagen_patrocinador" id="imagen_patrocinador"/>
                             </div> 
+                            <div class="form-group">
+                                <label for="estado">Estado</label>
+                                <select class="form-control" name="estado" id="estado">
+                                    <option value="activo">Activo</option>
+                                    <option value="inactivo">Inactivo</option>
+                                </select>
+                            </div>                            
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>

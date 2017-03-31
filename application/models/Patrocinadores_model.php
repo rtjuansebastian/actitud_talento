@@ -24,10 +24,10 @@ class Patrocinadores_model extends CI_Model
         parent::__construct();
     }
     
-    public function traer_patrocinadores()
+    public function traer_patrocinadores($estado='activo')
     {
         $patrocinadores=array();
-        $this->db->where('estado','activo');
+        $this->db->where('estado',$estado);
         $query=$this->db->get('patrocinadores');
         foreach ($query->result() as $row)
         {
@@ -36,20 +36,22 @@ class Patrocinadores_model extends CI_Model
             $patrocinadores[$row->id]['descripcion']=$row->descripcion;
             $patrocinadores[$row->id]['url']=$row->url;
             $patrocinadores[$row->id]['imagen_patrocinador']=$row->imagen_patrocinador;
+            $patrocinadores[$row->id]['estado']=$row->estado;
         }
         
         return $patrocinadores;
     }
     
-    public function traer_patrocinadores_evento($evento)
+    public function traer_patrocinadores_evento($evento,$estado_patrocinador='activo',$estado_evento_patrocinador='activo')
     {
         $patrocinadores=array();
-        $this->db->select("eventos.id as evento, eventos.nombre as nombre_evento, patrocinadores.id as patrocinador, patrocinadores.nombre as nombre_patrocinador, patrocinadores.url as url, patrocinadores.imagen_patrocinador as imagen_patrocinador");
+        $this->db->select("eventos.id as evento, eventos.nombre as nombre_evento, patrocinadores.id as patrocinador, patrocinadores.nombre as nombre_patrocinador, patrocinadores.url as url, patrocinadores.imagen_patrocinador as imagen_patrocinador, patrocinadores.estado as estado_patrocinador, eventos_patrocinadores.estado as estado");
         $this->db->from("eventos_patrocinadores");
         $this->db->join("eventos","eventos.id=eventos_patrocinadores.evento");
         $this->db->join("patrocinadores","patrocinadores.id=eventos_patrocinadores.patrocinador");
         $this->db->where('eventos_patrocinadores.evento',$evento);
-        $this->db->where('eventos_patrocinadores.estado','activo');
+        $this->db->where('eventos_patrocinadores.estado',$estado_evento_patrocinador);
+        $this->db->where('patrocinadores.estado',$estado_patrocinador);
         $query=$this->db->get();
         foreach ($query->result() as $row)
         {
@@ -59,6 +61,8 @@ class Patrocinadores_model extends CI_Model
             $patrocinadores[$row->evento."-".$row->patrocinador]['nombre_patrocinador']=$row->nombre_patrocinador;
             $patrocinadores[$row->evento."-".$row->patrocinador]['url']=$row->url;
             $patrocinadores[$row->evento."-".$row->patrocinador]['imagen_patrocinador']=$row->imagen_patrocinador;
+            $patrocinadores[$row->evento."-".$row->patrocinador]['estado_patrocinador']=$row->estado_patrocinador;
+            $patrocinadores[$row->evento."-".$row->patrocinador]['estado']=$row->estado;
         }
         
         return $patrocinadores;
@@ -75,6 +79,7 @@ class Patrocinadores_model extends CI_Model
         $patrocinador['descripcion']=$row->descripcion;
         $patrocinador['url']=$row->url;
         $patrocinador['imagen_patrocinador']=$row->imagen_patrocinador;
+        $patrocinador['estado']=$row->estado;
         
         return $patrocinador;
     }
@@ -247,7 +252,7 @@ class Patrocinadores_model extends CI_Model
     {
         $this->db->where("evento",$data["evento"]);
         $this->db->where("patrocinador",$data["patrocinador"]);
-        $this->db->delete('eventos_patrocinadores');
+        $this->db->update('eventos_patrocinadores',$data);
     }
     
     public function eliminar_patrocinador($id)

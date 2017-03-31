@@ -140,6 +140,9 @@ class Admin extends CI_Controller
     {
         $evento=$this->input->post("evento");
         $programaciones=$this->programaciones_model->traer_programacion_evento($evento);
+        $programaciones+=$this->programaciones_model->traer_programacion_evento($evento,'inactivo');
+        $programaciones+=$this->programaciones_model->traer_programacion_evento($evento,'activo',"inactivo");
+        $programaciones+=$this->programaciones_model->traer_programacion_evento($evento,'inactivo','inactivo');
         echo json_encode($programaciones);
     }
     
@@ -586,6 +589,8 @@ class Admin extends CI_Controller
     {
         $evento=  $this->input->post("evento");
         $escenarios=$this->patrocinadores_model->traer_patrocinadores_evento($evento);
+        $escenarios+=$this->patrocinadores_model->traer_patrocinadores_evento($evento,"activo","inactivo");
+
         echo json_encode($escenarios);
     }    
 

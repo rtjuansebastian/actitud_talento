@@ -195,6 +195,7 @@ foreach ($eventos as $evento)
                                 <th>Descrpción</th>
                                 <th>Escenario</th>
                                 <th>Conferencista</th>                              
+                                <th>Estado</th>
                                 <th>Editar</th>
                             </tr>
                         </thead>
@@ -560,7 +561,14 @@ foreach ($paises as $pais)
                                     <option></option>
                                     <!-- Traer escenarios por ajax -->
                                 </select>                            
-                            </div> 
+                            </div>
+                            <div class="form-group">
+                                <label for="estado">Estado</label>
+                                <select class="form-control" name="estado" id="estado">
+                                    <option value="activo">Activo</option>
+                                    <option value="inactivo">Inactivo</option>
+                                </select>
+                            </div>                             
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal" id="btn_eliminar_programacion">Eliminar</button>
@@ -1053,7 +1061,16 @@ foreach ($paises as $pais)
                                 <select class="form-control" id="select_eliminar_patrocinador_evento" name="patrocinador" required="">
                                     <option></option>
                                 </select>
-                            </div>                
+                            </div>
+                            <p id="estado_patrocinador_evento"></p>
+                            <div class="form-group">
+                                <label for="estado">Estado</label>
+                                <select class="form-control" name="estado" id="estado">
+                                    <option value="eliminado">Eliminar del evento</option>
+                                    <option value="inactivo">Inactivar del evento</option>
+                                    <option value="activo">Activar en el evento</option>
+                                </select>
+                            </div>                            
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
@@ -1187,6 +1204,7 @@ foreach ($paises as $pais)
                                     '<td>'+items.descripcion+'</td>'+
                                     '<td>'+items.nombre_escenario+'</td>'+
                                     '<td>'+items.nombre_conferencista+'</td>'+
+                                    '<td>'+items.estado+'</td>'+
                                     '<td><button class="btn btn-primary glyphicon glyphicon-pencil editar_programacion" type="button" data-programacion="'+items.id+'" data-toggle="modal" data-target="#modal_editar_programcion"></button></td>'+
                                 '</tr>';                            
                         });
@@ -1831,10 +1849,16 @@ foreach ($paises as $pais)
                     var lista='<option></option>';
                     var listado_patrocinadores=traer_patrocinadores_evento(evento);
                     $.each(listado_patrocinadores, function( llave, items) {
-                        lista=lista+'<option value="'+items.patrocinador+'">'+items.nombre_patrocinador+'</option>';                                                            
+                        lista=lista+'<option value="'+items.patrocinador+'" data-estado="'+items.estado+'">'+items.nombre_patrocinador+'</option>';                                                            
                     });       
                     $("#select_eliminar_patrocinador_evento").html(lista);                    
                 });
+                
+                $(document).on("change","#select_eliminar_patrocinador_evento",function(){
+                    var seleccionado = $(this).find('option:selected'); 
+                    var estado = seleccionado.data('estado');
+                    $("#estado_patrocinador_evento").html(estado);                    
+                });                
                 
                 $("#btn_eliminar_patrocinador_evento").click(function(){
                     var formData = new FormData(document.getElementById("form_eliminar_patrocinador_evento"));
@@ -1846,9 +1870,9 @@ foreach ($paises as $pais)
                         dataType: "html",
                         cache: false,
                         contentType: false,
-                        processData: false
-                    });                
-                    location.reload();                    
+                        processData: false,
+                        async:false
+                    });                                                      
                 });                
             });
         </script>           
