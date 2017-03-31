@@ -4,6 +4,9 @@
         <title>A&T Eventos</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">        
+        <meta http-equiv="Last-Modified" content="0">
+        <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+        <meta http-equiv="Pragma" content="no-cache">          
         <link rel="stylesheet" href="<?=  base_url()?>assets/css/bootstrap-spacelab.css" />
         <link rel="stylesheet" href="<?=  base_url()?>assets/css/fullcalendar.css" />
         <link rel="stylesheet" href="<?=  base_url()?>assets/css/datetimepicker.css" />

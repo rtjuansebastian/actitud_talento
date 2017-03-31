@@ -13,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @copyright Actitud y Talento
  */
 
-class Admin extends CI_Controller 
+class Admin extends SuperController 
 {
     public function __construct()
     {
@@ -33,6 +33,7 @@ class Admin extends CI_Controller
         $this->load->model('precios_model');
         $this->load->model('precios_patrocinadores_model');
         $this->load->model('configuracion_model');
+        $this->removeCache();
     }
     
     /**
@@ -617,7 +618,7 @@ class Admin extends CI_Controller
 
     public function eliminar_escenario()
     {
-        $id= $this->input->post("escenario");
+        $id= $this->input->post("id");
         $this->escenarios_model->eliminar_escenario($id);        
     }
 

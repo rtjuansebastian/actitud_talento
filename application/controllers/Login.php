@@ -12,12 +12,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @version 1.0
  * @copyright PoBox
  */
-class Login extends CI_Controller 
+class Login extends SuperController 
 {
     public function __construct()
     {
         parent::__construct();
         $this->load->model('login_model');
+        $this->removeCache();
     }    
 
     /**

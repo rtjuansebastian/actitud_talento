@@ -13,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @copyright Actitud y Talento
  */
 
-class Index extends CI_Controller 
+class Index extends SuperController 
 {
     public function __construct()
     {
@@ -29,6 +29,8 @@ class Index extends CI_Controller
         $this->load->model("precios_model");
         $this->load->model("precios_patrocinadores_model");
         $this->load->model('configuracion_model');
+        $this->removeCache();
+        
     }
     
     public function index()

@@ -23,6 +23,7 @@ class Eventos_model extends CI_Model
     {
         parent::__construct();
         $this->load->model("galerias_model");
+        $this->load->model("escenarios_model");
     }
     
     public function traer_eventos($estado="activo")
@@ -198,7 +199,14 @@ class Eventos_model extends CI_Model
             'estado' => "eliminado"
         );        
         $this->db->where('id', $id);
-        $this->db->update('eventos', $data);         
+        $this->db->update('eventos', $data);   
+        
+        $escenarios=$this->escenarios_model->traer_escenarios_evento($id);
+        
+        foreach ($escenarios as $escenario)
+        {
+            $this->escenarios_model->eliminar_escenario($escenario['id']);
+        }
     } 
 
     
