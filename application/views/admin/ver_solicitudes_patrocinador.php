@@ -25,6 +25,14 @@ foreach ($solicitudes as $patrocinador)
                                 <td><?=$patrocinador['precio']?></td>
                             </tr>                            
                             <tr>
+                                <td>Nombre contacto</td>                    
+                                <td><?=$patrocinador['nombre_contacto']?></td>
+                            </tr>
+                            <tr>
+                                <td>Telefono contacto</td>                    
+                                <td><?=$patrocinador['telefono_contacto']?></td>
+                            </tr>                            
+                            <tr>
                                 <td>Nombre</td>                    
                                 <td><?=$patrocinador['nombre']?></td>
                             </tr>

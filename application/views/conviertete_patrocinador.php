@@ -20,7 +20,7 @@ header("HTTP/1.1 200 OK"); ?>
     <title>Cambio&Cultura</title>
 
     <!-- Favicons -->
-    <link rel="shortcut icon" href="<?=base_url()?>assets/img/favicon.png">
+    <link rel="shortcut icon" href="<?=base_url()?>assets/img/cropped-Logo-Congreso-CyChM-V1.png">
 
     <!-- CSS Global -->
     <link href="<?=base_url()?>assets/css/bootstrap.min.css" rel="stylesheet">

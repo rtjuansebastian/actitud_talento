@@ -20,7 +20,7 @@ header("HTTP/1.1 200 OK"); ?>
     <title>Cambio&Cultura</title>
 
     <!-- Favicons -->
-    <link rel="shortcut icon" href="<?=base_url()?>assets/img/favicon.png">
+    <link rel="shortcut icon" href="<?=base_url()?>assets/img/cropped-Logo-Congreso-CyChM-V1.png">
 
     <!-- CSS Global -->
     <link href="<?=base_url()?>assets/css/bootstrap.min.css" rel="stylesheet">
@@ -139,7 +139,14 @@ header("HTTP/1.1 200 OK"); ?>
                                         <h3 class="caption-subtitle" data-animation="fadeInUp" data-animation-delay="300"><?=$evento['nombre']?></h3>
                                         <p class="caption-text">
                                             <a class="btn btn-theme btn-theme-xl scroll-to" href="#register" data-animation="flipInY" data-animation-delay="600"> Registro <i class="fa fa-arrow-circle-right"></i></a><!--
+<?php
+if(!empty($evento['video']))
+{
+?>    
                                         --> <a class="btn btn-theme btn-theme-xl" href="<?=$evento['video']?>" data-gal="prettyPhoto" data-animation="flipInY" data-animation-delay="900">Ver video</a>
+<?php
+}
+?>
                                         </p>
                                     </div>
                                 </div>

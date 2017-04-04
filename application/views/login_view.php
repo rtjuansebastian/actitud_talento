@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <link rel="stylesheet" href="<?= base_url(); ?>assets/css/estilos.css" />
         <link rel="stylesheet" href="<?=  base_url()?>assets/css/bootstrap-spacelab.css" />
-        <link rel="shortcut icon" href="<?= base_url(); ?>assets/img/favicon.png" />
+        <link rel="shortcut icon" href="<?=base_url()?>assets/img/cropped-Logo-Congreso-CyChM-V1.png">
     </head>
     <body>
         <header>

@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="<?=  base_url()?>assets/css/tablesorter.css" />
         <link rel="stylesheet" href="<?=  base_url()?>assets/css/daterangepicker.css" />                
         <link rel="stylesheet" href="<?=  base_url()?>assets/css/image-picker.css" />
-        <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/img/favicon.png" />                
+        <link rel="shortcut icon" href="<?=base_url()?>assets/img/cropped-Logo-Congreso-CyChM-V1.png">                
     </head>
     <body>
         <header>
