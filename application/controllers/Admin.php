@@ -589,10 +589,10 @@ class Admin extends SuperController
     public function traer_patrocinadores_evento()
     {
         $evento=  $this->input->post("evento");
-        $escenarios=$this->patrocinadores_model->traer_patrocinadores_evento($evento);
-        $escenarios+=$this->patrocinadores_model->traer_patrocinadores_evento($evento,"activo","inactivo");
+        $patrocinadores=$this->patrocinadores_model->traer_patrocinadores_evento($evento);
+        $patrocinadores+=$this->patrocinadores_model->traer_patrocinadores_evento($evento,"activo","inactivo");
 
-        echo json_encode($escenarios);
+        echo json_encode($patrocinadores);
     }    
 
     public function ver_escenarios()

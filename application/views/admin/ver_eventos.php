@@ -1052,7 +1052,7 @@ foreach ($paises as $pais)
                     <form id="form_eliminar_patrocinador_evento" enctype="multipart/form-data">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="ModalLabelAgregarPatrocinadorEvento">Quitar patrocinador del evento</h4>
+                            <h4 class="modal-title" id="ModalLabelAgregarPatrocinadorEvento">Modificar patrocinador del evento</h4>
                         </div>
                         <div class="modal-body">
                             <input type="hidden" id="evento_eliminar_patrocinador" name="evento">                       
@@ -1065,13 +1065,19 @@ foreach ($paises as $pais)
                             <div class="form-group">
                                 <label for="estado">Estado actual</label>
                                 <p id="estado_patrocinador_evento"></p>
-                            </div>                            
+                            </div>
+                            <div class="form-group">
+                                <label for="estado">Modificar precio</label>
+                                <select class="form-control" name="precio" id="precio_patrocinador_evento">
+                                    
+                                </select>
+                            </div>                             
                             <div class="form-group">
                                 <label for="estado">Modificar estado</label>
                                 <select class="form-control" name="estado" id="estado">
-                                    <option value="eliminado">Eliminar del evento</option>
-                                    <option value="inactivo">Inactivar del evento</option>
                                     <option value="activo">Activar en el evento</option>
+                                    <option value="eliminado">Eliminar del evento</option>
+                                    <option value="inactivo">Inactivar del evento</option>                                    
                                 </select>
                             </div>                            
                         </div>
@@ -1143,7 +1149,25 @@ foreach ($paises as $pais)
                     });
 
                     return patrocinadores_evento;
-                } 
+                }
+                
+                function traer_precios_patrocinadores_evento(evento)
+                {
+                    $.ajax(
+                    {
+                        type: "POST",
+                        data: {evento:evento},
+                        url: "<?= base_url()?>admin/traer_precios_patrocinio_evento",
+                        async:false,
+                        success:function(data)
+                        {
+                            var result=$.parseJSON(data);
+                            patrocinadores_evento=result;
+                        }
+                    });
+
+                    return patrocinadores_evento;
+                }                
                 
                 function traer_precios_patrocinio_evento(evento)
                 {
@@ -1852,15 +1876,24 @@ foreach ($paises as $pais)
                     var lista='<option></option>';
                     var listado_patrocinadores=traer_patrocinadores_evento(evento);
                     $.each(listado_patrocinadores, function( llave, items) {
-                        lista=lista+'<option value="'+items.patrocinador+'" data-estado="'+items.estado+'">'+items.nombre_patrocinador+'</option>';                                                            
+                        lista=lista+'<option value="'+items.patrocinador+'" data-estado="'+items.estado+'" data-precio="'+items.precio+'">'+items.nombre_patrocinador+'</option>';                                                            
                     });       
-                    $("#select_eliminar_patrocinador_evento").html(lista);                    
+                    $("#select_eliminar_patrocinador_evento").html(lista);
+                    
+                    lista='<option></option>';
+                    var listado_precios_patrocinadores=traer_precios_patrocinadores_evento(evento);
+                    $.each(listado_precios_patrocinadores, function( llave, items) {
+                    lista=lista+'<option value="'+items.id+'">'+items.nombre+'</option>';                                                            
+                    });       
+                    $("#precio_patrocinador_evento").html(lista);
                 });
                 
                 $(document).on("change","#select_eliminar_patrocinador_evento",function(){
                     var seleccionado = $(this).find('option:selected'); 
                     var estado = seleccionado.data('estado');
-                    $("#estado_patrocinador_evento").html(estado);                    
+                    var precio = seleccionado.data('precio');
+                    $("#estado_patrocinador_evento").html(estado);
+                    $("#precio_patrocinador_evento").val(precio);
                 });                
                 
                 $("#btn_eliminar_patrocinador_evento").click(function(){

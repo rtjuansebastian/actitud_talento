@@ -51,7 +51,7 @@ public function evento()
         $programaciones=array();
         $evento=  $this->input->get("evento");
         $datos['evento']=$this->eventos_model->traer_evento($evento);
-        $datos['patrocinadores']=$this->patrocinadores_model->traer_patrocinadores_evento($evento);
+        $datos['patrocinadores']=$this->patrocinadores_model->traer_patrocinadores_evento_precio($evento);
         $datos['testimonios']=$this->testimonios_model->traer_testimonios_evento($evento);
         $datos['preguntas']=$this->preguntas_model->traer_preguntas_evento($evento);
         $datos['galerias']=$this->galerias_model->traer_galerias_evento($evento);

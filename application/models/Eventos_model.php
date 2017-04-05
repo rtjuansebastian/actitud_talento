@@ -43,6 +43,7 @@ class Eventos_model extends CI_Model
             $this->db->join("patrocinadores","eventos_patrocinadores.patrocinador=patrocinadores.id");
             $this->db->join("eventos","eventos_patrocinadores.evento=eventos.id");
             $this->db->where("eventos.id",$row->id);
+            $this->db->where("eventos_patrocinadores.estado","activo");
             $query_patrocinadores=$this->db->get();
             
             foreach ($query_patrocinadores->result() as $row_patrocinador)

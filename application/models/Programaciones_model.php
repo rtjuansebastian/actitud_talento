@@ -133,7 +133,7 @@ class Programaciones_model extends CI_Model
     {
         $where="DATE(fecha) = DATE_FORMAT(STR_TO_DATE('$dia', '%Y-%M-%d'),'%Y-%m-%d')";
         $programaciones=array();
-        $this->db->select("programaciones.id, Date_format(programaciones.fecha,'%h:%i') as hora, programaciones.titulo, programaciones.descripcion, programaciones.estado as estado, conferencistas.nombre, conferencistas.profesion, conferencistas.imagen, conferencistas.facebook, conferencistas.twitter, conferencistas.linkedin, conferencistas.instagram");
+        $this->db->select("programaciones.id, Date_format(programaciones.fecha,'%H:%i') as hora, programaciones.titulo, programaciones.descripcion, programaciones.estado as estado, conferencistas.nombre, conferencistas.profesion, conferencistas.imagen, conferencistas.facebook, conferencistas.twitter, conferencistas.linkedin, conferencistas.instagram");
         $this->db->from("programaciones");
         $this->db->join("conferencistas","programaciones.conferencista=conferencistas.id");
         $this->db->where($where);

@@ -32,6 +32,8 @@ class Patrocinadores_model extends CI_Model
         foreach ($query->result() as $row)
         {
             $patrocinadores[$row->id]['id']=$row->id;
+            $patrocinadores[$row->id]['nombre_contacto']=$row->nombre_contacto;
+            $patrocinadores[$row->id]['telefono_contacto']=$row->telefono_contacto;
             $patrocinadores[$row->id]['nombre']=$row->nombre;
             $patrocinadores[$row->id]['descripcion']=$row->descripcion;
             $patrocinadores[$row->id]['url']=$row->url;
@@ -45,7 +47,7 @@ class Patrocinadores_model extends CI_Model
     public function traer_patrocinadores_evento($evento,$estado_patrocinador='activo',$estado_evento_patrocinador='activo')
     {
         $patrocinadores=array();
-        $this->db->select("eventos.id as evento, eventos.nombre as nombre_evento, patrocinadores.id as patrocinador, patrocinadores.nombre as nombre_patrocinador, patrocinadores.url as url, patrocinadores.imagen_patrocinador as imagen_patrocinador, patrocinadores.estado as estado_patrocinador, eventos_patrocinadores.estado as estado");
+        $this->db->select("eventos.id as evento, eventos.nombre as nombre_evento, patrocinadores.id as patrocinador, patrocinadores.nombre as nombre_patrocinador, patrocinadores.url as url, patrocinadores.imagen_patrocinador as imagen_patrocinador, patrocinadores.estado as estado_patrocinador, eventos_patrocinadores.estado as estado, eventos_patrocinadores.precio as precio");
         $this->db->from("eventos_patrocinadores");
         $this->db->join("eventos","eventos.id=eventos_patrocinadores.evento");
         $this->db->join("patrocinadores","patrocinadores.id=eventos_patrocinadores.patrocinador");
@@ -62,11 +64,38 @@ class Patrocinadores_model extends CI_Model
             $patrocinadores[$row->evento."-".$row->patrocinador]['url']=$row->url;
             $patrocinadores[$row->evento."-".$row->patrocinador]['imagen_patrocinador']=$row->imagen_patrocinador;
             $patrocinadores[$row->evento."-".$row->patrocinador]['estado_patrocinador']=$row->estado_patrocinador;
+            $patrocinadores[$row->evento."-".$row->patrocinador]['precio']=$row->precio;
             $patrocinadores[$row->evento."-".$row->patrocinador]['estado']=$row->estado;
         }
         
         return $patrocinadores;
-    }    
+    }
+
+    public function traer_patrocinadores_evento_precio($evento,$estado_patrocinador='activo',$estado_evento_patrocinador='activo')
+    {
+        $patrocinadores=array();
+        $this->db->select("eventos.id as evento, eventos.nombre as nombre_evento, patrocinadores.id as patrocinador, patrocinadores.nombre as nombre_patrocinador, patrocinadores.url as url, patrocinadores.imagen_patrocinador as imagen_patrocinador, patrocinadores.estado as estado_patrocinador, eventos_patrocinadores.estado as estado, eventos_patrocinadores.precio as precio");
+        $this->db->from("eventos_patrocinadores");
+        $this->db->join("eventos","eventos.id=eventos_patrocinadores.evento");
+        $this->db->join("patrocinadores","patrocinadores.id=eventos_patrocinadores.patrocinador");
+        $this->db->where('eventos_patrocinadores.evento',$evento);
+        $this->db->where('eventos_patrocinadores.estado',$estado_evento_patrocinador);
+        $this->db->where('patrocinadores.estado',$estado_patrocinador);
+        $query=$this->db->get();
+        foreach ($query->result() as $row)
+        {
+            $patrocinadores[$row->precio][$row->patrocinador]['evento']=$row->evento;
+            $patrocinadores[$row->precio][$row->patrocinador]['nombre_evento']=$row->nombre_evento;
+            $patrocinadores[$row->precio][$row->patrocinador]['patrocinador']=$row->patrocinador;
+            $patrocinadores[$row->precio][$row->patrocinador]['nombre_patrocinador']=$row->nombre_patrocinador;
+            $patrocinadores[$row->precio][$row->patrocinador]['url']=$row->url;
+            $patrocinadores[$row->precio][$row->patrocinador]['imagen_patrocinador']=$row->imagen_patrocinador;
+            $patrocinadores[$row->precio][$row->patrocinador]['estado_patrocinador']=$row->estado_patrocinador;
+            $patrocinadores[$row->precio][$row->patrocinador]['estado']=$row->estado;
+        }
+        
+        return $patrocinadores;        
+    }
     
     public function traer_patrocinador($id)
     {
@@ -75,6 +104,8 @@ class Patrocinadores_model extends CI_Model
         $query=$this->db->get('patrocinadores');
         $row=$query->row();
         $patrocinador['id']=$row->id;
+        $patrocinador['nombre_contacto']=$row->nombre_contacto;
+        $patrocinador['telefono_contacto']=$row->telefono_contacto;
         $patrocinador['nombre']=$row->nombre;
         $patrocinador['descripcion']=$row->descripcion;
         $patrocinador['url']=$row->url;

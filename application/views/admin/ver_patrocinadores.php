@@ -17,6 +17,14 @@ foreach ($patrocinadores as $patrocinador)
                         </thead>
                         <tbody id="patrocinador<?=$patrocinador['id']?>" class="accordian-body collapse">            
                             <tr>
+                                <td>Nombre contacto</td>                    
+                                <td><?=$patrocinador['nombre_contacto']?></td>
+                            </tr>
+                            <tr>
+                                <td>Telefono contacto</td>                    
+                                <td><?=$patrocinador['telefono_contacto']?></td>
+                            </tr>                            
+                            <tr>
                                 <td>Nombre</td>                    
                                 <td><?=$patrocinador['nombre']?></td>
                             </tr>
@@ -55,6 +63,14 @@ foreach ($patrocinadores as $patrocinador)
                             <h4 class="modal-title" id="modal_label_editar_patrocinador">Editar patrocinador</h4>
                         </div>
                         <div class="modal-body">                    
+                            <div class="form-group">
+                                <label for="nombre_contacto">Nombre contacto</label>
+                                <input type="text" class="form-control" id="nombre_contacto" name="nombre_contacto" />
+                            </div>
+                            <div class="form-group">
+                                <label for="telefono_contacto">Telefono contacto</label>
+                                <input type="text" class="form-control" id="telefono_contacto" name="telefono_contacto" />
+                            </div>                            
                             <div class="form-group">
                                 <label for="nombre">Nombre</label>
                                 <input type="text" class="form-control" id="nombre" name="nombre" required=""/>
@@ -104,6 +120,8 @@ foreach ($patrocinadores as $patrocinador)
                 {
                     var result=$.parseJSON(data);
                     $("#id").val(id);
+                    $("#nombre_contacto").val(result.nombre_contacto);
+                    $("#telefono_contacto").val(result.telefono_contacto);
                     $("#nombre").val(result.nombre);
                     $("#descripcion").val(result.descripcion);
                     $("#url").val(result.url);

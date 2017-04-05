@@ -1,5 +1,8 @@
 <?php require_once(BLOG_NOTICIAS); 
-header("HTTP/1.1 200 OK"); ?>
+header("HTTP/1.1 200 OK");
+$meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"); 
+$fecha_evento=date('d', strtotime($evento['fecha']))." - ".$meses[date('n',strtotime($evento['fecha']))-1]." - ".date('Y',strtotime($evento['fecha']));
+?>
 <!DOCTYPE html>
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"><![endif]-->
 <!--[if IE 7 ]><html class="ie ie7" lang="en"><![endif]-->
@@ -47,7 +50,7 @@ header("HTTP/1.1 200 OK"); ?>
 <body id="home" class="wide body-light">
 
 <div id="awwwards" class="honorable black left">
-<a href="<?=base_url()?>" target="_blank">A&T Eventos</a>
+<a href="<?=base_url()?>" target="_blank">Eventos</a>
 </div>
 
 <!-- Preloader -->
@@ -72,7 +75,7 @@ header("HTTP/1.1 200 OK"); ?>
                         <i class="fa logo-hex fa-stack-2x"></i>
                         <i class="fa logo-fa fa-map-marker fa-stack-1x"></i>
                     </span>
-                    A&T Eventos
+                    Eventos
                 </a>
             </div>
             <!-- /Logo -->
@@ -115,7 +118,7 @@ header("HTTP/1.1 200 OK"); ?>
                             <div class="container">
                                 <div class="div-table">
                                     <div class="div-cell">
-                                        <h2 class="caption-title" data-animation="fadeInDown" data-animation-delay="100"><span><?=  date_format(date_create($evento['fecha']),"Y-m-d")?></span></h2>
+                                        <h2 class="caption-title" data-animation="fadeInDown" data-animation-delay="100"><span><?= $fecha_evento?></span></h2>
                                         <h3 class="caption-subtitle" data-animation="fadeInUp" data-animation-delay="300"><?=$evento['nombre']?></h3>                                  
                                         <div class="countdown-wrapper">
                                             <div id="defaultCountdown" class="defaultCountdown clearfix"></div>
@@ -135,7 +138,7 @@ header("HTTP/1.1 200 OK"); ?>
                             <div class="container">
                                 <div class="div-table">
                                     <div class="div-cell">
-                                        <h2 class="caption-title" data-animation="fadeInDown" data-animation-delay="100"><span><?=  date_format(date_create($evento['fecha']),"Y-m-d")?></span></h2>
+                                        <h2 class="caption-title" data-animation="fadeInDown" data-animation-delay="100"><span><?=  $fecha_evento?></span></h2>
                                         <h3 class="caption-subtitle" data-animation="fadeInUp" data-animation-delay="300"><?=$evento['nombre']?></h3>
                                         <p class="caption-text">
                                             <a class="btn btn-theme btn-theme-xl scroll-to" href="#register" data-animation="flipInY" data-animation-delay="600"> Registro <i class="fa fa-arrow-circle-right"></i></a><!--
@@ -172,7 +175,7 @@ if(!empty($evento['video']))
                                             </span>
                                     <div class="media-body">
                                         <h4 class="media-heading">Fecha</h4>
-                                        <span><?=  date_format(date_create($evento['fecha']),"Y-m-d")?></span>
+                                        <span><?=  $fecha_evento?></span>
                                     </div>
                                 </div>
                             </div>
@@ -245,7 +248,15 @@ if(!empty($evento['video']))
                         <p data-animation="fadeInUp" data-animation-delay="300"><?=$evento['descripcion']?></p>
                         <p class="btn-row">
                             <a href="#register" class="btn btn-theme btn-theme-xl scroll-to" data-animation="flipInY" data-animation-delay="200">Registro <i class="fa fa-arrow-circle-right"></i></a><!--
-                            --><a href="#" class="btn btn-theme btn-theme-xl btn-theme-transparent" data-animation="flipInY" data-animation-delay="400">Ver Video</a>
+                            -->
+<?php
+if(!empty($evento['video']))
+{
+?> 
+<a href="#" class="btn btn-theme btn-theme-xl btn-theme-transparent" data-animation="flipInY" data-animation-delay="400">Ver Video</a>
+<?php
+}
+?>
                         </p>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 pull-left">
@@ -453,21 +464,30 @@ if(!empty($programaciones))
                     <span data-animation="flipInY" data-animation-delay="100" class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-thumbs-up fa-stack-1x"></i></span></span>
                     <span data-animation="fadeInRight" data-animation-delay="100" class="title-inner">Patrocinadores del evento<small></small></span>
                 </h1>
-                <div class="partners-carousel" data-animation="fadeInUp" data-animation-delay="300">
-                    <div class="owl-carousel">
 <?php
 if(!empty($patrocinadores))
 {
-    foreach ($patrocinadores as $patrocinador)
+    foreach ($patrocinadores as $precio)
     {
+?>                
+                <div class="partners-carousel" data-animation="fadeInUp" data-animation-delay="300">                    
+                    <div class="owl-carousel">
+<?php
+        foreach ($precio as $patrocinador)
+        {
 ?>
-                        <div><a href="<?=$patrocinador['url']?>" target="_blank"><img src="<?=  base_url()?>/assets/img/patrocinadores/<?=$patrocinador['imagen_patrocinador']?>" alt=""/></a></div>
+                        <div>
+                            <a href="<?=$patrocinador['url']?>" target="_blank"><img src="<?=  base_url()?>/assets/img/patrocinadores/<?=$patrocinador['imagen_patrocinador']?>" alt=""/></a>
+                        </div>
+<?php
+        }
+?>        
+                    </div>
+                </div>        
 <?php
     }
 }
 ?>
-                    </div>
-                </div>
                 <div class="text-center margin-top">
                     <a data-animation="flipInY" data-animation-delay="500" href="<?=  base_url()?>index/conviertete_patrocinador?evento=<?=$evento['id']?>" class="btn btn-theme" target="_blank"><i class="fa fa-thumbs-up"></i> Conviértete en patrocinador</a>
                 </div>
@@ -631,7 +651,7 @@ if(!empty($conferencista['instagram']))
             <div class="container">
                 <h1 class="section-title clearfix">
                     <span data-animation="flipInY" data-animation-delay="300" class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-user fa-stack-1x"></i></span></span>
-                    <span data-animation="fadeInRight" data-animation-delay="500" class="title-inner">Lista de precios de inscripción <small></small></span>
+                    <span data-animation="fadeInRight" data-animation-delay="500" class="title-inner">Lista de precios de inscripción <br><small><strong>Formas de Pago:</strong> Efectivo, Transferencias Bancarias, Cheques, Tarjetas de Crédito, PayPal y PayPhone. Precios incluyen IVA</small></span>
                 </h1>
                 <div class="row price-tables">
 <?php
@@ -817,14 +837,12 @@ if(!empty($preguntas))
                     <div class="on-gmap color">
                         <h1 class="section-title">
                             <span data-animation="flipInY" data-animation-delay="100" class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-ticket fa-stack-1x"></i></span></span>
-                            <span data-animation="fadeInRight" data-animation-delay="100" class="title-inner">Localización de l evento</span>
+                            <span data-animation="fadeInRight" data-animation-delay="100" class="title-inner">Lugar</span>
                         </h1>
                         <p data-animation="fadeInUp" data-animation-delay="200" class="text-uppercase"><?=$evento['lugar']?><br/>                            
                             <?=$evento['nombre_pais']?> <br/>
                             Teléfono: <?=$evento['telefono']?></p>
                         <p><a href="mailto:<?=$evento['email']?>">Correo: <?=$evento['email']?></a></p>
-                        <a href="#" class="btn btn-theme"
-                           data-animation="flipInY" data-animation-delay="300">Get Direction <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
 
