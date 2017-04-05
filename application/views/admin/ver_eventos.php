@@ -73,6 +73,10 @@ foreach ($eventos as $evento)
                                 <td><img src="<?=  base_url()?>assets/img/banderas/<?=$evento['imagen_bandera']?>" width="125" height="60"></td>
                             </tr>
                             <tr>
+                                <td>Forma de pago</td>                            
+                                <td><?=$evento['forma_pago']?></td>
+                            </tr>                            
+                            <tr>
                                 <td>Twitter</td>                            
                                 <td><?=$evento['twitter']?></td>
                             </tr>
@@ -421,6 +425,10 @@ foreach ($paises as $pais)
                                 <input type="text" class="form-control" id="video_evento" name="video" required=""/>                                                        
                             </div>
                             <div class="form-group">
+                                <label for="forma_pago">Forma de pago</label>
+                                <textarea class="form-control" rows="3" name="forma_pago" id="forma_pago"></textarea>
+                            </div>                                                          
+                            <div class="form-group">
                                 <label for="profesion">Color</label>
                                 <select class="form-control image-picker show-html" id="color" name="color">
                                     <option data-img-src="http://cambioycultura.org/assets/img/blue-1.png" value="blue-1">Azul 1</option>
@@ -441,7 +449,7 @@ foreach ($paises as $pais)
                             <div class="form-group">
                                 <label for="imagen_fondo" class="col-sm-2"><p class="text-left">Imagen de Fondo</p></label>
                                 <input type="file" class="form-control" name="imagen_fondo" id="imagen_fondo_evento"/>
-                            </div>                       
+                            </div>  
                             <div class="form-group">
                                 <label for="twitter">Twitter</label>
                                 <input type="text" class="form-control" id="twitter_evento" name="twitter"/>                            
@@ -1366,6 +1374,7 @@ foreach ($paises as $pais)
                         $("#email_evento").val(result.email);
                         $("#video_evento").val(result.video);
                         $("#color").val(result.color);
+                        $("#forma_pago").val(result.forma_pago);
                         $("#twitter_evento").val(result.twitter);
                         $("#dribbble_evento").val(result.dribbble);
                         $("#facebook_evento").val(result.facebook);

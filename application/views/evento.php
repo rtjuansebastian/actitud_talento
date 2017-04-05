@@ -651,7 +651,7 @@ if(!empty($conferencista['instagram']))
             <div class="container">
                 <h1 class="section-title clearfix">
                     <span data-animation="flipInY" data-animation-delay="300" class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-user fa-stack-1x"></i></span></span>
-                    <span data-animation="fadeInRight" data-animation-delay="500" class="title-inner">Lista de precios de inscripción <br><small><strong>Formas de Pago:</strong> Efectivo, Transferencias Bancarias, Cheques, Tarjetas de Crédito, PayPal y PayPhone. Precios incluyen IVA</small></span>
+                    <span data-animation="fadeInRight" data-animation-delay="500" class="title-inner">Lista de precios de inscripción <br><small><strong>Formas de Pago:</strong> <?=$evento['forma_pago']?></small></span>
                 </h1>
                 <div class="row price-tables">
 <?php
