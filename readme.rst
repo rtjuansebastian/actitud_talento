@@ -1,4 +1,10 @@
 ###################
+Actitud y talento
+###################
+
+Aplicación para gestionar eventos de organizaciones, permite crear eventos para paises, agregar actividades, responsables, pre inscripciones y datos generales del evento.
+
+###################
 What is CodeIgniter
 ###################
 
